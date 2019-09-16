@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>教练主页</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:title" content="Vide" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <!-- js -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <!-- Custom Theme files -->
+    <!--webfont-->
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
+    <!--============================================================================================================================-->
+    <!-- start-smoth-scrolling -->
+    <style>
+        body{
+            background-color: #e0e0e0;
+        }
+        .photo {
+            position: relative;
+        }
+        .title{
+            position: absolute;
+            bottom:20px;
+            left:0px;
+            text-align: center;
+            right:0px;
+            font-size:24px;
+            font-weight: bold;
+            color:#979797;
+        }
+        .photos {
+            margin:auto;
+            font-size:0px;
+        }
+    </style>
+
+
+    <!--评论-->
+    <script src="js/coach/jquery.min.js"></script>
+    <script type="text/javascript" src="js/coach/data.js"></script>
+    <script type="text/javascript" src="js/coach/index.js"></script>
+    <link href="css/coach/resume.css" rel='stylesheet' type='text/css' />
+
+    <!--博文-->
+    <script src="js/coach/scrollbar.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/coach/roll.css">
+
+    <!--pic,video-->
+
+    <!--弹出框-->
+    <link href="css/coach/buyCoach.css" rel='stylesheet' type='text/css' />
+
+    <!--时分选择插件-->
+    <script src="js/coach/hzw-city-picker.min.js"></script>
+    <script src="js/coach/city-data.js"></script>
+    <link href="css/coach/time.css" rel='stylesheet' type='text/css' />
+
+    <!--aliPay-->
+    <link href="css/coach/aliPay.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--导航-->
+<div class="page-head" style="display: block;width: 100%;position: absolute; top: 0;">
+    <div class="container">
+        <div class="navigation">
+            <div class="logo">
+                <h1>
+                    <a class="navbar-brand link link--yaku" href="index.html"><span>N</span><span>I</span><span>C</span><span>E</span><span>B</span><span>O</span><span>D</span><span>Y</span></a>
+                </h1>
+            </div>
+            <div class="top-nav" style="position: relative; float: right;">
+                <span class="menu"><img src="images/menu.png" alt=" " /></span>
+                <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
+                    <li><a href="index.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">主页 </a></li>
+                    <li><a href="coachList.html" class="active" >寻找教练</a></li>
+                    <li><a href="programs.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">动作库</a></li>
+                    <li><a href="shortcodes.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">教练审核</a></li>
+                    <li><a href="contact.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">我的课程</a></li>
+                    <li><a href="register.html"> 登  录 / 注  册 </a></li>
+                </ul>
+                <!-- script-for-menu -->
+                <script>
+                    $( "span.menu" ).click(function() {
+                        $( "ul.nav1" ).slideToggle( 300, function() {
+                            // Animation complete.
+                        });
+                    });
+                </script>
+                <!-- /script-for-menu -->
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<!--头部-->
+<div style="width: 100%;height: 820px;overflow: hidden; border-bottom: black;border-bottom-width: 2px;">
+    <div class="col-lg-5 " style="text-align: center; padding: 140px;">
+        <span style="margin-bottom:100px;"><a style="color: #666; font-size: 7rem; letter-spacing: -0.3rem; line-height: 5rem;font-weight: bolder;">Coach Page</a></span><br><br><br><br>
+        <span style="margin-top: 100px;"><a style="font-size: 2rem; color: #999999;font-family: '等线 Light';">
+            Welcome to defy, a free web template from ZyPOP.
+            This template is completely free to use permitting a link remains back to ZyPOP.</a></span><br><br>
+
+        <span><a style="font-size: 2rem; color: #999999;font-family: '等线 Light'">
+            Should you wish to use this template unbranded you can buy a template license from our website for 8.00 GBP,
+            this will allow you remove all branding related to our site. See the read me file for more information.</a></span>
+
+        <h1 class="t-button">
+            <a href="#"><span class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light'">关注我</span></a>
+            <a href="#" href="javascript:void(0)" class="click_pop" ><span class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light'">购买在线课程</span></a>
+        </h1>
+
+        <hr style="width:80%;margin:0 auto;border: 0;height: 0;border-top: 2px solid rgba(0, 0, 0, 0.1);border-bottom: 1px solid rgba(255, 255, 255, 0.3);">
+
+        <div id="remark" style="margin-top: 30px;">
+            <button id="stop" class="btn btn-primary">停止</button>
+            <button id="open" class="btn btn-primary">弹</button>
+            <input type="text" class="form-control" name="" id="barrage_content" placeholder="添加弹幕内容"><button class="btn btn-primary" id="submit_barraget">发送</button>
+        </div>
+    </div>
+
+    <div class="col-lg-7" style="padding: 0;margin-top: 50px;">
+        <img src="images/caoch.jpg" style="width: 100%;height: auto;">
+    </div>
+
+
+</div>
+
+<!--视频-->
+<div class="col-lg-6" style="margin: 20px 40px;height: 800px; border-radius: 30px;background-color: white; box-shadow: 0 8px 16px 0 rgba(7,17,27,.3);padding: 40px;">
+
+</div>
+
+<!--博文-->
+<div class="col-lg-5" style="margin: 20px; border-radius: 30px;background-color: white; box-shadow: 0 8px 16px 0 rgba(7,17,27,.3);padding: 40px;">
+    <div class="scroll_main" style="border-radius: 40px; margin:0px 10px;">
+        <div class="scroll_wrap">
+            <div class="scroll_cont">
+                <div style="background-color: #ffffff; width: 95%; border-radius: 40px; box-shadow: 0 8px 16px 0 rgba(7,17,27,.3); margin: 5px 15px;">
+                    <p>jQuery 是由美国人 John Resig 于 2006 年创建的一个开源项目，随着被人们的熟知，越
+                        来越多的程序高手加入其中，完善和壮大其项目内容 ；如今已发展成为集 JavaScript、CSS、
+                        DOM、Ajax 于一体的强大框架体系，它的主旨是 ：以更少的代码，实现更多的功能（Write
+                        less，do more）。</p>
+                </div>
+                <div style="background-color: #ffffff; width: 95%; border-radius: 40px; box-shadow: 0 8px 16px 0 rgba(7,17,27,.3); margin: 5px 15px;">
+                    <p>1. 访问和操作 DOM 元素<br/>
+                        使用 jQuery 库，可以很方便地获取和修改页面中的某元素，无论是删除、移动、复制某
+                        元素，jQuery 都提供了一整套方便、快捷的方法，既减少了代码的编写，又大大提高了用户
+                        对页面的体验度。具体示例我们将在后面的章节中陆续展示。</p>
+                </div>
+                <div style="background-color: #ffffff; width: 95%;  border-radius: 40px; box-shadow: 0 8px 16px 0 rgba(7,17,27,.3); margin: 5px 15px;">
+                    <p>2. 控制页面样式<br/>
+                        通过引入 jQuery， 程序开发人员可以很便捷地控制页面的 CSS 文件。浏览器对页面文件
+                        的兼容性一直以来都是页面开发者最为头痛的事，而使用 jQuery 操作页面的样式，却可以很
+                        好地兼容各种浏览器。</p>
+                </div>
+                <div style="background-color: #ffffff; width: 95%; border-radius: 40px; box-shadow: 0 8px 16px 0 rgba(7,17,27,.3); margin: 5px 15px;">
+                    <p>3. 对页面事件的处理<br/>
+                        引入 jQuery 库后，使页面的表现层与功能开发分离，开发者可以更多地专注于程序的逻
+                        辑与功效 ；页面设计者侧重于页面的优化与用户体验，通过事件绑定机制，可以很轻松地实
+                        现二者的结合。</p>
+                </div>
+            </div>
+            <div class="scroll_bar">
+                <div class="scroll_slider"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--课程-->
+<div class="col-lg-5 pull-right" style="margin: 20px 30px 20px 10px; height: 200px; border-radius: 30px;background-color: white; box-shadow: 0 8px 16px 0 rgba(7,17,27,.3);padding: 40px;">
+</div>
+
+<!--遮罩层-->
+<div class="bgPop"></div>
+
+<!--弹出框-->
+<div class="pop">
+    <div class="pop-top">
+        <h2>下单信息</h2>
+        <span class="pop-close">Ｘ</span>
+    </div>
+    <div class="pop-content">
+        <div class="pop-content-left">
+            <img src="" alt="" class="teathumb">
+        </div>
+        <div class="pop-content-right">
+            <p style="display: inline-block;">教练信息：<b class="lname"></b></p>
+            <img src="images/pic1.png" style="border-radius: 50px;"><a style="font-weight: bolder">王佳帅</a>
+            <p style="display: inline; margin-left: 40px;">服务内容：<b class="price"></b></p>
+            <img src="images/pic3.png" style="border-radius: 50px;"><a style="font-weight: bolder;">腹部肌肉在线训练</a>
+            <p style="display: inline-block;">上课时间：<b class="ltime"></b></p>
+            <!--日期-->
+            <a id="times" style="font-weight: bold;"></a>
+            <script type="text/javascript">
+                function  getD1(){
+                    var date=new Date();
+                    var d1=date.toLocaleDateString();
+                    var div1=document.getElementById("times");
+                    div1.innerHTML =d1;  }
+                setInterval("getD1();",1000);
+            </script>
+            <!--时间-->
+            <a>时间：</a>
+            <input type="text" id="cityChoice" style="border-radius: 5px;">
+            <script>
+                var cityPicker = new HzwCityPicker({
+                    data: data,
+                    target: 'cityChoice',
+                    valType: 'k-v',
+                    hideCityInput: {
+                        name: 'city',
+                        id: 'city'
+                    },
+                    hideProvinceInput: {
+                        name: 'province',
+                        id: 'province'
+                    },
+                    callback: function(){
+                        alert('OK');
+                    }
+                });
+                cityPicker.init();
+            </script>
+            <!--时长-->
+            <a>时长：</a>
+            <div style="display: inline-block;">
+                <select class="form-control" >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <!--联系方式-->
+            <div style="margin: 15px 0px;">
+                <p style="display: inline-block;">联系方式：<b class="teacher"></b></p>
+                <input type="text" style="width: 80% ; border-radius:5px; background-color: #999999; border-width: 0;">
+            </div>
+            <!--教练留言-->
+            <div style="margin: 15px 0px;">
+                <p>教练留言：<b class="teasynopsis"></b></p>
+                <input type="text" style="width: 96% ; border-radius:5px; background-color: #999999; border-width: 0; height: 80px;">
+            </div>
+        </div>
+        <div class="pop-foot">
+            <a style="left: 0;">总计：10000元</a>
+            <div class="content">
+                <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支付宝支付</a></p>
+
+                <!--aliPay-->
+                <div class="shang_box">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="images/aliPay/close.jpg" alt="取消" /></a>
+                    <div class="shang_tit">
+                        <p>感谢您的支持，我会继续努力的!</p>
+                    </div>
+                    <div class="shang_payimg">
+                        <img src="images/aliPay/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                    </div>
+                    <div class="pay_explain">扫码打赏，你说多少就多少</div>
+                    <div class="shang_payselect">
+                        <div class="pay_item checked" data-id="alipay">
+                            <span class="radiobox"></span>
+                            <span class="pay_logo"><img src="images/aliPay/alipay.jpg" alt="支付宝" /></span>
+                        </div>
+                        <div class="pay_item" data-id="weipay">
+                            <span class="radiobox"></span>
+                            <span class="pay_logo"><img src="images/aliPay/wechat.jpg" alt="微信" /></span>
+                        </div>
+                    </div>
+                    <div class="shang_info">
+                        <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.pop-close').click(function () {
+            $('.bgPop,.pop').hide();
+        });
+        $('.click_pop').click(function () {
+            $('.bgPop,.pop').show();
+        });
+    })
+</script>
+
+<!--评论-->
+<script type="text/javascript">
+
+    // 数据初始化
+    var Obj = $('body').barrage({
+        data : date, //数据列表
+        row : 5,   //显示行数
+        time : 1000, //间隔时间
+        gap : 20,    //每一个的间隙
+        position : 'fixed', //绝对定位
+        direction : 'bottom right', //方向
+        ismoseoverclose : true, //悬浮是否停止
+    })
+    Obj.start();
+
+    //添加评论
+    $("#submit_barraget").click(function(){
+
+        var val = $("#barrage_content").val();
+        //此格式与dataa.js的数据格式必须一致
+        var addVal = {
+            href : '',
+            text : val
+        }
+        //添加进数组
+        Obj.data.unshift(addVal);
+        alert('评论成功');
+
+    })
+
+    $("#open").click(function(){
+        Obj.start();
+    })
+    $("#stop").click(function(){
+        Obj.close();
+    })
+</script>
+<script type="text/javascript">
+    new CusScrollBar({
+        contentSelector: '.scroll_cont', //滚动内容区
+        barSelector: '.scroll_bar', //滚动条
+        sliderSelector: '.scroll_slider' //滚动滑块
+    });
+</script>
+
+<!--aliPay-->
+<script type="text/javascript">
+    $(function(){
+        $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+        });
+    });
+    function dashangToggle(){
+        $(".hide_box").fadeToggle();
+        $(".shang_box").fadeToggle();
+    }
+</script>
+</body>
+</html>

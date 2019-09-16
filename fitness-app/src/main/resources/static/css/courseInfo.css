@@ -1,0 +1,172 @@
+
+        .imv2-play_circle:before {
+            content: "\e038";
+        }
+
+        .moco-btn:link, .moco-btn:visited {
+            color: #545c63;
+        }
+        :link, :visited, ins {
+            text-decoration: none;
+        }
+        .course-aside-info {
+            margin-bottom: 32px;
+            min-height: 150px;
+        }
+
+        .course-info-main .aside .buy a, .course-info-main .aside .learn-btn a {
+            display: block;
+        }
+
+        .moco-btn-lg {
+            padding: 11px 32px;
+            font-size: 16px;
+            line-height: 24px;
+            border-radius: 24px;
+        }
+        .moco-btn-red {
+            border-style: solid;
+            border-width: 1px;
+            cursor: pointer;
+            -weibkit-transition: all .3s;
+            -moz-transition: all .3s;
+            transition: all .3s;
+
+            background-color: #f20d0d;
+            border-color: #f20d0d;
+            opacity: 1;
+        }
+        .moco-btn {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            text-decoration: none;
+            box-sizing: border-box;
+            background-image: none;
+            border-radius: 0;
+            -webkit-appearance: none;
+            white-space: nowrap;
+            outline: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border-style: solid;
+            border-width: 1px;
+            cursor: pointer;
+            -weibkit-transition: all .3s;
+            -moz-transition: all .3s;
+            transition: all .3s;
+            color: #545c63;
+            background-color: transparent;
+            border-color: #9199a1;
+            opacity: 1;
+            padding: 7px 16px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            border-radius: 18px;
+
+        }
+        a:-webkit-any-link {
+            color: white;
+            cursor: pointer;
+		}
+        .course-infos h2 {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 8px;
+            line-height: 48px;
+            font-size: 32px;
+            color: #fff;
+        }
+        .clearfix:after {
+            content: '\0020';
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        a, button, input {
+            outline: 0;
+        }
+        fieldset, img {
+            border: 0;
+        }
+        [class*=" icon-"], [class^=icon-] {
+            font-family: icomoon;
+            speak: none;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .icon-imooc:before {
+            content: "\e634";
+        }
+        .course-infos .statics .teacher-info .teacher-course {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 70px;
+            padding: 32px;
+            padding-bottom: 16px;
+            background: #fff;
+            box-shadow: 0 8px 16px 0 rgba(7,17,27,.2);
+            border-radius: 12px;
+        }
+        .course-infos .statics .teacher-info .teacher-course .teacher-course-arrow {
+            position: absolute;
+            width: 100%;
+            top: -21px;
+            height: 35px;
+            left: 0;
+        }
+        body, html {
+            font: 14px/1.5 "PingFang SC","微软雅黑","Microsoft YaHei",Helvetica,"Helvetica Neue",Tahoma,Arial,sans-serif;
+            color: #1c1f21;
+            height: 100%;
+        }
+        .l {
+            float: left;
+        }
+        .course-infos .statics .static-item:after {
+            margin-left: 16px;
+            content: "·";
+        }
+        .course-infos .statics {
+            color: #fff;
+            font-size: 0;
+            position: relative;
+            z-index: 3;
+        }
+        .course-infos .statics .static-item {
+            display: inline-block;
+            position: relative;
+            margin-right: 16px;
+            font-size: 12px;
+            top: 15px;
+        }
+        div {
+            display: block;
+        }
+        .course-infos .info-bg, .course-infos .info-bg .cover-canvas, .course-infos .info-bg .cover-img-wrap, .course-infos .info-bg .cover-mask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .course-wrap {
+            margin-bottom: 8px;
+            padding: 24px 32px 32px;
+            background: #fff;
+            box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
+            border-radius: 12px;
+        }
+

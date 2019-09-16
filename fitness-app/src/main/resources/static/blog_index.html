@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>博客展览 </title>
+	<meta charset="utf-8">
+	<meta name="author" content="">
+
+	<!--富文本编辑器-->
+	<link rel="stylesheet" href="plugins/wangeditor/css/wangEditor.min.css">
+
+	<link rel="stylesheet" type="text/css" href="css/Blog_Main.css">
+	<link rel="stylesheet" type="text/css" href="css/Blog_Reset.css.css">
+	<style>
+		.fixed{
+			position: fixed;
+			z-index: 10;!important;
+		}
+		.right-bottom{
+			bottom: 20px;
+			right: 30px;
+		}
+		.i-size{
+			font-size: 25px;
+		}
+		.i-color{
+			color: #ff3366;
+		}
+	</style>
+
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //for-mobile-apps -->
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<!-- js -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<!-- //js -->
+	<!-- Custom Theme files -->
+	<!--webfont-->
+	<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+	</script>
+</head>
+<body>
+
+<div class="page-head">
+	<div class="container">
+		<div class="navigation">
+			<div class="logo">
+				<h1>
+					<a class="navbar-brand link link--yaku" href="index.html"><span>N</span><span>I</span><span>C</span><span>E</span><span>B</span><span>O</span><span>D</span><span>Y</span></a>
+				</h1>
+			</div>
+			<div class="top-nav" style="position: relative; float: right;">
+				<span class="menu"><img src="images/menu.png" alt=" " /></span>
+				<ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
+					<li><a href="index.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">主页 </a></li>
+					<li><a href="coachList.html" class="active" >寻找教练</a></li>
+					<li><a href="programs.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">动作库</a></li>
+					<li><a href="shortcodes.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">教练审核</a></li>
+					<li><a href="contact.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">我的课程</a></li>
+					<li><a href="register.html"> 登  录 / 注  册 </a></li>
+				</ul>
+				<!-- script-for-menu -->
+				<script>
+					$( "span.menu" ).click(function() {
+						$( "ul.nav1" ).slideToggle( 300, function() {
+							// Animation complete.
+						});
+					});
+				</script>
+				<!-- /script-for-menu -->
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<div>
+
+	<!--模态框-->
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">添加博客</h4>
+				</div>
+				<div class="modal-body">
+					<div style="background-color: #f5ffdb; width: 100%; height: 100%">
+						<div id="div1" class="toolbar">
+						</div>
+						<div style="padding: 5px 0; color: #ccc"></div>
+						<div id="div2" class="text">
+							<p>请输入内容</p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="height: 100%; width: 100%; ">
+		<div class="row" style=" display:flex; justify-content: center; align-items: center;">
+			<div class="col-lg-1.75"></div>
+			<div class="col-lg-4" style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/banner.jpg" alt="" style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-0.5"></div>
+			<div class="col-lg-4"  style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/Blog_pic3.jpg" alt=""  style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-1.75" style="padding-top: 2em;"></div>
+		</div>
+	</div>
+	<div style="height: 100%; width: 100%; ">
+		<div class="row" style=" display:flex; justify-content: center; align-items: center;">
+			<div class="col-lg-1.75"></div>
+			<div class="col-lg-4" style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/banner.jpg" alt="" style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-0.5"></div>
+			<div class="col-lg-4"  style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/Blog_pic3.jpg" alt=""  style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-1.75" style="padding-top: 2em;"></div>
+		</div>
+	</div>
+	<div style="height: 100%; width: 100%; ">
+		<div class="row" style=" display:flex; justify-content: center; align-items: center;">
+			<div class="col-lg-1.75"></div>
+			<div class="col-lg-4" style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/banner.jpg" alt="" style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-0.5"></div>
+			<div class="col-lg-4"  style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/Blog_pic3.jpg" alt=""  style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-1.75" style="padding-top: 2em;"></div>
+		</div>
+	</div>
+	<div style="height: 100%; width: 100%; ">
+		<div class="row" style=" display:flex; justify-content: center; align-items: center;">
+			<div class="col-lg-1.75"></div>
+			<div class="col-lg-4" style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/banner.jpg" alt="" style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-0.5"></div>
+			<div class="col-lg-4"  style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/Blog_pic3.jpg" alt=""  style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-1.75" style="padding-top: 2em;"></div>
+		</div>
+	</div>
+	<div style="height: 100%; width: 100%; ">
+		<div class="row" style=" display:flex; justify-content: center; align-items: center;">
+			<div class="col-lg-1.75"></div>
+			<div class="col-lg-4" style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/banner.jpg" alt="" style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-0.5"></div>
+			<div class="col-lg-4"  style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/Blog_pic3.jpg" alt=""  style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-1.75" style="padding-top: 2em;"></div>
+		</div>
+	</div>
+	<div style="height: 100%; width: 100%; ">
+		<div class="row" style=" display:flex; justify-content: center; align-items: center;">
+			<div class="col-lg-1.75"></div>
+			<div class="col-lg-4" style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/banner.jpg" alt="" style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-0.5"></div>
+			<div class="col-lg-4"  style="padding-top: 2em;">
+				<div>
+					<a href="#">
+						<img src="images/Blog_pic3.jpg" alt=""  style="height: 281.84px; width: 429.66px; border-radius: 0.5em">
+					</a>
+				</div>
+				<div>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+				</div>
+				<div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-thumbs-up"></i>1000</span>
+					</div>
+					<div class="col-sm-3">
+						<span style="width: 10px;height: 10px"><i class="glyphicon glyphicon-user"></i>2200</span>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+			<div class="col-lg-1.75" style="padding-top: 2em;"></div>
+		</div>
+	</div>
+
+	<div style=" display:flex; justify-content: center; align-items: center;">
+		<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+
+<!--置顶和添加-->
+<div class="padded fixed right-bottom">
+	<div>
+		<a href="blog_add.html"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus i-size i-color"></span></a>
+		<div>
+			<i id="toTop-button" class="glyphicon glyphicon-chevron-up i-size i-color"></i>
+		</div>
+	</div>
+</div>
+
+
+<!--copy right-->
+<div class="copyright col-lg-12" >
+	<div class="container">
+		<div class="copy-left">
+			<p>Copyright &copy; 2019.Company name NICEBODY's healthy website <a href="http://www.cssmoban.com/" target="_blank" title="NICEBODY">健身Page</a> - Collect from <a href="http://www.cssmoban.com/" title="NICEBODY" target="_blank">即刻健身</a></p>
+		</div>
+		<div class="copy-right">
+			<ul>
+				<li><a class="fb1" href="#"></a></li>
+				<li><a class="fb2" href="#"></a></li>
+				<li><a class="fb3" href="#"></a></li>
+				<li><a class="fb4" href="#"></a></li>
+				<li><a class="fb5" href="#"></a></li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+<!--初始化WangEditor编辑器-->
+<script type="text/javascript" src="plugins/wangeditor/js/wangEditor.min.js"></script>
+
+<script src="js/bootstrap.js"></script>
+<script>
+    $('#toTop-button').click(function () {
+        $(window).scrollTo(0,1300);
+    });
+
+    var E = window.wangEditor
+    var editor = new E('#div1','#div2')
+
+    // 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
+    editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+    // editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+
+    // 自定义菜单配置
+    editor.customConfig.menus = [
+        'fontSize',  // 字号
+        'fontName',  // 字体
+        'italic',  // 斜体
+        'underline',  // 下划线
+        'foreColor',  // 文字颜色
+        'backColor',  // 背景颜色
+        'link',  // 插入链接
+        'list',  // 列表
+        'justify',  // 对齐方式
+        'emoticon',  // 表情
+        'image',  // 插入图片
+        'video',  // 插入视频
+        'code',  // 插入代码
+        'undo',  // 撤销
+    ]
+
+    editor.create()
+</script>
+</body>
+</html>
