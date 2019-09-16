@@ -1,9 +1,9 @@
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/nicenoreference?characterencoding=utf-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://106.14.115.219:8085/nicenoreference?characterencoding=utf-8&serverTimezone=UTC&useSSL=false
     username: root
-    password: WWR333
+    password: nicebody
     driverClassName: com.mysql.cj.jdbc.Driver
     druid:
       # 初始化物理连接个数
