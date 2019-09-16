@@ -1,0 +1,50 @@
+
+/* ======= GENERAL  ======= */
+
+a {
+    color: #9c27b0;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9c27b0;
+    text-decoration: underline;
+}
+
+p {
+    color: #3C4857;
+}
+
+header {
+    border-bottom: 1px solid #dedede;
+    text-align: center;
+}
+
+
+
+
+h2, .h2 {
+  font-size: 2.0em;
+  line-height: 1.6em;
+  margin: 15px 0 15px;
+  font-weight: 700;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  text-align: center;
+}
+
+
+h4, .h4 {
+  font-size: 1.3em;
+  line-height: 1.55em;
+}
+
+h5, .h5 {
+  font-size: 1.25em;
+  line-height: 1.55em;
+  margin-bottom: 15px;
+}
+
+h6, .h6 {
+  font-size: 0.9em;
+  font-weight: 500;
+}

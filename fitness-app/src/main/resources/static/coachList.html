@@ -69,7 +69,12 @@
 			border:  solid 2px #f5f5f5;
 		}
 	</style>
+	<link href="css/coachList/font-awesome.min.css" rel='stylesheet' type='text/css' />
+	<link href="css/coachList/page-style.css" rel='stylesheet' type='text/css' />
+	<link href="css/coachList/cards-style.css" rel='stylesheet' type='text/css' />
 
+	<link href="css/coachList/bootsnav.css" rel='stylesheet' type='text/css' />
+	<script type="text/javascript" src="js/coach/coachlist/bootsnav.js"></script>
 
 </head>
 <body>
@@ -107,92 +112,334 @@
 	</div>
 </div>
 
-<h3 class="bars" style="margin-left: 100px;margin-top: 5px;">Breadcrumbs</h3>
+<!--标题-->
+<h3 class="bars" style="margin-left: 100px;margin-top: 5px;">COACHLIST</h3>
 
-<!--main-->
-<div>
-	<div class="col-lg-10" style=" margin-left: 100px;">
-	    <ol class="breadcrumb">
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Library</a></li>
-	</ol>
-	    <ol class="breadcrumb">
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Library</a></li>
-	</ol>
-	    <ol class="breadcrumb">
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Library</a></li>
-	</ol>
-	    <ol class="breadcrumb">
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Library</a></li>
-	</ol>
-    </div>
-
-	<!--侧导航-->
-	<div class="col-lg-2" style="margin-top: 20px; margin-left: 85px;">
-	    <ul class="listgroup" style="border: solid 1px #f5f5f5;">
-		<li class="list-group-item">Cras justo odio</li>
-		<li class="list-group-item">Dapibus ac facilisis in</li>
-		<li class="list-group-item">Morbi leo risus</li>
-		<li class="list-group-item">Porta ac consectetur ac</li>
-		<li class="list-group-item">Vestibulum at eros</li>
-	    </ul>
+<!--分类导航-->
+<div class="demo" style="min-height:100px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-default navbar-mobile bootsnav">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+							<i class="fa fa-bars"></i>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="navbar-menu">
+						<ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+							<li class="active"><a href="#" data-hover="Home">局部健身 <span data-hover="Home"></span></a></li>
+							<li><a href="#" data-hover="About">跑步生活 <span data-hover="About"></span></a></li>
+							<li class="dropdown">
+								<a href="#" data-hover="Shortcodes">减脂运动</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Custom Menu</a></li>
+											<li><a href="#">Custom Menu</a></li>
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+												<ul class="dropdown-menu multi-dropdown">
+													<li><a href="#">Custom Menu</a></li>
+													<li><a href="#">Custom Menu</a></li>
+													<li><a href="#">Custom Menu</a></li>
+													<li><a href="#">Custom Menu</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Custom Menu</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" data-toggle="dropdown" data-hover="Pages">室内锻炼 </a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Custom Menu</a></li>
+											<li><a href="#">Custom Menu</a></li>
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+												<ul class="dropdown-menu multi-dropdown">
+													<li><a href="#">Custom Menu</a></li>
+													<li><a href="#">Custom Menu</a></li>
+													<li><a href="#">Custom Menu</a></li>
+													<li><a href="#">Custom Menu</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Custom Menu</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+								</ul>
+							</li>
+							<li><a href="#" data-hover="Portfolio">室内瑜伽 <span data-hover="Portfolio"></span></a></li>
+							<li class="dropdown megamenu-fw">
+								<a href="#"  data-toggle="dropdown" data-hover="Megamenu">知识补充</a>
+								<ul class="dropdown-menu megamenu-content" role="menu">
+									<li>
+										<div class="row">
+											<div class="col-menu col-md-3">
+												<h6 class="title">Title Menu One</h6>
+												<div class="content">
+													<ul class="menu-col">
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+													</ul>
+												</div>
+											</div><!-- end col-3 -->
+											<div class="col-menu col-md-3">
+												<h6 class="title">Title Menu Two</h6>
+												<div class="content">
+													<ul class="menu-col">
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+													</ul>
+												</div>
+											</div><!-- end col-3 -->
+											<div class="col-menu col-md-3">
+												<h6 class="title">Title Menu Three</h6>
+												<div class="content">
+													<ul class="menu-col">
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="col-menu col-md-3">
+												<h6 class="title">Title Menu Four</h6>
+												<div class="content">
+													<ul class="menu-col">
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+														<li><a href="#">Custom Menu</a></li>
+													</ul>
+												</div>
+											</div><!-- end col-3 -->
+										</div><!-- end row -->
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" data-hover="Contact">其他 <span data-hover="Contact"></span></a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
 	</div>
+</div>
 
-	<!--列表-->
-	<div class="col-lg-9"  id="coachShow" >
-		<div>
-			<img src="images/caoch.jpg">
-			<h4 style="display: inline-block; margin-top: 30px;"class="pull-left"><a>$250</a></h4>
-			<h3 style="display: inline-block" class="t-button pull-right">
-				<a href="#"><span class="label label-primary">Primary</span></a>
-			</h3>
+<!--coachList-->
+<div class="col-lg-12">
+	<!-- PRODUCT CARDS -->
+	<div class="cards-8 section-gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="card card-product">
+						<div class="card-image">
+							<a href="#"> <img class="img" src="images/coachList/model01.jpg"> </a>
+						</div>
+						<div class="table">
+							<h6 class="category text-rose">Clothing</h6>
+							<h4 class="card-caption">
+								<a href="#">The Name</a>
+							</h4>
+							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
+							<div class="ftr">
+								<div class="price">
+									<h4>$1,230</h4> </div>
+								<div class="stats">
+									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card card-product">
+						<div class="card-image">
+							<a href="#"> <img class="img" src="images/coachList/model02.jpg"> </a>
+							<div class="ripple-cont"></div>
+						</div>
+						<div class="table">
+							<h6 class="category text-muted">Clothing</h6>
+							<h4 class="card-caption">
+								<a href="#">The Name</a>
+							</h4>
+							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
+							<div class="ftr">
+								<div class="price">
+									<h4>$990</h4> </div>
+								<div class="stats">
+									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i>
+										<div class="ripple-cont"></div>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card card-product">
+						<div class="card-image">
+							<a href="#"> <img class="img" src="images/coachList/model03.jpg"> </a>
+						</div>
+						<div class="table">
+							<h6 class="category text-muted">Clothing</h6>
+							<h4 class="card-caption">
+								<a href="#">The Name</a>
+							</h4>
+							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
+							<div class="ftr">
+								<div class="price">
+									<h4>$1,100</h4> </div>
+								<div class="stats">
+									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card card-product">
+						<div class="card-image">
+							<a href="#"> <img class="img" src="images/coachList/model04.jpg"> </a>
+						</div>
+						<div class="table">
+							<h6 class="category text-rose">Clothing</h6>
+							<h4 class="card-caption">
+								<a href="#">The Name</a>
+							</h4>
+							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
+							<div class="ftr">
+								<div class="price">
+									<h4>$1,200</h4> </div>
+								<div class="stats">
+									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div>
-			<img src="images/caoch.jpg">
-			<h4 style="display: inline-block; margin-top: 30px;"class="pull-left"><a>$250</a></h4>
-			<h3 style="display: inline-block" class="t-button pull-right">
-		     	<a href="#"><span class="label label-primary">Primary</span></a>
-			</h3>
-		</div>
-		<div>
-			<img src="images/caoch.jpg">
-			<h4 style="display: inline-block; margin-top: 30px;"class="pull-left"><a>$250</a></h4>
-			<h3 style="display: inline-block" class="t-button pull-right">
-				<a href="#"><span class="label label-primary">Primary</span></a>
-			</h3>
-		</div>
-		<div>	<img src="images/caoch.jpg">
-			<h4 style="display: inline-block; margin-top: 30px;"class="pull-left"><a>$250</a></h4>
-			<h3 style="display: inline-block" class="t-button pull-right">
-				<a href="#"><span class="label label-primary">Primary</span></a>
-			</h3>
-		</div>
-		<div>	<img src="images/caoch.jpg">
-			<h4 style="display: inline-block; margin-top: 30px;"class="pull-left"><a>$250</a></h4>
-			<h3 style="display: inline-block" class="t-button pull-right">
-				<a href="#"><span class="label label-primary">Primary</span></a>
-			</h3>
-		</div>
-		<div>	<img src="images/caoch.jpg">
-			<h4 style="display: inline-block; margin-top: 30px;"class="pull-left"><a>$250</a></h4>
-			<h3 style="display: inline-block" class="t-button pull-right">
-				<a href="#"><span class="label label-primary">Primary</span></a>
-			</h3>
-		</div>
-		<div>	<img src="images/caoch.jpg">
-			<h4 style="display: inline-block; margin-top: 30px;"class="pull-left"><a>$250</a></h4>
-			<h3 style="display: inline-block" class="t-button pull-right">
-				<a href="#"><span class="label label-primary">Primary</span></a>
-			</h3>
-		</div>
-		<div>	<img src="images/caoch.jpg">
-			<h4 style="display: inline-block; margin-top: 30px;"class="pull-left"><a>$250</a></h4>
-			<h3 style="display: inline-block" class="t-button pull-right">
-				<a href="#"><span class="label label-primary">Primary</span></a>
-			</h3>
+	</div>
+	<div class="cards-8 section-gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="card card-product">
+						<div class="card-image">
+							<a href="#"> <img class="img" src="images/coachList/model01.jpg"> </a>
+						</div>
+						<div class="table">
+							<h6 class="category text-rose">Clothing</h6>
+							<h4 class="card-caption">
+								<a href="#">The Name</a>
+							</h4>
+							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
+							<div class="ftr">
+								<div class="price">
+									<h4>$1,230</h4> </div>
+								<div class="stats">
+									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card card-product">
+						<div class="card-image">
+							<a href="#"> <img class="img" src="images/coachList/model02.jpg"> </a>
+							<div class="ripple-cont"></div>
+						</div>
+						<div class="table">
+							<h6 class="category text-muted">Clothing</h6>
+							<h4 class="card-caption">
+								<a href="#">The Name</a>
+							</h4>
+							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
+							<div class="ftr">
+								<div class="price">
+									<h4>$990</h4> </div>
+								<div class="stats">
+									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i>
+										<div class="ripple-cont"></div>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card card-product">
+						<div class="card-image">
+							<a href="#"> <img class="img" src="images/coachList/model03.jpg"> </a>
+						</div>
+						<div class="table">
+							<h6 class="category text-muted">Clothing</h6>
+							<h4 class="card-caption">
+								<a href="#">The Name</a>
+							</h4>
+							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
+							<div class="ftr">
+								<div class="price">
+									<h4>$1,100</h4> </div>
+								<div class="stats">
+									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card card-product">
+						<div class="card-image">
+							<a href="#"> <img class="img" src="images/coachList/model04.jpg"> </a>
+						</div>
+						<div class="table">
+							<h6 class="category text-rose">Clothing</h6>
+							<h4 class="card-caption">
+								<a href="#">The Name</a>
+							</h4>
+							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
+							<div class="ftr">
+								<div class="price">
+									<h4>$1,200</h4> </div>
+								<div class="stats">
+									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
