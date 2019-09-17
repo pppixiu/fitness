@@ -25,40 +25,10 @@ public class CourseServiceImplTest {
     @Autowired
     private CourseService courseService;
 
-    @Autowired
-    private CoachTagService coachTagService;
-
-    @Autowired
-    private CoachService coachService;
-
     @Test
     public void getCourseList(){
         List<Course> courseList = courseService.getCourseList();
         courseList.get(2).getCourseTitle();
         System.out.println(courseList.size());
-    }
-
-    /*查询教练分类*/
-    @Test
-    public void getCoachTagList(){
-        List<CoachTag> coachTagsList = coachTagService.getCoachTag();
-        System.out.println(coachTagsList.get(2).getTagName());
-        System.out.println(coachTagsList.size());
-    }
-
-    /*查询全部教练*/
-    @Test
-    public void getCoachList(){
-        List<Coach> coachList = coachService.getCoach();
-        System.out.println(coachList.get(1).getTagName());
-        System.out.println(coachList.size());
-    }
-
-    /*根据分类查询教练*/
-    @Test
-    public void getCoachByTag(){
-        List<Coach> coachList = coachService.getCoachByTag(4);
-        System.out.println(coachList.get(0).getUserName());
-        System.out.println(coachList.size());
     }
 }
