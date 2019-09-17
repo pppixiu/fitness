@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nicebody.mapper.UserBlogDao">
+    <!--查询用户博客-->
+    <select id="queryUserBlog" resultType="com.nicebody.pojo.UserBlog">
+        SELECT
+        ub.blog_id,
+        ub.user_id,
+        ub.blog_content,
+        ub.view_count,
+        ub.like_count,
+        ubi.image_url
+        FROM
+        tb_user_blog ub,
+        tb_user_blog_image ubi
+        WHERE
+        ub.blog_id = ubi.blog_id
+        ORDER BY
+        create_time DESC
+    </select>
+</mapper>
