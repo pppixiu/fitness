@@ -3,27 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nicebody.mapper.CoachMapper">
-    <resultMap id="coachById" type="com.nicebody.pojo.CoachInfo">
-        <id column="coach_id" property="coachId"></id>
-        <result column="coach_desc" property="coachDesc"></result>
-        <result column="coach_name" property="coachName"></result>
-        <result column="coach_price" property="coachPrice"></result>
-        <association property="coachImage" javaType="com.nicebody.pojo.CoachImage">
-            <result column="image_url" property="imageUrl"></result>
+    <resultMap id="coachMap" type="coachInfo">
+        <id column="coach_id" property="coachId"/>
+        <result column="coach_desc" property="coachDesc"/>
+        <result column="coach_name" property="coachName"/>
+        <result column="coach_price" property="coachPrice"/>
+        <association property="coachImage" javaType="coachImage">
+            <result column="image_url" property="imageUrl"/>
         </association>
     </resultMap>
 
-    <resultMap id="coachBlog" type="com.nicebody.pojo.CoachInfo">
-        <id column="coach_id" property="coachId"></id>
-        <association property="userBlog" javaType="com.nicebody.pojo.UserBlog">
-            <result column="blog_content" property="blogContent"></result>
+    <resultMap id="coachBlog" type="coachInfo">
+        <id column="coach_id" property="coachId"/>
+        <association property="userBlog" javaType="userBlog">
+            <result column="blog_content" property="blogContent"/>
         </association>
-        <association property="userBlogImage" javaType="com.nicebody.pojo.UserBlogImage">
-            <result column="image_url" property="imageUrl"></result>
+        <association property="userBlogImage" javaType="userBlogImage">
+            <result column="image_url" property="imageUrl"/>
         </association>
     </resultMap>
 
-    <select id="queryCoachById" resultMap="coachById">
+    <select id="queryCoachById" resultMap="coachMap">
         SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
         FROM tb_coach_info i, tb_coach_image m
         where i.coach_id = m.coach_id AND i.coach_id = #{id}

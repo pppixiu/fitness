@@ -3,23 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nicebody.mapper.CoachTagMapper">
-    <resultMap id="coachMap" type="com.nicebody.pojo.CoachInfo">
-        <id column="coach_id" property="coachId"></id>
-        <result column="coach_desc" property="coachDesc"></result>
-        <result column="coach_name" property="coachName"></result>
-        <result column="coach_price" property="coachPrice"></result>
-        <association property="coachImage" javaType="com.nicebody.pojo.CoachImage">
-            <result column="image_url" property="imageUrl"></result>
-        </association>
-    </resultMap>
-
-    <resultMap id="coachByTag" type="com.nicebody.pojo.CoachInfo">
-        <id column="coach_id" property="coachId"></id>
-        <result column="coach_desc" property="coachDesc"></result>
-        <result column="coach_name" property="coachName"></result>
-        <result column="coach_price" property="coachPrice"></result>
-        <association property="coachImage" javaType="com.nicebody.pojo.CoachImage">
-            <result column="image_url" property="imageUrl"></result>
+    <resultMap id="coachMap" type="coachInfo">
+        <id column="coach_id" property="coachId"/>
+        <result column="coach_desc" property="coachDesc"/>
+        <result column="coach_name" property="coachName"/>
+        <result column="coach_price" property="coachPrice"/>
+        <association property="coachImage" javaType="coachImage">
+            <result column="image_url" property="imageUrl"/>
         </association>
     </resultMap>
 
