@@ -20,10 +20,12 @@ public interface CoachTagMapper {
     List<CoachInfo> queryAllCoach();
 
     /**
-     * 根据分类查询教练
+     * 根据分类多条件查询
+     * @param tagId
+     * @param condition
      * @return
      */
-    List<CoachInfo> queryCoachByTag();
+    List<CoachInfo> queryCoachByTag(Integer tagId,Integer condition);
 
     /**
      * 查询教练分类
@@ -36,4 +38,5 @@ public interface CoachTagMapper {
      * @return
      */
     List<CoachInfo> queryCoachByName(String coachame);
+
 }

@@ -68,7 +68,15 @@ public class CoachServiceImplTest {
     public void queryCoachBlog(){
         List<CoachInfo> coachInfos = coachMapper.queryAllBlog(2);
         System.out.println(coachInfos.size());
-        System.out.println(coachInfos.get(0).getCoachImage().getImageUrl());
+        System.out.println(coachInfos.get(0).getUserBlogImage().getImageUrl());
+    }
+
+    /*测试多条件分类查询*/
+    @Test
+    public void queryCoachTag(){
+        List<CoachInfo> coachInfoList = coachTagMapper.queryCoachByTag(0,1);
+        System.out.println(coachInfoList.size());
+        System.out.println(coachInfoList.get(0).getCoachImage().getImageUrl());
     }
 
 }

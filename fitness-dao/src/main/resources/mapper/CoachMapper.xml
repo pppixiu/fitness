@@ -35,7 +35,7 @@
         where coach_id = #{id}
     </select>
 
-    <select id="queryAllBlog" resultType="">
+    <select id="queryAllBlog" resultMap="coachBlog">
         SELECT i.coach_id,b.blog_content,m.image_url
         FROM tb_coach_info i,tb_user_blog b,tb_user_blog_image m
         where i.user_id = b.user_id AND b.blog_id = m.blog_id AND i.coach_id = #{id}

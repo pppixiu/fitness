@@ -40,4 +40,28 @@
         where i.coach_id = m.coach_id and i.coach_name like "%${coachName}%"
     </select>
 
+    <select id="queryCoachByTag" resultMap="coachMap">
+        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
+        FROM tb_coach_info i, tb_coach_image m
+        <where>
+            i.coach_id = m.coach_id
+            <if test="tagId !=0 and condition==0">
+                and i.tag_id = #{tagId}
+            </if>
+            <if test="tagId==0 and condition==1">
+                order by i.coach_price
+            </if>
+            <if test="tagId==0 and condition==2">
+                order by i.coach_price desc
+            </if>
+            <if test="tagId!=0 and condition==1">
+                and i.tag_id = #{tagId}
+                order by i.coach_price
+            </if>
+            <if test="tagId!=0 and condition==2">
+                and i.tag_id = #{tagId}
+                order by i.coach_price desc
+            </if>
+        </where>
+    </select>
 </mapper>
