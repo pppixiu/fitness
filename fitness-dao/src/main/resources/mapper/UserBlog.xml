@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nicebody.mapper.UserBlogDao">
+<mapper namespace="com.nicebody.mapper.UserBlogMapper">
     <!--查询用户博客-->
     <select id="queryUserBlog" resultType="com.nicebody.pojo.UserBlog">
         SELECT
@@ -18,6 +18,85 @@
         WHERE
         ub.blog_id = ubi.blog_id
         ORDER BY
-        create_time DESC
+        ub.create_time DESC
     </select>
+
+    <!--按用户ID查询用户其它博客-->
+    <select id="queryUserBlogByUserId" resultType="com.nicebody.pojo.UserBlog" parameterType="int">
+        SELECT
+        ub.view_count,
+        ub.like_count,
+        ub.blog_content,
+        ubi.image_url
+        FROM
+        tb_user_blog ub,
+        tb_user_blog_image ubi
+        WHERE
+        ub.blog_id IN
+        (SELECT u.blog_id FROM tb_user_blog u WHERE u.user_id = #{userId})
+        AND
+        ubi.blog_id = ub.blog_id
+        AND
+        ubi.image_url IN
+        (SELECT tubi.image_url FROM tb_user_blog_image tubi WHERE tubi.blog_id = ub.blog_id)
+    </select>
+
+    <!--按博客ID查询用户博客-->
+    <select id="queryUserBlogByBlogId" resultType="com.nicebody.pojo.UserBlog" parameterType="int">
+        SELECT
+        ub.blog_content,
+        ub.view_count,
+        ub.like_count,
+        ubi.image_url
+        FROM
+        tb_user_blog ub,
+        tb_user_blog_image ubi
+        WHERE
+        ub.blog_id = #{blogId}
+        AND
+        ub.blog_id = ubi.blog_id
+    </select>
+
+    <!--按博客内容模糊查询-->
+    <select id="queryUserBlogByContentLike" resultType="com.nicebody.pojo.UserBlog" parameterType="String">
+        SELECT
+        ub.blog_content,
+        ub.view_count,
+        ub.like_count,
+        ubi.image_url
+        FROM
+        tb_user_blog ub,
+        tb_user_blog_image ubi
+        WHERE
+         ub.blog_content like '%${blogContent}%'
+        AND
+        ub.blog_id = ubi.blog_id
+    </select>
+
+    <!--添加用户博客-->
+    <insert id="insertUserBlog" useGeneratedKeys="true" keyColumn="blog_id" keyProperty="blogId">
+       INSERT INTO
+       tb_user_blog(user_id,blog_content,view_count,like_count,create_time,update_time)
+       VALUES
+       (#{userId},#{blogContent},#{viewCount},#{likeCount},
+       #{createTime},#{updateTime})
+    </insert>
+
+    <!--按用户ID和博客ID删除博客-->
+    <delete id="deleteUserBlogByBlogIdAndUserId">
+        DELETE FROM
+        tb_user_blog
+        WHERE
+        user_id = #{userId}
+        AND
+        blog_id = #{blogId}
+    </delete>
+
+    <!--按照博客ID删除博客照片-->
+    <delete id="deleteUserBlogImgByBlogId">
+        DELETE FROM
+        tb_user_blog_image
+        WHERE
+        blog_id = #{blogId}
+    </delete>
 </mapper>
