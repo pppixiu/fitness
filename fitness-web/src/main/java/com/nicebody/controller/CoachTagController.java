@@ -11,6 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *@ClassName
+ *@Author Hassan
+ %@Date
+ */
 @RestController
 @RequestMapping("/coachList")
 public class CoachTagController {
@@ -18,9 +23,9 @@ public class CoachTagController {
     private CoachTagService coachTagService;
 
     @GetMapping("/tag")
-    public Map<String, Object> listCourse(){
+    public Map<String, Object> listTag(){
         Map<String, Object> map = new HashMap<>();
-        List<CoachTag> tagList = coachTagService.quaryCoachTag();
+        List<CoachTag> tagList = coachTagService.getCoachTag();
         map.put("success", true);
         map.put("tags", tagList);
         return map;

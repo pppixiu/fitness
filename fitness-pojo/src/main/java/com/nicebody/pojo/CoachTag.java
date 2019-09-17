@@ -4,51 +4,46 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Date;
 
+/**
+ *@ClassName
+ *@Author Hassan
+ %@Date
+ */
 public class CoachTag {
-    private Integer tag_id; //标签Id
-    private String tag_name; //标签名
-    private Date creat_time; //创建时间
-    private Date update_time; //修改时间
+    private Integer tagId; //标签Id
+    private String tagName; //标签名
+    private Date creatTime; //创建时间
+    private Date updateTime; //修改时间
 
-    @Override
-    public String toString() {
-        return "CoachTag{" +
-                "tag_id=" + tag_id +
-                ", tag_name='" + tag_name + '\'' +
-                ", creat_time=" + creat_time +
-                ", update_time=" + update_time +
-                '}';
+    public Integer getTagId() {
+        return tagId;
     }
 
-    public Integer getTag_id() {
-        return tag_id;
+    public void setTagId(Integer tagId) {
+        this.tagId = tagId;
     }
 
-    public void setTag_id(Integer tag_id) {
-        this.tag_id = tag_id;
+    public String getTagName() {
+        return tagName;
     }
 
-    public String getTag_name() {
-        return tag_name;
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
     }
 
-    public void setTag_name(String tag_name) {
-        this.tag_name = tag_name;
+    public Date getCreatTime() {
+        return creatTime;
     }
 
-    public Date getCreat_time() {
-        return creat_time;
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
     }
 
-    public void setCreat_time(Date creat_time) {
-        this.creat_time = creat_time;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public Date getUpdate_time() {
-        return update_time;
-    }
-
-    public void setUpdate_time(Date update_time) {
-        this.update_time = update_time;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

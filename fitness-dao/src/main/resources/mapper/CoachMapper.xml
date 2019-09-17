@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nicebody.mapper.CoachMapper">
+    <select id="queryCoach" resultType="coach">
+        SELECT c.coach_id,c.user_id,c.create_time,c.update_time,p.user_name,p.user_gender,p.is_coach,p.user_integral,p.user_height,p.user_weight,p.user_birthday,t.tag_name
+        FROM tb_user_coach c,tb_user_profile p,tb_tag t
+        WHERE c.coach_id = p.user_id AND p.is_coach = 1 AND t.tag_id = c.tag_id
+    </select>
+
+    <select id="sortCoach" resultType="coach">
+        SELECT c.coach_id,c.user_id,c.create_time,c.update_time,p.user_name,p.user_gender,p.is_coach,p.user_integral,p.user_height,p.user_weight,p.user_birthday,t.tag_name
+        FROM tb_user_coach c,tb_user_profile p,tb_tag t
+        WHERE c.coach_id = p.user_id AND p.is_coach = 1 AND c.tag_id = #{tagId} AND t.tag_id = c.tag_id
+    </select>
+</mapper>

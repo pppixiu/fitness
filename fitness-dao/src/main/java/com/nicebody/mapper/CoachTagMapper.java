@@ -7,11 +7,16 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ *@ClassName
+ *@Author Hassan
+ %@Date
+ */
 @Repository
 public interface CoachTagMapper {
     /**
      * 查询标签
      * @return
      */
-    List<CoachTag> quaryCoachTag();
+    List<CoachTag> queryCoachTag();
 }
