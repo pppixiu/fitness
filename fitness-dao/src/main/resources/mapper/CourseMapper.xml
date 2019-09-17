@@ -42,29 +42,6 @@
         </where>
 
     </select>
-    <select id="queryOderByStudyCount" resultMap="courseMap">
-        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
-        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
-        <where>
-            c.coach_id = i.coach_id
-            and
-            u.user_id = i.user_id
-        </where>
-        order by
-        c.study_count desc
-    </select>
-    <select id="queryOderByPrice" resultMap="courseMap">
-        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
-        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
-        <where>
-            c.coach_id = i.coach_id
-            and
-            u.user_id = i.user_id
-        </where>
-        order by
-        c.course_now_price
-
-    </select>
     <select id="queryByCourseTitle" resultMap="courseMap">
         SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,course_level,study_count,user_name
         FROM tb_coach_course c,tb_user_profile u,tb_coach_info i

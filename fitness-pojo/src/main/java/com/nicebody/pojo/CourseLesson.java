@@ -66,17 +66,4 @@ public class CourseLesson {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-
-    @Override
-    public String toString() {
-        return "CourseLesson{" +
-                "lessonId=" + lessonId +
-                ", courseId=" + courseId +
-                ", lessonTitle='" + lessonTitle + '\'' +
-                ", lessonDesc='" + lessonDesc + '\'' +
-                ", lessonUrl='" + lessonUrl + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
-    }
 }

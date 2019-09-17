@@ -38,16 +38,6 @@ public interface CourseMapper {
     List<CourseLesson> queryByCourseId(int courseId);
 
     /*
-    * 按照人数进行排序
-    * */
-    List<Course> queryOderByStudyCount();
-
-    /*
-    * 按照价格进行升序查询
-    * */
-    List<Course> queryOderByPrice();
-
-    /*
     * 分页查询
     * */
     public List<Course> queryListByPage(int a,int b);

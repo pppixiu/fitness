@@ -59,27 +59,18 @@ public class CourseServiceImplTest {
 
     @Test
     @Ignore
-    public void getByOderByStudyCount(){
-        List<Course> courseList =courseService.getByOderByStudyCount();
-        System.out.println(courseList.get(0).getUser().getUserName());
-        System.out.println(courseList);
-        System.out.println(courseList.size());
-    }
-
-    @Test
-    @Ignore
-    public void getByPriceTest(){
-        List<Course> courseList =courseService.getOderByPrice();
-        System.out.println(courseList.get(0).getUser().getUserName());
-        System.out.println(courseList);
-        System.out.println(courseList.size());
-    }
-
-    @Test
     public void getListByPage(){
         List<Course> courseList = courseService.getListByPage(2,2);
         System.out.println(courseList);
         System.out.println(courseList.size());
     }
+
+    @Test
+    public void getListByConditionTest(){
+        List<Course> courseList = courseService.getListCondition(0,1);
+        System.out.println(courseList);
+        System.out.println(courseList.size());
+    }
+
 
 }

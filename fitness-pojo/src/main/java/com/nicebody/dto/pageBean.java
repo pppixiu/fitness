@@ -1,4 +1,4 @@
-package com.nicebody.pojo;
+package com.nicebody.dto;
 
 import java.util.List;
 
