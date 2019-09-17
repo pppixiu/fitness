@@ -3,8 +3,145 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nicebody.mapper.CourseMapper">
-    <select id="queryCourse" resultType="course">
-        SELECT course_title, course_desc
-        FROM tb_coach_course
+  <resultMap id="courseMap" type="course" >
+      <id column="course_id" property="courseId"/>
+      <result column="course_title" property="courseTitle"/>
+      <result column="course_desc" property="courseDesc"/>
+      <result column="image_url" property="imageUrl"/>
+      <result column="course_now_price" property="courseNowPrice"/>
+      <result column="course_pre_price" property="coursePrePrice"/>
+      <result column="course_level" property="courseLevel"/>
+      <result column="study_count" property="studyCount"/>
+      <result column="create_time" property="createTime"/>
+      <result column="update_time" property="updateTime"/>
+      <association property="coachTag" column="tag_id"
+                   javaType="coachTag">
+          <id column="tag_id" property="tagId" />
+          <result column="tag_name" property="tagName" />
+      </association>
+      <association property="user" column="user_id"
+                   javaType="user">
+          <id column="user_id" property="userId" />
+          <result column="user_name" property="userName" />
+      </association>
+      <association property="courseLesson" column="lesson_id"
+                   javaType="courseLesson">
+          <id column="lesson_id" property="lessonId" />
+          <result column="lesson_title" property="lessonTitle" />
+          <result column="lesson_desc" property="lessonDesc" />
+          <result column="lesson_url" property="lessonUrl" />
+      </association>
+  </resultMap>
+    <select id="queryCourseList" resultMap="courseMap">
+        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
+        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
+        <where>
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+        </where>
+
     </select>
+    <select id="queryOderByStudyCount" resultMap="courseMap">
+        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
+        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
+        <where>
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+        </where>
+        order by
+        c.study_count desc
+    </select>
+    <select id="queryOderByPrice" resultMap="courseMap">
+        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
+        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
+        <where>
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+        </where>
+        order by
+        c.course_now_price
+
+    </select>
+    <select id="queryByCourseTitle" resultMap="courseMap">
+        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,course_level,study_count,user_name
+        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
+        <where>
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+            and
+            c.course_title like concat('%',#{courseTitle},'%')
+        </where>
+    </select>
+    <select id="queryCourseByTagId" resultMap="courseMap">
+        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,course_level,study_count,u.user_name,tag_name
+        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i,tb_tag t
+        <where>
+            t.tag_id = #{coachTag.tagId}
+            and
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+            and
+            t.tag_id = c.tag_id
+        </where>
+    </select>
+    <select id="queryByCourseId" resultMap="courseMap">
+        SELECT l.lesson_title, l.lesson_desc,l.lesson_url,c.study_count,u.user_name
+        FROM tb_course_lesson l,tb_coach_course c,tb_user_profile u,tb_coach_info i
+        <where>
+            c.course_id=#{courseId}
+            and
+            l.course_id=c.course_id
+            and
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+        </where>
+    </select>
+    <select id="queryListByPage" resultMap="courseMap">
+        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
+        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
+        <where>
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+        </where>
+        limit #{param1},#{param2}
+    </select>
+    <select id="queryListCondition" resultMap="courseMap">
+        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
+        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i,tb_tag t
+        <where>
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+            and
+            t.tag_id = c.tag_id
+            <if test="tagId !=0 and condition==0">
+               and t.tag_id = #{tagId}
+            </if>
+            <if test="tagId==0 and condition==1">
+               order by course_now_price
+            </if>
+            <if test="tagId==0 and condition==2">
+                order by study_count desc
+            </if>
+            <if test="tagId!=0 and condition==1">
+                and t.tag_id = #{tagId}
+                order by course_now_price
+            </if>
+            <if test="tagId!=0 and condition==2">
+                and t.tag_id = #{tagId}
+                order by study_count desc
+
+            </if>
+        </where>
+
+    </select>
+
+
 </mapper>
