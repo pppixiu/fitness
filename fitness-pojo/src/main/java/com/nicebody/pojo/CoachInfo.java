@@ -14,6 +14,24 @@ public class CoachInfo {
     private Integer coachPrice; //教练价格
 
     private CoachImage coachImage; //教练图片
+    private UserBlog userBlog; //博客
+    private UserBlogImage userBlogImage;//博客图片
+
+    public UserBlog getUserBlog() {
+        return userBlog;
+    }
+
+    public void setUserBlog(UserBlog userBlog) {
+        this.userBlog = userBlog;
+    }
+
+    public UserBlogImage getUserBlogImage() {
+        return userBlogImage;
+    }
+
+    public void setUserBlogImage(UserBlogImage userBlogImage) {
+        this.userBlogImage = userBlogImage;
+    }
 
     public String getCoachName() {
         return coachName;

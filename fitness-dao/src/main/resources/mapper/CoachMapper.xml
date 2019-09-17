@@ -13,15 +13,31 @@
         </association>
     </resultMap>
 
+    <resultMap id="coachBlog" type="com.nicebody.pojo.CoachInfo">
+        <id column="coach_id" property="coachId"></id>
+        <association property="userBlog" javaType="com.nicebody.pojo.UserBlog">
+            <result column="blog_content" property="blogContent"></result>
+        </association>
+        <association property="userBlogImage" javaType="com.nicebody.pojo.UserBlogImage">
+            <result column="image_url" property="imageUrl"></result>
+        </association>
+    </resultMap>
+
     <select id="queryCoachById" resultMap="coachById">
         SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
         FROM tb_coach_info i, tb_coach_image m
         where i.coach_id = m.coach_id AND i.coach_id = #{id}
     </select>
 
-    <select id=" queryAllImage" resultType="coachimage">
+    <select id="queryAllImage" resultType="coachImage">
         SELECT image_id,image_url
         FROM tb_coach_image
         where coach_id = #{id}
+    </select>
+
+    <select id="queryAllBlog" resultType="">
+        SELECT i.coach_id,b.blog_content,m.image_url
+        FROM tb_coach_info i,tb_user_blog b,tb_user_blog_image m
+        where i.user_id = b.user_id AND b.blog_id = m.blog_id AND i.coach_id = #{id}
     </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.nicebody.service.impl;
 
 import com.nicebody.mapper.CoachMapper;
 import com.nicebody.mapper.CoachTagMapper;
+import com.nicebody.pojo.CoachImage;
 import com.nicebody.pojo.CoachInfo;
 import com.nicebody.pojo.CoachTag;
 import com.nicebody.pojo.User;
@@ -48,17 +49,26 @@ public class CoachServiceImplTest {
         System.out.println(coachInfoList.size());
         System.out.println(coachInfoList.get(0).getCoachName());
     }
-    /*测试根据Id进入*/
+    /*测试根据Id查找*/
     @Test
     public void queryCoachById(){
         List<CoachInfo> coachInfoList = coachMapper.queryCoachById(2);
         System.out.println(coachInfoList.size());
         System.out.println(coachInfoList.get(0).getCoachName());
     }
-
+    /*测试查找教练图片*/
     @Test
-    public void  queryAllImage(){
-
+    public void  queryImage(){
+        List<CoachImage> coachImages = coachMapper.queryAllImage(1);
+        System.out.println(coachImages.size());
+        System.out.println(coachImages.get(0).getImageUrl());
+    }
+    /*测试查找教练博客*/
+    @Test
+    public void queryCoachBlog(){
+        List<CoachInfo> coachInfos = coachMapper.queryAllBlog(2);
+        System.out.println(coachInfos.size());
+        System.out.println(coachInfos.get(0).getCoachImage().getImageUrl());
     }
 
 }
