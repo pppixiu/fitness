@@ -62,6 +62,4 @@ public class UserBlogImage {
     public void setBlogId(Integer blogId) {
         this.blogId = blogId;
     }
-
-
 }

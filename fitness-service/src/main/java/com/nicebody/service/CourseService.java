@@ -3,6 +3,7 @@ package com.nicebody.service;
 import com.nicebody.mapper.CourseMapper;
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.CourseLesson;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,16 +38,6 @@ public interface CourseService {
      * */
     List<CourseLesson> getByCourseId(int courseId);
 
-    /*
-     * 按照人数进行排序
-     * */
-    List<Course> getByOderByStudyCount();
-
-
-    /*
-     * 按照价格进行升序查询
-     * */
-    List<Course> getOderByPrice();
 
     /*
     * 分页查询
@@ -56,6 +47,7 @@ public interface CourseService {
     /*
     * 多条件组合查询
     * */
+    public List<Course> getListCondition(@Param("tagId") int tagId, @Param("condition") int condition);
 
 
 

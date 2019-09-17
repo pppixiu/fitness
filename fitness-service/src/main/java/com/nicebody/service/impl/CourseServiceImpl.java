@@ -40,18 +40,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> getByOderByStudyCount() {
-        return courseMapper.queryOderByStudyCount();
-    }
-
-    @Override
-    public List<Course> getOderByPrice() {
-        return courseMapper.queryOderByPrice();
-    }
-
-    @Override
     public List<Course> getListByPage(int a, int b) {
         return courseMapper.queryListByPage(a,b);
+    }
+
+    @Override
+    public List<Course> getListCondition(int tagId, int condition) {
+        return courseMapper.queryListCondition(tagId,condition);
     }
 
 
