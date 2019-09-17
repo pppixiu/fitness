@@ -146,24 +146,4 @@ public class Course {
         this.courseDesc = courseDesc;
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseId=" + courseId +
-                ", coachId=" + coachId +
-                ", tagId=" + tagId +
-                ", courseTitle='" + courseTitle + '\'' +
-                ", courseDesc='" + courseDesc + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", courseNowPrice='" + courseNowPrice + '\'' +
-                ", coursePrePrice='" + coursePrePrice + '\'' +
-                ", courseLevel='" + courseLevel + '\'' +
-                ", studyCount=" + studyCount +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", coachTag=" + coachTag +
-                ", user=" + user +
-                ", courseLesson=" + courseLesson +
-                '}';
-    }
 }

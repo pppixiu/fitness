@@ -56,25 +56,7 @@ public class CourseDaoTest {
         System.out.println(courseLessonList.size());
 
     }
-    @Test
-    @Ignore
-    public void queryOderByStudyCountTest(){
-        List<Course> courseList =courseMapper.queryOderByStudyCount();
-        System.out.println(courseList.get(0).getUser().getUserName());
-        System.out.println(courseList);
-        System.out.println(courseList.size());
 
-    }
-
-    @Test
-    @Ignore
-    public void queryOderByPriceTest(){
-        List<Course> courseList =courseMapper.queryOderByPrice();
-        System.out.println(courseList.get(0).getUser().getUserName());
-        System.out.println(courseList);
-        System.out.println(courseList.size());
-
-    }
 
     @Test
     @Ignore
