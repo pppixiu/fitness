@@ -10,6 +10,52 @@ public class CoachInfo {
     private Integer userId;   //用户Id
     private String coachDesc; //用户简介
     private String recommendCode; //教练推荐码
+    private String coachName; //教练昵称
+    private Integer coachPrice; //教练价格
+
+    private CoachImage coachImage; //教练图片
+    private UserBlog userBlog; //博客
+    private UserBlogImage userBlogImage;//博客图片
+
+    public UserBlog getUserBlog() {
+        return userBlog;
+    }
+
+    public void setUserBlog(UserBlog userBlog) {
+        this.userBlog = userBlog;
+    }
+
+    public UserBlogImage getUserBlogImage() {
+        return userBlogImage;
+    }
+
+    public void setUserBlogImage(UserBlogImage userBlogImage) {
+        this.userBlogImage = userBlogImage;
+    }
+
+    public String getCoachName() {
+        return coachName;
+    }
+
+    public void setCoachName(String coachName) {
+        this.coachName = coachName;
+    }
+
+    public Integer getCoachPrice() {
+        return coachPrice;
+    }
+
+    public void setCoachPrice(Integer coachPrice) {
+        this.coachPrice = coachPrice;
+    }
+
+    public CoachImage getCoachImage() {
+        return coachImage;
+    }
+
+    public void setCoachImage(CoachImage coachImage) {
+        this.coachImage = coachImage;
+    }
 
     public Integer getCoachId() {
         return coachId;

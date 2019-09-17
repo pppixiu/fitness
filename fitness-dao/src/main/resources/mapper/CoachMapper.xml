@@ -3,34 +3,41 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nicebody.mapper.CoachMapper">
-    <resultMap id="coachMap" type="com.nicebody.pojo.Coach">
-        <id column="coach_id" property="coachId"></id>
-        <result property="userId" column="user_id"></result>
-        <result property="tagId" column="tag_id"></result>
-        <result property="createTime" column="create_time"></result>
-        <result property="updateTime" column="update_time"></result>
-        <association property="user" javaType="com.nicebody.pojo.User">
-            <id column="user_id" property="userId"/>
-            <result column="user_name" property="userName"/>
-            <result column="user_gender" property="userGender"/>
-            <result column="is_coach" property="isCoach"/>
-            <result column="user_integral" property="userIntegral"/>
-            <result column="user_height" property="userHeight"/>
-            <result column="user_weight" property="userWeight"/>
-            <result column="user_birthday" property="userBirthday"/>
+    <resultMap id="coachMap" type="coachInfo">
+        <id column="coach_id" property="coachId"/>
+        <result column="coach_desc" property="coachDesc"/>
+        <result column="coach_name" property="coachName"/>
+        <result column="coach_price" property="coachPrice"/>
+        <association property="coachImage" javaType="coachImage">
+            <result column="image_url" property="imageUrl"/>
         </association>
     </resultMap>
-    <select id="queryCoach" resultMap="coachMap">
-        SELECT co.coach_id,co.user_id,co.tag_id,co.create_time,co.update_time,p.user_name,p.user_gender,p.is_coach,p.user_integral,p.user_height,p.user_weight,p.user_birthday
-        FROM tb_user_coach co
-        LEFT JOIN tb_user_profile p
-        on co.user_id = p.user_id
-        WHERE p.is_coach = 1
+
+    <resultMap id="coachBlog" type="coachInfo">
+        <id column="coach_id" property="coachId"/>
+        <association property="userBlog" javaType="userBlog">
+            <result column="blog_content" property="blogContent"/>
+        </association>
+        <association property="userBlogImage" javaType="userBlogImage">
+            <result column="image_url" property="imageUrl"/>
+        </association>
+    </resultMap>
+
+    <select id="queryCoachById" resultMap="coachMap">
+        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
+        FROM tb_coach_info i, tb_coach_image m
+        where i.coach_id = m.coach_id AND i.coach_id = #{id}
     </select>
 
-<!--    <select id="sortCoach" resultType="coach">
-        SELECT c.coach_id,c.user_id,c.create_time,c.update_time,p.user_name,p.user_gender,p.is_coach,p.user_integral,p.user_height,p.user_weight,p.user_birthday,t.tag_name,i.coach_desc
-        FROM tb_user_coach c,tb_user_profile p,tb_tag t,tb_coach_info i
-        WHERE c.coach_id = p.user_id AND p.is_coach = 1 AND c.tag_id = #{tagId} AND t.tag_id = c.tag_id AND c.coach_id = i.coach_id
-    </select>-->
+    <select id="queryAllImage" resultType="coachImage">
+        SELECT image_id,image_url
+        FROM tb_coach_image
+        where coach_id = #{id}
+    </select>
+
+    <select id="queryAllBlog" resultMap="coachBlog">
+        SELECT i.coach_id,b.blog_content,m.image_url
+        FROM tb_coach_info i,tb_user_blog b,tb_user_blog_image m
+        where i.user_id = b.user_id AND b.blog_id = m.blog_id AND i.coach_id = #{id}
+    </select>
 </mapper>
