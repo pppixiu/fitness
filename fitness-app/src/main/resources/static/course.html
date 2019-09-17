@@ -71,14 +71,17 @@
 <div class="shizhan-header">
 
 	<div class="shizhan-header-wrap clearfix">
-		<a class="header-icon1" href="/" style="height:96px;margin-top: 17px;float: left;width: 196px;height: 96px;overflow: hidden;margin-top: 17px;">
-		</a>
+		<div style="float: left; margin-top: 46px;margin-left: 8px">
+			<a href="#"style="color: black; text-decoration: none;margin-right: 12px;">胸部</a>
+			<a href="#"style="color: black; text-decoration: none;margin-right: 12px">背部</a>
+			<a href="#"style="color: black; text-decoration: none;margin-right: 12px">肩部</a>
+			<a href="#"style="color: black; text-decoration: none;margin-right: 12px">腹部</a>
 
-		<div id="codingIndexBanner" style="display: block;"></div>
-
+		</div>
 
 
 		<div id="szHeaderSearch" class="shizhan-header-search">
+
 			<div class="clearfix">
 				<input class="shizhan-search-input" placeholder="搜索感兴趣的实战课程内容" type="text" autocomplete="off" data-suggest-trigger="true">
 				<a href="javascript:;" class="shizhan-search-button" data-search-btn="true">
@@ -92,9 +95,10 @@
 			<div class="search-hot clearfix" style=" margin-top: 8px;">
 				<span style="margin-right: 12px;color: #1B242F;">热搜：</span>
 
-				<a target="_blank" href="//www.imooc.com/search/?words=毕设&amp;type=course" style="color: #1B242F;text-decoration:none; margin-right: 8px">胸部训练</a>
-				<a target="_blank" href="//www.imooc.com/search/?words=React&amp;type=course" style="color: #1B242F;text-decoration:none;margin-right: 8px">瘦腿训练</a>
-				<a target="_blank" href="//www.imooc.com/search/?words=面试&amp;type=course" style="color: #1B242F;text-decoration:none;margin-right: 8px">手臂训练</a>
+				<a target="_blank" href="//www.imooc.com/search/?words=毕设&amp;type=course" style="color: #1B242F;text-decoration:none; margin-right: 8px">胸部</a>
+				<a target="_blank" href="//www.imooc.com/search/?words=React&amp;type=course" style="color: #1B242F;text-decoration:none;margin-right: 8px">腿部</a>
+				<a target="_blank" href="//www.imooc.com/search/?words=面试&amp;type=course" style="color: #1B242F;text-decoration:none;margin-right: 8px">增肌</a>
+				<a target="_blank" href="//www.imooc.com/search/?words=面试&amp;type=course" style="color: #1B242F;text-decoration:none;margin-right: 8px">减脂</a>
 
 
 			</div>
@@ -108,9 +112,8 @@
 	<div class="screening-box clearfix">
 		<div class="screening-time l clearfix">
 			<a href="/" class="on" style="text-decoration: none;">默认排序</a>
-			<a href="/?sort=2" style="text-decoration: none;">最新</a>
-			<a href="/?sort=1" style="text-decoration: none;">销量</a>
-			<a href="/?sort=5" style="text-decoration: none;">升级</a>
+			<a href="/" style="text-decoration: none;">价格</a>
+			<a href="/" style="text-decoration: none;">人气</a>
 		</div>
 
 		<!-- 判断登录 && 并且购买过实战课程 -->
@@ -917,6 +920,7 @@
 <!-- //smooth scrolling -->
 <!-- for bootstrap working -->
 <script type="text/javascript" src="js/bootstrap.js"></script>
+<script>var cities = new Bloodhound({  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),  queryTokenizer: Bloodhound.tokenizers.whitespace,  prefetch: 'assets/cities.json'});cities.initialize();var elt = $('input');elt.tagsinput({  itemValue: 'value',  itemText: 'text',  typeaheadjs: {    name: 'cities',    displayKey: 'text',    source: cities.ttAdapter()  }});elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });elt.tagsinput('add', { "value": 4 , "text": "Washington"  , "continent": "America"   });elt.tagsinput('add', { "value": 7 , "text": "Sydney"      , "continent": "Australia" });elt.tagsinput('add', { "value": 10, "text": "Beijing"     , "continent": "Asia"      });elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa"    });</script>
 
 </body>
 </html>

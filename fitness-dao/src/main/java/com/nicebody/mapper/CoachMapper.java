@@ -24,4 +24,9 @@ public interface CoachMapper {
      * @return
      */
     List<Coach> sortCoach(Integer tagId);
+
+    /*
+    * 根据courseId查询单条详细信息
+    * */
+
 }

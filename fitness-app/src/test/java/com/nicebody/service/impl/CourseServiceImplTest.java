@@ -1,11 +1,9 @@
 package com.nicebody.service.impl;
 
-import com.nicebody.pojo.Coach;
-import com.nicebody.pojo.CoachTag;
 import com.nicebody.pojo.Course;
-import com.nicebody.service.CoachService;
-import com.nicebody.service.CoachTagService;
+import com.nicebody.pojo.CourseLesson;
 import com.nicebody.service.CourseService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +24,62 @@ public class CourseServiceImplTest {
     private CourseService courseService;
 
     @Test
+    @Ignore
     public void getCourseList(){
         List<Course> courseList = courseService.getCourseList();
-        courseList.get(2).getCourseTitle();
         System.out.println(courseList.size());
     }
+    @Test
+    @Ignore
+    public void getByCourseTitleTest(){
+        String courseTitle="背部";
+        List<Course> courseList = courseService.getByCourseTitle(courseTitle);
+        System.out.println(courseList);
+        System.out.println(courseList.size());
+    }
+
+    @Test
+    @Ignore
+    public void getCourseByTagId(){
+        int tagId = 2;
+        List<Course> courseList = courseService.getCourseByTagId(tagId);
+        System.out.println(courseList);
+        System.out.println(courseList.size());
+
+    }
+
+    @Test
+    @Ignore
+    public void getByCourseId(){
+        int courseId = 438;
+        List<CourseLesson> courseLessonList = courseService.getByCourseId(courseId);
+        System.out.println(courseLessonList);
+        System.out.println(courseLessonList.size());
+    }
+
+    @Test
+    @Ignore
+    public void getByOderByStudyCount(){
+        List<Course> courseList =courseService.getByOderByStudyCount();
+        System.out.println(courseList.get(0).getUser().getUserName());
+        System.out.println(courseList);
+        System.out.println(courseList.size());
+    }
+
+    @Test
+    @Ignore
+    public void getByPriceTest(){
+        List<Course> courseList =courseService.getOderByPrice();
+        System.out.println(courseList.get(0).getUser().getUserName());
+        System.out.println(courseList);
+        System.out.println(courseList.size());
+    }
+
+    @Test
+    public void getListByPage(){
+        List<Course> courseList = courseService.getListByPage(2,2);
+        System.out.println(courseList);
+        System.out.println(courseList.size());
+    }
+
 }
