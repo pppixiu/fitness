@@ -1,9 +1,12 @@
 package com.nicebody.mapper;
 
-import com.nicebody.pojo.Coach;
+import com.nicebody.pojo.CoachImage;
+import com.nicebody.pojo.CoachInfo;
+import com.nicebody.pojo.UserBlog;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 
 /**
  * @ClassName CoachMapper
@@ -13,20 +16,26 @@ import java.util.List;
 
 @Repository
 public interface CoachMapper {
-    /**
-     * 教练查询
-     * @return
-     */
-    List<Coach> queryCoach();
 
     /**
-     * 分类查询
+     * 根据Id显示在教练主页
+     * @param id
      * @return
      */
-    List<Coach> sortCoach(Integer tagId);
+    List<CoachInfo> queryCoachById(Integer id);
 
-    /*
-    * 根据courseId查询单条详细信息
-    * */
+    /**
+     * 查找所有教练图片
+     * @param id
+     * @return
+     */
+    List<CoachImage> queryAllImage(Integer id);
+
+    /**
+     * 查找所有教练博客
+     * @param id
+     * @return
+     */
+    List<UserBlog> queryAllBlog(Integer id);
 
 }

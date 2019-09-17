@@ -15,6 +15,34 @@ public class CoachTag {
     private Date creatTime; //创建时间
     private Date updateTime; //修改时间
 
+    private User user;           //教练对应的用户信息
+    private CoachInfo coachInfo; //教练信息
+    private CoachImage coachImage; //获取教练图片
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public CoachInfo getCoachInfo() {
+        return coachInfo;
+    }
+
+    public void setCoachInfo(CoachInfo coachInfo) {
+        this.coachInfo = coachInfo;
+    }
+
+    public CoachImage getCoachImage() {
+        return coachImage;
+    }
+
+    public void setCoachImage(CoachImage coachImage) {
+        this.coachImage = coachImage;
+    }
+
     public Integer getTagId() {
         return tagId;
     }
