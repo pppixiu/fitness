@@ -36,6 +36,6 @@ public interface CoachMapper {
      * @param id
      * @return
      */
-    List<UserBlog> queryAllBlog(Integer id);
+    List<CoachInfo> queryAllBlog(Integer id);
 
 }
