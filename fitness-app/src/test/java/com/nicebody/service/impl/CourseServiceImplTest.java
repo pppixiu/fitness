@@ -1,8 +1,11 @@
 package com.nicebody.service.impl;
 
+import com.nicebody.enums.OrderByEnum;
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.CourseLesson;
 import com.nicebody.service.CourseService;
+import com.nicebody.util.OrderByUtil;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,54 +26,32 @@ public class CourseServiceImplTest {
     @Autowired
     private CourseService courseService;
 
-//    @Test
-//    @Ignore
-//    public void getCourseList(){
-//        List<Course> courseList = courseService.getCourseList();
-//        System.out.println(courseList.size());
-//    }
-//    @Test
-//    @Ignore
-//    public void getByCourseTitleTest(){
-//        String courseTitle="背部";
-//        List<Course> courseList = courseService.getByCourseTitle(courseTitle);
-//        System.out.println(courseList);
-//        System.out.println(courseList.size());
-//    }
-//
-//    @Test
-//    @Ignore
-//    public void getCourseByTagId(){
-//        int tagId = 2;
-//        List<Course> courseList = courseService.getCourseByTagId(tagId);
-//        System.out.println(courseList);
-//        System.out.println(courseList.size());
-//
-//    }
-//
-//    @Test
-//    @Ignore
-//    public void getByCourseId(){
-//        int courseId = 438;
-//        List<CourseLesson> courseLessonList = courseService.getByCourseId(courseId);
-//        System.out.println(courseLessonList);
-//        System.out.println(courseLessonList.size());
-//    }
-//
-//    @Test
-//    @Ignore
-//    public void getListByPage(){
-//        List<Course> courseList = courseService.getListByPage(2,2);
-//        System.out.println(courseList);
-//        System.out.println(courseList.size());
-//    }
-//
-//    @Test
-//    public void getListByConditionTest(){
-//        List<Course> courseList = courseService.getListCondition(0,1);
-//        System.out.println(courseList);
-//        System.out.println(courseList.size());
-//    }
+    @Test
+    @Ignore
+    public void getCourseListTest(){
+        Course courseCondition = new Course();
+        courseCondition.setTagId(2);
+        courseCondition.setCourseLevel(0);
+        String value = OrderByUtil.convert2String(OrderByEnum.COUNT.getCode());
+        List<Course> courseList = courseService.getCourseList(1,5,courseCondition,value);
+        Assert.assertEquals(5, courseList.size());
+        System.out.println(courseList.size());
+
+    }
+    @Test
+    public void getByCourseIdTest(){
+        int courseId = 438;
+        List<Course> courseList = courseService.getByCourseId(courseId);
+        System.out.println(courseList.size());
+
+    }
+    @Test
+    public void getByUserIdTest(){
+        int userId = 1;
+        List<Course> courseList = courseService.getByUserId(userId);
+        System.out.println(courseList.size());
+
+    }
 
 
 }

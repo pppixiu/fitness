@@ -42,6 +42,8 @@ public class Course {
     private UserProfile userProfile;
     /** 章节信息 */
     private List<CourseLesson > courseLessonList;
+    /** userId*/
+    private UserCourse userCourse;
 
     public Integer getCourseId() {
         return courseId;
