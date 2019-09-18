@@ -13,6 +13,12 @@
         </association>
     </resultMap>
 
+    <select id="queryAllCoach" resultMap="coachMap">
+        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
+        FROM tb_coach_info i, tb_coach_image m
+        where i.coach_id = m.coach_id
+    </select>
+
     <resultMap id="coachBlog" type="coachInfo">
         <id column="coach_id" property="coachId"/>
         <association property="userBlog" javaType="userBlog">
@@ -39,5 +45,36 @@
         SELECT i.coach_id,b.blog_content,m.image_url
         FROM tb_coach_info i,tb_user_blog b,tb_user_blog_image m
         where i.user_id = b.user_id AND b.blog_id = m.blog_id AND i.coach_id = #{id}
+    </select>
+
+    <select id="queryCoachByTag" resultMap="coachMap">
+        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
+        FROM tb_coach_info i, tb_coach_image m
+        <where>
+            i.coach_id = m.coach_id
+            <if test="tagId !=0 and condition==0">
+                and i.tag_id = #{tagId}
+            </if>
+            <if test="tagId==0 and condition==1">
+                order by i.coach_price
+            </if>
+            <if test="tagId==0 and condition==2">
+                order by i.coach_price desc
+            </if>
+            <if test="tagId!=0 and condition==1">
+                and i.tag_id = #{tagId}
+                order by i.coach_price
+            </if>
+            <if test="tagId!=0 and condition==2">
+                and i.tag_id = #{tagId}
+                order by i.coach_price desc
+            </if>
+        </where>
+    </select>
+
+    <select id="queryCoachByName" resultMap="coachMap" parameterType="String">
+        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
+        FROM tb_coach_info i, tb_coach_image m
+        where i.coach_id = m.coach_id and i.coach_name like "%${coachName}%"
     </select>
 </mapper>

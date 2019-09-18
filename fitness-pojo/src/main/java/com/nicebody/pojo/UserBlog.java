@@ -11,24 +11,22 @@ import java.util.Date;
  *  用户博客
  */
 public class UserBlog {
-    // 博客ID
+    /** 博客ID */
     private Integer blogId;
-    // 博客内容
+    /** 博客内容 */
     private String blogContent;
-    // 博客浏览量
+    /** 博客浏览量 */
     private Integer viewCount;
-    // 博客点赞量
+    /** 博客点赞量 */
     private Integer likeCount;
-    // 博客创造时间
+    /** 博客创造时间 */
     private Date createTime;
-    // 博客修改时间
+    /** 博客修改时间 */
     private Date updateTime;
-
-
-    // 博客图片
+    /** 博客标题图 */
+    //TODO
     private UserBlogImage userBlogImage;
-
-    // 博客用户ID
+    /** 博客用户ID */
     private Integer userId;
 
     public Integer getBlogId() {

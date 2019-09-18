@@ -20,15 +20,15 @@ import java.util.Map;
 @RestController
 @RequestMapping("/course")
 public class CourseController {
-    @Autowired
-    private CourseService courseService;
-
-    @GetMapping("/listcourses")
-    public Map<String, Object> listCourse(){
-        Map<String, Object> map = new HashMap<>();
-        List<Course> courseList = courseService.getCourseList();
-        map.put("success", true);
-        map.put("courses", courseList);
-        return map;
-    }
+//    @Autowired
+//    private CourseService courseService;
+//
+//    @GetMapping("/listcourses")
+//    public Map<String, Object> listCourse(){
+//        Map<String, Object> map = new HashMap<>();
+//        List<Course> courseList = courseService.getCourseList();
+//        map.put("success", true);
+//        map.put("courses", courseList);
+//        return map;
+//    }
 }

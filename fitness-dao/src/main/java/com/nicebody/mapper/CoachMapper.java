@@ -18,7 +18,14 @@ import java.util.List;
 public interface CoachMapper {
 
     /**
+     * 查询全部教练
+     *
+     * @return
+     */
+    List<CoachInfo> queryAllCoach();
+    /**
      * 根据Id显示在教练主页
+     *
      * @param id
      * @return
      */
@@ -26,6 +33,7 @@ public interface CoachMapper {
 
     /**
      * 查找所有教练图片
+     *
      * @param id
      * @return
      */
@@ -33,9 +41,26 @@ public interface CoachMapper {
 
     /**
      * 查找所有教练博客
+     *
      * @param id
      * @return
      */
     List<CoachInfo> queryAllBlog(Integer id);
+
+    /**
+     * 根据分类多条件查询
+     *
+     * @param tagId
+     * @param condition
+     * @return
+     */
+    List<CoachInfo> queryCoachByTag(Integer tagId, Integer condition);
+
+    /**
+     * 名字模糊查询
+     *
+     * @return
+     */
+    List<CoachInfo> queryCoachByName(String coachame);
 
 }

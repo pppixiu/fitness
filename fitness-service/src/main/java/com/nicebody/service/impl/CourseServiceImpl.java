@@ -16,38 +16,43 @@ import java.util.List;
  **/
 @Service
 public class CourseServiceImpl implements CourseService {
-    @Autowired
-    private CourseMapper courseMapper;
+//    @Autowired
+//    private CourseMapper courseMapper;
+//
+//    @Override
+//    public List<Course> getCourseList(int indexRow, int pageSize, Course courseCondition, String orderByCondition) {
+//        return courseMapper.queryCourseList(indexRow, pageSize, courseCondition, orderByCondition);
+//    }
+//
+//    @Override
+//    public List<Course> getByCourseTitle(String courseTitle) {
+//        return courseMapper.queryByCourseTitle(courseTitle);
+//    }
+//
+//    @Override
+//    public List<Course> getCourseByTagId(int tagId) {
+//        return courseMapper.queryCourseByTagId(tagId);
+//    }
+//
+//    @Override
+//    public List<CourseLesson> getByCourseId(int courseId) {
+//        return courseMapper.queryByCourseId(courseId);
+//    }
+//
+//    @Override
+//    public List<Course> getListByPage(int a, int b) {
+//        return courseMapper.queryListByPage(a,b);
+//    }
+//
+//    @Override
+//    public List<Course> getListCondition(int tagId, int condition) {
+//        return null;
+//    }
 
-    @Override
-    public List<Course> getCourseList() {
-        return courseMapper.queryCourseList();
-    }
-
-    @Override
-    public List<Course> getByCourseTitle(String courseTitle) {
-        return courseMapper.queryByCourseTitle(courseTitle);
-    }
-
-    @Override
-    public List<Course> getCourseByTagId(int tagId) {
-        return courseMapper.queryCourseByTagId(tagId);
-    }
-
-    @Override
-    public List<CourseLesson> getByCourseId(int courseId) {
-        return courseMapper.queryByCourseId(courseId);
-    }
-
-    @Override
-    public List<Course> getListByPage(int a, int b) {
-        return courseMapper.queryListByPage(a,b);
-    }
-
-    @Override
-    public List<Course> getListCondition(int tagId, int condition) {
-        return courseMapper.queryListCondition(tagId,condition);
-    }
+//    @Override
+//    public List<Course> getListCondition(int tagId, int condition) {
+//        return courseMapper.queryListCondition(tagId,condition);
+//    }
 
 
 }

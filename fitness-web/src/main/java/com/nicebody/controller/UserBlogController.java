@@ -22,52 +22,52 @@ import java.util.Map;
 @RequestMapping("/blog")
 public class UserBlogController {
 
-    @Autowired
-    private UserBlogService userBlogService;
-
-    @RequestMapping("/getuserblog")
-    public Map<String, Object> getUserBlog(){
-        Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlog();
-        map.put("success", true);
-        map.put("userBlogList", userBlogList);
-        return map;
-    }
-
-    @RequestMapping("/getuserblogbyblogid")
-    public Map<String, Object> getUserBlogByBlogId(int blogId){
-        Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlogByBlogId(blogId);
-        map.put("success", true);
-        map.put("userBlogList", userBlogList);
-        return map;
-    }
-
-    @RequestMapping("/getuserblogbyuserid")
-    public Map<String,Object> getUserBlogByUserId(int userId){
-        Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlogByUserId(userId);
-        map.put("success", true);
-        map.put("userBlogList", userBlogList);
-        return map;
-    }
-
-    @RequestMapping("/getuserblogbycontentlike")
-    public Map<String,Object> getUserBlogByContentLike(String blogContent){
-        Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlogByContentLike(blogContent);
-        map.put("success", true);
-        map.put("userBlogList", userBlogList);
-        return map;
-    }
-
-    @RequestMapping("/adduserblog")
-    public Map<String,Object> addUserBlog(UserBlog userBlog){
-        Map<String,Object> map = new HashMap<>();
-        int count = userBlogService.addUserBlog(userBlog);
-        map.put("success",true);
-        map.put("count",count);
-        return map;
-    }
+//    @Autowired
+//    private UserBlogService userBlogService;
+//
+//    @RequestMapping("/getuserblog")
+//    public Map<String, Object> getUserBlog(){
+//        Map<String, Object> map = new HashMap<>();
+//        List<UserBlog> userBlogList = userBlogService.getUserBlog();
+//        map.put("success", true);
+//        map.put("userBlogList", userBlogList);
+//        return map;
+//    }
+//
+//    @RequestMapping("/getuserblogbyblogid")
+//    public Map<String, Object> getUserBlogByBlogId(int blogId){
+//        Map<String, Object> map = new HashMap<>();
+//        List<UserBlog> userBlogList = userBlogService.getUserBlogByBlogId(blogId);
+//        map.put("success", true);
+//        map.put("userBlogList", userBlogList);
+//        return map;
+//    }
+//
+//    @RequestMapping("/getuserblogbyuserid")
+//    public Map<String,Object> getUserBlogByUserId(int userId){
+//        Map<String, Object> map = new HashMap<>();
+//        List<UserBlog> userBlogList = userBlogService.getUserBlogByUserId(userId);
+//        map.put("success", true);
+//        map.put("userBlogList", userBlogList);
+//        return map;
+//    }
+//
+//    @RequestMapping("/getuserblogbycontentlike")
+//    public Map<String,Object> getUserBlogByContentLike(String blogContent){
+//        Map<String, Object> map = new HashMap<>();
+//        List<UserBlog> userBlogList = userBlogService.getUserBlogByContentLike(blogContent);
+//        map.put("success", true);
+//        map.put("userBlogList", userBlogList);
+//        return map;
+//    }
+//
+//    @RequestMapping("/adduserblog")
+//    public Map<String,Object> addUserBlog(UserBlog userBlog){
+//        Map<String,Object> map = new HashMap<>();
+//        int count = userBlogService.addUserBlog(userBlog);
+//        map.put("success",true);
+//        map.put("count",count);
+//        return map;
+//    }
 
 }

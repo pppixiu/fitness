@@ -23,54 +23,54 @@ public class CourseServiceImplTest {
     @Autowired
     private CourseService courseService;
 
-    @Test
-    @Ignore
-    public void getCourseList(){
-        List<Course> courseList = courseService.getCourseList();
-        System.out.println(courseList.size());
-    }
-    @Test
-    @Ignore
-    public void getByCourseTitleTest(){
-        String courseTitle="背部";
-        List<Course> courseList = courseService.getByCourseTitle(courseTitle);
-        System.out.println(courseList);
-        System.out.println(courseList.size());
-    }
-
-    @Test
-    @Ignore
-    public void getCourseByTagId(){
-        int tagId = 2;
-        List<Course> courseList = courseService.getCourseByTagId(tagId);
-        System.out.println(courseList);
-        System.out.println(courseList.size());
-
-    }
-
-    @Test
-    @Ignore
-    public void getByCourseId(){
-        int courseId = 438;
-        List<CourseLesson> courseLessonList = courseService.getByCourseId(courseId);
-        System.out.println(courseLessonList);
-        System.out.println(courseLessonList.size());
-    }
-
-    @Test
-    @Ignore
-    public void getListByPage(){
-        List<Course> courseList = courseService.getListByPage(2,2);
-        System.out.println(courseList);
-        System.out.println(courseList.size());
-    }
-
-    @Test
-    public void getListByConditionTest(){
-        List<Course> courseList = courseService.getListCondition(0,1);
-        System.out.println(courseList);
-        System.out.println(courseList.size());
-    }
+//    @Test
+//    @Ignore
+//    public void getCourseList(){
+//        List<Course> courseList = courseService.getCourseList();
+//        System.out.println(courseList.size());
+//    }
+//    @Test
+//    @Ignore
+//    public void getByCourseTitleTest(){
+//        String courseTitle="背部";
+//        List<Course> courseList = courseService.getByCourseTitle(courseTitle);
+//        System.out.println(courseList);
+//        System.out.println(courseList.size());
+//    }
+//
+//    @Test
+//    @Ignore
+//    public void getCourseByTagId(){
+//        int tagId = 2;
+//        List<Course> courseList = courseService.getCourseByTagId(tagId);
+//        System.out.println(courseList);
+//        System.out.println(courseList.size());
+//
+//    }
+//
+//    @Test
+//    @Ignore
+//    public void getByCourseId(){
+//        int courseId = 438;
+//        List<CourseLesson> courseLessonList = courseService.getByCourseId(courseId);
+//        System.out.println(courseLessonList);
+//        System.out.println(courseLessonList.size());
+//    }
+//
+//    @Test
+//    @Ignore
+//    public void getListByPage(){
+//        List<Course> courseList = courseService.getListByPage(2,2);
+//        System.out.println(courseList);
+//        System.out.println(courseList.size());
+//    }
+//
+//    @Test
+//    public void getListByConditionTest(){
+//        List<Course> courseList = courseService.getListCondition(0,1);
+//        System.out.println(courseList);
+//        System.out.println(courseList.size());
+//    }
 
 
 }

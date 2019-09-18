@@ -3,12 +3,19 @@ package com.nicebody.pojo;
 import java.util.Date;
 
 public class CourseLesson {
+    /** 章节id */
     private Integer lessonId;
+    /** 课程id */
     private Integer courseId;
+    /** 章节名称 */
     private String lessonTitle;
+    /** 章节描述 */
     private String lessonDesc;
+    /** 章节url */
     private String lessonUrl;
+    /** 创建时间 */
     private Date createTime;
+    /** 更新时间 */
     private Date updateTime;
 
     public Integer getLessonId() {

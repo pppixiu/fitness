@@ -12,52 +12,59 @@ import java.util.List;
  */
 
 /**
- *  用户博客
+ * 用户博客
  */
 @Repository
 public interface UserBlogMapper {
 
     /**
-     *  查询所有博客
+     * 查询所有博客
+     *
      * @return
      */
     List<UserBlog> queryUserBlog();
 
     /**
-     *  按博客ID查询用户博客
+     * 按博客ID查询用户博客
+     *
      * @return
      */
     List<UserBlog> queryUserBlogByBlogId(int blogId);
 
     /**
-     *  按用户ID查询用户其它博客
+     * 按用户ID查询用户其它博客
+     *
      * @return
      */
     List<UserBlog> queryUserBlogByUserId(int userId);
 
     /**
-     *  按博客内容模糊查询
+     * 按博客内容模糊查询
+     *
      * @param blogContent
      * @return
      */
     List<UserBlog> queryUserBlogByContentLike(String blogContent);
 
     /**
-     *  用户添加博客
+     * 用户添加博客
+     *
      * @param userBlog
      * @return
      */
     int insertUserBlog(UserBlog userBlog);
 
     /**
-     *  按照博客ID和用户ID删除博客
+     * 按照博客ID和用户ID删除博客
+     *
      * @param blogId
      * @return
      */
-    int deleteUserBlogByBlogIdAndUserId(@Param("userId") int userId,@Param("blogId")int blogId);
+    int deleteUserBlogByBlogIdAndUserId(@Param("userId") int userId, @Param("blogId") int blogId);
 
     /**
-     *  按照博客ID删除博客照片
+     * 按照博客ID删除博客照片
+     *
      * @param blogId
      * @return
      */

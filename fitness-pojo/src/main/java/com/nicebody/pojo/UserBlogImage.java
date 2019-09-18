@@ -11,17 +11,16 @@ import java.util.Date;
  *  用户博客图片
  */
 public class UserBlogImage {
-    // 图片ID
+    /** 图片ID */
     private Integer imageId;
-    // 图片地址
-    private String imageUrl;
-    // 图片创建时间
-    private Date createTime;
-    // 图片修改时间
-    private Date updateTime;
-
-    // 博客ID
+    /** 博客ID */
     private Integer blogId;
+    /** 图片地址 */
+    private String imageUrl;
+    /** 图片创建时间 */
+    private Date createTime;
+    /** 图片修改时间 */
+    private Date updateTime;
 
     public Integer getImageId() {
         return imageId;
