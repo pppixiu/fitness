@@ -3,8 +3,32 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nicebody.mapper.UserBlogMapper">
+        <resultMap id="userBlog" type="userblog" >
+            <id column="blog_id" property="blogId"/>
+            <result column="user_id" property="userId"/>
+            <result column="blog_content" property="blogContent"/>
+            <result column="view_count" property="viewCount"/>
+            <result column="like_count" property="likeCount"/>
+            <result column="create_time" property="createTime"/>
+            <result column="update_time" property="updateTime"/>
+
+           <association property="userBlogImage" column="image_id"
+                        javaType="userBlogImage">
+            <id column="image_id" property="imageId"/>
+            <result column="image_url" property="imageUrl"/>
+            <result column="blog_id" property="blogId"/>
+           </association>
+
+            <association property="user" column="user_id"
+                         javaType="user">
+                <id column="user_id" property="userId"/>
+                <result column="user_image_url" property="userImageUrl"/>
+            </association>
+
+        </resultMap>
+
     <!--查询用户博客-->
-    <select id="queryUserBlog" resultType="com.nicebody.pojo.UserBlog">
+    <select id="queryUserBlog" resultMap="userBlog">
         SELECT
         ub.blog_id,
         ub.user_id,
@@ -22,27 +46,31 @@
     </select>
 
     <!--按用户ID查询用户其它博客-->
-    <select id="queryUserBlogByUserId" resultType="com.nicebody.pojo.UserBlog" parameterType="int">
+    <select id="queryUserBlogByUserId" resultMap="userBlog" >
         SELECT
         ub.view_count,
         ub.like_count,
         ub.blog_content,
-        ubi.image_url
+        ubi.image_url,
+        up.user_image_url
         FROM
         tb_user_blog ub,
-        tb_user_blog_image ubi
+        tb_user_blog_image ubi,
+        tb_user_profile up
         WHERE
         ub.blog_id IN
         (SELECT u.blog_id FROM tb_user_blog u WHERE u.user_id = #{userId})
         AND
         ubi.blog_id = ub.blog_id
         AND
+        ub.user_id = up.user_id
+        AND
         ubi.image_url IN
         (SELECT tubi.image_url FROM tb_user_blog_image tubi WHERE tubi.blog_id = ub.blog_id)
     </select>
 
     <!--按博客ID查询用户博客-->
-    <select id="queryUserBlogByBlogId" resultType="com.nicebody.pojo.UserBlog" parameterType="int">
+    <select id="queryUserBlogByBlogId" resultMap="userBlog">
         SELECT
         ub.blog_content,
         ub.view_count,
@@ -58,7 +86,7 @@
     </select>
 
     <!--按博客内容模糊查询-->
-    <select id="queryUserBlogByContentLike" resultType="com.nicebody.pojo.UserBlog" parameterType="String">
+    <select id="queryUserBlogByContentLike" resultMap="userBlog">
         SELECT
         ub.blog_content,
         ub.view_count,
