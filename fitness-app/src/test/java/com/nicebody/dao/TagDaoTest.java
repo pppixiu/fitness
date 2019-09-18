@@ -23,6 +23,9 @@ public class TagDaoTest {
     @Autowired
     private TagMapper tagMapper;
 
+    /**
+     * dev分支测试
+     */
     @Test
     public void queryTag(){
         List<Tag> tagList = tagMapper.queryTag();
