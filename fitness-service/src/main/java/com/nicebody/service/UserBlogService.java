@@ -22,20 +22,14 @@ public interface UserBlogService {
      *  按博客ID查询用户博客
      * @return
      */
-    public List<UserBlog> getUserBlogByBlogId(int blogId);
+    public UserBlog getUserBlogByBlogId(int blogId);
 
     /**
-     *  按用户ID查询用户其它博客
+     *  通过用户Id查找用户博客
+     *  或者通过博客内容模糊查找博客信息
      * @return
      */
-    public List<UserBlog> getUserBlogByUserId(int userId);
-
-    /**
-     *  按博客内容模糊查询
-     * @param blogContent
-     * @return
-     */
-    public List<UserBlog> getUserBlogByContentLike(String blogContent);
+    public List<UserBlog> getUserBlogByUserIdOrContentLike(UserBlog userBlogCondition);
 
     /**
      *  用户添加博客

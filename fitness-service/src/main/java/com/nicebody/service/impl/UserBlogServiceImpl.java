@@ -27,18 +27,13 @@ public class UserBlogServiceImpl implements UserBlogService {
     }
 
     @Override
-    public List<UserBlog> getUserBlogByBlogId(int blogId) {
+    public UserBlog getUserBlogByBlogId(int blogId) {
         return userBlogMapper.queryUserBlogByBlogId(blogId);
     }
 
     @Override
-    public List<UserBlog> getUserBlogByUserId(int userId) {
-        return userBlogMapper.queryUserBlogByUserId(userId);
-    }
-
-    @Override
-    public List<UserBlog> getUserBlogByContentLike(String blogContent) {
-        return userBlogMapper.queryUserBlogByContentLike(blogContent);
+    public List<UserBlog> getUserBlogByUserIdOrContentLike(UserBlog userBlogCondition) {
+        return userBlogMapper.queryUserBlogByUserIdOrContentLike(userBlogCondition);
     }
 
     @Override

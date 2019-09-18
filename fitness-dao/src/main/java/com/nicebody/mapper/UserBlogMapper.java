@@ -29,23 +29,15 @@ public interface UserBlogMapper {
      *
      * @return
      */
-    List<UserBlog> queryUserBlogByBlogId(int blogId);
+    UserBlog queryUserBlogByBlogId(int blogId);
 
     /**
-     * 按用户ID查询用户其它博客
-     *
+     *  通过用户Id查找用户博客
+     *  或者通过博客内容模糊查找博客信息
+     * @param userBlogCondition
      * @return
      */
-    List<UserBlog> queryUserBlogByUserId(int userId);
-
-    /**
-     * 按博客内容模糊查询
-     *
-     * @param blogContent
-     * @return
-     */
-    List<UserBlog> queryUserBlogByContentLike(String blogContent);
-
+    List<UserBlog> queryUserBlogByUserIdOrContentLike(@Param("userBlogCondition") UserBlog userBlogCondition);
     /**
      * 用户添加博客
      *

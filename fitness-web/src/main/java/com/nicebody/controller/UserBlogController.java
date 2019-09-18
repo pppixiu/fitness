@@ -25,6 +25,10 @@ public class UserBlogController {
     @Autowired
     private UserBlogService userBlogService;
 
+    /**
+     *  查询所有博客
+     * @return
+     */
     @RequestMapping("/getuserblog")
     public Map<String, Object> getUserBlog(){
         Map<String, Object> map = new HashMap<>();
@@ -34,33 +38,40 @@ public class UserBlogController {
         return map;
     }
 
+    /**
+     *  按博客ID查询博客信息
+     * @param blogId
+     * @return
+     */
     @RequestMapping("/getuserblogbyblogid")
     public Map<String, Object> getUserBlogByBlogId(int blogId){
         Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlogByBlogId(blogId);
+        UserBlog userBlog = userBlogService.getUserBlogByBlogId(blogId);
         map.put("success", true);
-        map.put("userBlogList", userBlogList);
+        map.put("userBlog", userBlog);
         return map;
     }
 
-    @RequestMapping("/getuserblogbyuserid")
-    public Map<String,Object> getUserBlogByUserId(int userId){
+    /**
+     *  通过用户Id查找用户博客
+     *  或者通过博客内容模糊查找博客信息
+     * @param userBlogCondition
+     * @return
+     */
+    @RequestMapping("getuserblogbyuseridorcontentlike")
+    public Map<String,Object> getUserBlogByUserIdOrContentLike(UserBlog userBlogCondition){
         Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlogByUserId(userId);
+        List<UserBlog> userBlogList = userBlogService.getUserBlogByUserIdOrContentLike(userBlogCondition);
         map.put("success", true);
         map.put("userBlogList", userBlogList);
         return map;
     }
 
-    @RequestMapping("/getuserblogbycontentlike")
-    public Map<String,Object> getUserBlogByContentLike(String blogContent){
-        Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlogByContentLike(blogContent);
-        map.put("success", true);
-        map.put("userBlogList", userBlogList);
-        return map;
-    }
-
+    /**
+     *  添加博客信息
+     * @param userBlog
+     * @return
+     */
     @RequestMapping("/adduserblog")
     public Map<String,Object> addUserBlog(UserBlog userBlog){
         Map<String,Object> map = new HashMap<>();

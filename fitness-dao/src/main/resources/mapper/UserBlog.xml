@@ -45,8 +45,9 @@
         ub.create_time DESC
     </select>
 
-    <!--按用户ID查询用户其它博客-->
-    <select id="queryUserBlogByUserId" resultMap="userBlog" >
+    <!--通过用户Id查找用户博客-->
+    <!--或者通过博客内容模糊查找博客信息-->
+    <select id="queryUserBlogByUserIdOrContentLike" resultMap="userBlog">
         SELECT
         ub.view_count,
         ub.like_count,
@@ -67,17 +68,26 @@
         tb_user_blog ub,
         tb_user_blog_image ubi,
         tb_user_profile up
-        WHERE
-        ub.blog_id IN
-        (SELECT u.blog_id FROM tb_user_blog u WHERE u.user_id = #{userId})
-        AND
-        ubi.blog_id = ub.blog_id
-        AND
-        ub.user_id = up.user_id
-        AND
-        ubi.image_url IN
-        (SELECT tubi.image_url FROM tb_user_blog_image tubi WHERE tubi.blog_id = ub.blog_id)
+        <where>
+            ubi.blog_id = ub.blog_id
+            AND
+            ub.user_id = up.user_id
+            <if test="userBlogCondition != null
+            and userBlogCondition.blogContent != null">
+                AND ub.blog_content like '%${userBlogCondition.blogContent}%'
+            </if>
+            <if test="userBlogCondition != null
+             and userBlogCondition.userId != null">
+                AND
+                ub.blog_id IN
+                (SELECT u.blog_id FROM tb_user_blog u WHERE u.user_id = #{userBlogCondition.userId})
+                AND
+                ubi.image_url IN
+                (SELECT tubi.image_url FROM tb_user_blog_image tubi WHERE tubi.blog_id = ub.blog_id)
+            </if>
+        </where>
     </select>
+
 
     <!--按博客ID查询用户博客-->
     <select id="queryUserBlogByBlogId" resultMap="userBlog">
@@ -91,22 +101,6 @@
         tb_user_blog_image ubi
         WHERE
         ub.blog_id = #{blogId}
-        AND
-        ub.blog_id = ubi.blog_id
-    </select>
-
-    <!--按博客内容模糊查询-->
-    <select id="queryUserBlogByContentLike" resultMap="userBlog">
-        SELECT
-        ub.blog_content,
-        ub.view_count,
-        ub.like_count,
-        ubi.image_url
-        FROM
-        tb_user_blog ub,
-        tb_user_blog_image ubi
-        WHERE
-         ub.blog_content like '%${blogContent}%'
         AND
         ub.blog_id = ubi.blog_id
     </select>

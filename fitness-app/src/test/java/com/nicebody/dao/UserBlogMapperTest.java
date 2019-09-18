@@ -25,9 +25,22 @@ public class UserBlogMapperTest {
     /**
      *  测试按用户id查询该用户博客
      */
+//    @Test
+//    @Ignore
+//    public void testqueryUserBlogByUserId(){
+//        List<UserBlog> userBlogList = userBlogMapper.queryUserBlogByUserId(2);
+//        System.out.println(userBlogList.size());
+//    }
+
+    /**
+     *  测试按用户Id查询用户博客或根据博客内容模糊查询博客
+     */
     @Test
-    public void testqueryUserBlogByUserId(){
-        List<UserBlog> userBlogList = userBlogMapper.queryUserBlogByUserId(2);
+    public void testgetUserBlogByUserIdOrContentLike() {
+        UserBlog userBlogCondition = new UserBlog();
+        // userBlogCondition.setUserId(2);
+        userBlogCondition.setBlogContent("添");
+        List<UserBlog> userBlogList = userBlogMapper.queryUserBlogByUserIdOrContentLike(userBlogCondition);
         System.out.println(userBlogList.size());
     }
 //
