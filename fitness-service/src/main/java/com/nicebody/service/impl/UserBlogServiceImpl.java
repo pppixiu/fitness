@@ -18,41 +18,41 @@ import java.util.List;
 @Service
 public class UserBlogServiceImpl implements UserBlogService {
 
-//    @Autowired
-//    private UserBlogMapper userBlogMapper;
-//
-//    @Override
-//    public List<UserBlog> getUserBlog() {
-//        return userBlogMapper.queryUserBlog();
-//    }
-//
-//    @Override
-//    public List<UserBlog> getUserBlogByBlogId(int blogId) {
-//        return userBlogMapper.queryUserBlogByBlogId(blogId);
-//    }
-//
-//    @Override
-//    public List<UserBlog> getUserBlogByUserId(int userId) {
-//        return userBlogMapper.queryUserBlogByUserId(userId);
-//    }
-//
-//    @Override
-//    public List<UserBlog> getUserBlogByContentLike(String blogContent) {
-//        return userBlogMapper.queryUserBlogByContentLike(blogContent);
-//    }
-//
-//    @Override
-//    public int addUserBlog(UserBlog userBlog) {
-//        return userBlogMapper.insertUserBlog(userBlog);
-//    }
-//
-//    @Override
-//    public int deleteUserBlogByBlogIdAndUserId(int userId, int blogId) {
-//        return userBlogMapper.deleteUserBlogByBlogIdAndUserId(userId,blogId);
-//    }
-//
-//    @Override
-//    public int deleteUserBlogImgByBlogId(int blogId) {
-//        return userBlogMapper.deleteUserBlogImgByBlogId(blogId);
-//    }
+    @Autowired
+    private UserBlogMapper userBlogMapper;
+
+    @Override
+    public List<UserBlog> getUserBlog() {
+        return userBlogMapper.queryUserBlog();
+    }
+
+    @Override
+    public List<UserBlog> getUserBlogByBlogId(int blogId) {
+        return userBlogMapper.queryUserBlogByBlogId(blogId);
+    }
+
+    @Override
+    public List<UserBlog> getUserBlogByUserId(int userId) {
+        return userBlogMapper.queryUserBlogByUserId(userId);
+    }
+
+    @Override
+    public List<UserBlog> getUserBlogByContentLike(String blogContent) {
+        return userBlogMapper.queryUserBlogByContentLike(blogContent);
+    }
+
+    @Override
+    public int addUserBlog(UserBlog userBlog) {
+        return userBlogMapper.insertUserBlog(userBlog);
+    }
+
+    @Override
+    public int deleteUserBlogByBlogIdAndUserId(int userId, int blogId) {
+        return userBlogMapper.deleteUserBlogByBlogIdAndUserId(userId,blogId);
+    }
+
+    @Override
+    public int deleteUserBlogImgByBlogId(int blogId) {
+        return userBlogMapper.deleteUserBlogImgByBlogId(blogId);
+    }
 }

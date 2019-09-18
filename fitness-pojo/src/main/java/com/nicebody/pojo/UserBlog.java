@@ -26,6 +26,8 @@ public class UserBlog {
     /** 博客标题图 */
     //TODO
     private UserBlogImage userBlogImage;
+    /** 用户信息 */
+    private UserProfile userProfile;
     /** 博客用户ID */
     private Integer userId;
 
@@ -91,5 +93,13 @@ public class UserBlog {
 
     public void setUserBlogImage(UserBlogImage userBlogImage) {
         this.userBlogImage = userBlogImage;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 }

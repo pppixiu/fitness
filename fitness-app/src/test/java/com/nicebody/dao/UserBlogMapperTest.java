@@ -19,18 +19,17 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserBlogMapperTest {
-//    @Autowired
-//    private UserBlogMapper userBlogMapper;
-//
-//    /**
-//     *  测试按用户id查询该用户博客
-//     */
-//    @Test
-//    @Ignore
-//    public void testqueryUserBlogByUserId(){
-//        List<UserBlog> userBlogList = userBlogMapper.queryUserBlogByUserId(2);
-//        System.out.println(userBlogList.size());
-//    }
+    @Autowired
+    private UserBlogMapper userBlogMapper;
+
+    /**
+     *  测试按用户id查询该用户博客
+     */
+    @Test
+    public void testqueryUserBlogByUserId(){
+        List<UserBlog> userBlogList = userBlogMapper.queryUserBlogByUserId(2);
+        System.out.println(userBlogList.size());
+    }
 //
 //    /**
 //     *  测试查询所有博客

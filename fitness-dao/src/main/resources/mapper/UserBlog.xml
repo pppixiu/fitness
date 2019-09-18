@@ -19,8 +19,8 @@
             <result column="blog_id" property="blogId"/>
            </association>
 
-            <association property="user" column="user_id"
-                         javaType="user">
+            <association property="userProfile" column="user_id"
+                         javaType="userProfile">
                 <id column="user_id" property="userId"/>
                 <result column="user_image_url" property="userImageUrl"/>
             </association>
@@ -52,6 +52,16 @@
         ub.like_count,
         ub.blog_content,
         ubi.image_url,
+        up.user_name,
+        up.user_gender,
+        up.is_coach,
+        up.is_active,
+        up.user_integral,
+        up.user_height,
+        up.user_weight,
+        up.user_birthday,
+        up.create_time,
+        up.update_time,
         up.user_image_url
         FROM
         tb_user_blog ub,
