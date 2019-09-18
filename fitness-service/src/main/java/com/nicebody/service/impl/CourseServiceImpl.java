@@ -28,12 +28,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> getByCourseId(int courseId) {
-        return courseMapper.queryByCourseId(courseId);
+    public List<Course> getCourseByCourseId(int courseId) {
+        return courseMapper.queryCourseByCourseId(courseId);
     }
 
     @Override
-    public List<Course> getByUserId(int userId) {
-        return courseMapper.queryByUserId(userId);
+    public List<Course> getCourseByUserId(int userId) {
+        return courseMapper.queryCourseByUserId(userId);
     }
 }

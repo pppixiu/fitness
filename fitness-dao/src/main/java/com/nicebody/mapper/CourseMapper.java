@@ -29,15 +29,20 @@ public interface CourseMapper {
                                  @Param("orderByCondition") String orderByCondition);
 
 
-    /*
-    * 通过CourseId查询course
-    * */
-    List<Course> queryByCourseId(int courseId);
+    /**
+     * 通过CourseId查询course
+     * @param courseId
+     * @return
+     */
+    List<Course> queryCourseByCourseId(int courseId);
 
-    /*
-    * 通过userId查询course信息
-    * */
-    List<Course> queryByUserId(int userId);
+    /**
+     * 通过userId查询course信息
+     * @param userId
+     * @return
+     */
+    List<Course> queryCourseByUserId(int userId);
+
 
 
 

@@ -41,14 +41,14 @@ public class CourseDaoTest {
     @Test
     public void queryByCourseId(){
         int courseId = 438;
-        List<Course> courseList = courseMapper.queryByCourseId(courseId);
+        List<Course> courseList = courseMapper.queryCourseByCourseId(courseId);
         System.out.println(courseList.size());
 
     }
     @Test
     public void queryByUserId(){
         int userId = 1;
-        List<Course> courseList = courseMapper.queryByUserId(userId);
+        List<Course> courseList = courseMapper.queryCourseByUserId(userId);
         System.out.println(courseList.size());
 
     }

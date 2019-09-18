@@ -65,7 +65,7 @@
         LIMIT #{rowIndex}, #{pageSize}
     </select>
 
-    <select id="queryByCourseId" resultMap="courseMap">
+    <select id="queryCourseByCourseId" resultMap="courseMap">
         SELECT l.lesson_title, l.lesson_desc,l.lesson_url,c.study_count,course_note,course_time,u.user_name,u.user_image_url
         FROM tb_course_lesson l,tb_coach_course c,tb_user_profile u,tb_coach_info i
         <where>
@@ -78,7 +78,7 @@
             u.user_id = i.user_id
         </where>
     </select>
-    <select id="queryByUserId" resultMap="courseMap">
+    <select id="queryCourseByUserId" resultMap="courseMap">
         SELECT c.course_id,course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,course_time,course_note,u.user_name,u.user_image_url
         FROM tb_coach_course c,tb_user_course uc,tb_user_profile u
         <where>

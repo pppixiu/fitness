@@ -23,12 +23,12 @@ public interface CourseService {
     /*
      * 通过CourseId查询course
      * */
-    List<Course> getByCourseId(int courseId);
+    List<Course> getCourseByCourseId(int courseId);
 
     /*
      * 通过userId查询course信息
      * */
-    List<Course> getByUserId(int userId);
+    List<Course> getCourseByUserId(int userId);
 
 
 

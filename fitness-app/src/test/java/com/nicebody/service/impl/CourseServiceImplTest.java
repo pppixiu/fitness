@@ -41,14 +41,14 @@ public class CourseServiceImplTest {
     @Test
     public void getByCourseIdTest(){
         int courseId = 438;
-        List<Course> courseList = courseService.getByCourseId(courseId);
+        List<Course> courseList = courseService.getCourseByCourseId(courseId);
         System.out.println(courseList.size());
 
     }
     @Test
     public void getByUserIdTest(){
         int userId = 1;
-        List<Course> courseList = courseService.getByUserId(userId);
+        List<Course> courseList = courseService.getCourseByUserId(userId);
         System.out.println(courseList.size());
 
     }
