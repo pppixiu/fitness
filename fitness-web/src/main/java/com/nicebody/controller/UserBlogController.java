@@ -58,7 +58,7 @@ public class UserBlogController {
      * @param userBlogCondition
      * @return
      */
-    @RequestMapping("getuserblogbyuseridorcontentlike")
+    @RequestMapping("/getuserblogbyuseridorcontentlike")
     public Map<String,Object> getUserBlogByUserIdOrContentLike(UserBlog userBlogCondition){
         Map<String, Object> map = new HashMap<>();
         List<UserBlog> userBlogList = userBlogService.getUserBlogByUserIdOrContentLike(userBlogCondition);
