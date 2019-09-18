@@ -40,7 +40,7 @@ public interface CoachMapper {
                                    @Param("coachId") int coachId);
 
     /**
-     * 查找所有教练图片
+     * 根据教练Id查找所有教练图片
      *
      * @param coachId
      * @return

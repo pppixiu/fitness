@@ -13,7 +13,7 @@
             </if>
             <if test="coachCondition != null
             and coachCondition.coachName != null">
-                c.course_title like '%${coachCondition.coachName}%'
+               and coach_name like '%${coachCondition.coachName}%'
             </if>
         </where>
         <if test="orderByCondition != null">
