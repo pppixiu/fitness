@@ -3,6 +3,7 @@ package com.nicebody.mapper;
 import com.nicebody.pojo.CoachImage;
 import com.nicebody.pojo.CoachInfo;
 import com.nicebody.pojo.UserBlog;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,49 +19,32 @@ import java.util.List;
 public interface CoachMapper {
 
     /**
-     * 查询全部教练
+     * 查询教练所有信息
+     * 支持 标签（tag） 收藏数（likeCount） 姓名（coachName）价格（price）（模糊查询） 过滤
+     * 通过 时间 人数 价格 姓名
      *
      * @return
      */
-    List<CoachInfo> queryAllCoach();
+    List<CoachInfo> queryCoachList(@Param("rowIndex") int rowIndex,
+                                   @Param("pageSize") int pageSize,
+                                   @Param("coachCondition") CoachInfo coachCondition,
+                                   @Param("orderByCondition") String orderByCondition);
+
     /**
-     * 根据Id显示在教练主页
-     *
-     * @param id
+     * 根据Id查找教练信息
+     * 支持 查找用户关注教练信息（userId，0） 查找教练个人信息（0，coachId）
+     * @param coachId
      * @return
      */
-    List<CoachInfo> queryCoachById(Integer id);
+    List<CoachInfo> queryCoachInfo(@Param("userId") int userId,
+                                   @Param("coachId") int coachId);
 
     /**
      * 查找所有教练图片
      *
-     * @param id
+     * @param coachId
      * @return
      */
-    List<CoachImage> queryAllImage(Integer id);
-
-    /**
-     * 查找所有教练博客
-     *
-     * @param id
-     * @return
-     */
-    List<CoachInfo> queryAllBlog(Integer id);
-
-    /**
-     * 根据分类多条件查询
-     *
-     * @param tagId
-     * @param condition
-     * @return
-     */
-    List<CoachInfo> queryCoachByTag(Integer tagId, Integer condition);
-
-    /**
-     * 名字模糊查询
-     *
-     * @return
-     */
-    List<CoachInfo> queryCoachByName(String coachame);
+    List<CoachImage> queryImageList(@Param("coachId") int coachId);
 
 }

@@ -3,78 +3,44 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nicebody.mapper.CoachMapper">
-    <resultMap id="coachMap" type="coachInfo">
-        <id column="coach_id" property="coachId"/>
-        <result column="coach_desc" property="coachDesc"/>
-        <result column="coach_name" property="coachName"/>
-        <result column="coach_price" property="coachPrice"/>
-        <association property="coachImage" javaType="coachImage">
-            <result column="image_url" property="imageUrl"/>
-        </association>
-    </resultMap>
-
-    <select id="queryAllCoach" resultMap="coachMap">
-        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
-        FROM tb_coach_info i, tb_coach_image m
-        where i.coach_id = m.coach_id
-    </select>
-
-    <resultMap id="coachBlog" type="coachInfo">
-        <id column="coach_id" property="coachId"/>
-        <association property="userBlog" javaType="userBlog">
-            <result column="blog_content" property="blogContent"/>
-        </association>
-        <association property="userBlogImage" javaType="userBlogImage">
-            <result column="image_url" property="imageUrl"/>
-        </association>
-    </resultMap>
-
-    <select id="queryCoachById" resultMap="coachMap">
-        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
-        FROM tb_coach_info i, tb_coach_image m
-        where i.coach_id = m.coach_id AND i.coach_id = #{id}
-    </select>
-
-    <select id="queryAllImage" resultType="coachImage">
-        SELECT image_id,image_url
-        FROM tb_coach_image
-        where coach_id = #{id}
-    </select>
-
-    <select id="queryAllBlog" resultMap="coachBlog">
-        SELECT i.coach_id,b.blog_content,m.image_url
-        FROM tb_coach_info i,tb_user_blog b,tb_user_blog_image m
-        where i.user_id = b.user_id AND b.blog_id = m.blog_id AND i.coach_id = #{id}
-    </select>
-
-    <select id="queryCoachByTag" resultMap="coachMap">
-        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
-        FROM tb_coach_info i, tb_coach_image m
+    <select id="queryCoachList" resultType="coachInfo">
+        SELECT coach_id, user_id, tag_id, coach_desc, recommend_code, coach_name, coach_price, coach_image_url, like_count, create_time, update_time
+        from tb_coach_info
         <where>
-            i.coach_id = m.coach_id
-            <if test="tagId !=0 and condition==0">
-                and i.tag_id = #{tagId}
+            <if test="coachCondition != null
+            and coachCondition.tagId != null">
+                and tag_id = #{coachCondition.tagId}
             </if>
-            <if test="tagId==0 and condition==1">
-                order by i.coach_price
-            </if>
-            <if test="tagId==0 and condition==2">
-                order by i.coach_price desc
-            </if>
-            <if test="tagId!=0 and condition==1">
-                and i.tag_id = #{tagId}
-                order by i.coach_price
-            </if>
-            <if test="tagId!=0 and condition==2">
-                and i.tag_id = #{tagId}
-                order by i.coach_price desc
+            <if test="coachCondition != null
+            and coachCondition.coachName != null">
+                c.course_title like '%${coachCondition.coachName}%'
             </if>
         </where>
+        <if test="orderByCondition != null">
+            ORDER BY #{orderByCondition} DESC
+        </if>
+        LIMIT #{rowIndex}, #{pageSize}
     </select>
 
-    <select id="queryCoachByName" resultMap="coachMap" parameterType="String">
-        SELECT i.coach_id,i.coach_desc,i.coach_name,i.coach_price,m.image_url
-        FROM tb_coach_info i, tb_coach_image m
-        where i.coach_id = m.coach_id and i.coach_name like "%${coachName}%"
+    <select id="queryCoachInfo" resultType="coachInfo">
+    SELECT DISTINCT i.coach_id, i.user_id, i.tag_id, i.coach_desc, i.recommend_code, i.coach_name, i.coach_price, i.coach_image_url, i.like_count, i.create_time, i.update_time
+    from tb_coach_info i,tb_user_coach c
+    <where>
+        <if test="userId == 0
+        and coachId != 0">
+            i.coach_id = #{coachId}
+        </if>
+        <if test="userId != 0
+        and coachId == 0">
+            c.user_id = #{userId}
+            and c.coach_id = i.coach_id
+        </if>
+    </where>
+    </select>
+
+    <select id="queryImageList" resultType="coachImage">
+        SELECT image_id, image_url, create_time, update_time, coach_id
+        from tb_coach_image
+        where coach_id = #{coachId}
     </select>
 </mapper>

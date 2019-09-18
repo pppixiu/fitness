@@ -1,10 +1,13 @@
 package com.nicebody.dao;
 
+import com.nicebody.enums.OrderByEnum;
 import com.nicebody.mapper.CoachMapper;
 import com.nicebody.mapper.TagMapper;
 import com.nicebody.pojo.CoachImage;
 import com.nicebody.pojo.CoachInfo;
 import com.nicebody.pojo.Tag;
+import com.nicebody.util.OrderByUtil;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +24,34 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CoachMapperTest {
-//    @Autowired
-//    private TagMapper coachTagMapper;
-//
-//    @Autowired
-//    private CoachMapper coachMapper;
+    @Autowired
+    private CoachMapper coachMapper;
+
+    /** 测试教练列表多条件查询*/
+    @Test
+    public void queryCoachListTest() {
+        CoachInfo coachInfo = new CoachInfo();
+        coachInfo.setTagId(4);
+        String value = OrderByUtil.coachConvent2String(OrderByEnum.PRICE.getCode());
+        List<CoachInfo> coachInfoList = coachMapper.queryCoachList(1, 2, coachInfo, value);
+        Assert.assertEquals(1, coachInfoList.size());
+    }
+
+    /** 测试查找用户收藏教练，以及测试查找教练个人信息*/
+    @Test
+    public void queryCoachInfoTest() {
+        CoachInfo coachInfo = new CoachInfo();
+        List<CoachInfo> coachInfoList = coachMapper.queryCoachInfo(1,0);
+        Assert.assertEquals(3, coachInfoList.size());
+    }
+
+    /** 测试获取教练图片*/
+    @Test
+    public void queryImageListTest(){
+        CoachImage coachImage = new CoachImage();
+        List<CoachImage> coachImageList = coachMapper.queryImageList(1);
+        Assert.assertEquals(2,coachImageList.size());
+    }
     /*测试获取标签*/
 //    @Test
 //    public void queryTag(){

@@ -16,4 +16,15 @@ public class OrderByUtil {
         }
         return "";
     }
+
+    public static String coachConvent2String(int code){
+        if(code == 0){
+            return "create_time";
+        }else if(code == 1){
+            return "like_count";
+        }else if(code == 2){
+            return "coach_price";
+        }
+        return "";
+    }
 }
