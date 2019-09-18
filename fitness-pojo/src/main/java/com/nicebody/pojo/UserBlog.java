@@ -28,6 +28,9 @@ public class UserBlog {
     // 博客图片
     private UserBlogImage userBlogImage;
 
+    // 用户
+    private User user;
+
     // 博客用户ID
     private Integer userId;
 

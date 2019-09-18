@@ -18,6 +18,7 @@ public class User {
     private Integer userBirthday; //用户生日
     private Date createTime; //用户创建时间
     private Date updateTime; //用户修改时间
+    private String userImageUrl; // 用户头像
 
     public Integer getUserGender() {
         return userGender;
@@ -97,5 +98,13 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getUserImageUrl() {
+        return userImageUrl;
+    }
+
+    public void setUserImageUrl(String userImageUrl) {
+        this.userImageUrl = userImageUrl;
     }
 }
