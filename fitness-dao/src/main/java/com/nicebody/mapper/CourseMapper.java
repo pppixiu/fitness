@@ -28,47 +28,22 @@ public interface CourseMapper {
                                  @Param("courseCondition") Course courseCondition,
                                  @Param("orderByCondition") String orderByCondition);
 
-    /**
-     * 搜索栏模糊查询
-     *
-     * @param courseTitle
-     * @return
-     */
-    List<Course> queryByCourseTitle(String courseTitle);
 
     /**
-     * 根据tag_id查询course信息
-     *
-     * @param tagId
-     * @return
-     */
-    List<Course> queryCourseByTagId(int tagId);
-
-    /**
-     * 根据courseId查询单条详细信息
-     *
+     * 通过CourseId查询course
      * @param courseId
      * @return
      */
-    List<CourseLesson> queryByCourseId(int courseId);
+    List<Course> queryCourseByCourseId(int courseId);
 
     /**
-     * 分页查询
-     *
-     * @param a
-     * @param b
+     * 通过userId查询course信息
+     * @param userId
      * @return
      */
-    public List<Course> queryListByPage(int a, int b);
+    List<Course> queryCourseByUserId(int userId);
 
-    /**
-     * 多条件叠加查询
-     *
-     * @param tagId
-     * @param courseCondition
-     * @return
-     */
-    public List<Course> queryListCondition(@Param("tagId") int tagId, @Param("courseCondition") Course courseCondition);
+
 
 
 }

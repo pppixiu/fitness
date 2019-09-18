@@ -15,44 +15,22 @@ import java.util.List;
  * @Date 2019/9/15 20:06
  **/
 public interface CourseService {
-//    /**
-//     * 查询所有课程
-//     * @return
-//     */
-//    public List<Course> getCourseList(int indexRow, int pageSize, Course courseCondition, String orderByCondition);
-//
-//    /**
-//     *根据courseTitle模糊查询课程
-//     * @return
-//     */
-//
-//    public List<Course> getByCourseTitle(String courseTitle);
-//
-//    /*
-//    * 根据tag_id查询信息
-//    * */
-//    public List<Course> getCourseByTagId(int tagId);
-//
-//    /*
-//     * 根据courseId查询单条详细信息
-//     * */
-//    List<CourseLesson> getByCourseId(int courseId);
-//
-//
-//    /*
-//    * 分页查询
-//    * */
-//    public List<Course> getListByPage(int a,int b);
-//
-//    /*
-//    * 多条件组合查询
-//    * */
-//    public List<Course> getListCondition(@Param("tagId") int tagId, @Param("condition") int condition);
+    List<Course> getCourseList(@Param("rowIndex") int rowIndex,
+                                 @Param("pageSize") int pageSize,
+                                 @Param("courseCondition") Course courseCondition,
+                                 @Param("orderByCondition") String orderByCondition);
 
+    /*
+     * 通过CourseId查询course
+     * */
+    List<Course> getCourseByCourseId(int courseId);
 
-
-
+    /*
+     * 通过userId查询course信息
+     * */
+    List<Course> getCourseByUserId(int userId);
 
 
 
 }
+

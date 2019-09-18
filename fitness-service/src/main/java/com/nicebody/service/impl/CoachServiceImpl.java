@@ -1,7 +1,13 @@
 package com.nicebody.service.impl;
 
+import com.nicebody.mapper.CoachMapper;
+import com.nicebody.pojo.CoachImage;
+import com.nicebody.pojo.CoachInfo;
 import com.nicebody.service.CoachService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @ClassName CoachServiceImpl
@@ -11,4 +17,40 @@ import org.springframework.stereotype.Service;
 @Service
 public class CoachServiceImpl implements CoachService {
 
+    @Autowired
+    private CoachMapper coachMapper;
+
+    /**
+     * 多条件查找教练信息
+     * @param rowIndex
+     * @param pageSize
+     * @param coachCondition
+     * @param orderByCondition
+     * @return
+     */
+    @Override
+    public List<CoachInfo> getCoachList(int rowIndex, int pageSize, CoachInfo coachCondition, String orderByCondition) {
+        return coachMapper.queryCoachList(rowIndex, pageSize, coachCondition, orderByCondition);
+    }
+
+    /**
+     * 根据Id查找用户关注教练，以及教练个人信息
+     * @param userId
+     * @param coachId
+     * @return
+     */
+    @Override
+    public List<CoachInfo> getCoachInfo(int userId, int coachId) {
+        return coachMapper.queryCoachInfo(userId,coachId);
+    }
+
+    /**
+     * 根据Id查找教练全部图片
+     * @param coachId
+     * @return
+     */
+    @Override
+    public List<CoachImage> getImageList(int coachId) {
+        return coachMapper.queryImageList(coachId);
+    }
 }

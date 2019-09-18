@@ -12,6 +12,8 @@
         <result column="course_pre_price" property="coursePrePrice"/>
         <result column="course_level" property="courseLevel"/>
         <result column="study_count" property="studyCount"/>
+        <result column="course_time" property="courseTime"/>
+        <result column="course_note" property="courseNote"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <association property="userProfile" column="user_id"
@@ -19,17 +21,24 @@
             <id column="user_id" property="userId"/>
             <result column="user_name" property="userName"/>
         </association>
+        <association property="userCourse" column="user_id"
+                     javaType="userCourse">
+            <id column="user_id" property="userId"/>
+            <result column="course_id" property="courseId"/>
+        </association>
         <collection property="courseLessonList" column="lesson_id"
-                     javaType="courseLesson">
+                     ofType="courseLesson">
             <id column="lesson_id" property="lessonId"/>
             <result column="lesson_title" property="lessonTitle"/>
             <result column="lesson_desc" property="lessonDesc"/>
             <result column="lesson_url" property="lessonUrl"/>
+            <result column="create_time" property="createTime"/>
+            <result column="update_time" property="updateTime"/>
         </collection>
     </resultMap>
 
     <select id="queryCourseList" resultMap="courseMap">
-        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
+        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,course_time,course_note,user_name,u.user_image_url
         FROM tb_coach_course c,tb_user_profile u,tb_coach_info i,tb_tag t
         <where>
             c.coach_id = i.coach_id
@@ -43,7 +52,11 @@
             </if>
             <if test="courseCondition != null
             and courseCondition.courseTitle != null">
-                c.course_title like '%${courseCondition.courseTitle}%'
+               and c.course_title like '%${courseCondition.courseTitle}%'
+            </if>
+            <if test="courseCondition != null
+            and courseCondition.courseLevel != null">
+                and c.course_level = #{courseCondition.courseLevel}
             </if>
         </where>
         <if test="orderByCondition != null">
@@ -52,33 +65,8 @@
         LIMIT #{rowIndex}, #{pageSize}
     </select>
 
-    <select id="queryByCourseTitle" resultMap="courseMap">
-        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,course_level,study_count,user_name
-        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
-        <where>
-            c.coach_id = i.coach_id
-            and
-            u.user_id = i.user_id
-            and
-            c.course_title like concat('%',#{courseTitle},'%')
-        </where>
-    </select>
-    <select id="queryCourseByTagId" resultMap="courseMap">
-        SELECT course_title,
-        course_desc,image_url,course_now_price,course_pre_price,course_level,study_count,u.user_name,tag_name
-        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i,tb_tag t
-        <where>
-            t.tag_id = #{tag.tagId}
-            and
-            c.coach_id = i.coach_id
-            and
-            u.user_id = i.user_id
-            and
-            t.tag_id = c.tag_id
-        </where>
-    </select>
-    <select id="queryByCourseId" resultMap="courseMap">
-        SELECT l.lesson_title, l.lesson_desc,l.lesson_url,c.study_count,u.user_name
+    <select id="queryCourseByCourseId" resultMap="courseMap">
+        SELECT l.lesson_title, l.lesson_desc,l.lesson_url,c.study_count,course_note,course_time,u.user_name,u.user_image_url
         FROM tb_course_lesson l,tb_coach_course c,tb_user_profile u,tb_coach_info i
         <where>
             c.course_id=#{courseId}
@@ -90,46 +78,16 @@
             u.user_id = i.user_id
         </where>
     </select>
-    <select id="queryListByPage" resultMap="courseMap">
-        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
-        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i
+    <select id="queryCourseByUserId" resultMap="courseMap">
+        SELECT c.course_id,course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,course_time,course_note,u.user_name,u.user_image_url
+        FROM tb_coach_course c,tb_user_course uc,tb_user_profile u
         <where>
-            c.coach_id = i.coach_id
+            uc.user_id=#{userId}
             and
-            u.user_id = i.user_id
+            c.course_id=uc.course_id
+            and
+            uc.user_id = u.user_id
         </where>
-        limit #{param1},#{param2}
     </select>
-    <select id="queryListCondition" resultMap="courseMap">
-        SELECT course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,user_name
-        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i,tb_tag t
-        <where>
-            c.coach_id = i.coach_id
-            and
-            u.user_id = i.user_id
-            and
-            t.tag_id = c.tag_id
-            <if test="tagId !=0 and condition==0">
-                and t.tag_id = #{tagId}
-            </if>
-            <if test="tagId==0 and condition==1">
-                order by course_now_price
-            </if>
-            <if test="tagId==0 and condition==2">
-                order by study_count desc
-            </if>
-            <if test="tagId!=0 and condition==1">
-                and t.tag_id = #{tagId}
-                order by course_now_price
-            </if>
-            <if test="tagId!=0 and condition==2">
-                and t.tag_id = #{tagId}
-                order by study_count desc
-
-            </if>
-        </where>
-
-    </select>
-
 
 </mapper>

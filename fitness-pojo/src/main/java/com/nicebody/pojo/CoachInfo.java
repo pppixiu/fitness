@@ -13,6 +13,8 @@ public class CoachInfo {
     private Integer coachId;
     /** 用户Id */
     private Integer userId;
+    /** 标签Id */
+    private Integer tagId;
     /** 用户简介 */
     private String coachDesc;
     /** 教练推荐码 */
@@ -29,6 +31,14 @@ public class CoachInfo {
     private Date createTime;
     /** 图片修改时间 */
     private Date updateTIme;
+
+    public Integer getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(Integer tagId) {
+        this.tagId = tagId;
+    }
 
     public Integer getCoachId() {
         return coachId;
