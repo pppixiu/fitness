@@ -25,6 +25,9 @@ public class UserBlog {
     private Date updateTime;
 
 
+    // 博客图片
+    private UserBlogImage userBlogImage;
+
     // 博客用户ID
     private Integer userId;
 
@@ -84,4 +87,11 @@ public class UserBlog {
         this.userId = userId;
     }
 
+    public UserBlogImage getUserBlogImage() {
+        return userBlogImage;
+    }
+
+    public void setUserBlogImage(UserBlogImage userBlogImage) {
+        this.userBlogImage = userBlogImage;
+    }
 }
