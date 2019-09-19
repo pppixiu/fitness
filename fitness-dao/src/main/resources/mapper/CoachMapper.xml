@@ -8,11 +8,11 @@
         from tb_coach_info
         <where>
             <if test="coachCondition != null
-            and coachCondition.tagId != null">
+            and coachCondition.tagId != 0">
                 and tag_id = #{coachCondition.tagId}
             </if>
             <if test="coachCondition != null
-            and coachCondition.coachName != null">
+            and coachCondition.coachName != 'empty'">
                and coach_name like '%${coachCondition.coachName}%'
             </if>
         </where>
