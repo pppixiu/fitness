@@ -73,10 +73,35 @@
 			overflow: hidden;
 			border:  solid 2px #f5f5f5;
 		}
+		.box {
+			/*把.box中的内容最多分为4列,会根据浏览器的大小变化,但是不会超过4列*/
+			column-count: 4;
+			/*规定每列列宽最小为25%*/
+			column-width: 25px;
+			/*规定每列的间隙为1em*/
+			column-gap: 1em;
+			width: 80%;
+			/*实现盒子水平居中*/
+			margin: 0 auto;
+		}
+
+		.box img {
+			/*上下左右5px的内填充*/
+			padding: 5px;
+			/*上下左右5px的外边距*/
+			margin: 5px;
+			/*圆角边框*/
+			border-radius: 5px;
+			/*盒子阴影*/
+			box-shadow: 0px 0px 5px gray;
+			width: 100%;
+		}
+
 	</style>
 	<link href="css/coachList/font-awesome.min.css" rel='stylesheet' type='text/css' />
 	<link href="css/coachList/page-style.css" rel='stylesheet' type='text/css' />
 	<link href="css/coachList/cards-style.css" rel='stylesheet' type='text/css' />
+	<link href="css/coachList/button.css" rel='stylesheet' type='text/css'/>
 
 	<link href="css/coachList/bootsnav.css" rel='stylesheet' type='text/css' />
 	<script type="text/javascript" src="js/coach/coachlist/bootsnav.js"></script>
@@ -84,7 +109,38 @@
 </head>
 <body>
 <!--头部-->
-<div class="page-content">
+<div class="page-head" style="position: fixed;z-index: 9999;top: 0; width: 100%;">
+	<div class="container">
+		<div class="navigation">
+			<div class="logo">
+				<h1>
+					<a class="navbar-brand link link--yaku" href="index.html"><span>N</span><span>I</span><span>C</span><span>E</span><span>B</span><span>O</span><span>D</span><span>Y</span></a>
+				</h1>
+			</div>
+			<div class="top-nav" style="position: relative; float: right;">
+				<span class="menu"><img src="images/menu.png" alt=" " /></span>
+				<ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
+					<li><a href="index.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">主页 </a></li>
+					<li><a href="coachList.html" class="active" >寻找教练</a></li>
+					<li><a href="programs.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">动作库</a></li>
+					<li><a href="shortcodes.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">教练审核</a></li>
+					<li><a href="contact.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">我的课程</a></li>
+					<li><a href="register.html"> 登  录 / 注  册 </a></li>
+				</ul>
+				<!-- script-for-menu -->
+				<script>
+					$( "span.menu" ).click(function() {
+						$( "ul.nav1" ).slideToggle( 300, function() {
+							// Animation complete.
+						});
+					});
+				</script>
+				<!-- /script-for-menu -->
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
 
 <!--标题-->
 <h3 class="bars" style="margin-left: 100px;margin-top: 5px;">COACHLIST</h3>
@@ -220,6 +276,10 @@
 							</li>
 							<li><a href="#" data-hover="Contact">其他 <span data-hover="Contact"></span></a></li>
 						</ul>
+						<span class="input-group-addon btn btn-primary pull-right"
+							  style="display: inline-block;width: 50px;margin-top: 25px;margin-left: 20px; background-color: #999999;border-radius: 5px;">搜索</span>
+						<input type="text" class="form-control input-lg  pull-right"
+							   style="width: 200px;margin-top: 17px;display: inline-block;" placeholder="请输入教练姓名">
 					</div>
 				</nav>
 			</div>
@@ -228,201 +288,436 @@
 </div>
 
 <!--coachList-->
-<div class="col-lg-12">
-	<!-- PRODUCT CARDS -->
-	<div class="cards-8 section-gray">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="card card-product">
-						<div class="card-image">
-							<a href="#"> <img class="img" src="images/coachList/model01.jpg"> </a>
+<div class="box" style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;">
+		<div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/blog04.jpeg"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-rose">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
 						</div>
-						<div class="table">
-							<h6 class="category text-rose">Clothing</h6>
-							<h4 class="card-caption">
-								<a href="#">The Name</a>
-							</h4>
-							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-							<div class="ftr">
-								<div class="price">
-									<h4>$1,230</h4> </div>
-								<div class="stats">
-									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
-								</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,230</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
+										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="card card-product">
-						<div class="card-image">
-							<a href="#"> <img class="img" src="images/coachList/model02.jpg"> </a>
-							<div class="ripple-cont"></div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model02.jpg"> </a>
+						<div class="ripple-cont"></div>
+					</div>
+					<div class="table">
+						<h6 class="category text-muted">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
 						</div>
-						<div class="table">
-							<h6 class="category text-muted">Clothing</h6>
-							<h4 class="card-caption">
-								<a href="#">The Name</a>
-							</h4>
-							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-							<div class="ftr">
-								<div class="price">
-									<h4>$990</h4> </div>
-								<div class="stats">
-									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i>
-										<div class="ripple-cont"></div>
-									</button>
-								</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$990</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default"
+										data-original-title="Save to Wishlist"><i class="fa fa-shopping-cart"></i>
+									<div class="ripple-cont"></div>
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="card card-product">
-						<div class="card-image">
-							<a href="#"> <img class="img" src="images/coachList/model03.jpg"> </a>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model03.jpg"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-muted">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
 						</div>
-						<div class="table">
-							<h6 class="category text-muted">Clothing</h6>
-							<h4 class="card-caption">
-								<a href="#">The Name</a>
-							</h4>
-							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-							<div class="ftr">
-								<div class="price">
-									<h4>$1,100</h4> </div>
-								<div class="stats">
-									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
-								</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,100</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
+										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="card card-product">
-						<div class="card-image">
-							<a href="#"> <img class="img" src="images/coachList/model04.jpg"> </a>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/avatar3.png"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-rose">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
 						</div>
-						<div class="table">
-							<h6 class="category text-rose">Clothing</h6>
-							<h4 class="card-caption">
-								<a href="#">The Name</a>
-							</h4>
-							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-							<div class="ftr">
-								<div class="price">
-									<h4>$1,200</h4> </div>
-								<div class="stats">
-									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
-								</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,200</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default"
+										data-original-title="Save to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/avatar4.png"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-rose">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,230</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
+										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model02.jpg"> </a>
+						<div class="ripple-cont"></div>
+					</div>
+					<div class="table">
+						<h6 class="category text-muted">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$990</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default"
+										data-original-title="Save to Wishlist"><i class="fa fa-shopping-cart"></i>
+									<div class="ripple-cont"></div>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model03.jpg"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-muted">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,100</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
+										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model04.jpg"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-rose">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,200</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default"
+										data-original-title="Save to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/blog04.jpeg"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-rose">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,230</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
+										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model02.jpg"> </a>
+						<div class="ripple-cont"></div>
+					</div>
+					<div class="table">
+						<h6 class="category text-muted">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$990</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default"
+										data-original-title="Save to Wishlist"><i class="fa fa-shopping-cart"></i>
+									<div class="ripple-cont"></div>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model03.jpg"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-muted">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,100</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
+										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/avatar3.png"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-rose">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,200</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default"
+										data-original-title="Save to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/avatar4.png"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-rose">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,230</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
+										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model02.jpg"> </a>
+						<div class="ripple-cont"></div>
+					</div>
+					<div class="table">
+						<h6 class="category text-muted">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$990</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default"
+										data-original-title="Save to Wishlist"><i class="fa fa-shopping-cart"></i>
+									<div class="ripple-cont"></div>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model03.jpg"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-muted">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,100</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
+										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 300px;height:auto;">
+				<div class="card card-product">
+					<div class="card-image">
+						<a href="#"> <img class="img" src="images/coachList/model04.jpg"> </a>
+					</div>
+					<div class="table">
+						<h6 class="category text-rose">Clothing</h6>
+						<h4 class="card-caption">
+							<a href="#">The Name</a>
+						</h4>
+						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
+							elit...
+						</div>
+						<div class="ftr">
+							<div class="price">
+								<h4>$1,200</h4></div>
+							<div class="stats">
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default"
+										data-original-title="Save to Wishlist"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="cards-8 section-gray">
+		<div>
+			<button class="corner-button" style="left: -160%">
+				<span>GO</span>
+			</button>
+		</div>
+	    <!--copy right-->
+	    <div class="copyright" style="position: absolute;bottom: 0; left: 0;right: 0;" >
 		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="card card-product">
-						<div class="card-image">
-							<a href="#"> <img class="img" src="images/coachList/model01.jpg"> </a>
-						</div>
-						<div class="table">
-							<h6 class="category text-rose">Clothing</h6>
-							<h4 class="card-caption">
-								<a href="#">The Name</a>
-							</h4>
-							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-							<div class="ftr">
-								<div class="price">
-									<h4>$1,230</h4> </div>
-								<div class="stats">
-									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card card-product">
-						<div class="card-image">
-							<a href="#"> <img class="img" src="images/coachList/model02.jpg"> </a>
-							<div class="ripple-cont"></div>
-						</div>
-						<div class="table">
-							<h6 class="category text-muted">Clothing</h6>
-							<h4 class="card-caption">
-								<a href="#">The Name</a>
-							</h4>
-							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-							<div class="ftr">
-								<div class="price">
-									<h4>$990</h4> </div>
-								<div class="stats">
-									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i>
-										<div class="ripple-cont"></div>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card card-product">
-						<div class="card-image">
-							<a href="#"> <img class="img" src="images/coachList/model03.jpg"> </a>
-						</div>
-						<div class="table">
-							<h6 class="category text-muted">Clothing</h6>
-							<h4 class="card-caption">
-								<a href="#">The Name</a>
-							</h4>
-							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-							<div class="ftr">
-								<div class="price">
-									<h4>$1,100</h4> </div>
-								<div class="stats">
-									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card card-product">
-						<div class="card-image">
-							<a href="#"> <img class="img" src="images/coachList/model04.jpg"> </a>
-						</div>
-						<div class="table">
-							<h6 class="category text-rose">Clothing</h6>
-							<h4 class="card-caption">
-								<a href="#">The Name</a>
-							</h4>
-							<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-							<div class="ftr">
-								<div class="price">
-									<h4>$1,200</h4> </div>
-								<div class="stats">
-									<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="copy-left">
+				<p>Copyright &copy; 2019.Company name NICEBODY's healthy website <a href="http://www.cssmoban.com/"
+																					target="_blank"
+																					title="NICEBODY">健身Page</a> - Collect
+					from <a href="http://www.cssmoban.com/" title="NICEBODY" target="_blank">即刻健身</a></p>
 			</div>
+			<div class="copy-right">
+				<ul>
+					<li><a class="fb1" href="#"></a></li>
+					<li><a class="fb2" href="#"></a></li>
+					<li><a class="fb3" href="#"></a></li>
+					<li><a class="fb4" href="#"></a></li>
+					<li><a class="fb5" href="#"></a></li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
 		</div>
 	</div>
-</div>
-
-<!--copy right-->
+    </div>
 </div>
 
 <!-- smooth scrolling -->
-	<script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function() {
 		/*
 			var defaults = {
@@ -435,10 +730,10 @@
 		$().UItoTop({ easingType: 'easeOutQuart' });
 		});
 	</script>
-	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 <!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 
 </body>
 </html>
