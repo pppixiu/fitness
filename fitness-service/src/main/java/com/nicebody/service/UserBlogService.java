@@ -12,11 +12,6 @@ import java.util.List;
  */
 
 public interface UserBlogService {
-    /**
-     *  查询所有博客
-     * @return
-     */
-    public List<UserBlog> getUserBlog();
 
     /**
      *  按博客ID查询用户博客
@@ -27,9 +22,12 @@ public interface UserBlogService {
     /**
      *  通过用户Id查找用户博客
      *  或者通过博客内容模糊查找博客信息
+     *  或者查询全部博客
      * @return
      */
-    public List<UserBlog> getUserBlogByUserIdOrContentLike(UserBlog userBlogCondition);
+    public List<UserBlog> getUserBlogByUserIdOrContentLike(@Param("rowIndex") int rowIndex,
+                                                           @Param("pageSize") int pageSize,
+                                                           @Param("userBlogCondition") UserBlog userBlogCondition);
 
     /**
      *  用户添加博客

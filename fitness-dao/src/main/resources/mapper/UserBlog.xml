@@ -27,31 +27,16 @@
 
         </resultMap>
 
-    <!--查询用户博客-->
-    <select id="queryUserBlog" resultMap="userBlog">
-        SELECT
-        ub.blog_id,
-        ub.user_id,
-        ub.blog_content,
-        ub.view_count,
-        ub.like_count,
-        ubi.image_url
-        FROM
-        tb_user_blog ub,
-        tb_user_blog_image ubi
-        WHERE
-        ub.blog_id = ubi.blog_id
-        ORDER BY
-        ub.create_time DESC
-    </select>
-
     <!--通过用户Id查找用户博客-->
     <!--或者通过博客内容模糊查找博客信息-->
+    <!--或者查询全部博客-->
     <select id="queryUserBlogByUserIdOrContentLike" resultMap="userBlog">
         SELECT
         ub.view_count,
         ub.like_count,
         ub.blog_content,
+        ub.create_time,
+        ub.update_time,
         ubi.image_url,
         up.user_name,
         up.user_gender,
@@ -86,6 +71,8 @@
                 (SELECT tubi.image_url FROM tb_user_blog_image tubi WHERE tubi.blog_id = ub.blog_id)
             </if>
         </where>
+        ORDER BY ub.create_time DESC
+        LIMIT #{rowIndex}, #{pageSize}
     </select>
 
 

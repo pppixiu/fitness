@@ -3,10 +3,15 @@ package com.nicebody.controller;
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.UserBlog;
 import com.nicebody.service.UserBlogService;
+import com.nicebody.util.ResultVOUtil;
+import com.nicebody.vo.ResultVO;
+import com.nicebody.vo.UserBlogVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,19 +31,6 @@ public class UserBlogController {
     private UserBlogService userBlogService;
 
     /**
-     *  查询所有博客
-     * @return
-     */
-    @RequestMapping("/getuserblog")
-    public Map<String, Object> getUserBlog(){
-        Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlog();
-        map.put("success", true);
-        map.put("userBlogList", userBlogList);
-        return map;
-    }
-
-    /**
      *  按博客ID查询博客信息
      * @param blogId
      * @return
@@ -55,16 +47,27 @@ public class UserBlogController {
     /**
      *  通过用户Id查找用户博客
      *  或者通过博客内容模糊查找博客信息
+     *  或者查询全部博客
      * @param userBlogCondition
      * @return
      */
     @RequestMapping("/getuserblogbyuseridorcontentlike")
-    public Map<String,Object> getUserBlogByUserIdOrContentLike(UserBlog userBlogCondition){
-        Map<String, Object> map = new HashMap<>();
-        List<UserBlog> userBlogList = userBlogService.getUserBlogByUserIdOrContentLike(userBlogCondition);
-        map.put("success", true);
-        map.put("userBlogList", userBlogList);
-        return map;
+    public ResultVO getUserBlogByUserIdOrContentLike(int rowIndex,
+                                                     int pageSize,
+                                                     UserBlog userBlogCondition){
+
+        List<UserBlogVO> blogVOList = new ArrayList<>();
+        //取出blog集合
+        List<UserBlog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(rowIndex,pageSize,userBlogCondition);
+        //填值
+        for(UserBlog userBlog : blogList){
+            UserBlogVO userBlogVO = new UserBlogVO();
+            BeanUtils.copyProperties(userBlog, userBlogVO);
+            userBlogVO.setImageUrl(userBlog.getUserBlogImage().getImageUrl());
+            blogVOList.add(userBlogVO);
+        }
+        //通过公共方法返回
+        return ResultVOUtil.success(blogVOList);
     }
 
     /**

@@ -33,7 +33,7 @@ public class UserController {
         UserBlog userBlogCondition = new UserBlog();
         userBlogCondition.setUserId(2);
         //取出blog集合
-        List<UserBlog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(userBlogCondition);
+        List<UserBlog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(0,1,userBlogCondition);
         //填值
         for(UserBlog userBlog : blogList){
             UserBlogVO userBlogVO = new UserBlogVO();

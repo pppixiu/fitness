@@ -1,6 +1,7 @@
 package com.nicebody.dao;
 import com.nicebody.mapper.UserBlogMapper;
 import com.nicebody.pojo.UserBlog;
+import com.nicebody.util.OrderByUtil;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,8 +40,8 @@ public class UserBlogMapperTest {
     public void testgetUserBlogByUserIdOrContentLike() {
         UserBlog userBlogCondition = new UserBlog();
         // userBlogCondition.setUserId(2);
-        userBlogCondition.setBlogContent("添");
-        List<UserBlog> userBlogList = userBlogMapper.queryUserBlogByUserIdOrContentLike(userBlogCondition);
+        //userBlogCondition.setBlogContent("添");
+        List<UserBlog> userBlogList = userBlogMapper.queryUserBlogByUserIdOrContentLike(0,10,userBlogCondition);
         System.out.println(userBlogList.size());
     }
 //
