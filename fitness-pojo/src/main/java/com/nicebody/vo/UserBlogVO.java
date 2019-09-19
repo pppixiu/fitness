@@ -10,12 +10,12 @@ import java.math.BigDecimal;
  * @Date 2019/9/19 10:08
  **/
 public class UserBlogVO {
-    @JsonProperty("title")
+    @JsonProperty("blogContent")
     private String blogContent;
-    @JsonProperty("desc")
-    private String likeCount;
-    @JsonProperty("url")
-    private String viewCount;
+    @JsonProperty("likeCount")
+    private Integer likeCount;
+    @JsonProperty("viewCount")
+    private Integer viewCount;
     @JsonProperty("imageUrl")
     private String imageUrl;
 
@@ -27,19 +27,19 @@ public class UserBlogVO {
         this.blogContent = blogContent;
     }
 
-    public String getLikeCount() {
+    public Integer getLikeCount() {
         return likeCount;
     }
 
-    public void setLikeCount(String likeCount) {
+    public void setLikeCount(Integer likeCount) {
         this.likeCount = likeCount;
     }
 
-    public String getViewCount() {
+    public Integer getViewCount() {
         return viewCount;
     }
 
-    public void setViewCount(String viewCount) {
+    public void setViewCount(Integer viewCount) {
         this.viewCount = viewCount;
     }
 
