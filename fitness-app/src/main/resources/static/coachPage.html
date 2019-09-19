@@ -85,9 +85,13 @@
     <!--aliPay-->
     <link href="css/coach/aliPay.css" rel="stylesheet" type="text/css">
     <link href="css/coachList/font-awesome.min.css" rel='stylesheet' type='text/css' />
+
+    <!--布局-->
     <link href="css/coachList/page-style.css" rel='stylesheet' type='text/css' />
     <link href="css/coachList/cards-style.css" rel='stylesheet' type='text/css' />
 
+    <!--点赞-->
+    <link href="css/coach/count.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
 <!--导航-->
@@ -101,14 +105,15 @@
         Welcome to defy, a free web template from ZyPOP.
         This template is completely free to use permitting a link remains back to ZyPOP.</a></span><br><br>
 
-        <span><a style="font-size: 2rem; color: #999999;font-family: '等线 Light'">
-        Should you wish to use this template unbranded you can buy a template license from our website for 8.00 GBP,
-        this will allow you remove all branding related to our site. See the read me file for more information.</a></span>
-
-        <h1 class="t-button">
-            <a href="#"><span class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light'">关注我</span></a>
-            <a href="#" href="javascript:void(0)" class="click_pop" ><span class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light'">购买在线课程</span></a>
+        <h1 class="t-button col-lg-7" >
+            <a href="#" href="javascript:void(0)" class="click_pop" style="display: inline-block" >
+                <span class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light'">购买在线课程</span></a>
         </h1>
+
+        <div class="count col-lg-5" style="padding-top: 35px; padding-right: 50px;">
+            <div class="three"></div>
+            <a>9982</a>
+        </div>
 
         <hr style="width:80%;margin:0 auto;border: 0;height: 0;border-top: 2px solid rgba(0, 0, 0, 0.1);border-bottom: 1px solid rgba(255, 255, 255, 0.3);">
 
@@ -120,7 +125,7 @@
     </div>
 
     <div class="col-lg-7" style="padding: 0;margin-top: 50px;">
-    <img src="images/caoch.jpg" style="width: 100%;height: auto;">
+    <img src="images/caoch.jpg" style="width: 100%;height: auto; overflow: hidden;">
     </div>
 
 
@@ -393,17 +398,10 @@
         Obj.close();
     })
 </script>
-<!--<script type="text/javascript">
-    new CusScrollBar({
-        contentSelector: '.scroll_cont', //滚动内容区
-        barSelector: '.scroll_bar', //滚动条
-        sliderSelector: '.scroll_slider' //滚动滑块
-    });
-</script>-->
 
 <!--copy right-->
 </div>
-<!--//copy right-->
+
 <!--aliPay-->
 <script type="text/javascript">
     $(function(){
@@ -420,5 +418,7 @@
     }
 </script>
 
+<!--点赞按钮-->
+<script src="js/coach/count.js"></script>
 </body>
 </html>
