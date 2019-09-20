@@ -1,155 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>About</title>
-	<!-- for-mobile-apps -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta property="og:title" content="Vide" />
-	<meta name="keywords" content="" />
-	<style>
-		.shadow:hover{
-			-webkit-box-shadow:0px 5px 15px 0px rgba(0, 0, 0, 0.1);
-		}
-		.radis{
-			border-radius: 10px;
-		}
-		.head_img{
-			border-radius:130px;
-		}
-	</style>
+    <title>About</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta property="og:title" content="Vide"/>
+    <meta name="keywords" content=""/>
+    <style>
+        .shadow:hover {
+            -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+        }
 
-	<!--公共js头和尾-->
-	<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="/js/common/common.js"></script>
+        .radis {
+            border-radius: 10px;
+        }
 
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-    function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!-- //for-mobile-apps -->
-	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<!-- Custom Theme files -->
-	<link href="/css/style.css" rel='stylesheet' type='text/css' />
-	<!-- js -->
-	<script src="/js/jquery-1.11.1.min.js"></script>
-	<!-- //js -->
-	<!-- Custom Theme files -->
-	<!--webfont-->
-	<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!-- start-smoth-scrolling -->
-	<script type="text/javascript" src="/js/move-top.js"></script>
-	<script type="text/javascript" src="/js/easing.js"></script>
-	<script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
+        .head_img {
+            border-radius: 130px;
+        }
+    </style>
+
+    <!--公共js头和尾-->
+    <script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/js/common/common.js"></script>
+
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //for-mobile-apps -->
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom Theme files -->
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/coachList/button.css" rel='stylesheet' type='text/css'/>
+    <!-- js -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <!-- Custom Theme files -->
+    <!--webfont-->
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/js/move-top.js"></script>
+    <script type="text/javascript" src="/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
                 event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
         });
-	</script>
-	<!-- start-smoth-scrolling -->
+    </script>
+    <!-- start-smoth-scrolling -->
 
 </head>
 <body>
 <div class="page-content">
-<div class="about">
-	<div class="container">
-		<div class="col-md-2 radis">
-			<h4 class="t-button">
-				<ul style="list-style: none; text-align: center">
-					<li style="line-height: 50px"><a href="/user-order.html">我的订单</a></li>
-					<li style="line-height: 50px"><a href="/user-blog.html">我的博文</a></li>
-					<li style="line-height: 50px"><a href="/user-coachlike.html">关注教练</a></li>
-					<li style="line-height: 50px"><a href="/user-course.html">已购课程</a></li>
-					<li style="line-height: 50px"><a href="/user-course.html">成为教练</a></li>
-				</ul>
-			</h4>
-		</div>
-		<div id="blog-list" class="col-md-10" style="border-left: 1px solid gainsboro">
+    <div class="about">
+        <div class="container">
+            <div class="col-md-2 radis">
+                <h4 class="t-button">
+                    <ul style="list-style: none; text-align: center">
+                        <li style="line-height: 50px"><a href="/user-order.html">我的订单</a></li>
+                        <li style="line-height: 50px"><a href="/user-blog.html">我的博文</a></li>
+                        <li style="line-height: 50px"><a href="/user-coachlike.html">关注教练</a></li>
+                        <li style="line-height: 50px"><a href="/user-course.html">已购课程</a></li>
+                        <li style="line-height: 50px"><a href="/user-course.html">成为教练</a></li>
+                    </ul>
+                </h4>
+            </div>
+            <div class="col-md-10" style="border-left: 1px solid gainsboro">
+                <div id="blog-list" >
+                    <!--<div style="height: 550px; text-align: center; line-height: 550px; font-size: 20px;" >好像还没有发布过动态哦</div>-->
 
-			<div class="col-md-12 shadow radis" style="background-color: white; margin-bottom: 20px;">
-				<div class="col-md-9"  style="padding-top: 5%;">
-					<p>自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行</p>
-					<span style="margin-top: 4%;float: left;">点赞：100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span style="margin-top: 4%;float: left;">收藏：100</span>
-					<h3 class="t-button" style="float: right;">
-						<a href="#"><span class="label label-default">删除博文</span></a>
-					</h3>
-				</div>
-				<div class="col-md-3" style="padding-top: 10px; padding-bottom: 10px; text-align: right">
-					<img src="/images/a1.jpg" alt="" width="150px" height="150px">
-				</div>
-			</div>
-			<div class="col-md-12 shadow radis" style="background-color: white; margin-bottom: 20px;">
-				<div class="col-md-9"  style="padding-top: 5%;">
-					<p>自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行</p>
-					<span style="margin-top: 4%;float: left;">点赞：100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span style="margin-top: 4%;float: left;">收藏：100</span>
-					<h3 class="t-button" style="float: right;">
-						<a href="#"><span class="label label-default">删除博文</span></a>
-					</h3>
-				</div>
-				<div class="col-md-3" style="padding-top: 10px; padding-bottom: 10px; text-align: right">
-					<img src="/images/a1.jpg" alt="" width="150px" height="150px">
-				</div>
-			</div>
-			<div class="col-md-12 shadow radis" style="background-color: white; margin-bottom: 20px;">
-				<div class="col-md-9"  style="padding-top: 5%;">
-					<p>自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行</p>
-					<span style="margin-top: 4%;float: left;">点赞：100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span style="margin-top: 4%;float: left;">收藏：100</span>
-					<h3 class="t-button" style="float: right;">
-						<a href="#"><span class="label label-default">删除博文</span></a>
-					</h3>
-				</div>
-				<div class="col-md-3" style="padding-top: 10px; padding-bottom: 10px; text-align: right">
-					<img src="/images/a1.jpg" alt="" width="150px" height="150px">
-				</div>
-			</div>
-			<div class="col-md-12 shadow radis" style="background-color: white; margin-bottom: 20px;">
-				<div class="col-md-9"  style="padding-top: 5%;">
-					<p>自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行</p>
-					<span style="margin-top: 4%;float: left;">点赞：100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span style="margin-top: 4%;float: left;">收藏：100</span>
-					<h3 class="t-button" style="float: right;">
-						<a href="#"><span class="label label-default">删除博文</span></a>
-					</h3>
-				</div>
-				<div class="col-md-3" style="padding-top: 10px; padding-bottom: 10px; text-align: right">
-					<img src="/images/a1.jpg" alt="" width="150px" height="150px">
-				</div>
-			</div>
-			<div class="col-md-12 shadow radis" style="background-color: white; margin-bottom: 20px;">
-				<div class="col-md-9"  style="padding-top: 5%;">
-					<p>自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行</p>
-					<span style="margin-top: 4%;float: left;">点赞：100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span style="margin-top: 4%;float: left;">收藏：100</span>
-					<h3 class="t-button" style="float: right;">
-						<a href="#"><span class="label label-default">删除博文</span></a>
-					</h3>
-				</div>
-				<div class="col-md-3" style="padding-top: 10px; padding-bottom: 10px; text-align: right">
-					<img src="/images/a1.jpg" alt="" width="150px" height="150px">
-				</div>
-			</div>
+                    <!--<div class="col-md-12 shadow radis" style="background-color: white; margin-bottom: 20px;">-->
+                    <!--<div class="col-md-9"  style="padding-top: 5%;">-->
+                    <!--<p>自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行</p>-->
+                    <!--<span style="margin-top: 4%;float: left;">点赞：100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+                    <!--<span style="margin-top: 4%;float: left;">收藏：100</span>-->
+                    <!--<h3 class="t-button" style="float: right;">-->
+                    <!--<a href="#"><span class="label label-default">删除博文</span></a>-->
+                    <!--</h3>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-3" style="padding-top: 10px; padding-bottom: 10px; text-align: right">-->
+                    <!--<img src="/images/a1.jpg" alt="" width="150px" height="150px">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
 
 
-		</div>
-	</div>
-</div>
-<!--footer-top-->
-<!--copy right-->
+                <div  id="blog-button" style="text-align: center">
+                    <!--<div id="blog-button" class="col-md-10" style="border-left: 1px solid gainsboro; text-align: center">-->
+
+                    <!--<button class="corner-button" onclick="pagefunction()">-->
+                    <!--<span>GO</span>-->
+                    <!--</button>-->
+
+                    <!--<div class="col-md-12" style="font-size: 30px; text-align: center; background-color: white">-->
+                    <!--no more-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <!--footer-top-->
+    <!--copy right-->
 </div>
 <!-- smooth scrolling -->
 <script type="text/javascript">
-    $(document).ready(function() {
-            var defaults = {
+    $(document).ready(function () {
+        var defaults = {
             containerID: 'toTop', // fading element id
             containerHoverID: 'toTopHover', // fading element hover id
             scrollSpeed: 1200,
             easingType: 'linear'
-            };
-        $().UItoTop({ easingType: 'easeOutQuart' });
+        };
+        $().UItoTop({easingType: 'easeOutQuart'});
     });
 </script>
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>

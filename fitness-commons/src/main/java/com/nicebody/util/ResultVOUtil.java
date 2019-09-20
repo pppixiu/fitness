@@ -4,11 +4,12 @@ package com.nicebody.util;
 import com.nicebody.enums.UserCenterInfoEnum;
 import com.nicebody.vo.ResultVO;
 
-/**
- * @Author: Selune
- * @Date: 5/14/19 3:57 PM
- */
 
+/**
+ * @ClassName UserController
+ * @Author sensu
+ * @Date 2019/9/19 9:54
+ **/
 public class ResultVOUtil {
 
     public static ResultVO success(Object object) {
@@ -36,4 +37,5 @@ public class ResultVOUtil {
         resultVO.setMsg(userCenterInfoEnum.getStateInfo());
         return resultVO;
     }
+
 }
