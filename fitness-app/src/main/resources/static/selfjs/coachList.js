@@ -5,7 +5,6 @@ var sortId = 0;
 var coachName = 'empty';
 var tagList;
 var goCount = 0;
-var List1;
 
 /**
  * 初始化
@@ -58,6 +57,9 @@ function namefunction() {
     getcoachlist();
 }
 
+/**
+ * 获取页面值
+ */
 function pagefunction() {
     goCount += 8;
     rowIndex = goCount;
@@ -100,6 +102,11 @@ function getcoachlist() {
         function (data) {
             if (data.code == "0") {
                 var coachList = data.data;
+              /*  if(nextCoach == ""){
+                    nextCoach = coachList;
+                }else{
+                    $.extend(true,coachList,nextCoach);
+                }*/
                 var html = '';
                 coachList
                     .map(function (item, index) {

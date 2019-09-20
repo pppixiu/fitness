@@ -37,6 +37,7 @@ public class CoachController {
 
     /**
      * 多条件查询教练信息
+     *
      * @param tagId
      * @param rowIndex
      * @param sortId
@@ -44,23 +45,24 @@ public class CoachController {
      * @return
      */
     @GetMapping
-    public ResultVO sortCoachList(@RequestParam(name="tagId", defaultValue="0") Integer tagId,
-                                  @RequestParam(name="rowIndex", defaultValue="0") Integer rowIndex,
-                                  @RequestParam(name="sortId", defaultValue="0") Integer sortId,
-                                  @RequestParam(name="coachName", defaultValue = "empty") String coachName){
+    public ResultVO sortCoachList(@RequestParam(name = "tagId", defaultValue = "0") Integer tagId,
+                                  @RequestParam(name = "rowIndex", defaultValue = "0") Integer rowIndex,
+                                  @RequestParam(name = "sortId", defaultValue = "0") Integer sortId,
+                                  @RequestParam(name = "coachName", defaultValue = "empty") String coachName) {
+        rowIndex += 8;
+
         //存储查找教练信息
         CoachInfo coachCondition = new CoachInfo();
         coachCondition.setTagId(tagId);
         coachCondition.setCoachName(coachName);
         //将转换sortId
         String sortValue = OrderByUtil.coachConvent2String(sortId);
-        //查询所有教练信息
-        List<CoachInfo> coachInfoList = coachService.getCoachList(rowIndex,8,coachCondition,sortValue);
+        List<CoachInfo> coachInfoList = coachService.getCoachList(0, rowIndex, coachCondition, sortValue);
         List<CoachVO> coachVOList = new ArrayList<>();
         //填值
-        for(CoachInfo coachInfo : coachInfoList) {
+        for (CoachInfo coachInfo : coachInfoList) {
             CoachVO coachVO = new CoachVO();
-            BeanUtils.copyProperties(coachInfo,coachVO);
+            BeanUtils.copyProperties(coachInfo, coachVO);
             coachVOList.add(coachVO);
         }
         //公共方法返回
@@ -69,6 +71,7 @@ public class CoachController {
 
     /**
      * 多条件查询教练个人信息
+     *
      * @param rowIndex
      * @param pageSize
      * @param coachId
@@ -76,21 +79,21 @@ public class CoachController {
      * @return
      */
     @GetMapping(value = "/coachInfo")
-    public ResultVO getCoachInfo(@RequestParam(name="rowIndex", defaultValue="0") Integer rowIndex,
-                                 @RequestParam(name="pageSize", defaultValue="2") Integer pageSize,
-                                 @RequestParam(name="coachId",defaultValue = "1") Integer coachId,
-                                 @RequestParam(name="userId",defaultValue = "1") Integer userId){
+    public ResultVO getCoachInfo(@RequestParam(name = "rowIndex", defaultValue = "0") Integer rowIndex,
+                                 @RequestParam(name = "pageSize", defaultValue = "2") Integer pageSize,
+                                 @RequestParam(name = "coachId", defaultValue = "1") Integer coachId,
+                                 @RequestParam(name = "userId", defaultValue = "1") Integer userId) {
         Blog userCondition = new Blog();
         userCondition.setUserId(userId);
 
         //查找该id的教练\图片\课程\博文信息
-        List<CoachInfo> coachInfoList = coachService.getCoachInfo(rowIndex,pageSize,0,coachId);
-        List<CoachImage> coachImageList = coachService.getImageList(rowIndex,pageSize, coachId);
-        List<Blog> userBlogList = BlogService.getUserBlogByUserIdOrContentLike(rowIndex,pageSize,userCondition);
+        List<CoachInfo> coachInfoList = coachService.getCoachInfo(rowIndex, pageSize, 0, coachId);
+        List<CoachImage> coachImageList = coachService.getImageList(rowIndex, pageSize, coachId);
+        List<Blog> userBlogList = BlogService.getUserBlogByUserIdOrContentLike(rowIndex, pageSize, userCondition);
         //List<Course> courseList = courseService.getCourseList(rowIndex, pageSize, coachId);
         List<CoachInfoVO> coachInfoVOList = new ArrayList<>();
         //填值
-        for(CoachInfo coachInfo : coachInfoList){
+        for (CoachInfo coachInfo : coachInfoList) {
             CoachInfoVO coachInfoVO = new CoachInfoVO();
             BeanUtils.copyProperties(coachInfo, coachInfoVO);
             coachInfoVO.setBlogs(userBlogList);
@@ -104,7 +107,7 @@ public class CoachController {
     }
 
     @GetMapping("/tag")
-    public ResultVO getCoachTag(){
+    public ResultVO getCoachTag() {
         List<Tag> tagList = coachService.getTag();
         return ResultVOUtil.success(tagList);
     }
