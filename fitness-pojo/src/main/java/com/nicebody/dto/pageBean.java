@@ -1,8 +1,9 @@
 package com.nicebody.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class pageBean<T> {
+public class PageBean<T> extends ArrayList<T>{
     private int currPage;//当前页
     private int pageSize;//每页显示的记录数
     private int totalCount;//总记录数

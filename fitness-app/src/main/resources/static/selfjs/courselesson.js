@@ -39,5 +39,5 @@ $(function () {
     }
 
 
-    getcourselist()
+    getcourselesson();
 });
