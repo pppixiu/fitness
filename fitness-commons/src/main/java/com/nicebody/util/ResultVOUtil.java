@@ -1,6 +1,7 @@
 package com.nicebody.util;
 
 
+import com.nicebody.enums.UserCenterInfoEnum;
 import com.nicebody.vo.ResultVO;
 
 /**
@@ -26,6 +27,13 @@ public class ResultVOUtil {
         ResultVO resultVO = new ResultVO();
         resultVO.setCode(code);
         resultVO.setMsg(message);
+        return resultVO;
+    }
+
+    public static ResultVO none(UserCenterInfoEnum userCenterInfoEnum){
+        ResultVO resultVO = new ResultVO();
+        resultVO.setCode(userCenterInfoEnum.getState());
+        resultVO.setMsg(userCenterInfoEnum.getStateInfo());
         return resultVO;
     }
 }
