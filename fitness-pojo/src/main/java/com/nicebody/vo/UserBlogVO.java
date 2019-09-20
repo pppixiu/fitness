@@ -1,5 +1,6 @@
 package com.nicebody.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nicebody.pojo.UserProfile;
 
@@ -20,6 +21,7 @@ public class UserBlogVO {
     @JsonProperty("imageUrl")
     private String imageUrl;
     @JsonProperty("userProfile")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private UserProfile userProfile;
 
     public String getBlogContent() {

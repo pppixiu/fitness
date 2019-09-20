@@ -15,7 +15,7 @@ public class UserAdminController {
 
     @RequestMapping("selfblog")
     public String userBlog(){
-        return "course";
+        return "userblog";
     }
 
     @RequestMapping("selfcoach")

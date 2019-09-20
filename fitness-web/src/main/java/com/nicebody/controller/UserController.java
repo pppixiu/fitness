@@ -40,7 +40,7 @@ public class UserController {
         //权限管理改为session
         //TODO 权限管理
         Blog userBlogCondition = new Blog();
-        userBlogCondition.setUserId(1);
+        userBlogCondition.setUserId(6);
         List<UserBlogVO> blogVOList = new ArrayList<>();
         //取出blog集合
         UserBlogExecution userBlogExecution = userCenterService.getUserBlogByUserIdOrContentLike(pageIndex, pageSize, userBlogCondition);
@@ -49,6 +49,8 @@ public class UserController {
                 UserBlogVO userBlogVO = new UserBlogVO();
                 BeanUtils.copyProperties(userBlog, userBlogVO);
                 userBlogVO.setImageUrl(userBlog.getUserBlogImage().getImageUrl());
+                //不对外显示用户信息
+                userBlogVO.setUserProfile(null);
                 blogVOList.add(userBlogVO);
             }
             return ResultVOUtil.success(blogVOList);
