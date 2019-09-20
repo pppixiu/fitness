@@ -44,6 +44,7 @@
     <!--或者查询全部博客-->
     <select id="queryUserBlogByUserIdOrContentLike" resultMap="userBlog">
         SELECT
+        ub.blog_id,
         ub.view_count,
         ub.like_count,
         ub.blog_content,

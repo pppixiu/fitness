@@ -164,7 +164,6 @@
             and
             uc.user_id = u.user_id
         </where>
-        LIMIT #{rowIndex}, #{pageSize}
     </select>
 
 </mapper>

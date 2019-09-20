@@ -12,6 +12,9 @@ import java.math.BigDecimal;
  * @Date 2019/9/19 10:08
  **/
 public class UserBlogVO {
+    @JsonProperty("blogId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer blogId;
     @JsonProperty("blogContent")
     private String blogContent;
     @JsonProperty("likeCount")
@@ -23,6 +26,14 @@ public class UserBlogVO {
     @JsonProperty("userProfile")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private UserProfile userProfile;
+
+    public Integer getBlogId() {
+        return blogId;
+    }
+
+    public void setBlogId(Integer blogId) {
+        this.blogId = blogId;
+    }
 
     public String getBlogContent() {
         return blogContent;
