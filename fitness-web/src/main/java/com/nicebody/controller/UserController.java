@@ -58,7 +58,7 @@ public class UserController {
         return ResultVOUtil.none(UserCenterInfoEnum.ERROR);
     }
 
-    @GetMapping("/courseList")
+    @GetMapping("/courselist")
     public ResultVO getCourseList() {
         //TODO 权限管理
         int userId = 1;
