@@ -15,6 +15,23 @@ public class UserAdminController {
 
     @RequestMapping("selfblog")
     public String userBlog(){
-        return "userblog";
+        return "course";
     }
+
+    @RequestMapping("selfcoach")
+    public String userCoach(){
+        return "usercoachlike";
+    }
+
+    @RequestMapping("selfcourse")
+    public String userCourse(){
+        return "usercourses";
+    }
+
+    @RequestMapping("selforder")
+    public String userOrder(){
+        return "userorder";
+    }
+
+
 }

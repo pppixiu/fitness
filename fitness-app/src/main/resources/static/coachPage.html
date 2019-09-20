@@ -92,6 +92,9 @@
 
     <!--点赞-->
     <link href="css/coach/count.css" rel='stylesheet' type='text/css' />
+
+    <!--数据-->
+    <script src="/selfjs/coachPage.js"></script>
 </head>
 <body>
 <!--导航-->
@@ -100,10 +103,8 @@
 <!--头部-->
 <div style="width: 100%;height: 820px;overflow: hidden; border-bottom: black;border-bottom-width: 2px;">
     <div class="col-lg-5 " style="text-align: center; padding: 140px;">
-        <span style="margin-bottom:100px;"><a style="color: #666; font-size: 7rem; letter-spacing: -0.3rem; line-height: 5rem;font-weight: bolder;">Coach Page</a></span><br><br><br><br>
-        <span style="margin-top: 100px;"><a style="font-size: 2rem; color: #999999;font-family: '等线 Light';">
-        Welcome to defy, a free web template from ZyPOP.
-        This template is completely free to use permitting a link remains back to ZyPOP.</a></span><br><br>
+        <span style="margin-bottom:100px;"><a id="coach-name" style="color: #666; font-size: 7rem; letter-spacing: -0.3rem; line-height: 5rem;font-weight: bolder;"></a></span><br><br><br><br>
+        <span style="margin-top: 100px;"><a id="coach-desc" style="font-size: 2rem; color: #999999;font-family: '等线 Light';"></a></span><br><br>
 
         <h1 class="t-button col-lg-7" >
             <a href="#" href="javascript:void(0)" class="click_pop" style="display: inline-block" >
@@ -112,7 +113,7 @@
 
         <div class="count col-lg-5" style="padding-top: 35px; padding-right: 50px;">
             <div class="three"></div>
-            <a>9982</a>
+            <a id="coach-count"></a>
         </div>
 
         <hr style="width:80%;margin:0 auto;border: 0;height: 0;border-top: 2px solid rgba(0, 0, 0, 0.1);border-bottom: 1px solid rgba(255, 255, 255, 0.3);">

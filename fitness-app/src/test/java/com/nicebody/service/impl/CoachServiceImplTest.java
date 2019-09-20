@@ -40,8 +40,8 @@ public class CoachServiceImplTest {
     @Test
     public void getCoachInfoTest(){
         CoachInfo coachInfo = new CoachInfo();
-        List<CoachInfo> coachInfoList = coachService.getCoachInfo(0,1);
-        List<CoachInfo> coachInfoList1 = coachService.getCoachInfo(1,0);
+        List<CoachInfo> coachInfoList = coachService.getCoachInfo(0,2,0,1);
+        List<CoachInfo> coachInfoList1 = coachService.getCoachInfo(0,2,1,0);
         Assert.assertEquals(1,coachInfoList.size());
         Assert.assertEquals(2,coachInfoList1.size());
     }
@@ -50,7 +50,7 @@ public class CoachServiceImplTest {
     @Test
     public void getImageListTest(){
         CoachImage coachImage = new CoachImage();
-        List<CoachImage> coachImages = coachService.getImageList(1);
+        List<CoachImage> coachImages = coachService.getImageList(0,2,1);
         Assert.assertEquals(2,coachImages.size());
     }
 }

@@ -1,8 +1,9 @@
 package com.nicebody.controller;
 
 
-import com.nicebody.pojo.Blog;
-import com.nicebody.service.BlogService;
+import com.nicebody.pojo.UserBlog;
+import com.nicebody.service.UserBlogService;
+import com.nicebody.service.UserCenterService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.ResultVO;
 import com.nicebody.vo.UserBlogVO;
@@ -23,25 +24,35 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private BlogService userBlogService;
+    private UserCenterService userCenterService;
+    @Autowired
+
 
     @RequestMapping("/bloglist")
     public ResultVO getBlogList(){
         List<UserBlogVO> blogVOList = new ArrayList<>();
         //权限管理改为session
         //TODO
-        Blog userBlogCondition = new Blog();
+        UserBlog userBlogCondition = new UserBlog();
         userBlogCondition.setUserId(2);
         //取出blog集合
-        List<Blog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(0,1,userBlogCondition);
+        List<UserBlog> blogList = userCenterService.getUserBlogByUserIdOrContentLike(0,1,userBlogCondition);
         //填值
-        for(Blog userBlog : blogList){
+        for(UserBlog userBlog : blogList){
             UserBlogVO userBlogVO = new UserBlogVO();
             BeanUtils.copyProperties(userBlog, userBlogVO);
             userBlogVO.setImageUrl(userBlog.getUserBlogImage().getImageUrl());
             blogVOList.add(userBlogVO);
         }
         //通过公共方法返回
-        return ResultVOUtil.success(blogVOList);
+        return ResultVOUtil.success(null);
+    }
+
+    @RequestMapping("/courseList")
+    public ResultVO getCourseList(Integer pageSize, Integer pageNum){
+        //TODO
+
+        return ResultVOUtil.success();
+
     }
 }
