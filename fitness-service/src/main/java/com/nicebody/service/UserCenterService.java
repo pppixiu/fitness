@@ -3,7 +3,7 @@ package com.nicebody.service;
 import com.nicebody.dto.UserBlogExecution;
 import com.nicebody.dto.UserCoachExecution;
 import com.nicebody.dto.UserCourseExecution;
-import com.nicebody.pojo.UserBlog;
+import com.nicebody.pojo.Blog;
 import org.springframework.stereotype.Service;
 
 
@@ -21,7 +21,7 @@ public interface UserCenterService {
      *
      * @return
      */
-    public UserBlogExecution getUserBlogByUserIdOrContentLike(int pageIndex, int pageSize, UserBlog userBlogCondition);
+    public UserBlogExecution getUserBlogByUserIdOrContentLike(int pageIndex, int pageSize, Blog blogCondition);
 
     /**
      * 根据userId查询用户购买课程信息
@@ -37,6 +37,6 @@ public interface UserCenterService {
      * @param userId
      * @return
      */
-    public UserCoachExecution getCoachList(int userId);
+    public UserCoachExecution getCoachList(int pageIndex, int pageSize, int userId);
 
 }

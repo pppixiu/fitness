@@ -1,7 +1,7 @@
 package com.nicebody.dto;
 
 import com.nicebody.enums.UserCenterInfoEnum;
-import com.nicebody.pojo.UserBlog;
+import com.nicebody.pojo.Blog;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import java.util.List;
 public class UserBlogExecution {
     private String msg;
     private int code;
-    UserBlog userBlog;
-    List<UserBlog> userBlogList;
+    Blog blog;
+    List<Blog> blogList;
 
 
     public UserBlogExecution() {
@@ -27,17 +27,17 @@ public class UserBlogExecution {
     }
 
     /** 单体文件操作构造函数 */
-    public UserBlogExecution(UserCenterInfoEnum userCenterInfoEnum, UserBlog userBlog) {
+    public UserBlogExecution(UserCenterInfoEnum userCenterInfoEnum, Blog blog) {
         this.msg = userCenterInfoEnum.getStateInfo();
         this.code = userCenterInfoEnum.getState();
-        this.userBlog = userBlog;
+        this.blog = blog;
     }
 
     /** 群体查询构造函数 */
-    public UserBlogExecution(UserCenterInfoEnum userCenterInfoEnum, List<UserBlog> userBlogList) {
+    public UserBlogExecution(UserCenterInfoEnum userCenterInfoEnum, List<Blog> blogList) {
         this.msg = userCenterInfoEnum.getStateInfo();
         this.code = userCenterInfoEnum.getState();
-        this.userBlogList = userBlogList;
+        this.blogList = blogList;
     }
 
     public String getMsg() {
@@ -56,19 +56,19 @@ public class UserBlogExecution {
         this.code = code;
     }
 
-    public UserBlog getUserBlog() {
-        return userBlog;
+    public Blog getBlog() {
+        return blog;
     }
 
-    public void setUserBlog(UserBlog userBlog) {
-        this.userBlog = userBlog;
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 
-    public List<UserBlog> getUserBlogList() {
-        return userBlogList;
+    public List<Blog> getBlogList() {
+        return blogList;
     }
 
-    public void setUserBlogList(List<UserBlog> userBlogList) {
-        this.userBlogList = userBlogList;
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
     }
 }

@@ -6,10 +6,9 @@ import com.nicebody.dto.UserBlogExecution;
 import com.nicebody.dto.UserCoachExecution;
 import com.nicebody.dto.UserCourseExecution;
 import com.nicebody.enums.UserCenterInfoEnum;
+import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.CoachInfo;
 import com.nicebody.pojo.Course;
-import com.nicebody.pojo.UserBlog;
-import com.nicebody.service.UserBlogService;
 import com.nicebody.service.UserCenterService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.CoachVO;
@@ -36,20 +35,17 @@ public class UserController {
     @Autowired
     private UserCenterService userCenterService;
 
-    @Autowired
-
-
     @GetMapping("/bloglist")
-    public ResultVO getBlogList() {
-        List<UserBlogVO> blogVOList = new ArrayList<>();
+    public ResultVO getBlogList(int pageIndex, int pageSize) {
         //权限管理改为session
         //TODO 权限管理
-        UserBlog userBlogCondition = new UserBlog();
+        Blog userBlogCondition = new Blog();
         userBlogCondition.setUserId(1);
+        List<UserBlogVO> blogVOList = new ArrayList<>();
         //取出blog集合
-        UserBlogExecution userBlogExecution = userCenterService.getUserBlogByUserIdOrContentLike(0, 5, userBlogCondition);
+        UserBlogExecution userBlogExecution = userCenterService.getUserBlogByUserIdOrContentLike(pageIndex, pageSize, userBlogCondition);
         if (userBlogExecution.getCode() == UserCenterInfoEnum.SUCCESS.getState()) {
-            for (UserBlog userBlog : userBlogExecution.getUserBlogList()) {
+            for (Blog userBlog : userBlogExecution.getBlogList()) {
                 UserBlogVO userBlogVO = new UserBlogVO();
                 BeanUtils.copyProperties(userBlog, userBlogVO);
                 userBlogVO.setImageUrl(userBlog.getUserBlogImage().getImageUrl());
@@ -69,14 +65,14 @@ public class UserController {
         List<CourseVO> courseVOList = new ArrayList<>();
 
         UserCourseExecution userCourseExecution = userCenterService.getCourseList(userId);
-        if(userCourseExecution.getCode() == UserCenterInfoEnum.SUCCESS.getState()){
-            for(Course course : userCourseExecution.getCourseList()){
+        if (userCourseExecution.getCode() == UserCenterInfoEnum.SUCCESS.getState()) {
+            for (Course course : userCourseExecution.getCourseList()) {
                 CourseVO courseVO = new CourseVO();
                 BeanUtils.copyProperties(course, courseVO);
                 courseVOList.add(courseVO);
             }
             return ResultVOUtil.success(courseVOList);
-        }else if(userCourseExecution.getCode() == UserCenterInfoEnum.NO_INFO.getState()){
+        } else if (userCourseExecution.getCode() == UserCenterInfoEnum.NO_INFO.getState()) {
             return ResultVOUtil.none(UserCenterInfoEnum.NO_INFO);
         }
 
@@ -84,19 +80,19 @@ public class UserController {
     }
 
     @GetMapping("/coachlist")
-    public ResultVO getCoachList(){
+    public ResultVO getCoachList(int pageIndex, int pageSize) {
         //TODO 权限管理
         int userId = 1;
         List<CoachVO> coachVOList = new ArrayList<>();
-        UserCoachExecution userCoachExecution = userCenterService.getCoachList(userId);
-        if(userCoachExecution.getCode() == UserCenterInfoEnum.SUCCESS.getState()){
-            for(CoachInfo coachInfo : userCoachExecution.getCoachInfoList()){
+        UserCoachExecution userCoachExecution = userCenterService.getCoachList(pageIndex, pageSize, userId);
+        if (userCoachExecution.getCode() == UserCenterInfoEnum.SUCCESS.getState()) {
+            for (CoachInfo coachInfo : userCoachExecution.getCoachInfoList()) {
                 CoachVO coachVO = new CoachVO();
                 BeanUtils.copyProperties(coachInfo, coachVO);
                 coachVOList.add(coachVO);
             }
             return ResultVOUtil.success(coachVOList);
-        }else if(userCoachExecution.getCode() == UserCenterInfoEnum.NO_INFO.getState()){
+        } else if (userCoachExecution.getCode() == UserCenterInfoEnum.NO_INFO.getState()) {
             return ResultVOUtil.none(UserCenterInfoEnum.NO_INFO);
         }
         return ResultVOUtil.none(UserCenterInfoEnum.ERROR);
