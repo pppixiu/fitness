@@ -1,8 +1,7 @@
 package com.nicebody.controller;
 
-import com.nicebody.pojo.Course;
-import com.nicebody.pojo.UserBlog;
-import com.nicebody.service.UserBlogService;
+import com.nicebody.pojo.Blog;
+import com.nicebody.service.BlogService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.ResultVO;
 import com.nicebody.vo.UserBlogVO;
@@ -25,10 +24,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/blog")
-public class UserBlogController {
+public class BlogController {
 
     @Autowired
-    private UserBlogService userBlogService;
+    private BlogService userBlogService;
 
     /**
      *  按博客ID查询博客信息
@@ -36,12 +35,32 @@ public class UserBlogController {
      * @return
      */
     @RequestMapping("/getuserblogbyblogid")
-    public Map<String, Object> getUserBlogByBlogId(int blogId){
-        Map<String, Object> map = new HashMap<>();
-        UserBlog userBlog = userBlogService.getUserBlogByBlogId(blogId);
-        map.put("success", true);
-        map.put("userBlog", userBlog);
-        return map;
+    public ResultVO getUserBlogByBlogId(int blogId){
+        //取出blog集合
+        Blog blogList = userBlogService.getUserBlogByBlogId(blogId);
+        return ResultVOUtil.success(blogList);
+    }
+
+    /**
+     *  查询用户博客总浏览数
+     * @param userBlogCondition
+     * @return
+     */
+    @RequestMapping("/getviewcount")
+    public ResultVO getViewCount(Blog userBlogCondition){
+        int viewCount = userBlogService.getViewCount(userBlogCondition);
+        return ResultVOUtil.success(viewCount);
+    }
+
+    /**
+     *  查询用户博客总点赞数
+     * @param userBlogCondition
+     * @return
+     */
+    @RequestMapping("/getlikecount")
+    public ResultVO getLikeCount(Blog userBlogCondition){
+        int likeCount = userBlogService.getLikeCount(userBlogCondition);
+        return ResultVOUtil.success(likeCount);
     }
 
     /**
@@ -54,13 +73,13 @@ public class UserBlogController {
     @RequestMapping("/getuserblogbyuseridorcontentlike")
     public ResultVO getUserBlogByUserIdOrContentLike(int rowIndex,
                                                      int pageSize,
-                                                     UserBlog userBlogCondition){
+                                                     Blog userBlogCondition){
 
         List<UserBlogVO> blogVOList = new ArrayList<>();
         //取出blog集合
-        List<UserBlog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(rowIndex,pageSize,userBlogCondition);
+        List<Blog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(rowIndex,pageSize,userBlogCondition);
         //填值
-        for(UserBlog userBlog : blogList){
+        for(Blog userBlog : blogList){
             UserBlogVO userBlogVO = new UserBlogVO();
             BeanUtils.copyProperties(userBlog, userBlogVO);
             userBlogVO.setImageUrl(userBlog.getUserBlogImage().getImageUrl());
@@ -78,7 +97,7 @@ public class UserBlogController {
      * @return
      */
     @RequestMapping("/adduserblog")
-    public Map<String,Object> addUserBlog(UserBlog userBlog){
+    public Map<String,Object> addUserBlog(Blog userBlog){
         Map<String,Object> map = new HashMap<>();
         int count = userBlogService.addUserBlog(userBlog);
         map.put("success",true);

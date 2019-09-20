@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  *  用户博客图片
  */
-public class UserBlogImage {
+public class BlogImage {
     /** 图片ID */
     private Integer imageId;
     /** 博客ID */

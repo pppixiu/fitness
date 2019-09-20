@@ -1,8 +1,8 @@
 package com.nicebody.controller;
 
 
-import com.nicebody.pojo.UserBlog;
-import com.nicebody.service.UserBlogService;
+import com.nicebody.pojo.Blog;
+import com.nicebody.service.BlogService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.ResultVO;
 import com.nicebody.vo.UserBlogVO;
@@ -23,19 +23,19 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserBlogService userBlogService;
+    private BlogService userBlogService;
 
     @RequestMapping("/bloglist")
     public ResultVO getBlogList(){
         List<UserBlogVO> blogVOList = new ArrayList<>();
         //权限管理改为session
         //TODO
-        UserBlog userBlogCondition = new UserBlog();
+        Blog userBlogCondition = new Blog();
         userBlogCondition.setUserId(2);
         //取出blog集合
-        List<UserBlog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(0,1,userBlogCondition);
+        List<Blog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(0,1,userBlogCondition);
         //填值
-        for(UserBlog userBlog : blogList){
+        for(Blog userBlog : blogList){
             UserBlogVO userBlogVO = new UserBlogVO();
             BeanUtils.copyProperties(userBlog, userBlogVO);
             userBlogVO.setImageUrl(userBlog.getUserBlogImage().getImageUrl());

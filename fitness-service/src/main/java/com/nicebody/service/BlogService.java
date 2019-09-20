@@ -1,6 +1,6 @@
 package com.nicebody.service;
 
-import com.nicebody.pojo.UserBlog;
+import com.nicebody.pojo.Blog;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -11,13 +11,25 @@ import java.util.List;
  *
  */
 
-public interface UserBlogService {
+public interface BlogService {
 
     /**
      *  按博客ID查询用户博客
      * @return
      */
-    public UserBlog getUserBlogByBlogId(int blogId);
+    public Blog getUserBlogByBlogId(int blogId);
+
+    /**
+     *  查询用户博客总浏览人数
+     * @param
+     * @return
+     */
+    public int getViewCount(@Param("userBlogCondition") Blog userBlogCondition);
+
+    /**
+     *  查询用户博客点赞总数
+     */
+    public int getLikeCount(@Param("userBlogCondition") Blog userBlogCondition);
 
     /**
      *  通过用户Id查找用户博客
@@ -25,16 +37,16 @@ public interface UserBlogService {
      *  或者查询全部博客
      * @return
      */
-    public List<UserBlog> getUserBlogByUserIdOrContentLike(@Param("rowIndex") int rowIndex,
-                                                           @Param("pageSize") int pageSize,
-                                                           @Param("userBlogCondition") UserBlog userBlogCondition);
+    public List<Blog> getUserBlogByUserIdOrContentLike(@Param("rowIndex") int rowIndex,
+                                                       @Param("pageSize") int pageSize,
+                                                       @Param("userBlogCondition") Blog userBlogCondition);
 
     /**
      *  用户添加博客
      * @param userBlog
      * @return
      */
-    public int addUserBlog(UserBlog userBlog);
+    public int addUserBlog(Blog userBlog);
 
     /**
      *  按照博客ID和用户ID删除博客

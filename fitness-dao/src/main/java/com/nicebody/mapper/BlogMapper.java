@@ -1,6 +1,6 @@
 package com.nicebody.mapper;
 
-import com.nicebody.pojo.UserBlog;
+import com.nicebody.pojo.Blog;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -15,14 +15,28 @@ import java.util.List;
  * 用户博客
  */
 @Repository
-public interface UserBlogMapper {
+public interface BlogMapper {
 
     /**
      * 按博客ID查询用户博客
      *
      * @return
      */
-    UserBlog queryUserBlogByBlogId(int blogId);
+    Blog queryUserBlogByBlogId(int blogId);
+
+    /**
+     *  查询浏览人数
+     * @param
+     * @return
+     */
+    int queryViewCount(@Param("userBlogCondition") Blog userBlogCondition);
+
+    /**
+     *  查询点赞次数
+     * @param
+     * @return
+     */
+    int queryLikeCount(@Param("userBlogCondition") Blog userBlogCondition);
 
     /**
      *  通过用户Id查找用户博客
@@ -31,16 +45,16 @@ public interface UserBlogMapper {
      * @param userBlogCondition
      * @return
      */
-    List<UserBlog> queryUserBlogByUserIdOrContentLike(@Param("rowIndex") int rowIndex,
-                                                      @Param("pageSize") int pageSize,
-                                                      @Param("userBlogCondition") UserBlog userBlogCondition);
+    List<Blog> queryUserBlogByUserIdOrContentLike(@Param("rowIndex") int rowIndex,
+                                                  @Param("pageSize") int pageSize,
+                                                  @Param("userBlogCondition") Blog userBlogCondition);
     /**
      * 用户添加博客
      *
      * @param userBlog
      * @return
      */
-    int insertUserBlog(UserBlog userBlog);
+    int insertUserBlog(Blog userBlog);
 
     /**
      * 按照博客ID和用户ID删除博客

@@ -1,16 +1,13 @@
 package com.nicebody.dao;
-import com.nicebody.mapper.UserBlogMapper;
-import com.nicebody.pojo.UserBlog;
-import com.nicebody.util.OrderByUtil;
+import com.nicebody.mapper.BlogMapper;
+import com.nicebody.pojo.Blog;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +18,7 @@ import java.util.List;
 @SpringBootTest
 public class UserBlogMapperTest {
     @Autowired
-    private UserBlogMapper userBlogMapper;
+    private BlogMapper userBlogMapper;
 
     /**
      *  测试按用户id查询该用户博客
@@ -37,13 +34,24 @@ public class UserBlogMapperTest {
      *  测试按用户Id查询用户博客或根据博客内容模糊查询博客
      */
     @Test
+    @Ignore
     public void testgetUserBlogByUserIdOrContentLike() {
-        UserBlog userBlogCondition = new UserBlog();
+        Blog userBlogCondition = new Blog();
         // userBlogCondition.setUserId(2);
         //userBlogCondition.setBlogContent("添");
-        List<UserBlog> userBlogList = userBlogMapper.queryUserBlogByUserIdOrContentLike(0,10,userBlogCondition);
+        List<Blog> userBlogList = userBlogMapper.queryUserBlogByUserIdOrContentLike(0,10,userBlogCondition);
         System.out.println(userBlogList.size());
     }
+
+//    @Test
+//    public void testgetViewAndLikeCount(){
+//        Blog userBlogCondition = new Blog();
+//        userBlogCondition.setUserId(5);
+//        List<Integer> total = userBlogMapper.queryViewAndLikeCount(userBlogCondition);
+//        for (int i = 0; i < total.size(); i++) {
+//            System.out.println(total.get(i));
+//        }
+//    }
 //
 //    /**
 //     *  测试查询所有博客

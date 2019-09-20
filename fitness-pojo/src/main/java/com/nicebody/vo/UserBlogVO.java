@@ -1,6 +1,7 @@
 package com.nicebody.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.nicebody.pojo.UserProfile;
 
 import java.math.BigDecimal;
 
@@ -18,6 +19,8 @@ public class UserBlogVO {
     private Integer viewCount;
     @JsonProperty("imageUrl")
     private String imageUrl;
+    @JsonProperty("userProfile")
+    private UserProfile userProfile;
 
     public String getBlogContent() {
         return blogContent;
@@ -49,5 +52,13 @@ public class UserBlogVO {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 }

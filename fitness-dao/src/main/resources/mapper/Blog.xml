@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nicebody.mapper.UserBlogMapper">
-        <resultMap id="userBlog" type="userblog" >
+<mapper namespace="com.nicebody.mapper.BlogMapper">
+        <resultMap id="userBlog" type="blog" >
             <id column="blog_id" property="blogId"/>
             <result column="user_id" property="userId"/>
             <result column="blog_content" property="blogContent"/>
@@ -13,15 +13,27 @@
             <result column="update_time" property="updateTime"/>
 
            <association property="userBlogImage" column="image_id"
-                        javaType="userBlogImage">
+                        javaType="BlogImage">
             <id column="image_id" property="imageId"/>
             <result column="image_url" property="imageUrl"/>
             <result column="blog_id" property="blogId"/>
+            <result column="create_time" property="createTime"/>
+            <result column="update_time" property="updateTime"/>
            </association>
 
             <association property="userProfile" column="user_id"
                          javaType="userProfile">
                 <id column="user_id" property="userId"/>
+                <result column="user_name" property="userName"/>
+                <result column="user_gender" property="userGender"/>
+                <result column="is_coach" property="isCoach"/>
+                <result column="is_active" property="isActive"/>
+                <result column="user_integral" property="userIntegral"/>
+                <result column="user_height" property="userHeight"/>
+                <result column="user_weight" property="userWeight"/>
+                <result column="user_birthday" property="userBirthday"/>
+                <result column="create_time" property="createTime"/>
+                <result column="update_time" property="updateTime"/>
                 <result column="user_image_url" property="userImageUrl"/>
             </association>
 
@@ -75,6 +87,27 @@
         LIMIT #{rowIndex}, #{pageSize}
     </select>
 
+    <!--按用户id查询用户博客浏览总数-->
+    <select id="queryViewCount" resultType="int">
+        SELECT
+        sum(ub.view_count)
+        FROM
+        tb_user_blog ub
+        <where>
+            ub.user_id = #{userBlogCondition.userId}
+        </where>
+    </select>
+
+    <!--按用户id查询用户博客点赞总数-->
+    <select id="queryLikeCount" resultType="int">
+        SELECT
+        sum(ub.like_count)
+        FROM
+        tb_user_blog ub
+        <where>
+            ub.user_id = #{userBlogCondition.userId}
+        </where>
+    </select>
 
     <!--按博客ID查询用户博客-->
     <select id="queryUserBlogByBlogId" resultMap="userBlog">

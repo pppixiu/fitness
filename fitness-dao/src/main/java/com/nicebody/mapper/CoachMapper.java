@@ -2,7 +2,6 @@ package com.nicebody.mapper;
 
 import com.nicebody.pojo.CoachImage;
 import com.nicebody.pojo.CoachInfo;
-import com.nicebody.pojo.UserBlog;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

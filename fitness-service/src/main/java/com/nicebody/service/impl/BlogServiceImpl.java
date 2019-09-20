@@ -1,8 +1,8 @@
 package com.nicebody.service.impl;
 
-import com.nicebody.mapper.UserBlogMapper;
-import com.nicebody.pojo.UserBlog;
-import com.nicebody.service.UserBlogService;
+import com.nicebody.mapper.BlogMapper;
+import com.nicebody.pojo.Blog;
+import com.nicebody.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,23 +16,34 @@ import java.util.List;
  */
 
 @Service
-public class UserBlogServiceImpl implements UserBlogService {
+public class BlogServiceImpl implements BlogService {
 
     @Autowired
-    private UserBlogMapper userBlogMapper;
+    private BlogMapper userBlogMapper;
 
     @Override
-    public UserBlog getUserBlogByBlogId(int blogId) {
+    public Blog getUserBlogByBlogId(int blogId) {
         return userBlogMapper.queryUserBlogByBlogId(blogId);
     }
 
     @Override
-    public List<UserBlog> getUserBlogByUserIdOrContentLike(int rowIndex, int pageSize, UserBlog userBlogCondition) {
+    public int getViewCount(Blog userBlogCondition) {
+        return userBlogMapper.queryViewCount(userBlogCondition);
+    }
+
+    @Override
+    public int getLikeCount(Blog userBlogCondition) {
+        return userBlogMapper.queryLikeCount(userBlogCondition);
+    }
+
+
+    @Override
+    public List<Blog> getUserBlogByUserIdOrContentLike(int rowIndex, int pageSize, Blog userBlogCondition) {
         return userBlogMapper.queryUserBlogByUserIdOrContentLike(rowIndex,pageSize,userBlogCondition);
     }
 
     @Override
-    public int addUserBlog(UserBlog userBlog) {
+    public int addUserBlog(Blog userBlog) {
         return userBlogMapper.insertUserBlog(userBlog);
     }
 

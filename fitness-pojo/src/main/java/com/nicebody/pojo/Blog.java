@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  *  用户博客
  */
-public class UserBlog {
+public class Blog {
     /** 博客ID */
     private Integer blogId;
     /** 博客内容 */
@@ -25,7 +25,7 @@ public class UserBlog {
     private Date updateTime;
     /** 博客标题图 */
     //TODO
-    private UserBlogImage userBlogImage;
+    private BlogImage userBlogImage;
     /** 用户信息 */
     private UserProfile userProfile;
     /** 博客用户ID */
@@ -87,11 +87,11 @@ public class UserBlog {
         this.userId = userId;
     }
 
-    public UserBlogImage getUserBlogImage() {
+    public BlogImage getUserBlogImage() {
         return userBlogImage;
     }
 
-    public void setUserBlogImage(UserBlogImage userBlogImage) {
+    public void setUserBlogImage(BlogImage userBlogImage) {
         this.userBlogImage = userBlogImage;
     }
 
