@@ -37,7 +37,6 @@
         });
 	</script>
 	<!-- start-smoth-scrolling -->
-
 	<style>
 		body{
 			background-color: #fff;
@@ -258,9 +257,12 @@
 	</div>
 </div>
 
+<!--未找到教练-->
+<a id="not-find" style="position: absolute; left: 10%; top: 30%;font-size: 60px;color: #999999;"></a>
+
 <!--coachList-->
-<div class="box" style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;" href="coachPage.html?coachId=1">
-		<div id="coach-list" href="coachPage.html?coachId=1">
+<div class="box" style="width: 100%; min-height: 800px; text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;" href="coachPage.html?coachId=1">
+	<div id="coach-list" href="coachPage.html?coachId=1">
 			<div style="width: 300px;height:auto;">
 				<div class="card card-product">
 					<div class="card-image">
@@ -657,14 +659,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div>
-			<button class="corner-button" style="left: -155%" onclick="pagefunction()">
-				<span>GO</span>
-			</button>
-		</div>
-	    <!--copy right-->
-	    <div class="copyright" style="position: absolute;bottom: 0; left: 0;right: 0;" >
+	</div>
+	<!--copy right-->
+	<div class="copyright" style="position: absolute; bottom: 0; left: 0;right: 0;" >
 		<div class="container">
 			<div class="copy-left">
 				<p>Copyright &copy; 2019.Company name NICEBODY's healthy website <a href="http://www.cssmoban.com/"
@@ -684,8 +681,12 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-    </div>
 </div>
+<!--<div>
+	<button class="corner-button" style="position: fixed;bottom: 100px;right: 0px;" onclick="pagefunction()" >
+		<span>GO</span>
+	</button>
+</div>-->
 
 <!-- smooth scrolling -->
 <script type="text/javascript">
@@ -702,6 +703,14 @@
 		});
 	</script>
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!--<script type="text/javascript" src="/js/coach/jquery.lazyload.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("img").lazyload({
+			effect : "fadeIn"
+		});
+	});
+</script>-->
 
 <!-- for bootstrap working -->
 <script src="js/bootstrap.js"></script>

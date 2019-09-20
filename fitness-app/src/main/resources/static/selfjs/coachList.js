@@ -19,6 +19,12 @@ $(function () {
  * @param e
  */
 function tagsfunction(e) {
+    var coachOutCount = $(".coach-card").length;
+    if(coachOutCount > 0){
+        goCount = 0;
+        rowIndex = 0;
+    }
+
     if (e == "9"){
         tagId = 0;
     } else {
@@ -50,6 +56,11 @@ function countfunction(e) {
  * 获得模糊查询值
  */
 function namefunction() {
+    var coachOutCount = $(".coach-card").length;
+    if(coachOutCount > 0){
+        goCount = 0;
+        rowIndex = 0;
+    }
     coachName = document.getElementById('dim-name').value;
     if(coachName == ""){
         coachName = "empty";
@@ -61,8 +72,8 @@ function namefunction() {
  * 获取页面值
  */
 function pagefunction() {
-    goCount += 8;
-    rowIndex = goCount;
+    goCount += 1;
+    rowIndex = 8 * goCount;
     getcoachlist();
 }
 
@@ -102,15 +113,15 @@ function getcoachlist() {
         function (data) {
             if (data.code == "0") {
                 var coachList = data.data;
-              /*  if(nextCoach == ""){
-                    nextCoach = coachList;
-                }else{
-                    $.extend(true,coachList,nextCoach);
-                }*/
+                if(coachList == ""){
+                    $("#not-find").text("抱歉！没有找到相关教练");
+                }else {
+                    $("#not-find").text("");
+                }
                 var html = '';
                 coachList
                     .map(function (item, index) {
-                        html += '<div style="width: 300px;height:auto;" href="coachPage.html?coachId='
+                        html += '<div class="coach-card" style="width: 300px;height:auto;" href="coachPage.html?coachId='
                             + item.id
                             + '">'
                             + '<div class="card card-product">'
@@ -149,3 +160,13 @@ function getcoachlist() {
             }
         });
 }
+
+/**
+ * 滚动加载 小钲老弟？ 听说你很想用？？ 知道怎么用么？？？  你猜猜？？？？
+ */
+$(window).scroll(function () {
+    var srollPos = $(window).scrollTop()+0.5;    //滚动条距顶部距离(页面超出窗口的高度)
+    if (srollPos>=($(document).height()-$(window).height())) {
+        pagefunction();
+    }
+});
