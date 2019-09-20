@@ -59,6 +59,10 @@ public class CoachServiceImpl implements CoachService {
         return coachMapper.queryImageList(rowIndex,pageSize,coachId);
     }
 
+    /**
+     * 查找全部分类
+     * @return
+     */
     @Override
     public List<Tag> getTag() {
         return tagMapper.queryTag();

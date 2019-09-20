@@ -55,8 +55,16 @@ public class CoachController {
         CoachInfo coachCondition = new CoachInfo();
         coachCondition.setTagId(tagId);
         coachCondition.setCoachName(coachName);
+
         //将转换sortId
         String sortValue = OrderByUtil.coachConvent2String(sortId);
+
+        //判断是否加载全部
+        List<CoachInfo> coachSize = coachService.getCoachList(0,9999,coachCondition,sortValue);
+        if(rowIndex > coachSize.size() + 8){
+            return null;
+        }
+
         List<CoachInfo> coachInfoList = coachService.getCoachList(0, rowIndex, coachCondition, sortValue);
         List<CoachVO> coachVOList = new ArrayList<>();
         //填值
@@ -106,7 +114,11 @@ public class CoachController {
         return ResultVOUtil.success(coachInfoVOList);
     }
 
-    @GetMapping("/tag")
+    /**
+     * 查询全部分类
+     * @return
+     */
+    @GetMapping(value = "/tag")
     public ResultVO getCoachTag() {
         List<Tag> tagList = coachService.getTag();
         return ResultVOUtil.success(tagList);
