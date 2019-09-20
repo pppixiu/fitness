@@ -16,19 +16,31 @@ import java.util.List;
  **/
 public interface CourseService {
     List<Course> getCourseList(@Param("rowIndex") int rowIndex,
-                                 @Param("pageSize") int pageSize,
-                                 @Param("courseCondition") Course courseCondition,
-                                 @Param("orderByCondition") String orderByCondition);
+                                   @Param("pageSize") int pageSize,
+                                   @Param("courseCondition") Course courseCondition,
+                                   @Param("orderByCondition") String orderByCondition);
 
     /*
      * 通过CourseId查询course
      * */
-    List<Course> getCourseByCourseId(int courseId);
+    Course getCourseByCourseId(int courseId);
 
     /*
      * 通过userId查询course信息
      * */
     List<Course> getCourseByUserId(int userId);
+    //查询用户记录总数
+    public int selectCount();
+
+    /**
+     * 根据coachId查询所有课程信息
+     * @param coachId
+     * @param rowIndex
+     * @param pageSize
+     * @return
+     */
+    List<Course> getCourseByCoachId(int coachId,int rowIndex,int pageSize);
+
 
 
 

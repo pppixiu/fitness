@@ -41,8 +41,10 @@ public class CourseServiceImplTest {
     @Test
     public void getByCourseIdTest(){
         int courseId = 438;
-        List<Course> courseList = courseService.getCourseByCourseId(courseId);
-        System.out.println(courseList.size());
+        Course course = courseService.getCourseByCourseId(courseId);
+        System.out.println(course.getCourseNote());
+        System.out.println(course.getCourseLessonList().size());
+
 
     }
     @Test
@@ -52,6 +54,17 @@ public class CourseServiceImplTest {
         System.out.println(courseList.size());
 
     }
+
+    @Test
+    public void getCourseByCoachIdTest(){
+        int coachId = 1;
+        List<Course> courseList = courseService.getCourseByCoachId(coachId,1,5);
+        System.out.println(courseList.size());
+
+
+    }
+
+
 
 
 }

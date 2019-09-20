@@ -28,10 +28,10 @@ public class CourseDaoTest {
     @Ignore
     public void queryCourseListTest(){
         Course courseCondition = new Course();
-        courseCondition.setTagId(2);
-        courseCondition.setCourseLevel(0);
+        //courseCondition.setTagId(2);
+       // courseCondition.setCourseLevel(0);
         String value = OrderByUtil.convert2String(OrderByEnum.COUNT.getCode());
-        List<Course> courseList =courseMapper.queryCourseList(1, 5, courseCondition, value);
+        List<Course> courseList =courseMapper.queryCourseList(1, 5, null,value);
         Assert.assertEquals(5, courseList.size());
         System.out.println(courseList.size());
 
@@ -39,16 +39,26 @@ public class CourseDaoTest {
 
 
     @Test
+    @Ignore
+
     public void queryByCourseId(){
         int courseId = 438;
-        List<Course> courseList = courseMapper.queryCourseByCourseId(courseId);
-        System.out.println(courseList.size());
+        Course course = courseMapper.queryCourseByCourseId(courseId);
+        System.out.println(course.getCourseNote());
+        System.out.println(course.getCourseLessonList().size());
 
     }
     @Test
     public void queryByUserId(){
         int userId = 1;
         List<Course> courseList = courseMapper.queryCourseByUserId(userId);
+        System.out.println(courseList.size());
+
+    }
+    @Test
+    public void queryByCoachIdTest(){
+        int coachId = 1;
+       List<Course> courseList = courseMapper.queryCourseByCoachId(1,1,5);
         System.out.println(courseList.size());
 
     }

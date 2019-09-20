@@ -1,5 +1,6 @@
 package com.nicebody.mapper;
 
+
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.CourseLesson;
 import org.apache.ibatis.annotations.Param;
@@ -24,9 +25,23 @@ public interface CourseMapper {
      * @return
      */
     List<Course> queryCourseList(@Param("rowIndex") int rowIndex,
-                                 @Param("pageSize") int pageSize,
-                                 @Param("courseCondition") Course courseCondition,
-                                 @Param("orderByCondition") String orderByCondition);
+                                     @Param("pageSize") int pageSize,
+                                     @Param("courseCondition") Course courseCondition,
+                                     @Param("orderByCondition") String orderByCondition);
+
+
+    /**
+     * 查询总数
+     * @param rowIndex
+     * @param pageSize
+     * @param courseCondition
+     * @param orderByCondition
+     * @return
+     */
+    int selectCount(@Param("rowIndex") int rowIndex,
+                                     @Param("pageSize") int pageSize,
+                                     @Param("courseCondition") Course courseCondition,
+                                     @Param("orderByCondition") String orderByCondition);
 
 
     /**
@@ -34,7 +49,7 @@ public interface CourseMapper {
      * @param courseId
      * @return
      */
-    List<Course> queryCourseByCourseId(int courseId);
+    Course queryCourseByCourseId(int courseId);
 
     /**
      * 通过userId查询course信息
@@ -42,6 +57,18 @@ public interface CourseMapper {
      * @return
      */
     List<Course> queryCourseByUserId(int userId);
+    //查询用户记录总数
+
+    /**
+     * 根据coachId查询所有课程信息
+     * @param coachId
+     * @param rowIndex
+     * @param pageSize
+     * @return
+     */
+    List<Course> queryCourseByCoachId(int coachId,int rowIndex,int pageSize);
+
+
 
 
 

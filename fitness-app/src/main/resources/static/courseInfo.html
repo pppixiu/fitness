@@ -48,40 +48,34 @@
         <div class="w pr"style="height: 200px;max-width: 1152px;margin: 0 auto;position: relative;">
 
             <div class="hd clearfix"style=" clear: both;">
-                <h2 class="l" style="float: left;margin-top: 40px;margin-bottom: 10px;">腿部训练</h2>
+                <h2 id="course-title" class="l" style="float: left;margin-top: 40px;margin-bottom: 10px;"></h2>
             </div>
 
             <div class="statics clearfix" style="color: #fff;font-size: 0;position: relative;z-index: 3; ">
                 <div class="teacher-info l" style="float:left; position: relative;padding-left: 56px;padding-right: 60px;line-height: 12px;font-size: 12px;float: left;">
                     <a href="" target="_blank" style="text-decoration: none;">
-                        <img data-userid="320852" class="js-usercard-dialog" width="80" height="80" style="float: left;margin-left: -56px;width: 48px;height: 48px; border-radius: 100%;">
+                        <img id ="user-img" src="" data-userid="320852" class="js-usercard-dialog" width="80" height="80" style="float: left;margin-left: -56px;width: 48px;height: 48px; border-radius: 100%;">
                     </a>
                     <span class="tit" style="display: block;margin-top: 3px;line-height: 12px;font-size: 12px;">
-                        <a href="/u/320852/courses?sort=publish" target="_blank" style="font-size: 14px;line-height: 22px; font-weight: 700;color: #fff;text-decoration: none;">hyman</a>
+                        <a id="user-name" href="/u/320852/courses?sort=publish" target="_blank" style="font-size: 14px;line-height: 22px; font-weight: 700;color: #fff;text-decoration: none;"></a>
                     </span>
-                    <span class="job" style="font-size: 12px;line-height: 18px;position: relative;padding-left: 56px;padding-right: 60px;line-height: 12px;font-size: 12px;color: #fff;">高级教练</span>
+
 
                 </div>
 
                 <div class="static-item l" style="float:left; display: inline-block;position: relative; margin-right: 16px;font-size: 12px;top: 15px; color: #fff;}">
                     <span class="meta" style="padding-right: 8px;line-height: 12px;font-size: 12px;font-weight: 700;">难度</span>
-                    <span class="meta-value" style="display: inline-block;position: relative; margin-right: 16px;font-size: 12px;color: #fff;">中级</span>
+                    <span id="course-level" class="meta-value" style="display: inline-block;position: relative; margin-right: 16px;font-size: 12px;color: #fff;"></span>
                 </div>
                 <div class="static-item l" style="float:left; display: inline-block;position: relative; margin-right: 16px;font-size: 12px;top: 15px; color: #fff;}">
                     <span class="meta" style="padding-right: 8px;line-height: 12px;font-size: 12px;font-weight: 700;">时长</span>
-                    <span class="meta-value" style="display: inline-block;position: relative; margin-right: 16px;font-size: 12px;color: #fff;"> 1小时52分</span>
+                    <span id = "course-time" class="meta-value" style="display: inline-block;position: relative; margin-right: 16px;font-size: 12px;color: #fff;"></span>
                 </div>
                 <div class="static-item l"  style="float:left; display: inline-block;position: relative; margin-right: 16px;font-size: 12px;top: 15px; color: #fff;}">
                     <span class="meta" style="padding-right: 8px;line-height: 12px;font-size: 12px;font-weight: 700;">学习人数</span>
-                    <span class="meta-value js-learn-num" style="display: inline-block;position: relative; margin-right: 16px;font-size: 12px;color: #fff;">629</span>
+                    <span id="study-count" class="meta-value js-learn-num" style="display: inline-block;position: relative; margin-right: 16px;font-size: 12px;color: #fff;"></span>
                 </div>
 
-                <div class="static-item l score-btn" style="float:left; cursor: pointer;    display: inline-block;position: relative;margin-right: 16px;font-size: 12px;top: 15px;">
-                    <span class="meta" style="padding-right: 8px;line-height: 12px;font-size: 12px;font-weight: 700;">综合评分</span>
-                    <span class="meta-value" style="display: inline-block;position: relative; margin-right: 16px;font-size: 12px;color: #fff;">100</span>
-
-
-                </div>
 
 
             </div>
@@ -109,81 +103,13 @@
         <div class="content-wrap clearfix" style="padding-right: 352px;margin-bottom: 29px;overflow: visible;">
             <div class="content" style="float: left;padding-top: 36px; width: 100%;">
                 <!-- 课程简介 -->
-                <div class="course-description course-wrap" style="margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;">
-                    简介：本课程是《MyBatis-Plus入门》的延续，在之前的基础上，继续介绍MyBatis-Plus的高级功能，包括逻辑删除、自动填充、乐观锁、性能分析、多租户实现、动态表和SQL注入器等内容。理论加实践相结合的方式进行讲解，定能让你的MyBatis-Plus技能进一步提升。
+                <div id = "course-desc" class="course-description course-wrap" style="margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;">
+
                 </div>
                 <!-- 课程简介 end -->
 
                 <!-- 课程章节 -->
-                <div class="course-chapters">
-                    <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;">
-                        <!-- 章节标题 -->
-                        <h3>
-                            <a style="text-decoration: none;">第1章 概述</a>
-                        </h3>
-                        <div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">
-                            本章介绍课程的主要内容，课程涉及的表结构，以及项目的基本情况。
-                        </div>
-                        <!-- 章节标题 end -->
-                    </div>
-                    <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;">
-
-                        <!-- 章节标题 -->
-                        <h3>
-                            <a style="text-decoration: none;">第2章 逻辑删除</a>
-                        </h3>
-                        <div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">
-                            本章主要介绍MyBatis-Plus中逻辑删除的内容。
-                        </div>
-                        <!-- 章节标题 end -->
-
-                    </div>
-                    <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;">
-                        <!-- 章节标题 -->
-                        <h3>
-                            <a style="text-decoration: none;">第3章 自动填充</a>
-                        </h3>
-                        <div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">
-                            本章主要介绍MyBatis-Plus自动填充及优化的内容。
-                        </div>
-                        <!-- 章节标题 end -->
-
-                    </div>
-                    <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;">
-                        <!-- 章节标题 -->
-                        <h3>
-                            <a style="text-decoration: none;">第4章 乐观锁</a>
-                        </h3>
-                        <div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">
-                            本章介绍MyBatis-Plus乐观锁的实现。
-                        </div>
-                        <!-- 章节标题 end -->
-
-                    </div>
-                    <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;">
-                        <!-- 章节标题 -->
-                        <h3>
-                            <a style="text-decoration: none;">第5章 性能分析</a>
-                        </h3>
-                        <div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">
-                            本章主要介绍MyBatis-Plus的性能分析、参数设置和执行sql分析打印等内容。
-                        </div>
-                        <!-- 章节标题 end -->
-
-                    </div>
-                    <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;">
-                        <!-- 章节标题 -->
-                        <h3>
-                            <a style="text-decoration: none;">第6章 多租户</a>
-                        </h3>
-                        <div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">
-                            本章介绍MyBatis-Plus多租户的概念及实现。
-                        </div>
-                        <!-- 章节标题 end -->
-
-                    </div>
-
-
+                <div id = "course-lesson"class="course-chapters">
                 </div>
                 <!-- 课程章节 end -->
             </div><!--content end-->

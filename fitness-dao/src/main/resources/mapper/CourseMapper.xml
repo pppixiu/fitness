@@ -5,6 +5,7 @@
 <mapper namespace="com.nicebody.mapper.CourseMapper">
     <resultMap id="courseMap" type="course">
         <id column="course_id" property="courseId"/>
+        <result column="coach_id" property="coachId"/>
         <result column="course_title" property="courseTitle"/>
         <result column="course_desc" property="courseDesc"/>
         <result column="image_url" property="imageUrl"/>
@@ -20,13 +21,9 @@
                      javaType="userProfile">
             <id column="user_id" property="userId"/>
             <result column="user_name" property="userName"/>
+            <result column="user_image_url" property="userImageUrl"/>
         </association>
-        <association property="userCourse" column="user_id"
-                     javaType="userCourse">
-            <id column="user_id" property="userId"/>
-            <result column="course_id" property="courseId"/>
-        </association>
-        <collection property="courseLessonList" column="lesson_id"
+        <collection property="courseLessonList" column="course_id"
                      ofType="courseLesson">
             <id column="lesson_id" property="lessonId"/>
             <result column="lesson_title" property="lessonTitle"/>
@@ -65,8 +62,46 @@
         LIMIT #{rowIndex}, #{pageSize}
     </select>
 
-    <select id="queryCourseByCourseId" resultMap="courseMap">
-        SELECT l.lesson_title, l.lesson_desc,l.lesson_url,c.study_count,course_note,course_time,u.user_name,u.user_image_url
+    <resultMap id="courseLessonMap" type="course">
+        <result column="course_title" property="courseTitle"/>
+        <result column="course_desc" property="courseDesc"/>
+        <result column="image_url" property="imageUrl"/>
+        <result column="course_now_price" property="courseNowPrice"/>
+        <result column="course_pre_price" property="coursePrePrice"/>
+        <result column="course_level" property="courseLevel"/>
+        <result column="study_count" property="studyCount"/>
+        <result column="study_count" property="studyCount"/>
+        <result column="course_time" property="courseTime"/>
+        <result column="course_note" property="courseNote"/>
+        <association property="userProfile" column="user_id"
+                     javaType="userProfile">
+            <id column="user_id" property="userId"/>
+            <result column="user_name" property="userName"/>
+            <result column="user_image_url" property="userImageUrl"/>
+        </association>
+        <collection property="courseLessonList" column="course_id"
+                    ofType="courseLesson">
+            <id column="lesson_id" property="lessonId"/>
+            <result column="lesson_title" property="lessonTitle"/>
+            <result column="lesson_desc" property="lessonDesc"/>
+            <result column="lesson_url" property="lessonUrl"/>
+        </collection>
+    </resultMap>
+    <select id="queryCourseByCourseId" resultMap="courseLessonMap">
+        SELECT
+        l.lesson_title,
+        l.lesson_desc,
+        l.lesson_url,
+        c.course_title,
+        c.course_desc,
+        c.image_url,
+        c.course_now_price,
+        c.course_pre_price,
+        c.study_count,
+        c.course_note,
+        c.course_time,
+        u.user_name,
+        u.user_image_url
         FROM tb_course_lesson l,tb_coach_course c,tb_user_profile u,tb_coach_info i
         <where>
             c.course_id=#{courseId}
@@ -78,6 +113,47 @@
             u.user_id = i.user_id
         </where>
     </select>
+    <select id="queryCourseByCoachId" resultMap="courseMap">
+        SELECT
+        c.course_id,
+        c.course_title,
+        c.course_desc,
+        c.image_url,
+        c.course_now_price,
+        c.course_pre_price,
+        c.study_count,
+        c.course_note,
+        c.course_time
+        FROM tb_coach_course c
+        <where>
+            c.coach_id=#{coachId}
+        </where>
+        LIMIT #{rowIndex}, #{pageSize}
+    </select>
+    <select id="selectCount" resultType="int">
+        SELECT count(0)
+        FROM tb_coach_course c,tb_user_profile u,tb_coach_info i,tb_tag t
+        <where>
+            c.coach_id = i.coach_id
+            and
+            u.user_id = i.user_id
+            and
+            t.tag_id = c.tag_id
+            <if test="courseCondition != null
+            and courseCondition.tagId != null">
+                and t.tag_id = #{courseCondition.tagId}
+            </if>
+            <if test="courseCondition != null
+            and courseCondition.courseTitle != null">
+                and c.course_title like '%${courseCondition.courseTitle}%'
+            </if>
+            <if test="courseCondition != null
+            and courseCondition.courseLevel != null">
+                and c.course_level = #{courseCondition.courseLevel}
+            </if>
+        </where>
+
+</select>
     <select id="queryCourseByUserId" resultMap="courseMap">
         SELECT c.course_id,course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,course_time,course_note,u.user_name,u.user_image_url
         FROM tb_coach_course c,tb_user_course uc,tb_user_profile u
@@ -88,6 +164,7 @@
             and
             uc.user_id = u.user_id
         </where>
+        LIMIT #{rowIndex}, #{pageSize}
     </select>
 
 </mapper>

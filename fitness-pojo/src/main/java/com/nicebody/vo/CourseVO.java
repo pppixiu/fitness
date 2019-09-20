@@ -1,10 +1,12 @@
 package com.nicebody.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nicebody.pojo.UserProfile;
 import jdk.nashorn.internal.objects.annotations.Property;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * 课程VO
@@ -18,15 +20,57 @@ public class CourseVO {
     @JsonProperty("desc")
     private String courseDesc;
     @JsonProperty("url")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String imageUrl;
     @JsonProperty("nowprice")
     private BigDecimal courseNowPrice;
     @JsonProperty("preprice")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private BigDecimal coursePrePrice;
     @JsonProperty("level")
     private int courseLevel;
     @JsonProperty("count")
     private Long studyCount;
+    @JsonProperty("coursetime")
+    private String courseTime;
+    @JsonProperty("coursenote")
+    private String courseNote;
+    @JsonProperty("user")
+    private UserProfileVO userProfileVO;
+    @JsonProperty("courselesson")
+    private List<CourseLessonVO> courseLessonVOList;
+
+    public String getCourseTime() {
+        return courseTime;
+    }
+
+    public void setCourseTime(String courseTime) {
+        this.courseTime = courseTime;
+    }
+
+    public String getCourseNote() {
+        return courseNote;
+    }
+
+    public void setCourseNote(String courseNote) {
+        this.courseNote = courseNote;
+    }
+
+    public List<CourseLessonVO> getCourseLessonVOList() {
+        return courseLessonVOList;
+    }
+
+    public void setCourseLessonVOList(List<CourseLessonVO> courseLessonVOList) {
+        this.courseLessonVOList = courseLessonVOList;
+    }
+
+    public UserProfileVO getUserProfileVO() {
+        return userProfileVO;
+    }
+
+    public void setUserProfileVO(UserProfileVO userProfileVO) {
+        this.userProfileVO = userProfileVO;
+    }
 
     public String getCourseTitle() {
         return courseTitle;
