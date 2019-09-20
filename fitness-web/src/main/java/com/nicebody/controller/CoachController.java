@@ -4,7 +4,7 @@ import com.nicebody.enums.OrderByEnum;
 import com.nicebody.pojo.*;
 import com.nicebody.service.CoachService;
 import com.nicebody.service.CourseService;
-import com.nicebody.service.UserBlogService;
+import com.nicebody.service.BlogService;
 import com.nicebody.util.OrderByUtil;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.CoachInfoVO;
@@ -30,7 +30,7 @@ public class CoachController {
     private CoachService coachService;
 
     @Autowired
-    private UserBlogService userBlogService;
+    private BlogService BlogService;
 
     @Autowired
     private CourseService courseService;
@@ -44,10 +44,10 @@ public class CoachController {
      * @return
      */
     @GetMapping
-    public ResultVO sortCoachList(@RequestParam(name="pageNum", defaultValue="0") Integer tagId,
-                                  @RequestParam(name="pageSize", defaultValue="0") Integer rowIndex,
-                                  @RequestParam(name="pageSize", defaultValue="0") Integer sortId,
-                                  @RequestParam(name="queryUser", defaultValue = "empty") String coachName){
+    public ResultVO sortCoachList(@RequestParam(name="tagId", defaultValue="0") Integer tagId,
+                                  @RequestParam(name="rowIndex", defaultValue="0") Integer rowIndex,
+                                  @RequestParam(name="sortId", defaultValue="0") Integer sortId,
+                                  @RequestParam(name="coachName", defaultValue = "empty") String coachName){
         //存储查找教练信息
         CoachInfo coachCondition = new CoachInfo();
         coachCondition.setTagId(tagId);
@@ -78,22 +78,22 @@ public class CoachController {
     @GetMapping(value = "/coachInfo")
     public ResultVO getCoachInfo(@RequestParam(name="rowIndex", defaultValue="0") Integer rowIndex,
                                  @RequestParam(name="pageSize", defaultValue="2") Integer pageSize,
-                                 @RequestParam(name="coachid",defaultValue = "1") Integer coachId,
-                                 @RequestParam(name="userid",defaultValue = "1") Integer userId){
-        UserBlog userCondition = new UserBlog();
+                                 @RequestParam(name="coachId",defaultValue = "1") Integer coachId,
+                                 @RequestParam(name="userId",defaultValue = "1") Integer userId){
+        Blog userCondition = new Blog();
         userCondition.setUserId(userId);
 
         //查找该id的教练\图片\课程\博文信息
         List<CoachInfo> coachInfoList = coachService.getCoachInfo(rowIndex,pageSize,0,coachId);
         List<CoachImage> coachImageList = coachService.getImageList(rowIndex,pageSize, coachId);
-        List<UserBlog> userBlogList = userBlogService.getUserBlogByUserIdOrContentLike(rowIndex,pageSize,userCondition);
+        List<Blog> userBlogList = BlogService.getUserBlogByUserIdOrContentLike(rowIndex,pageSize,userCondition);
         //List<Course> courseList = courseService.getCourseList(rowIndex, pageSize, coachId);
         List<CoachInfoVO> coachInfoVOList = new ArrayList<>();
         //填值
         for(CoachInfo coachInfo : coachInfoList){
             CoachInfoVO coachInfoVO = new CoachInfoVO();
             BeanUtils.copyProperties(coachInfo, coachInfoVO);
-            coachInfoVO.setUserBlogs(userBlogList);
+            coachInfoVO.setBlogs(userBlogList);
             coachInfoVO.setCoachImages(coachImageList);
             //coachInfoVO.setCourses(courseList);
             coachInfoVOList.add(coachInfoVO);

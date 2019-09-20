@@ -3,7 +3,7 @@ package com.nicebody.vo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nicebody.pojo.CoachImage;
 import com.nicebody.pojo.Course;
-import com.nicebody.pojo.UserBlog;
+import com.nicebody.pojo.Blog;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -36,13 +36,21 @@ public class CoachInfoVO {
     private List<CoachImage> coachImages;
 
     @JsonProperty("coachblogs")
-    private List<UserBlog> userBlogs;
+    private List<Blog> Blogs;
 
     @JsonProperty("courses")
     private List<Course> courses;
 
     public Integer getUserId() {
         return userId;
+    }
+
+    public List<Blog> getBlogs() {
+        return Blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        Blogs = blogs;
     }
 
     public void setUserId(Integer userId) {
@@ -97,13 +105,6 @@ public class CoachInfoVO {
         this.coachImages = coachImages;
     }
 
-    public List<UserBlog> getUserBlogs() {
-        return userBlogs;
-    }
-
-    public void setUserBlogs(List<UserBlog> userBlogs) {
-        this.userBlogs = userBlogs;
-    }
 
     public List<Course> getCourses() {
         return courses;

@@ -2,7 +2,7 @@ package com.nicebody.dto;
 
 import com.nicebody.enums.UserCenterInfoEnum;
 import com.nicebody.pojo.CoachInfo;
-import com.nicebody.pojo.UserBlog;
+import com.nicebody.pojo.Blog;
 
 import java.util.List;
 
