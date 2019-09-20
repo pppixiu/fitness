@@ -121,8 +121,8 @@
 <div style="right: 200px;margin-top: 50px;z-index: 9998;position: absolute;">
 	<form class="navbar-form navbar-left" role="search">
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="请输入感兴趣的博文">
-			<button type="submit" class="btn btn-default" style="margin-bottom: 0.7em"><i class="glyphicon glyphicon-search">搜索</i></button>
+			<input id="blog-like" type="text" class="form-control" placeholder="请输入感兴趣的博文">
+			<span onclick="namefunction()" class="btn btn-default" style="margin-bottom: 0.7em"><i class="glyphicon glyphicon-search">搜索</i></span>
 		</div>
 	</form>
 </div>
@@ -136,17 +136,17 @@
 			</div>
 			<div class="modal-body">
 				<div style="background-color: #f5ffdb; width: 100%; height: 100%">
-					<div id="div1" class="toolbar">
+					<div id="tool-bar" class="toolbar">
 					</div>
 					<div style="padding: 5px 0; color: #ccc"></div>
-					<div id="div2" class="text">
+					<div id="blog-content" class="text">
 						<p>请输入内容</p>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				<button type="button" class="btn btn-primary">保存</button>
+				<button id="submit" type="button" class="btn btn-primary">保存</button>
 			</div>
 		</div>
 	</div>
@@ -155,7 +155,7 @@
 
 <!--博客列表-->
 <div id="bloglist" class="box" style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 150px 200px;">
-	<div  style="width: 300px;height:auto;padding-right: 5em">
+	<div  style="width: 300px;height:auto;padding-right: 5em;" href = "blog_comment.html?blogId=1">
 		<div class="card card-product" style="margin-bottom: 0px">
 			<div class="card-image" style="margin-top: 0px">
 				<a href="#"> <img class="img" src="images/Blog_pic1.jpg"> </a>
@@ -269,12 +269,14 @@
 		$(window).scrollTo(0,1300);
 	});
 
-	var E = window.wangEditor
-	var editor = new E('#div1','#div2')
+
 
 	// 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
-	editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+	// editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
 	// editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+
+	var E = window.wangEditor;
+	var editor = new E('#tool-bar','#blog-content');
 
 	// 自定义菜单配置
 	editor.customConfig.menus = [
@@ -294,7 +296,35 @@
 		'undo',  // 撤销
 	]
 
-	editor.create()
+
+		// 隐藏“网络图片”tab
+		editor.customConfig.showLinkImg = false;
+		// $('#submit').click(function () {
+			//开启debug模式
+			editor.customConfig.debug = true;
+// 关闭粘贴内容中的样式
+			editor.customConfig.pasteFilterStyle = false
+// 忽略粘贴内容中的图片
+			editor.customConfig.pasteIgnoreImg = true
+
+// 上传图片到服务器
+			editor.customConfig.uploadFileName = 'myFile'; //设置文件上传的参数名称
+			editor.customConfig.uploadImgServer = '/blog/upload'; //设置上传文件的服务器路径
+			editor.customConfig.uploadImgMaxSize = 10 * 1024 * 1024; // 将图片大小限制为 3M
+//自定义上传图片事件
+			editor.customConfig.uploadImgHooks = {
+				customInsert: function (insertImg, result, editor) {
+					// 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+					// insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+					// 插入图片到editor
+					editor.cmd.do('insertHtml', '<img alt="错了" src="http://' + result.data[0] + '" style="max-width:100%;"/>')
+				}
+			}
+
+		editor.create();
+	// });
+
 </script>
+<!--<script src="/selfjs/wangeditor.js"></script>-->
 </body>
 </html>

@@ -25,6 +25,15 @@ public interface BlogMapper {
     Blog queryUserBlogByBlogId(int blogId);
 
     /**
+     *  按用户Id查新用户博客
+     * @param
+     * @return
+     */
+    List<Blog> queryUserBlogByUserId(@Param("rowIndex") int rowIndex,
+                                     @Param("pageSize") int pageSize,
+                                     @Param("userBlogCondition") Blog userBlogCondition);
+
+    /**
      *  查询浏览人数
      * @param
      * @return

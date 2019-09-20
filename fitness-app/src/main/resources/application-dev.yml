@@ -1,4 +1,8 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://106.14.115.219:8085/nicenoreference?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
@@ -41,7 +45,15 @@ spring:
       suffix: .html
       prefix: /
 
+
 mybatis:
   type-aliases-package: com.nicebody.pojo
   mapperLocations: classpath:mapper/*.xml
   configLocation: classpath:mybatis-config.xml
+
+qiniu:
+  accessKey: j_2BGkC7mtUqlxU8FTuOcxi02byvx9GxpaBPL9bp
+  secretKey: rsIe54f9DVXiqj5HRhdoAMu5YuHrz4Udhbzx8eIH
+  bucket: nicebody
+  path: http://pxwqui3qb.bkt.clouddn.com/
+

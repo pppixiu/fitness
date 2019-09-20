@@ -45,3 +45,9 @@ mybatis:
   type-aliases-package: com.nicebody.pojo
   mapperLocations: classpath:mapper/*.xml
   configLocation: classpath:mybatis-config.xml
+
+qiniu:
+  accessKey: j_2BGkC7mtUqlxU8FTuOcxi02byvx9GxpaBPL9bp
+  secretKey: rsIe54f9DVXiqj5HRhdoAMu5YuHrz4Udhbzx8eIH
+  bucket: nicebody
+  path: http://pxwqui3qb.bkt.clouddn.com/

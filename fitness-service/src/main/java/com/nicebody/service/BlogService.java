@@ -20,6 +20,14 @@ public interface BlogService {
     public Blog getUserBlogByBlogId(int blogId);
 
     /**
+     *  按用户ID查询用户博客
+     * @return
+     */
+    public List<Blog> getUserBlogByUserId(@Param("rowIndex") int rowIndex,
+                                          @Param("pageSize") int pageSize,
+                                          @Param("userBlogCondition") Blog userBlogCondition);
+
+    /**
      *  查询用户博客总浏览人数
      * @param
      * @return
