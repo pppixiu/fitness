@@ -36,11 +36,13 @@
             and c.coach_id = i.coach_id
         </if>
     </where>
+    LIMIT #{rowIndex}, #{pageSize}
     </select>
 
     <select id="queryImageList" resultType="coachImage">
         SELECT image_id, image_url, create_time, update_time, coach_id
         from tb_coach_image
         where coach_id = #{coachId}
+        LIMIT #{rowIndex}, #{pageSize}
     </select>
 </mapper>

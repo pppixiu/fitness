@@ -2,6 +2,7 @@ package com.nicebody.service;
 
 import com.nicebody.pojo.CoachImage;
 import com.nicebody.pojo.CoachInfo;
+import com.nicebody.pojo.Tag;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -34,13 +35,23 @@ public interface CoachService {
      * @param coachId
      * @return
      */
-    List<CoachInfo> getCoachInfo(@Param("userId") int userId,
+    List<CoachInfo> getCoachInfo(@Param("rowIndex") int rowIndex,
+                                 @Param("pageSize") int pageSize,
+                                 @Param("userId") int userId,
                                  @Param("coachId") int coachId);
 
     /**
      * 根据教练Id查找所有教练图片
+     * @param rowIndex
+     * @param pageSize
      * @param coachId
      * @return
      */
-    List<CoachImage> getImageList(@Param("coachId") int coachId);
+    List<CoachImage> getImageList(@Param("rowIndex") int rowIndex, @Param("pageSize") int pageSize, @Param("coachId") int coachId);
+
+    /**
+     * 查询分类
+     * @return
+     */
+    List<Tag> getTag();
 }

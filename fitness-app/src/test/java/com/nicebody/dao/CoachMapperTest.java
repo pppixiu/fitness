@@ -41,15 +41,15 @@ public class CoachMapperTest {
     @Test
     public void queryCoachInfoTest() {
         CoachInfo coachInfo = new CoachInfo();
-        List<CoachInfo> coachInfoList = coachMapper.queryCoachInfo(1,0);
-        Assert.assertEquals(3, coachInfoList.size());
+        List<CoachInfo> coachInfoList = coachMapper.queryCoachInfo(0,2,1,0);
+        Assert.assertEquals(2, coachInfoList.size());
     }
 
     /** 测试获取教练图片*/
     @Test
     public void queryImageListTest(){
         CoachImage coachImage = new CoachImage();
-        List<CoachImage> coachImageList = coachMapper.queryImageList(1);
+        List<CoachImage> coachImageList = coachMapper.queryImageList(0,1,1);
         Assert.assertEquals(2,coachImageList.size());
     }
 }

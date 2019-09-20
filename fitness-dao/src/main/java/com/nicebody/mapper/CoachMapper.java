@@ -36,15 +36,20 @@ public interface CoachMapper {
      * @param coachId
      * @return
      */
-    List<CoachInfo> queryCoachInfo(@Param("userId") int userId,
+    List<CoachInfo> queryCoachInfo(@Param("rowIndex") int rowIndex,
+                                   @Param("pageSize") int pageSize,
+                                   @Param("userId") int userId,
                                    @Param("coachId") int coachId);
 
     /**
      * 根据教练Id查找所有教练图片
-     *
+     * @param rowIndex
+     * @param pageSize
      * @param coachId
      * @return
      */
-    List<CoachImage> queryImageList(@Param("coachId") int coachId);
+    List<CoachImage> queryImageList( @Param("rowIndex") int rowIndex,
+                                     @Param("pageSize") int pageSize,
+                                     @Param("coachId") int coachId);
 
 }

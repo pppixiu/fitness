@@ -1,8 +1,10 @@
 package com.nicebody.service.impl;
 
 import com.nicebody.mapper.CoachMapper;
+import com.nicebody.mapper.TagMapper;
 import com.nicebody.pojo.CoachImage;
 import com.nicebody.pojo.CoachInfo;
+import com.nicebody.pojo.Tag;
 import com.nicebody.service.CoachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,9 @@ public class CoachServiceImpl implements CoachService {
 
     @Autowired
     private CoachMapper coachMapper;
+
+    @Autowired
+    private TagMapper tagMapper;
 
     /**
      * 多条件查找教练信息
@@ -40,8 +45,8 @@ public class CoachServiceImpl implements CoachService {
      * @return
      */
     @Override
-    public List<CoachInfo> getCoachInfo(int userId, int coachId) {
-        return coachMapper.queryCoachInfo(userId,coachId);
+    public List<CoachInfo> getCoachInfo(int rowIndex, int pageSize,int userId, int coachId) {
+        return coachMapper.queryCoachInfo(rowIndex, pageSize, userId, coachId);
     }
 
     /**
@@ -50,7 +55,12 @@ public class CoachServiceImpl implements CoachService {
      * @return
      */
     @Override
-    public List<CoachImage> getImageList(int coachId) {
-        return coachMapper.queryImageList(coachId);
+    public List<CoachImage> getImageList(int rowIndex, int pageSize, int coachId) {
+        return coachMapper.queryImageList(rowIndex,pageSize,coachId);
+    }
+
+    @Override
+    public List<Tag> getTag() {
+        return tagMapper.queryTag();
     }
 }

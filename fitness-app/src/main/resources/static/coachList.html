@@ -86,10 +86,6 @@
 		}
 
 		.box img {
-			/*上下左右5px的内填充*/
-			padding: 5px;
-			/*上下左右5px的外边距*/
-			margin: 5px;
 			/*圆角边框*/
 			border-radius: 5px;
 			/*盒子阴影*/
@@ -162,7 +158,7 @@
 							<li><a href="#" data-hover="About">跑步生活 <span data-hover="About"></span></a></li>
 							<li class="dropdown">
 								<a href="#" data-hover="Shortcodes">减脂运动</a>
-								<ul class="dropdown-menu">
+								<ul id="tag-show" class="dropdown-menu">
 									<li><a href="#">Custom Menu</a></li>
 									<li><a href="#">Custom Menu</a></li>
 									<li class="dropdown">
@@ -288,17 +284,17 @@
 </div>
 
 <!--coachList-->
-<div class="box" style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;">
-		<div>
+<div class="box" style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;" href="coachPage.html?coachId=1">
+		<div id="coach-list" href="coachPage.html?coachId=1">
 			<div style="width: 300px;height:auto;">
 				<div class="card card-product">
 					<div class="card-image">
-						<a href="#"> <img class="img" src="images/coachList/blog04.jpeg"> </a>
+						<a href="coachPage.html?coachId=1"> <img class="img" src="images/coachList/blog04.jpeg"> </a>
 					</div>
 					<div class="table">
 						<h6 class="category text-rose">Clothing</h6>
 						<h4 class="card-caption">
-							<a href="#">The Name</a>
+							<a href="coachPage.html?coachId=1">The Name</a>
 						</h4>
 						<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia
 							elit...
@@ -688,7 +684,7 @@
 			</div>
 		</div>
 		<div>
-			<button class="corner-button" style="left: -160%">
+			<button class="corner-button" style="left: -155%">
 				<span>GO</span>
 			</button>
 		</div>
@@ -734,6 +730,6 @@
 
 <!-- for bootstrap working -->
 <script src="js/bootstrap.js"></script>
-
+<script type="text/javascript" src="/selfjs/coachList.js" charset="UTF-8"></script>
 </body>
 </html>

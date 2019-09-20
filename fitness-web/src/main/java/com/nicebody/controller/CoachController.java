@@ -1,10 +1,13 @@
 package com.nicebody.controller;
 
 import com.nicebody.enums.OrderByEnum;
-import com.nicebody.pojo.CoachInfo;
+import com.nicebody.pojo.*;
 import com.nicebody.service.CoachService;
+import com.nicebody.service.CourseService;
+import com.nicebody.service.UserBlogService;
 import com.nicebody.util.OrderByUtil;
 import com.nicebody.util.ResultVOUtil;
+import com.nicebody.vo.CoachInfoVO;
 import com.nicebody.vo.CoachVO;
 import com.nicebody.vo.ResultVO;
 import org.springframework.beans.BeanUtils;
@@ -26,8 +29,25 @@ public class CoachController {
     @Autowired
     private CoachService coachService;
 
-    @GetMapping(value = "/coachList/tag/{tagId}/page/{rowIndex}/sort/{sortId}/coachName/{coachName}")
-    public ResultVO sortCoachList(@PathVariable Integer tagId, @PathVariable Integer rowIndex, @PathVariable Integer sortId, @PathVariable String coachName){
+    @Autowired
+    private UserBlogService userBlogService;
+
+    @Autowired
+    private CourseService courseService;
+
+    /**
+     * 多条件查询教练信息
+     * @param tagId
+     * @param rowIndex
+     * @param sortId
+     * @param coachName
+     * @return
+     */
+    @GetMapping
+    public ResultVO sortCoachList(@RequestParam(name="pageNum", defaultValue="0") Integer tagId,
+                                  @RequestParam(name="pageSize", defaultValue="0") Integer rowIndex,
+                                  @RequestParam(name="pageSize", defaultValue="0") Integer sortId,
+                                  @RequestParam(name="queryUser", defaultValue = "empty") String coachName){
         //存储查找教练信息
         CoachInfo coachCondition = new CoachInfo();
         coachCondition.setTagId(tagId);
@@ -35,7 +55,7 @@ public class CoachController {
         //将转换sortId
         String sortValue = OrderByUtil.coachConvent2String(sortId);
         //查询所有教练信息
-        List<CoachInfo> coachInfoList = coachService.getCoachList(rowIndex,4,coachCondition,sortValue);
+        List<CoachInfo> coachInfoList = coachService.getCoachList(rowIndex,8,coachCondition,sortValue);
         List<CoachVO> coachVOList = new ArrayList<>();
         //填值
         for(CoachInfo coachInfo : coachInfoList) {
@@ -47,9 +67,45 @@ public class CoachController {
         return ResultVOUtil.success(coachVOList);
     }
 
-  /*  @GetMapping(value = "/coachList/{coachId}")
-    public ResultVO getCoachInfo(@PathVariable Integer coachId){
-        //查找该id的教练信息
-        List<CoachInfo> coachInfoList = coachService.getCoachInfo(0,coachId);
-    }*/
+    /**
+     * 多条件查询教练个人信息
+     * @param rowIndex
+     * @param pageSize
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    @GetMapping(value = "/coachInfo")
+    public ResultVO getCoachInfo(@RequestParam(name="rowIndex", defaultValue="0") Integer rowIndex,
+                                 @RequestParam(name="pageSize", defaultValue="2") Integer pageSize,
+                                 @RequestParam(name="coachid",defaultValue = "1") Integer coachId,
+                                 @RequestParam(name="userid",defaultValue = "1") Integer userId){
+        UserBlog userCondition = new UserBlog();
+        userCondition.setUserId(userId);
+
+        //查找该id的教练\图片\课程\博文信息
+        List<CoachInfo> coachInfoList = coachService.getCoachInfo(rowIndex,pageSize,0,coachId);
+        List<CoachImage> coachImageList = coachService.getImageList(rowIndex,pageSize, coachId);
+        List<UserBlog> userBlogList = userBlogService.getUserBlogByUserIdOrContentLike(rowIndex,pageSize,userCondition);
+        //List<Course> courseList = courseService.getCourseList(rowIndex, pageSize, coachId);
+        List<CoachInfoVO> coachInfoVOList = new ArrayList<>();
+        //填值
+        for(CoachInfo coachInfo : coachInfoList){
+            CoachInfoVO coachInfoVO = new CoachInfoVO();
+            BeanUtils.copyProperties(coachInfo, coachInfoVO);
+            coachInfoVO.setUserBlogs(userBlogList);
+            coachInfoVO.setCoachImages(coachImageList);
+            //coachInfoVO.setCourses(courseList);
+            coachInfoVOList.add(coachInfoVO);
+        }
+
+        //公共方法返回
+        return ResultVOUtil.success(coachInfoVOList);
+    }
+
+    @GetMapping("/tag")
+    public ResultVO getCoachTag(){
+        List<Tag> tagList = coachService.getTag();
+        return ResultVOUtil.success(tagList);
+    }
 }
