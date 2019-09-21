@@ -1,259 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Blog </title>
-	<meta charset="utf-8">
-	<meta name="author" content="">
+    <title>Blog </title>
+    <meta charset="utf-8">
+    <meta name="author" content="">
 
-	<!--公共js头和尾-->
-	<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="/js/common/common.js"></script>
+    <!--公共js头和尾-->
+    <script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/js/common/common.js"></script>
 
-	<!--富文本编辑-->
-	<link rel="stylesheet" href="/plugins/wangeditor/css/wangEditor.min.css">
+    <!--富文本编辑-->
+    <link rel="stylesheet" href="/plugins/wangeditor/css/wangEditor.min.css">
 
-	<!--瀑布流-->
-	<link href="/css/blog_index/cards-style.css" rel='stylesheet' type='text/css' />
-	<script type="text/javascript" src="/js/coach/coachlist/bootsnav.js"></script>
+    <!--瀑布流-->
+    <link href="/css/blog_index/cards-style.css" rel='stylesheet' type='text/css'/>
+    <script type="text/javascript" src="/js/coach/coachlist/bootsnav.js"></script>
 
 
-	<style>
-		.fixed{
-			position: fixed;
-			z-index: 10;!important;
-		}
-		.right-bottom{
-			bottom: 20px;
-			right: 30px;
-		}
-		.i-size{
-			font-size: 25px;
-		}
-		.i-color{
-			color: #ff3366;
-		}
+    <style>
+        .fixed {
+            position: fixed;
+            z-index: 10;
+        !important;
+        }
 
-		/*博客列表*/
+        .right-bottom {
+            bottom: 20px;
+            right: 30px;
+        }
 
-		.box {
-			/*把.box中的内容最多分为4列,会根据浏览器的大小变化,但是不会超过4列*/
-			column-count: 4;
-			/*规定每列列宽最小为25%*/
-			column-width: 25px;
-			/*规定每列的间隙为1em*/
-			column-gap: 1em;
-			width: 80%;
-			/*实现盒子水平居中*/
-			margin:0 auto;
-		}
+        .i-size {
+            font-size: 25px;
+        }
 
-		.box img{
-			border-radius:5px;
-			/*盒子阴影*/
-			box-shadow:0px 0px 5px gray;
-			width: 100%;
-		}
-	</style>
+        .i-color {
+            color: #ff3366;
+        }
 
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-	function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!-- //for-mobile-apps -->
-	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
-	<!-- Custom Theme files -->
-	<link href="/css/style.css" rel='stylesheet' type='text/css' />
-	<link href="/css/blog_index/bootsnav.css" rel="stylesheet" type="text/css"/>
-	<!-- js -->
-	<script src="/js/jquery-1.11.1.min.js"></script>
-	<!-- //js -->
-	<!-- Custom Theme files -->
-	<!--webfont-->
-	<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!-- start-smoth-scrolling -->
-	<script type="text/javascript" src="/js/move-top.js"></script>
-	<script type="text/javascript" src="/js/easing.js"></script>
-	<script type="text/javascript" src="/js/bootstrap.js"></script>
-	<script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){
-				event.preventDefault();
-				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-			});
-		});
-	</script>
+        /*博客列表*/
+
+        .box {
+            /*把.box中的内容最多分为4列,会根据浏览器的大小变化,但是不会超过4列*/
+            column-count: 4;
+            /*规定每列列宽最小为25%*/
+            column-width: 25px;
+            /*规定每列的间隙为1em*/
+            column-gap: 1em;
+            width: 80%;
+            /*实现盒子水平居中*/
+            margin: 0 auto;
+        }
+
+        .box img {
+            border-radius: 5px;
+            /*盒子阴影*/
+            box-shadow: 0px 0px 5px gray;
+            width: 100%;
+        }
+    </style>
+
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //for-mobile-apps -->
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom Theme files -->
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/blog_index/bootsnav.css" rel="stylesheet" type="text/css"/>
+    <!-- js -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <!-- Custom Theme files -->
+    <!--webfont-->
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/js/move-top.js"></script>
+    <script type="text/javascript" src="/js/easing.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+            });
+        });
+    </script>
 </head>
 <body>
 <!--导航-->
-<div class="page-head col-lg-12" style="position: fixed;top: 0px;z-index: 9999;">
-	<div class="container">
-		<div class="navigation">
-			<div class="logo">
-				<h1>
-					<a class="navbar-brand link link--yaku" href="index.html"><span>N</span><span>I</span><span>C</span><span>E</span><span>B</span><span>O</span><span>D</span><span>Y</span></a>
-				</h1>
-			</div>
-			<div class="top-nav" style="position: relative; float: right;">
-				<span class="menu"><img src="images/menu.png" alt=" " /></span>
-				<ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-					<li><a href="index.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">主页 </a></li>
-					<li><a href="coachList.html" class="active" >寻找教练</a></li>
-					<li><a href="programs.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">动作库</a></li>
-					<li><a href="shortcodes.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">教练审核</a></li>
-					<li><a href="contact.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">我的课程</a></li>
-					<li><a href="register.html"> 登  录 / 注  册 </a></li>
-				</ul>
-				<!-- script-for-menu -->
-				<script>
-					$( "span.menu" ).click(function() {
-						$( "ul.nav1" ).slideToggle( 300, function() {
-							// Animation complete.
-						});
-					});
-				</script>
-				<!-- /script-for-menu -->
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
+<div class="page-content">
 
-<!--搜索栏-->
-<div style="right: 200px;margin-top: 50px;z-index: 9998;position: absolute;">
-	<form class="navbar-form navbar-left" role="search">
-		<div class="form-group">
-			<input id="blog-like" type="text" class="form-control" placeholder="请输入感兴趣的博文">
-			<span onclick="namefunction()" class="btn btn-default" style="margin-bottom: 0.7em"><i class="glyphicon glyphicon-search">搜索</i></span>
-		</div>
-	</form>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">添加博客</h4>
-			</div>
-			<div class="modal-body">
-				<div style="background-color: #f5ffdb; width: 100%; height: 100%">
-					<div id="tool-bar" class="toolbar">
-					</div>
-					<div style="padding: 5px 0; color: #ccc"></div>
-					<div id="blog-content" class="text">
-						<p>请输入内容</p>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				<button id="submit" type="button" class="btn btn-primary">保存</button>
-			</div>
-		</div>
-	</div>
-</div>
+    <!--搜索栏-->
+    <div style="right: 200px;margin-top: 50px;z-index: 9998;position: absolute;">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input id="blog-like" type="text" class="form-control" placeholder="请输入感兴趣的博文">
+                <span onclick="namefunction()" class="btn btn-default" style="margin-bottom: 0.7em"><i
+                        class="glyphicon glyphicon-search">搜索</i></span>
+            </div>
+        </form>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加博客</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="background-color: #f5ffdb; width: 100%; height: 100%">
+                        <div id="tool-bar" class="toolbar">
+                        </div>
+                        <div style="padding: 5px 0; color: #ccc"></div>
+                        <div id="blog-content" class="text">
+                            <p>请输入内容</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="submit" type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<!--博客列表-->
-<div id="bloglist" class="box" style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 150px 200px;">
-	<div  style="width: 300px;height:auto;padding-right: 5em;" href = "blog_comment.html?blogId=1">
-		<div class="card card-product" style="margin-bottom: 0px">
-			<div class="card-image" style="margin-top: 0px">
-				<a href="#"> <img class="img" src="images/Blog_pic1.jpg"> </a>
-			</div>
-			<div class="table">
-				<h6 class="category text-rose"></h6>
-				<h4 class="card-caption">
-				</h4>
-				<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-				<div class="ftr">
-				</div>
-			</div>
-		</div>
+    <!--博客列表-->
+    <div id="bloglist" class="box"
+         style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 150px 200px;">
+        <div style="width: 300px;height:auto;padding-right: 5em;" href="blog_comment.html?blogId=1">
+            <div class="card card-product" style="margin-bottom: 0px">
+                <div class="card-image" style="margin-top: 0px">
+                    <a href="#"> <img class="img" src="images/Blog_pic1.jpg"> </a>
+                </div>
+                <div class="table">
+                    <h6 class="category text-rose"></h6>
+                    <h4 class="card-caption">
+                    </h4>
+                    <div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam
+                        lacinia elit...
+                    </div>
+                    <div class="ftr">
+                    </div>
+                </div>
+            </div>
 
-	</div>
-	<div  style="width: 300px;height:auto;padding-right: 5em">
-		<div class="card card-product"  style="margin-bottom: 0px">
-			<div class="card-image" style="margin-top: 0px">
-				<a href="#"> <img class="img" src="images/blog_add.jpeg"> </a>
-			</div>
-			<div class="table">
-				<h6 class="category text-rose"></h6>
-				<h4 class="card-caption">
-				</h4>
-				<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-				<div class="ftr">
-				</div>
-			</div>
-		</div>
-	</div>
-	<div  style="width: 300px;height:auto;padding-right: 5em">
-		<div class="card card-product"  style="margin-bottom: 0px">
-			<div class="card-image" style="margin-top: 0px">
-				<a href="#"> <img class="img" src="images/g4.jpg"> </a>
-			</div>
-			<div class="table">
-				<h6 class="category text-rose"></h6>
-				<h4 class="card-caption">
-				</h4>
-				<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-				<div class="ftr">
-				</div>
-			</div>
-		</div>
-	</div>
-	<div  style="width: 300px;height:auto;padding-right: 5em">
-		<div class="card card-product"  style="margin-bottom: 0px">
-			<div class="card-image" style="margin-top: 0px">
-				<a href="#"> </a>
-			</div>
-			<div class="table">
-				<h6 class="category text-rose"></h6>
-				<h4 class="card-caption">
-				</h4>
-				<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit... </div>
-				<div class="ftr">
-				</div>
-			</div>
-		</div>
-	</div>
+        </div>
+        <div style="width: 300px;height:auto;padding-right: 5em">
+            <div class="card card-product" style="margin-bottom: 0px">
+                <div class="card-image" style="margin-top: 0px">
+                    <a href="#"> <img class="img" src="images/blog_add.jpeg"> </a>
+                </div>
+                <div class="table">
+                    <h6 class="category text-rose"></h6>
+                    <h4 class="card-caption">
+                    </h4>
+                    <div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam
+                        lacinia elit...
+                    </div>
+                    <div class="ftr">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 300px;height:auto;padding-right: 5em">
+            <div class="card card-product" style="margin-bottom: 0px">
+                <div class="card-image" style="margin-top: 0px">
+                    <a href="#"> <img class="img" src="images/g4.jpg"> </a>
+                </div>
+                <div class="table">
+                    <h6 class="category text-rose"></h6>
+                    <h4 class="card-caption">
+                    </h4>
+                    <div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam
+                        lacinia elit...
+                    </div>
+                    <div class="ftr">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 300px;height:auto;padding-right: 5em">
+            <div class="card card-product" style="margin-bottom: 0px">
+                <div class="card-image" style="margin-top: 0px">
+                    <a href="#"> </a>
+                </div>
+                <div class="table">
+                    <h6 class="category text-rose"></h6>
+                    <h4 class="card-caption">
+                    </h4>
+                    <div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam
+                        lacinia elit...
+                    </div>
+                    <div class="ftr">
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+        <!--copy right-->
+        <div class="copyright" style="position: absolute;bottom: 0; left: 0;right: 0;">
+            <div class="container">
+                <div class="copy-left">
+                    <p>Copyright &copy; 2019.Company name NICEBODY's healthy website <a href="http://www.cssmoban.com/"
+                                                                                        target="_blank"
+                                                                                        title="NICEBODY">健身Page</a> -
+                        Collect
+                        from <a href="http://www.cssmoban.com/" title="NICEBODY" target="_blank">即刻健身</a></p>
+                </div>
+                <div class="copy-right">
+                    <ul>
+                        <li><a class="fb1" href="#"></a></li>
+                        <li><a class="fb2" href="#"></a></li>
+                        <li><a class="fb3" href="#"></a></li>
+                        <li><a class="fb4" href="#"></a></li>
+                        <li><a class="fb5" href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
 
-
-
-
-	<!--copy right-->
-	<div class="copyright" style="position: absolute;bottom: 0; left: 0;right: 0;" >
-		<div class="container">
-			<div class="copy-left">
-				<p>Copyright &copy; 2019.Company name NICEBODY's healthy website <a href="http://www.cssmoban.com/"
-																					target="_blank"
-																					title="NICEBODY">健身Page</a> - Collect
-					from <a href="http://www.cssmoban.com/" title="NICEBODY" target="_blank">即刻健身</a></p>
-			</div>
-			<div class="copy-right">
-				<ul>
-					<li><a class="fb1" href="#"></a></li>
-					<li><a class="fb2" href="#"></a></li>
-					<li><a class="fb3" href="#"></a></li>
-					<li><a class="fb4" href="#"></a></li>
-					<li><a class="fb5" href="#"></a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-
+    </div>
 </div>
 
 <!--置顶和添加-->
 <div class="padded fixed right-bottom">
-	<div>
-		<a href="blog_add.html"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus i-size i-color"></span></a>
-		<div>
-			<i id="toTop-button" class="glyphicon glyphicon-chevron-up i-size i-color"></i>
-		</div>
-	</div>
+    <div>
+        <a href="blog_add.html" data-toggle="modal" data-target="#myModal"><span
+                class="glyphicon glyphicon-plus i-size i-color"></span></a>
+        <div>
+            <i id="toTop-button" class="glyphicon glyphicon-chevron-up i-size i-color"></i>
+        </div>
+    </div>
 </div>
 <script src="/js/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
@@ -265,64 +255,63 @@
 
 <script src="/js/bootstrap.js"></script>
 <script>
-	$('#toTop-button').click(function () {
-		$(window).scrollTo(0,1300);
-	});
+    $('#toTop-button').click(function () {
+        $(window).scrollTo(0, 1300);
+    });
 
 
+    // 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
+    // editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+    // editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
 
-	// 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
-	// editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
-	// editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+    var E = window.wangEditor;
+    var editor = new E('#tool-bar', '#blog-content');
 
-	var E = window.wangEditor;
-	var editor = new E('#tool-bar','#blog-content');
-
-	// 自定义菜单配置
-	editor.customConfig.menus = [
-		'fontSize',  // 字号
-		'fontName',  // 字体
-		'italic',  // 斜体
-		'underline',  // 下划线
-		'foreColor',  // 文字颜色
-		'backColor',  // 背景颜色
-		'link',  // 插入链接
-		'list',  // 列表
-		'justify',  // 对齐方式
-		'emoticon',  // 表情
-		'image',  // 插入图片
-		'video',  // 插入视频
-		'code',  // 插入代码
-		'undo',  // 撤销
-	]
+    // 自定义菜单配置
+    editor.customConfig.menus = [
+        'fontSize',  // 字号
+        'fontName',  // 字体
+        'italic',  // 斜体
+        'underline',  // 下划线
+        'foreColor',  // 文字颜色
+        'backColor',  // 背景颜色
+        'link',  // 插入链接
+        'list',  // 列表
+        'justify',  // 对齐方式
+        'emoticon',  // 表情
+        'image',  // 插入图片
+        'video',  // 插入视频
+        'code',  // 插入代码
+        'undo',  // 撤销
+    ]
 
 
-		// 隐藏“网络图片”tab
-		editor.customConfig.showLinkImg = false;
-		// $('#submit').click(function () {
-			//开启debug模式
-			editor.customConfig.debug = true;
-// 关闭粘贴内容中的样式
-			editor.customConfig.pasteFilterStyle = false
-// 忽略粘贴内容中的图片
-			editor.customConfig.pasteIgnoreImg = true
+    // 隐藏“网络图片”tab
+    editor.customConfig.showLinkImg = false;
+    // $('#submit').click(function () {
+    //开启debug模式
+    editor.customConfig.debug = true;
+    // 关闭粘贴内容中的样式
+    editor.customConfig.pasteFilterStyle = false
+    // 忽略粘贴内容中的图片
+    editor.customConfig.pasteIgnoreImg = true
 
-// 上传图片到服务器
-			editor.customConfig.uploadFileName = 'myFile'; //设置文件上传的参数名称
-			editor.customConfig.uploadImgServer = '/blog/upload'; //设置上传文件的服务器路径
-			editor.customConfig.uploadImgMaxSize = 10 * 1024 * 1024; // 将图片大小限制为 3M
-//自定义上传图片事件
-			editor.customConfig.uploadImgHooks = {
-				customInsert: function (insertImg, result, editor) {
-					// 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
-					// insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
-					// 插入图片到editor
-					editor.cmd.do('insertHtml', '<img alt="错了" src="http://' + result.data[0] + '" style="max-width:100%;"/>')
-				}
-			}
+    // 上传图片到服务器
+    editor.customConfig.uploadFileName = 'myFile'; //设置文件上传的参数名称
+    editor.customConfig.uploadImgServer = '/blog/upload'; //设置上传文件的服务器路径
+    editor.customConfig.uploadImgMaxSize = 10 * 1024 * 1024; // 将图片大小限制为 3M
+    //自定义上传图片事件
+    editor.customConfig.uploadImgHooks = {
+        customInsert: function (insertImg, result, editor) {
+            // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+            // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+            // 插入图片到editor
+            editor.cmd.do('insertHtml', '<img alt="错了" src="http://' + result.data[0] + '" style="max-width:100%;"/>')
+        }
+    }
 
-		editor.create();
-	// });
+    editor.create();
+    // });
 
 </script>
 <!--<script src="/selfjs/wangeditor.js"></script>-->
