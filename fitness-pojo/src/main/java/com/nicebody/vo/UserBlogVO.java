@@ -13,6 +13,9 @@ import java.math.BigDecimal;
  **/
 public class UserBlogVO {
     @JsonProperty("blogId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer blogId;
+    @JsonProperty("blogId")
     private Integer blogId;
     @JsonProperty("blogContent")
     private String blogContent;

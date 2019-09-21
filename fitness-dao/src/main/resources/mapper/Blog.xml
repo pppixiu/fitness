@@ -46,6 +46,7 @@
         SELECT
         ub.blog_id,
         ub.user_id,
+        ub.blog_id,
         ub.view_count,
         ub.like_count,
         ub.blog_content,
