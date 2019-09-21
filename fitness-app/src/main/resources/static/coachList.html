@@ -104,7 +104,38 @@
 </head>
 <body>
 <!--头部-->
-<div class="page-content">
+<div class="page-head" style="position: fixed;z-index: 9999;top: 0; width: 100%;">
+	<div class="container">
+		<div class="navigation">
+			<div class="logo">
+				<h1>
+					<a class="navbar-brand link link--yaku" href="index.html"><span>N</span><span>I</span><span>C</span><span>E</span><span>B</span><span>O</span><span>D</span><span>Y</span></a>
+				</h1>
+			</div>
+			<div class="top-nav" style="position: relative; float: right;">
+				<span class="menu"><img src="images/menu.png" alt=" " /></span>
+				<ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
+					<li><a href="index.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">主页 </a></li>
+					<li><a href="coachList.html" class="active" >寻找教练</a></li>
+					<li><a href="programs.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">动作库</a></li>
+					<li><a href="shortcodes.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">教练审核</a></li>
+					<li><a href="contact.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">我的课程</a></li>
+					<li><a href="register.html"> 登  录 / 注  册 </a></li>
+				</ul>
+				<!-- script-for-menu -->
+				<script>
+					$( "span.menu" ).click(function() {
+						$( "ul.nav1" ).slideToggle( 300, function() {
+							// Animation complete.
+						});
+					});
+				</script>
+				<!-- /script-for-menu -->
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
 
 <!--标题-->
 <h3 class="bars" style="margin-left: 100px;margin-top: 50px;">COACHLIST</h3>
@@ -230,7 +261,7 @@
 <a id="not-find" style="position: absolute; left: 10%; top: 30%;font-size: 60px;color: #999999;"></a>
 
 <!--coachList-->
-<div class="box" style="width: 100%; min-height: 800px; text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;" href="coachPage.html?coachId=1">
+<div id="div1" class="box nui-scroll" style="width: 100%; min-height: 800px; text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;" href="coachPage.html?coachId=1">
 	<div id="coach-list" href="coachPage.html?coachId=1">
 			<div style="width: 300px;height:auto;">
 				<div class="card card-product">
@@ -651,26 +682,22 @@
 		</div>
 	</div>
 </div>
-<!--<div>
-	<button class="corner-button" style="position: fixed;bottom: 100px;right: 0px;" onclick="pagefunction()" >
-		<span>GO</span>
-	</button>
-</div>-->
+
 
 <!-- smooth scrolling -->
 <script type="text/javascript">
 		$(document).ready(function() {
-		/*
+/*
 			var defaults = {
 			containerID: 'toTop', // fading element id
 			containerHoverID: 'toTopHover', // fading element hover id
 			scrollSpeed: 1200,
 			easingType: 'linear' 
 			};
-		*/								
+*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 		});
-	</script>
+</script>
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 <!-- for bootstrap working -->

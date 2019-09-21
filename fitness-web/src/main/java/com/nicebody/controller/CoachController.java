@@ -47,8 +47,6 @@ public class CoachController {
                                   @RequestParam(name = "rowIndex", defaultValue = "0") Integer rowIndex,
                                   @RequestParam(name = "sortId", defaultValue = "0") Integer sortId,
                                   @RequestParam(name = "coachName", defaultValue = "empty") String coachName) {
-        rowIndex += 8;
-
         //存储查找教练信息
         CoachInfo coachCondition = new CoachInfo();
         coachCondition.setTagId(tagId);
@@ -59,11 +57,11 @@ public class CoachController {
 
         //判断是否加载全部
         List<CoachInfo> coachSize = coachService.getCoachList(0,9999,coachCondition,sortValue);
-        if(rowIndex > coachSize.size() + 8){
+         if(rowIndex > coachSize.size() + 8){
             return null;
         }
 
-        List<CoachInfo> coachInfoList = coachService.getCoachList(0, rowIndex, coachCondition, sortValue);
+        List<CoachInfo> coachInfoList = coachService.getCoachList(rowIndex, 8, coachCondition, sortValue);
         List<CoachVO> coachVOList = new ArrayList<>();
         //填值
         for (CoachInfo coachInfo : coachInfoList) {
