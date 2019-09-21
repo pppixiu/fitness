@@ -14,7 +14,8 @@ import java.util.List;
  * 2019-09-19 7:45
  */
 public class CourseVO {
-
+    @JsonProperty("id")
+    private Integer courseId;
     @JsonProperty("title")
     private String courseTitle;
     @JsonProperty("desc")
@@ -28,7 +29,7 @@ public class CourseVO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private BigDecimal coursePrePrice;
     @JsonProperty("level")
-    private int courseLevel;
+    private String courseLevel;
     @JsonProperty("count")
     private Long studyCount;
     @JsonProperty("coursetime")
@@ -39,6 +40,14 @@ public class CourseVO {
     private UserProfileVO userProfileVO;
     @JsonProperty("courselesson")
     private List<CourseLessonVO> courseLessonVOList;
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
 
     public String getCourseTime() {
         return courseTime;
@@ -112,11 +121,11 @@ public class CourseVO {
         this.coursePrePrice = coursePrePrice;
     }
 
-    public int getCourseLevel() {
+    public String getCourseLevel() {
         return courseLevel;
     }
 
-    public void setCourseLevel(int courseLevel) {
+    public void setCourseLevel(String courseLevel) {
         this.courseLevel = courseLevel;
     }
 

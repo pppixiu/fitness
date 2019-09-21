@@ -9,25 +9,25 @@
     <meta name="keywords" content="" />
 
     <!--公共js头和尾-->
-    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="js/common/common.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/js/common/common.js"></script>
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
-    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <!-- Custom Theme files -->
-    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="/css/style.css" rel='stylesheet' type='text/css' />
     <!-- js -->
-    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="/js/jquery-1.11.1.min.js"></script>
     <!-- //js -->
     <!-- Custom Theme files -->
     <!--webfont-->
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript" src="/js/move-top.js"></script>
+    <script type="text/javascript" src="/js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -38,7 +38,7 @@
     </script>
     <!-- start-smoth-scrolling -->
 
-    <link href="css/courseinfo.css" rel='stylesheet' type='text/css' />
+    <link href="/css/courseinfo.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
 <div class="page-content">
@@ -57,7 +57,7 @@
                         <img id ="user-img" src="" data-userid="320852" class="js-usercard-dialog" width="80" height="80" style="float: left;margin-left: -56px;width: 48px;height: 48px; border-radius: 100%;">
                     </a>
                     <span class="tit" style="display: block;margin-top: 3px;line-height: 12px;font-size: 12px;">
-                        <a id="user-name" href="/u/320852/courses?sort=publish" target="_blank" style="font-size: 14px;line-height: 22px; font-weight: 700;color: #fff;text-decoration: none;"></a>
+                        <a id="user-name" href="#" target="_blank" style="font-size: 14px;line-height: 22px; font-weight: 700;color: #fff;text-decoration: none;"></a>
                     </span>
 
 
@@ -110,6 +110,7 @@
 
                 <!-- 课程章节 -->
                 <div id = "course-lesson"class="course-chapters">
+
                 </div>
                 <!-- 课程章节 end -->
             </div><!--content end-->
@@ -127,7 +128,7 @@
                     <div class="course-info-tip" style="margin-top: 20px;">
                         <dl class="first">
                             <dt>课程须知</dt>
-                            <dd class="autowrap">学习本课程前需要具备一定的MyBatis-Plus基础，并熟悉Lambda表达式和SpringBoot。建议先学习《MyBatis-Plus入门》课程，链接在此：https://www.imooc.com/learn/1130。</dd>
+                            <dd  id ="lesson-note" class="autowrap"></dd>
                         </dl>
                     </div>
 
@@ -142,11 +143,11 @@
                         <ul class="js-recom-course moco-aside-course clearfix">
 
                             <li style="margin-bottom: 30px;"><div class="aside-course-img"><img style="margin-bottom: 5px;"></div>
-                                <div class="aside-course-content"><a href="//coding.imooc.com/class/134.html" class="aside-course-name" target="_blank" style="margin-bottom: 5px;text-decoration: none">Spring Security技术栈开发企业级认证与授权</a><p class="aside-course-price" style="margin-bottom: 5px;"><span>￥366.00</span></p><div class="aside-course-dot"><i class="imv2-dot_samll"></i></div><p class="aside-course-grade" style="display: inline">高级</p></div>
+                                <div class="aside-course-content"><a href="#" class="aside-course-name" target="_blank" style="margin-bottom: 5px;text-decoration: none">Spring Security技术栈开发企业级认证与授权</a><p class="aside-course-price" style="margin-bottom: 5px;"><span>￥366.00</span></p><div class="aside-course-dot"><i class="imv2-dot_samll"></i></div><p class="aside-course-grade" style="display: inline">高级</p></div>
                             </li>
                             <li style="margin-top: 30px;">
                                 <div class="aside-course-img"><img style="margin-bottom: 5px;"></div>
-                                <div class="aside-course-content"><a href="//coding.imooc.com/class/187.html" class="aside-course-name" target="_blank" style="margin-bottom: 5px;text-decoration: none;">SpringCloud  Finchley三版本(M2+RELEASE+SR2)微服务实战</a><p class="aside-course-price" style="margin-bottom: 5px;"><span>￥366.00</span></p><div class="aside-course-dot"><i class="imv2-dot_samll"></i></div><p class="aside-course-grade">高级</p></div>
+                                <div class="aside-course-content"><a href="#" class="aside-course-name" target="_blank" style="margin-bottom: 5px;text-decoration: none;">SpringCloud  Finchley三版本(M2+RELEASE+SR2)微服务实战</a><p class="aside-course-price" style="margin-bottom: 5px;"><span>￥366.00</span></p><div class="aside-course-dot"><i class="imv2-dot_samll"></i></div><p class="aside-course-grade">高级</p></div>
                             </li>
                         </ul></div></div>
 
@@ -179,7 +180,10 @@
     <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     <!-- //smooth scrolling -->
     <!-- for bootstrap working -->
-    <script src="js/bootstrap.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/selfjs/common.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/selfjs/courselesson.js" charset="UTF-8"></script>
     <!-- //for bootstrap working -->
+</div>
 </body>
 </html>

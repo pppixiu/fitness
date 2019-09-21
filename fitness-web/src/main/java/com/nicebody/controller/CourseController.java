@@ -8,6 +8,7 @@ import com.nicebody.pojo.UserProfile;
 import com.nicebody.service.CourseService;
 import com.nicebody.service.TagService;
 import com.nicebody.util.OrderByUtil;
+import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.CourseLessonVO;
 import com.nicebody.vo.CourseVO;
 import com.nicebody.vo.ResultVO;
@@ -35,37 +36,45 @@ public class CourseController {
     private TagService tagService;
 
     @GetMapping("/listcourses")
-    public ResultVO listCourse(@RequestParam(value ="rowIndex",required = false) int rowIndex,
-                               @RequestParam(value ="pageSize" ,required = false) int pageSize,
-                               @RequestParam(value = "orderByCondition",required = false ) String orderByCondition,
+    public ResultVO listCourse(@RequestParam(value ="pageIndex",required = false) Integer pageIndex,
+                               @RequestParam(value ="pageSize" ,required = false) Integer pageSize,
+                               @RequestParam(value = "orderByCondition",required = false )Integer orderByCondition,
                                @RequestParam(value = "courseTitle",required = false) String courseTitle,
                                @RequestParam(value = "tagId",required = false) Integer tagId,
                                @RequestParam(value = "courseLevel",required = false) Integer courseLevel){
         ResultVO resultVO = new ResultVO();
         Course courseCondition = compactCourseCondition3Search(courseTitle,tagId,courseLevel);
+        String orderByCourse = OrderByUtil.convert2String(orderByCondition);
         //查询所有的course信息
-       List<Course> courseList = courseService.getCourseList(rowIndex,pageSize,courseCondition,orderByCondition);
+        List<Course> courseList = courseService.getCourseList(pageIndex,pageSize,courseCondition,orderByCourse);
         List<CourseVO> courseVOList = new ArrayList<>();
         for(Course course:courseList){
             CourseVO courseVO = new CourseVO();
+            int level = course.getCourseLevel();
+            if(level == 0){
+                courseVO.setCourseLevel("初级");
+            }else if(level == 1){
+                courseVO.setCourseLevel("中级");
+            }else{
+                courseVO.setCourseLevel("高级");
+            }
             UserProfileVO userProfileVO = new UserProfileVO();
+            courseVO.setCourseId(course.getCourseId());
             courseVO.setCourseTitle(course.getCourseTitle());
+            System.out.println(course.getCourseTitle());
             courseVO.setCourseDesc(course.getCourseDesc());
             courseVO.setImageUrl(course.getImageUrl());
             courseVO.setCourseNowPrice(course.getCourseNowPrice());
             courseVO.setCoursePrePrice(course.getCoursePrePrice());
-            courseVO.setCourseLevel(course.getCourseLevel());
+            courseVO.setCourseTime(course.getCourseTime());
             courseVO.setStudyCount(course.getStudyCount());
             userProfileVO.setUserName(course.getUserProfile().getUserName());
             userProfileVO.setUserImageUrl(course.getUserProfile().getUserImageUrl());
             courseVO.setUserProfileVO(userProfileVO);
             courseVOList.add(courseVO);
         }
-        resultVO.setData(courseVOList);
-        resultVO.setCode(0);
-        resultVO.setMsg("成功");
 
-        return resultVO;
+        return ResultVOUtil.success(courseVOList);
 
 
     }
@@ -110,10 +119,17 @@ public class CourseController {
         List<CourseLesson> courseLessonList = course.getCourseLessonList();
         CourseVO courseVO = new CourseVO();
         UserProfileVO userProfileVO = new UserProfileVO();
+        int level = course.getCourseLevel();
+        if(level == 0){
+            courseVO.setCourseLevel("初级");
+        }else if(level == 1){
+            courseVO.setCourseLevel("中级");
+        }else{
+            courseVO.setCourseLevel("高级");
+        }
         courseVO.setCourseTitle(course.getCourseTitle());
         courseVO.setCourseDesc(course.getCourseDesc());
         courseVO.setCourseNowPrice(course.getCourseNowPrice());
-        courseVO.setCourseLevel(course.getCourseLevel());
         courseVO.setStudyCount(course.getStudyCount());
         courseVO.setCourseTime(course.getCourseTime());
         courseVO.setCourseNote(course.getCourseNote());
@@ -128,12 +144,7 @@ public class CourseController {
         courseVO.setCourseLessonVOList(courseLessonVOList);
         courseVO.setUserProfileVO(userProfileVO);
 
-
-        resultVO.setData(courseVO);
-        resultVO.setCode(0);
-        resultVO.setMsg("成功");
-
-        return resultVO;
+        return ResultVOUtil.success(courseVO);
     }
 
     /**
