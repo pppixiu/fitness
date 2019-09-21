@@ -27,14 +27,16 @@ public class CourseServiceImplTest {
     private CourseService courseService;
 
     @Test
-    @Ignore
     public void getCourseListTest(){
         Course courseCondition = new Course();
-        courseCondition.setTagId(2);
-        courseCondition.setCourseLevel(0);
+        courseCondition.setTagId(9);
+        courseCondition.setCourseTitle("计划");
+        courseCondition.setCourseLevel(2);
         String value = OrderByUtil.convert2String(OrderByEnum.COUNT.getCode());
         List<Course> courseList = courseService.getCourseList(1,5,courseCondition,value);
-        Assert.assertEquals(5, courseList.size());
+        System.out.println(courseCondition.getCourseLevel());
+        System.out.println(courseCondition.getCourseTitle());
+        Assert.assertEquals(1, courseList.size());
         System.out.println(courseList.size());
 
     }

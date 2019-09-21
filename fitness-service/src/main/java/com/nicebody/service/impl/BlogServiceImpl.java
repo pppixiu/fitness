@@ -1,8 +1,12 @@
 package com.nicebody.service.impl;
 
+import com.nicebody.dto.UserBlogExecution;
+import com.nicebody.enums.UserCenterInfoEnum;
 import com.nicebody.mapper.BlogMapper;
 import com.nicebody.pojo.Blog;
 import com.nicebody.service.BlogService;
+import com.nicebody.util.PageCalculator;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +27,16 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Blog getUserBlogByBlogId(int blogId) {
-        return userBlogMapper.queryUserBlogByBlogId(blogId);
+        Blog blog = userBlogMapper.queryUserBlogByBlogId(blogId);
+
+        return blog;
+    }
+
+    @Override
+    public List<Blog> getUserBlogByUserId(int pageIndex, int pageSize, Blog userBlogCondition) {
+        int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
+        List<Blog> userBlogList = userBlogMapper.queryUserBlogByUserId(rowIndex, pageSize, userBlogCondition);
+        return userBlogList;
     }
 
     @Override
@@ -38,8 +51,10 @@ public class BlogServiceImpl implements BlogService {
 
 
     @Override
-    public List<Blog> getUserBlogByUserIdOrContentLike(int rowIndex, int pageSize, Blog userBlogCondition) {
-        return userBlogMapper.queryUserBlogByUserIdOrContentLike(rowIndex,pageSize,userBlogCondition);
+    public List<Blog> getUserBlogByUserIdOrContentLike(int pageIndex, int pageSize, Blog userBlogCondition) {
+        int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
+        List<Blog> userBlogList = userBlogMapper.queryUserBlogByUserIdOrContentLike(rowIndex, pageSize, userBlogCondition);
+        return userBlogList;
     }
 
     @Override

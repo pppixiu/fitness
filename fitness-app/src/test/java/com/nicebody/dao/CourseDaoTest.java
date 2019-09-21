@@ -25,14 +25,14 @@ public class CourseDaoTest {
     private CourseMapper courseMapper;
 
     @Test
-    @Ignore
     public void queryCourseListTest(){
         Course courseCondition = new Course();
         //courseCondition.setTagId(2);
-       // courseCondition.setCourseLevel(0);
+       courseCondition.setCourseLevel(2);
         String value = OrderByUtil.convert2String(OrderByEnum.COUNT.getCode());
-        List<Course> courseList =courseMapper.queryCourseList(1, 5, null,value);
-        Assert.assertEquals(5, courseList.size());
+        List<Course> courseList =courseMapper.queryCourseList(1, 5, courseCondition,value);
+        System.out.println(courseCondition.getCourseLevel());
+        Assert.assertEquals(1, courseList.size());
         System.out.println(courseList.size());
 
     }

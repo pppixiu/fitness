@@ -15,8 +15,7 @@ import java.util.List;
  * @Date 2019/9/15 20:06
  **/
 public interface CourseService {
-    List<Course> getCourseList(@Param("rowIndex") int rowIndex,
-                                   @Param("pageSize") int pageSize,
+    List<Course> getCourseList(int pageIndex, int pageSize,
                                    @Param("courseCondition") Course courseCondition,
                                    @Param("orderByCondition") String orderByCondition);
 

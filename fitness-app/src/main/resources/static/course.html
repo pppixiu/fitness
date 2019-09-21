@@ -15,9 +15,9 @@
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- //for-mobile-apps -->
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<!-- Custom Theme files -->
-	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="/css/style.css" rel='stylesheet' type='text/css' />
 	<!-- js -->
 	<script src="/js/jquery-1.11.1.min.js"></script>
 	<!-- //js -->
@@ -37,7 +37,7 @@
 		});
 	</script>
 	<!-- start-smoth-scrolling -->
-	<link rel="stylesheet" href="css/courselist.css">
+	<link rel="stylesheet" href="/css/courselist.css">
 </head>
 <body>
 <div class="page-content">
@@ -45,37 +45,27 @@
 <div class="shizhan-header">
 
 	<div class="shizhan-header-wrap clearfix">
-		<div id="tagname-list" style="float: left; margin-top: 6em;margin-left: 8px;display: inline">
+		<div id="tagname-list" style="float: left; margin-top: 7em;margin-left: 8px;display: inline">
 		</div>
-		<div style="float: left;margin-top: 6em;display: inline">
-			<a href="#" style="color: black; text-decoration: none;margin-right: 12px;">高级</a>
-			<a href="#" style="color: black; text-decoration: none;margin-right: 12px;">中级</a>
-			<a href="#" style="color: black; text-decoration: none;margin-right: 12px;">低级</a>
+		<div style="float: left;margin-top: 7em;display: inline">
+			<a href="#" style="color: black; text-decoration: none;margin-right: 12px;"onclick="levelfunction(2)">高级</a>
+			<a href="#" style="color: black; text-decoration: none;margin-right: 12px;" onclick="levelfunction(1)">中级</a>
+			<a href="#" style="color: black; text-decoration: none;margin-right: 12px;"onclick="levelfunction(0)">初级</a>
 		</div>
 
 
-		<div id="szHeaderSearch" class="shizhan-header-search" style="margin-top: 5em">
+		<div id="szHeaderSearch" class="shizhan-header-search" style="margin-top: 6em">
 
 			<div class="clearfix">
-				<input class="shizhan-search-input" placeholder="搜索感兴趣的实战课程内容" type="text" autocomplete="off" data-suggest-trigger="true">
-				<a href="javascript:;" class="shizhan-search-button" data-search-btn="true">
-					<i class="imv2-search"></i>
+				<input id="cou-title" class="shizhan-search-input" placeholder="搜索感兴趣的课程内容" type="text" autocomplete="off" data-suggest-trigger="true">
+				<a  href="#" class="shizhan-search-button" data-search-btn="true">
+					<i onclick="titlefunction()" class="imv2-search"></i>
 				</a>
 				<div class="js-sz-searchtags shizhan-searchtags"></div>
 				<input type="hidden" data-suggest-history="true">
 				<ul class="shizhan-search-result" data-suggest-result="true"></ul>
 			</div>
 
-			<div class="search-hot clearfix" style=" margin-top: 8px;">
-				<span style="margin-right: 12px;color: #1B242F;">热搜：</span>
-
-				<a target="_blank" href="/course/listcourses?rowIndex=1&pageSize=5&courseTitle=胸部&orderByCondition=null" style="color: #1B242F;text-decoration:none; margin-right: 8px">胸部</a>
-				<a target="_blank" href="//www.imooc.com/search/?words=React&amp;type=course" style="color: #1B242F;text-decoration:none;margin-right: 8px">腿部</a>
-				<a target="_blank" href="//www.imooc.com/search/?words=面试&amp;type=course" style="color: #1B242F;text-decoration:none;margin-right: 8px">增肌</a>
-				<a target="_blank" href="//www.imooc.com/search/?words=面试&amp;type=course" style="color: #1B242F;text-decoration:none;margin-right: 8px">减脂</a>
-
-
-			</div>
 		</div>
 	</div>
 </div>
@@ -85,10 +75,10 @@
 
 	<div class="screening-box clearfix">
 		<div class="screening-time l clearfix">
-			<a href="/course/listcourses?rowIndex=1&pageSize=5&courseCondition=null&orderByCondition=null" class="on" style="text-decoration: none;">默认排序</a>
-			<a href="/course/listcourses?rowIndex=1&pageSize=5&courseCondition=null&orderByCondition=2" style="text-decoration: none;">价格</a>
-			<a href="/course/listcourses?rowIndex=1&pageSize=5&courseCondition=null&orderByCondition=1" style="text-decoration: none;">人气</a>
-			<a href="/course/listcourses?rowIndex=1&pageSize=5&courseCondition=null&orderByCondition=0" style="text-decoration: none;">时间</a>
+			<a href="#" class="on" style="text-decoration: none;">默认排序</a>
+			<a href="#"onclick="pricefunction(2)" style="text-decoration: none;">价格</a>
+			<a href="#"onclick="countfunction(1)" style="text-decoration: none;">人气</a>
+			<a href="#"onclick="countfunction(0)" style="text-decoration: none;">时间</a>
 
 		</div>
 
@@ -100,33 +90,16 @@
 	<div class="index-list-wrap">
 		<div id="course-list" class="shizhan-course-list clearfix">
 
+		</div>
+
+		<div  id="course-button" style="text-align: center">
 
 		</div>
-		<div class="page"><span class="disabled_page">首页</span>
-			<span class="disabled_page">上一页</span>
-			<a href="javascript:void(0)" class="active">1</a>
-			<a href="/?sort=0&amp;unlearn=0&amp;page=2">2</a>
-			<a href="/?sort=0&amp;unlearn=0&amp;page=3">3</a>
-			<a href="/?sort=0&amp;unlearn=0&amp;page=4">4</a>
-			<a href="/?sort=0&amp;unlearn=0&amp;page=5">5</a>
-			<a href="/?sort=0&amp;unlearn=0&amp;page=6">6</a>
-			<a href="/?sort=0&amp;unlearn=0&amp;page=2">下一页</a>
-			<a href="/?sort=0&amp;unlearn=0&amp;page=6">尾页</a></div>
-	</div>
 
-	<div class="top-wrap-box">
-		<!-- 顶部广告banner -->
-		<div class="banner-bg-box clearfix">
-			<a class="banner-item l" href="http://www.imooc.com/topic/pyzt?mc_marking=fa40c055a843d0d2fbdf3d161732131d&amp;mc_channel=banner1" data-track="szbanner-1-1" target="_blank" style="background-image: url(//img2.mukewang.com/5b86030f0001db9e05900120.jpg)" title="python">
-			</a>
-			<a class="banner-item r" href="http://www.imooc.com/topic/vuejs?mc_marking=b0c76ff4bae9559b37b09980ef84de54&amp;mc_channel=banner1" data-track="szbanner-1-2" target="_blank" style="background-image: url(//img3.mukewang.com/5b568bc40001b45905900120.jpg)" title="vue">
-			</a>
-		</div>
-		<!-- 顶部广告banner end -->
-	</div>
-</div>
+   </div>
 <!--footer-top-->
 <!--copy right-->
+</div>
 </div>
 <!--//footer-top-->
 <!-- smooth scrolling -->

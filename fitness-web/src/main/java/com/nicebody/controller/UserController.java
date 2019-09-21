@@ -1,7 +1,5 @@
 package com.nicebody.controller;
 
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.nicebody.dto.UserBlogExecution;
 import com.nicebody.dto.UserCoachExecution;
 import com.nicebody.dto.UserCourseExecution;

@@ -13,7 +13,7 @@
             <result column="update_time" property="updateTime"/>
 
            <association property="userBlogImage" column="image_id"
-                        javaType="BlogImage">
+                        javaType="blogImage">
             <id column="image_id" property="imageId"/>
             <result column="image_url" property="imageUrl"/>
             <result column="blog_id" property="blogId"/>
@@ -44,6 +44,9 @@
     <!--或者查询全部博客-->
     <select id="queryUserBlogByUserIdOrContentLike" resultMap="userBlog">
         SELECT
+        ub.blog_id,
+        ub.user_id,
+        ub.blog_id,
         ub.view_count,
         ub.like_count,
         ub.blog_content,
