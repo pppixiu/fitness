@@ -54,9 +54,17 @@ $(function () {
             function (data) {
                 if (data.code == "0") {
                     var userBlog = data.data;
-                    var html='';
+                    var html=''
                     userBlog.map(function (item,index) {
-                        html += '<div style="padding-top: 2em;">'
+                        var url = "blogcomment?blogId="
+                            +  item.blogId
+                            +  '&userId='
+                            +  item.userProfile.userId;
+                        html += '<div style="padding-top: 2em;" onclick="window.open('
+                            + "'"
+                            + url
+                            + "'"
+                            + ')"> '
                             +'<a href="#">'
                             + '<img src="'
                             + item.imageUrl
@@ -77,38 +85,43 @@ $(function () {
                 }
             });
     }
-});
 
-// 用户博客总浏览数
-$(function () {
-    var viewCountUrl = '/blog/getviewcount?userId=?userId='+userId;
-    function viewCount() {
-        var url = viewCountUrl;
-        $.getJSON(
-            url,
-            function (data) {
-                if (data.code == "0") {
-                    var viewCount = data.data;
-                    $('#all-view-count').text(viewCount);
-                }
-            });
-    }
-    viewCount() ;
-});
+    var resultViewCount = query("userId");
+    getViewCount(resultViewCount);
+    // 用户博客总浏览数
+    function getViewCount(userId) {
+            var viewCountUrl = '/blog/getviewcount?userId='+userId;
+            var url = viewCountUrl;
+            function viewCount() {
+                $.getJSON(
+                    url,
+                    function (data) {
+                        if (data.code == "0") {
+                            var viewCount = data.data;
+                            $('#all-view-count').text(viewCount);
+                        }
+                    });
+            }
+            viewCount() ;
+    };
 
+
+    var resultLikeCount = query("userId");
+    getLikeCount(resultLikeCount);
 // 用户博客总点赞数
-$(function () {
-    var likeCountUrl = '/blog/getlikecount??userId='+userId;
-    function likeCount() {
-        var url = likeCountUrl;
-        $.getJSON(
-            url,
-            function (data) {
-                if (data.code == "0") {
-                    var likeCount = data.data;
-                    $('#all-like-count').text(likeCount);
-                }
-            });
+    function getLikeCount(userId) {
+            var likeCountUrl = '/blog/getlikecount?userId='+userId;
+            var url = likeCountUrl;
+            function likeCount() {
+                $.getJSON(
+                    url,
+                    function (data) {
+                        if (data.code == "0") {
+                            var likeCount = data.data;
+                            $('#all-like-count').text(likeCount);
+                        }
+                    });
+            }
+            likeCount() ;
     }
-    likeCount() ;
 });

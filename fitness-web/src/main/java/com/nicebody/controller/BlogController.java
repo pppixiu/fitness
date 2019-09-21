@@ -91,22 +91,26 @@ public class BlogController {
 
     /**
      *  查询用户博客总浏览数
-     * @param userBlogCondition
+     * @param
      * @return
      */
     @RequestMapping("/getviewcount")
-    public ResultVO getViewCount(Blog userBlogCondition){
+    public ResultVO getViewCount(@RequestParam("userId") int userId){
+        Blog userBlogCondition = new Blog();
+        userBlogCondition.setUserId(userId);
         int viewCount = userBlogService.getViewCount(userBlogCondition);
         return ResultVOUtil.success(viewCount);
     }
 
     /**
      *  查询用户博客总点赞数
-     * @param userBlogCondition
+     * @param
      * @return
      */
     @RequestMapping("/getlikecount")
-    public ResultVO getLikeCount(Blog userBlogCondition){
+    public ResultVO getLikeCount(@RequestParam("userId") int userId){
+        Blog userBlogCondition = new Blog();
+        userBlogCondition.setUserId(userId);
         int likeCount = userBlogService.getLikeCount(userBlogCondition);
         return ResultVOUtil.success(likeCount);
     }
@@ -120,7 +124,7 @@ public class BlogController {
     @RequestMapping("/getuserblogbyuseridorcontentlike")
     public ResultVO getUserBlogByUserIdOrContentLike(@RequestParam("pageIndex")int pageIndex,
                                                      @RequestParam("pageSize")int pageSize,
-                                                     @RequestParam("blogContent") String blogContent){
+                                                     @RequestParam("blogContent")String blogContent){
 
         List<UserBlogVO> blogVOList = new ArrayList<>();
         Blog userBlogCondition = new Blog();

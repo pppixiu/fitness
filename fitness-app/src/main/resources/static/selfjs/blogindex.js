@@ -1,7 +1,8 @@
 /**值的初始化*/
-var pageIndex = 1;
+var pageIndex = 0;
 var blogContent = '';
 var pageSize = 8;
+var temp = 1;
 
 
 $(function () {
@@ -11,10 +12,11 @@ $(function () {
 /**
  * 获取页面值
  */
-// function pagefunction() {
-//     pageIndex = pageIndex + 1;
-//     getBlogList();
-// }
+function pagefunction() {
+    temp = temp + 1;
+    pageSize = temp * 8;
+    getBlogList();
+}
 
 /**
  * 获得模糊查询值
@@ -45,7 +47,7 @@ function getBlogList() {
                 var blogList = data.data;
                 var html = '';
                 blogList.map(function(item,index) {
-                    var url = "blog_comment.html?blogId="
+                    var url = "blogcomment?blogId="
                         +  item.blogId
                         +  '&userId='
                         +  item.userProfile.userId;
@@ -80,3 +82,13 @@ function getBlogList() {
             }
         });
 }
+
+/**
+ * 滚动加载
+ */
+$(window).scroll(function () {
+    var srollPos = $(window).scrollTop()+0.5;    //滚动条距顶部距离(页面超出窗口的高度)
+    if (srollPos>=($(document).height()-$(window).height())) {
+        pagefunction();
+    }
+});
