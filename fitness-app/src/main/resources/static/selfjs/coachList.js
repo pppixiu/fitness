@@ -105,7 +105,7 @@ function gettaglist() {
  * 输出教练列表
  */
 function getcoachlist() {
-    var coachListUrl = '/coach?tagId='+tagId+'&rowIndex='+rowIndex+'&sortId='+sortId+'&coachName='+coachName;
+    var coachListUrl = '/coach/coachList?tagId='+tagId+'&rowIndex='+rowIndex+'&sortId='+sortId+'&coachName='+coachName;
     var url = coachListUrl;
 
     $.getJSON(

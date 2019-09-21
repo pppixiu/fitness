@@ -18,7 +18,7 @@ public class CoachInfoVO {
     private Integer userId;
 
     @JsonProperty("coachname")
-    private Integer coachName;
+    private String coachName;
 
     @JsonProperty("coachdesc")
     private String coachDesc;
@@ -57,11 +57,11 @@ public class CoachInfoVO {
         this.userId = userId;
     }
 
-    public Integer getCoachName() {
+    public String getCoachName() {
         return coachName;
     }
 
-    public void setCoachName(Integer coachName) {
+    public void setCoachName(String coachName) {
         this.coachName = coachName;
     }
 
