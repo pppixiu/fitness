@@ -32,25 +32,8 @@ public class CoachInfoVO {
     @JsonProperty("count")
     private Integer likeCount;
 
-    @JsonProperty("imageurl")
-    private List<CoachImage> coachImages;
-
-    @JsonProperty("coachblogs")
-    private List<Blog> Blogs;
-
-    @JsonProperty("courses")
-    private List<Course> courses;
-
     public Integer getUserId() {
         return userId;
-    }
-
-    public List<Blog> getBlogs() {
-        return Blogs;
-    }
-
-    public void setBlogs(List<Blog> blogs) {
-        Blogs = blogs;
     }
 
     public void setUserId(Integer userId) {
@@ -95,22 +78,5 @@ public class CoachInfoVO {
 
     public void setLikeCount(Integer likeCount) {
         this.likeCount = likeCount;
-    }
-
-    public List<CoachImage> getCoachImages() {
-        return coachImages;
-    }
-
-    public void setCoachImages(List<CoachImage> coachImages) {
-        this.coachImages = coachImages;
-    }
-
-
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
     }
 }
