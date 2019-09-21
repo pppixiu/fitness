@@ -4,6 +4,7 @@ import com.nicebody.mapper.CourseMapper;
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.CourseLesson;
 import com.nicebody.service.CourseService;
+import com.nicebody.util.PageCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,32 +24,8 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public List<Course> getCourseList(int rowIndex, int pageSize, Course courseCondition, String orderByCondition) {
-//        HashMap<String, Object> map = new HashMap<String, Object>();
-//        PageBean<Course> pageBean = new PageBean<Course>();
-//
-//        //封装当前页数
-//        pageBean.setCurrPage(rowIndex);
-//
-//        //每页显示的数据
-//        pageBean.setPageSize(pageSize);
-//
-//        //封装总记录数
-//        int totalCount = courseMapper.selectCount();
-//        pageBean.setTotalCount(totalCount);
-//
-//        //封装总页数
-//        double tc = totalCount;
-//        Double num = Math.ceil(tc / pageSize);//向上取整
-//        pageBean.setTotalPage(num.intValue());
-//
-//        map.put("start", (rowIndex - 1) * pageSize);
-//        map.put("size", pageBean.getPageSize());
-//        //封装每页显示的数据
-//        PageBean<Course> lists = courseMapper.queryCourseList((rowIndex - 1) * pageSize, pageBean.getPageSize(),courseCondition,orderByCondition);
-//        pageBean.setLists(lists);
-//
-//        return pageBean;
+    public List<Course> getCourseList(int pageIndex, int pageSize, Course courseCondition, String orderByCondition) {
+        int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
         return courseMapper.queryCourseList(rowIndex,pageSize,courseCondition,orderByCondition);
     }
 

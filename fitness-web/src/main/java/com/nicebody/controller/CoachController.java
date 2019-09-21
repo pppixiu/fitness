@@ -44,7 +44,7 @@ public class CoachController {
      * @param coachName
      * @return
      */
-    @GetMapping
+    @GetMapping(value = "/coachList")
     public ResultVO sortCoachList(@RequestParam(name = "tagId", defaultValue = "0") Integer tagId,
                                   @RequestParam(name = "rowIndex", defaultValue = "0") Integer rowIndex,
                                   @RequestParam(name = "sortId", defaultValue = "0") Integer sortId,
@@ -90,15 +90,15 @@ public class CoachController {
     public ResultVO getCoachInfo(@RequestParam(name = "rowIndex", defaultValue = "0") Integer rowIndex,
                                  @RequestParam(name = "pageSize", defaultValue = "2") Integer pageSize,
                                  @RequestParam(name = "coachId", defaultValue = "1") Integer coachId,
-                                 @RequestParam(name = "userId", defaultValue = "1") Integer userId) {
+                                 @RequestParam(name = "userId", defaultValue = "0") Integer userId) {
         Blog userCondition = new Blog();
-        userCondition.setUserId(userId);
+        userCondition.setUserId(coachId);
 
         //查找该id的教练\图片\课程\博文信息
         List<CoachInfo> coachInfoList = coachService.getCoachInfo(rowIndex, pageSize, 0, coachId);
         List<CoachImage> coachImageList = coachService.getImageList(rowIndex, pageSize, coachId);
         List<Blog> userBlogList = BlogService.getUserBlogByUserIdOrContentLike(rowIndex, pageSize, userCondition);
-        //List<Course> courseList = courseService.getCourseList(rowIndex, pageSize, coachId);
+        List<Course> courseList = courseService.getCourseByCoachId(coachId, 0, 3);
         List<CoachInfoVO> coachInfoVOList = new ArrayList<>();
         //填值
         for (CoachInfo coachInfo : coachInfoList) {
@@ -106,7 +106,7 @@ public class CoachController {
             BeanUtils.copyProperties(coachInfo, coachInfoVO);
             coachInfoVO.setBlogs(userBlogList);
             coachInfoVO.setCoachImages(coachImageList);
-            //coachInfoVO.setCourses(courseList);
+            coachInfoVO.setCourses(courseList);
             coachInfoVOList.add(coachInfoVO);
         }
 

@@ -36,7 +36,6 @@
             });
         });
     </script>
-    <!--============================================================================================================================-->
     <!-- start-smoth-scrolling -->
     <style>
         body{
@@ -64,9 +63,7 @@
 
     <!--评论-->
     <script src="js/coach/jquery.min.js"></script>
-    <script type="text/javascript" src="js/coach/data.js"></script>
-    <script type="text/javascript" src="js/coach/index.js"></script>
-    <link href="css/coach/resume.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="css/coach/comment.css">
 
     <!--博文-->
     <script src="js/coach/scrollbar.js" type="text/javascript"></script>
@@ -91,10 +88,13 @@
     <link href="css/coachList/cards-style.css" rel='stylesheet' type='text/css' />
 
     <!--点赞-->
-    <link href="css/coach/count.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="css/style.css">
 
     <!--数据-->
-    <script src="/selfjs/coachPage.js"></script>
+    <script src="selfjs/coachPage.js"></script>
+    <script>
+       coachInfo("coachId");
+    </script>
 </head>
 <body>
 <!--导航-->
@@ -112,138 +112,193 @@
         </h1>
 
         <div class="count col-lg-5" style="padding-top: 35px; padding-right: 50px;">
-            <div class="three"></div>
+            <div class="three" onclick="likefuncation()"></div>
             <a id="coach-count"></a>
         </div>
 
         <hr style="width:80%;margin:0 auto;border: 0;height: 0;border-top: 2px solid rgba(0, 0, 0, 0.1);border-bottom: 1px solid rgba(255, 255, 255, 0.3);">
-
-        <div id="remark" style="margin-top: 30px;">
-            <button id="stop" class="btn btn-primary">停止</button>
-            <button id="open" class="btn btn-primary">弹</button>
-            <input type="text" class="form-control" name="" id="barrage_content" placeholder="添加弹幕内容"><button class="btn btn-primary" id="submit_barraget">发送</button>
-        </div>
     </div>
 
     <div class="col-lg-7" style="padding: 0;margin-top: 50px;">
     <img src="images/caoch.jpg" style="width: 100%;height: auto; overflow: hidden;">
     </div>
-
-
 </div>
 
+<!--图片、课程、博客、评论-->
+<div class="cards-3 section-gray">
+        <div class="container">
+            <div class="row" id="coachinfo-show">
+                <div class="page-header">
+                    <h1>博文
+                        <small>BLOG</small>
+                    </h1>
+                </div>
+                <div id="blog-show">
+                    <div class="col-md-4" style="overflow: hidden;">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="table" style="height: 300px;overflow: hidden;">
+                            <h3 class="card-caption">BLOG</h3>
+                            <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. Vivamus odio antement, feugiat eget amet, scelerisque velit antement.</p>
+                            <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> 查看详情 </a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4" style="overflow: hidden;">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                            <div class="table" style="height: 300px;overflow: hidden;">
+                                <h3 class="card-caption">BLOG</h3>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. Vivamus odio antement, feugiat eget amet, scelerisque velit antement.</p>
+                                <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> 查看详情 </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="overflow: hidden;">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                            <div class="table" style="height: 300px;overflow: hidden;">
+                                <h3 class="card-caption">BLOG</h3>
+                                <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. Vivamus odio antement, feugiat eget amet, scelerisque velit antement.</p>
+                                <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> 查看详情 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-header">
+                    <h1>图片
+                        <small>IMAGE</small>
+                    </h1>
+                </div>
+                <div id="image-show">
+                    <div class="col-md-4">
+                         <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="table" style="height: 300px; overflow: hidden;">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                            <div class="table" style="height: 300px; overflow: hidden;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                            <div class="table" style="height: 300px; overflow: hidden;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-header">
+                    <h1>课程
+                        <small>COURSE</small>
+                    </h1>
+                </div>
+                <div id="course-show">
+                    <div class="col-md-4" style="overflow: hidden;">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="table" style="overflow: hidden; height: 300px;">
+                            <h6 class="category text-info">COURSE</h6>
+                            <h3 class="card-caption">Quisque id elit maximus, pretium mollis elit</h3>
+                            <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Read Article </a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4" style="overflow: hidden;">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                            <div class="table" style="overflow: hidden; height: 300px;">
+                                <h6 class="category text-info">COURSE</h6>
+                                <h3 class="card-caption">Quisque id elit maximus, pretium mollis elit</h3>
+                                <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Read Article </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="overflow: hidden;">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                            <div class="table" style="overflow: hidden; height: 300px;">
+                                <h6 class="category text-info">COURSE</h6>
+                                <h3 class="card-caption">Quisque id elit maximus, pretium mollis elit</h3>
+                                <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Read Article </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-header">
+                    <h1>评论
+                        <small>COMMENT</small>
+                    </h1>
+                </div>
+                <div id="comment-show">
+                    <div class="col-md-12" style="height: 50px; margin-top: 10px; border-bottom:2px solid #d9dde1;">
+                        <h4 style="display: inline-block; width: 1000px; overflow: hidden;  max-height: 30px; color: #1e88e5">@.王佳帅 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a style="width: 800px; overflow: hidden; color: black;">
+                            奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！
+                            </a>
+                        </h4>
 
-<div class="cards-1 section-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-blog">
-                    <div class="card-image">
-                        <a href="#"> <img class="img" src="images/coachList/blog01.jpeg">
-                            <div class="card-caption"> Quisque a bibendum magna </div>
-                        </a>
-                        <div class="ripple-cont"></div>
+                        <button type="button" class="pull-right btn btn-primary btn-lg" style="display: inline-block; margin-bottom: 25px; color: #999999;">
+                            <span class="glyphicon glyphicon-heart-empty"></span>9866
+                        </button>
+                        <button type="button" class="pull-right btn btn-primary btn-lg" style="display: inline-block; margin-bottom: 25px;background-color: #FFFFFF;color: #1c1f21">
+                            <span class="	glyphicon glyphicon-comment"></span>回复
+                        </button>
                     </div>
-                    <div class="table">
-                        <h6 class="category text-info">Cinema</h6>
-                        <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. Vivamus odio antement, feugiat eget nisi sit amet, scelerisque dignissim velit antement. </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="table table-info">
-                        <h5 class="category-social">
-                            <i class="fa fa-twitter"></i> Twitter
-                        </h5>
-                        <h4 class="card-caption">
-                            <a href="#">"Vivamus odio ante, feugiat eget nisi sit amet, dignissim velit. Sus pendisse ultricies varius."</a>
+                    <div class="col-md-12" style="height: 50px; margin-top: 10px; border-bottom:2px solid #d9dde1;">
+                        <h4 style="display: inline-block; width: 1000px; overflow: hidden;  max-height: 30px; color: #1e88e5">@.王佳帅 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a style="width: 800px; overflow: hidden; color: black;">
+                                奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！奇哥真帅！
+                            </a>
                         </h4>
-                        <div class="ftr">
-                            <div class="author">
-                                <a href="#"> <img src="images/coachList/avatar1.png" alt="" class="avatar img-raised"> <span>Debbon Amet</span> </a>
-                            </div>
-                            <div class="stats"> <i class="fa fa-heart"></i> 365 &nbsp; <i class="fa fa-share-alt"></i> 120 </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="table">
-                        <h6 class="category text-danger">
-                            <i class="fa fa-globe "></i> World
-                        </h6>
-                        <h4 class="card-caption">
-                            <a href="#">Vivamus odio ante, feugiat eget nisi sit amet, dignissim velit.</a>
-                        </h4>
-                        <div class="ftr">
-                            <div class="author">
-                                <a href="#"> <img src="images/coachList/avatar2.png" alt="" class="avatar img-raised"> <span>Patrick Wood</span>
-                                    <div class="ripple-cont">
-                                        <div class="ripple ripple-on ripple-out" style="left: 574px; top: 364px; background-color: rgb(60, 72, 88); transform: scale(11.875);"></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="stats"> <i class="fa fa-heart"></i> 342 &nbsp; <i class="fa fa-comment"></i> 45 </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-blog">
-                    <div class="card-image">
-                        <a href="#"> <img class="img" src="images/coachList/blog02.jpeg"> </a>
-                        <div class="ripple-cont"></div>
-                    </div>
-                    <div class="table">
-                        <h6 class="category text-success"><i class="fa fa-university"></i> Law</h6>
-                        <h4 class="card-caption">
-                            <a href="#">Vivamus odio ante, feugiat eget nisi sit amet, dignissim velit</a>
-                        </h4>
-                        <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus.</p>
-                        <div class="ftr">
-                            <div class="author">
-                                <a href="#"> <img src="images/coachList/avatar3.png" alt="..." class="avatar img-raised"> <span>Mary Dunst</span> </a>
-                            </div>
-                            <div class="stats"> <i class="fa fa-clock-o"></i> 10 min </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-blog">
-                    <div class="card-image">
-                        <a href="#"> <img class="img" src="images/coachList/blog03.jpeg"> </a>
-                        <div class="ripple-cont"></div>
-                    </div>
-                    <div class="table">
-                        <h6 class="category text-warning">
-                            <i class="fa fa-soundcloud"></i> Music
-                        </h6>
-                        <h4 class="card-caption">
-                            <a href="#">Vivamus odio ante, feugiat eget nisi sit amet, dignissim velit</a>
-                        </h4>
-                        <div class="ftr">
-                            <div class="author">
-                                <a href="#"> <img src="images/coachList/avatar4.png" alt="..." class="avatar img-raised"> <span>Debbon Amet</span> </a>
-                            </div>
-                            <div class="stats"> <i class="fa fa-clock-o"></i> 15 min </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="table table-danger">
-                        <h5 class="category-social">
-                            <i class="fa fa-newspaper-o"></i> News
-                        </h5>
-                        <h4 class="card-caption">
-                            <a href="#">"Consectetur odio feugiat"</a>
-                        </h4>
-                        <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus.</p>
-                        <div class="ftr text-center"> <a href="#" class="btn btn-white btn-round">Read More</a> </div>
+
+                        <button type="button" class="pull-right btn btn-primary btn-lg" style="display: inline-block; margin-bottom: 25px; color: #999999;">
+                            <span class="glyphicon glyphicon-heart-empty"></span>9866
+                        </button>
+                        <button type="button" class="pull-right btn btn-primary btn-lg" style="display: inline-block; margin-bottom: 25px;background-color: #FFFFFF;color: #1c1f21">
+                            <span class="	glyphicon glyphicon-comment"></span>回复
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+</div>
+
+<!--添加评论-->
+<div style="position: fixed; right: 10px; top: 70px; ">
+    <a href="#modal-opened" class="link-1" id="modal-closed" style="text-decoration: none;">添加评论</a>
+    <div class="modal-container" id="modal-opened">
+    <div class="modal-comment">
+
+        <div class="modal__details" style="margin-bottom: 0px">
+            <h1 class="modal__title">说说你的感受</h1>
+        </div>
+
+        <div class="input-group">
+            <a class="input-group-addong lyphicon glyphicon-pencil" style="color:#1B242F;"></a>
+            <input style="margin-top: 5px;border-radius: 5px; width: 550px;" type="text" class="form-control" placeholder="点击输入">
+
+        </div>
+
+        <button class="modal__btn">点击添加 &rarr;</button>
+
+        <a href="#modal-closed" class="link-2"></a>
+
     </div>
 </div>
+</div>
+
+<!--aliPay-->
+<script type="text/javascript">
+    $(function(){
+        $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+        });
+    });
+    function dashangToggle(){
+        $(".hide_box").fadeToggle();
+        $(".shang_box").fadeToggle();
+    }
+</script>
 
 <!--遮罩层-->
 <div class="bgPop"></div>
@@ -267,13 +322,13 @@
             <!--日期-->
             <a id="times" style="font-weight: bold;"></a>
             <script type="text/javascript">
-               function  getD1(){
-                var date=new Date();
-                var d1=date.toLocaleDateString();
-                var div1=document.getElementById("times");
-                div1.innerHTML =d1;  }
-               setInterval("getD1();",1000);
-               </script>
+                function  getD1(){
+                    var date=new Date();
+                    var d1=date.toLocaleDateString();
+                    var div1=document.getElementById("times");
+                    div1.innerHTML =d1;  }
+                setInterval("getD1();",1000);
+            </script>
             <!--时间-->
             <a>时间：</a>
             <input type="text" id="cityChoice" style="border-radius: 5px;">
@@ -321,7 +376,7 @@
         <div class="pop-foot">
             <a style="left: 0;">总计：10000元</a>
             <div class="content">
-            <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支付宝支付</a></p>
+                <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支付宝支付</a></p>
 
                 <!--aliPay-->
                 <div class="shang_box">
@@ -362,64 +417,10 @@
     })
 </script>
 
-<!--评论-->
-<script type="text/javascript">
-
-    // 数据初始化
-    var Obj = $('body').barrage({
-        data : date, //数据列表
-        row : 5,   //显示行数
-        time : 1000, //间隔时间
-        gap : 20,    //每一个的间隙
-        position : 'fixed', //绝对定位
-        direction : 'bottom right', //方向
-        ismoseoverclose : true, //悬浮是否停止
-    })
-    Obj.start();
-
-    //添加评论
-    $("#submit_barraget").click(function(){
-
-        var val = $("#barrage_content").val();
-        //此格式与dataa.js的数据格式必须一致
-        var addVal = {
-            href : '',
-            text : val
-        }
-        //添加进数组
-        Obj.data.unshift(addVal);
-        alert('评论成功');
-
-    })
-
-    $("#open").click(function(){
-        Obj.start();
-    })
-    $("#stop").click(function(){
-        Obj.close();
-    })
-</script>
+<!--点赞按钮-->
+<script src="js/coach/count.js"></script>
 
 <!--copy right-->
 </div>
-
-<!--aliPay-->
-<script type="text/javascript">
-    $(function(){
-        $(".pay_item").click(function(){
-            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
-            var dataid=$(this).attr('data-id');
-            $(".shang_payimg img").attr("src","img/"+dataid+"img.jpg");
-            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
-        });
-    });
-    function dashangToggle(){
-        $(".hide_box").fadeToggle();
-        $(".shang_box").fadeToggle();
-    }
-</script>
-
-<!--点赞按钮-->
-<script src="js/coach/count.js"></script>
 </body>
 </html>
