@@ -57,11 +57,11 @@ public class UserBlogMapperTest {
         System.out.println(count);
     }
 
-    @Test
-    public void testupdateViewAndLikeCount(){
-        Blog blog = new Blog();
-
-    }
+//    @Test
+//    public void testupdateViewAndLikeCount(){
+//        Blog blog = new Blog();
+//
+//    }
 
 //    @Test
 //    public void testgetViewAndLikeCount(){

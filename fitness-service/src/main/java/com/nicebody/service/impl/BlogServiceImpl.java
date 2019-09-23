@@ -7,6 +7,7 @@ import com.nicebody.service.BlogService;
 import com.nicebody.util.PageCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -57,16 +58,19 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    @Transactional
     public int addUserBlog(Blog userBlog) {
         return userBlogMapper.insertUserBlog(userBlog);
     }
 
     @Override
+    @Transactional
     public int addUserBlogImage(BlogImage blogImage) {
         return userBlogMapper.insertUserBlogImage(blogImage);
     }
 
     @Override
+    @Transactional
     public int modifyViewAndLikeCount(Blog userBlogCondition, Date updateTime) {
         return userBlogMapper.updateViewAndLikeCount(userBlogCondition, updateTime);
     }
