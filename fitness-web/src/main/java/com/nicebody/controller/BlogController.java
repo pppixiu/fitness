@@ -31,6 +31,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author 曹钲
@@ -154,8 +156,13 @@ public class BlogController {
     @ResponseBody
     public int addUserBlog(Blog blog, HttpSession session){
         String content = blog.getBlogContent();
+        // 筛选多余img标签
+        Pattern pattern = Pattern.compile("\\<+img.*?\\>");
+        Matcher matcher = pattern.matcher(content);
+        String blogContent = matcher.replaceAll(" ");
+
         blog.setUserId(10);
-        blog.setBlogContent(content);
+        blog.setBlogContent(blogContent);
         blog.setViewCount(0);
         blog.setLikeCount(0);
         blog.setCreateTime(new Date());

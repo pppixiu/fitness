@@ -71,7 +71,7 @@ $(function () {
                             + item.imageUrl
                             + '" alt="" style="height: 50%; width: 80%; border-radius: 0.5em">'
                             + '</a>'
-                            + '<div style="width: 80%; ">'
+                            + '<div style="width: 80%;  padding-top: 1em">'
                             + '<p>'
                             + item.blogContent
                             + '</p>'
