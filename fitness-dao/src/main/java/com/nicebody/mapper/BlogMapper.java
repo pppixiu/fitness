@@ -5,6 +5,7 @@ import com.nicebody.pojo.BlogImage;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,7 +80,8 @@ public interface BlogMapper {
      * @param
      * @return
      */
-    int updateViewAndLikeCount(@Param("userBlogCondition") Blog userBlogCondition);
+    int updateViewAndLikeCount(@Param("userBlogCondition") Blog userBlogCondition,
+                               @Param("updateTime") Date updateTime);
     /**
      * 按照博客ID和用户ID删除博客
      *
