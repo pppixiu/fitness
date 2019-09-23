@@ -143,13 +143,13 @@ function getcoachlist() {
                             + item.desc
                             + '</div>'
                             + '<div class="ftr">'
-                            + '<div class="price">'
+                            + '<div class="price" style="margin-top: 20px;margin-right: 130px;">'
                             + '<h4>$'
                             + item.price
                             + '</h4></div>'
                             + '<div class="stats">'
-                            + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"'
-                            + 'data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>'
+                            + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
+                            + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
                             + '</div>'
                             + '</div>'
                             + '</div>'
@@ -207,13 +207,15 @@ $(window).scroll(function () {
                                 + item.desc
                                 + '</div>'
                                 + '<div class="ftr">'
-                                + '<div class="price">'
+                                + '<div class="price" style="margin-top: 20px;margin-right: 130px;">'
                                 + '<h4>$'
                                 + item.price
                                 + '</h4></div>'
-                                + '<div class="stats">'
-                                + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"'
-                                + 'data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>'
+                                + '<div class="stats"href="coachPage.html?coachId='
+                                + item.id
+                                + '">'
+                                + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
+                                + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
                                 + '</div>'
                                 + '</div>'
                                 + '</div>'
