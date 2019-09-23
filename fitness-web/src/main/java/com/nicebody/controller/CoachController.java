@@ -147,4 +147,24 @@ public class CoachController {
        resultVO.setMsg("成功");
        return resultVO;
     }
+
+    /**
+     * 教练点赞
+     * @param coachId
+     * @param likeJudge
+     * @return
+     */
+    @GetMapping(value = "/coachLikeCount")
+    public ResultVO modifyCoachLikeCount(@RequestParam(name = "coachId") Integer coachId,
+                                         @RequestParam(name = "likeJudge") Integer likeJudge){
+        int judge = coachService.modifyCoachLikeCount(coachId,likeJudge);
+
+        if(judge == 1) {
+            List<CoachInfo> coachInfoList = coachService.getCoachInfo(0, 1, 0, coachId);
+            return ResultVOUtil.success(coachInfoList);
+        }else {
+            return null;
+        }
+
+    }
 }

@@ -53,4 +53,11 @@ public class CoachServiceImplTest {
         List<CoachImage> coachImages = coachService.getImageList(0,2,1);
         Assert.assertEquals(2,coachImages.size());
     }
+
+    /**测试教练点赞修改*/
+    @Test
+    public void modifyCoachLikeCountTest(){
+        int i = coachService.modifyCoachLikeCount(1,-1);
+        System.out.println(i);
+    }
 }

@@ -1,8 +1,8 @@
 var coachId;
 $(function () {
     var result = getQueryVariable("coachId");
+    coachId = result;
     coachInfo(result);
-
 });
 
 /**
@@ -42,6 +42,8 @@ function coachInfo(e) {
                 $('#coach-name').text(info[0].coachname);
                 $('#coach-desc').text(info[0].coachdesc);
                 $('#coach-count').text(info[0].count);
+                $('#exampleInputName').val(info[0].coachname);
+                $('#exampleInputPrice').val(info[0].price);
             }
         });
 
@@ -58,7 +60,7 @@ function coachInfo(e) {
                             + '<div class="card card-background" style="background-image:  url('
                             +  item.imageUrl
                             + ')">'
-                            + '<div class="table" style="height: 300px;overflow: hidden;">'
+                            + '<div class="table" style=" min-height: 230px; max-width: 230px; overflow: hidden;">'
                             + '<h3 class="card-caption">BLOG</h3>'
                             + '<p class="card-description">'
                             + item.blogContent
@@ -81,7 +83,7 @@ function coachInfo(e) {
                     .map(function (item, index) {
                         imagehtml += '<div class="col-md-4">'
                             + '<div class="card card-background" style="background-image: url("images/blog07.jpg")">'
-                            + '<div class="table" style="height: 300px; overflow: hidden;">'
+                            + '<div class="table" style=" min-height: 230px; max-width: 230px;  overflow: hidden;">'
                             + '</div> </div> </div>'
                     });
                 $('#image-show').html(imagehtml);
@@ -102,7 +104,7 @@ function coachInfo(e) {
                             + '<div class="card card-background" style="background-image: url('
                             + item.url
                             + ')">'
-                            + '<div class="table" style="overflow: hidden; height: 300px;">'
+                            + '<div class="table" style="overflow: hidden;  min-height: 230px; max-width: 230px; ">'
                             + '<h6 class="category text-info">COURSE</h6>'
                             + '<h3 class="card-caption">'
                             + item.title
@@ -111,6 +113,30 @@ function coachInfo(e) {
                             + '</div> </div> </div>'
                     });
                 $('#course-show').html(coursehtml);
+            }
+        });
+}
+
+/**点赞、关注加收藏*/
+var liketimes=1;
+function likefuncation() {
+    var coachLikeCountUrl = '/coach/coachLikeCount?coachId=' + coachId + '&likeJudge=' + liketimes;
+    if(liketimes == 1){
+        liketimes = -1;
+        $('#coach-count').text($('#coach-count').text()*1+1);
+    }else{
+        liketimes = 1;
+        $('#coach-count').text($('#coach-count').text()*1-1);
+    }
+
+    /*加载基本信息*/
+    $.getJSON(
+        coachLikeCountUrl,
+        function (data) {
+            if (data.code == "0") {
+                var info = data.data;
+                likecount = info.count;
+                $('#coach-count').text(info.count);
             }
         });
 }

@@ -194,9 +194,9 @@
                     </h1>
                 </div>
                 <div id="course-show" class="col-lg-12">
-                    <div class="col-md-4" style="overflow: hidden;">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
-                        <div class="table" style="overflow: hidden; height: 300px;">
+                    <div class="col-md-4" style="overflow: hidden; ">
+                        <div class="card card-background" style="background-image: url('images/blog07.jpg');">
+                        <div class="table" style="overflow: hidden; height: 230px; max-width: 230px; border-radius: 15px;">
                             <h6 class="category text-info">COURSE</h6>
                             <h3 class="card-caption">Quisque id elit maximus, pretium mollis elit</h3>
                             <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Read Article </a>
@@ -205,7 +205,7 @@
                     </div>
                     <div class="col-md-4" style="overflow: hidden;">
                         <div class="card card-background" style="background-image: url('images/blog07.jpg')">
-                            <div class="table" style="overflow: hidden; height: 300px;">
+                            <div class="table" style="overflow: hidden; min-height: 230px;">
                                 <h6 class="category text-info">COURSE</h6>
                                 <h3 class="card-caption">Quisque id elit maximus, pretium mollis elit</h3>
                                 <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Read Article </a>
@@ -227,7 +227,7 @@
                         <small>COMMENT</small>
                     </h1>
                 </div>
-                <div id="comment-show">
+                <div id="comment-show" style="margin-bottom: 50px;" class="col-md-12">
                     <div class="col-md-12" style="height: 50px; margin-top: 10px; border-bottom:2px solid #d9dde1;">
                         <h4 style="display: inline-block; width: 1000px; overflow: hidden;  max-height: 30px; color: #1e88e5">@.王佳帅 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <a style="width: 800px; overflow: hidden; color: black;">
@@ -307,32 +307,46 @@
 <!--弹出框-->
 <div class="pop">
     <div class="pop-top">
-        <h2>下单信息</h2>
-        <span class="pop-close">×</span>
+        <h2 style="margin: 0px; font-family: 等线 Light;">下单信息</h2>
+        <span class="pop-close" style="font-size: 20px; ">×</span>
     </div>
-    <div class="pop-content">
-        <div class="pop-content-left">
-            <img src=3"" alt="" class="teathumb">【
+
+    <form class="form-horizontal" style="margin-top: 10px;">
+        <div class="form-group ">
+            <label class="col-md-3" for="exampleInputName">教练：</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" id="exampleInputName" placeholder="没有获取到教练姓名" readonly>
+            </div>
         </div>
-        <div class="pop-content-right">
-            <p style="display: inline-block;">教练信息：<b class="lname"></b></p>
-            <img src="images/pic1.png" style="border-radius: 50px;"><a style="font-weight: bolder">王佳帅</a>
-            <p style="display: inline; margin-left: 40px;">服务内容：<b class="price"></b></p>
-            <img src="images/pic3.png" style="border-radius: 50px;"><a style="font-weight: bolder;">腹部肌肉在线训练</a>
-            <p style="display: inline-block;">上课时间：<b class="ltime"></b></p>
-            <!--日期-->
-            <a id="times" style="font-weight: bold;"></a>
-            <script type="text/javascript">
-                function  getD1(){
-                    var date=new Date();
-                    var d1=date.toLocaleDateString();
-                    var div1=document.getElementById("times");
-                    div1.innerHTML =d1;  }
-                setInterval("getD1();",1000);
-            </script>
-            <!--时间-->
-            <a>时间：</a>
-            <input type="text" id="cityChoice" style="border-radius: 5px;">
+
+        <div class="form-group">
+            <label class="col-md-3" for="exampleInputPrice">教练价格(/h)：</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" id="exampleInputPrice" placeholder="没有获取到教练价格" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4">上课时间：</label>
+            <div class="col-md-6">
+                <!--日期-->
+                <label id="times"></label>
+                <script type="text/javascript">
+                    function  getD1(){
+                        var date=new Date();
+                        var d1=date.toLocaleDateString();
+                        var div1=document.getElementById("times");
+                        div1.innerHTML =d1;  }
+                    setInterval("getD1();",1000);
+                </script>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3">选择课程时间：</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" id="cityChoice" placeholder="点击选择课程时间" readonly>
+            </div>
             <script>
                 var cityPicker = new HzwCityPicker({
                     data: data,
@@ -352,30 +366,44 @@
                 });
                 cityPicker.init();
             </script>
-            <!--时长-->
-            <a>时长：</a>
-            <div style="display: inline-block;">
-                <select class="form-control" >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <!--联系方式-->
-            <div style="margin: 15px 0px;">
-                <p style="display: inline-block;">联系方式：<b class="teacher"></b></p>
-                <input type="text" style="width: 80% ; border-radius:5px; background-color: #999999; border-width: 0;">
-            </div>
-            <!--教练留言-->
-            <div style="margin: 15px 0px;">
-                <p>教练留言：<b class="teasynopsis"></b></p>
-                <input type="text" style="width: 96% ; border-radius:5px; background-color: #999999; border-width: 0; height: 80px;">
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">选择课程时长：</label>
+            <select id="fit-time" class="col-lg-7 form-control" style="width: 308.33px; margin-left: 15px;" onclick="online();">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3" for="exampleInputContact">联系方式：</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" id="exampleInputContact" placeholder="请输入您的联系方式">
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-lg-3" for="exampleInputMessage">留言</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" id="exampleInputMessage" placeholder="请输入您的锻炼方向">
+            </div>
+        </div>
+
+        <div class="pull-left col-md-3" style="margin-top: 10px;">
+            <label>总计：<a id="title-price" style="color: black">0元</a></label>
+            <script>
+                function online() {
+                    var price = $("#exampleInputPrice").val();
+                    var time = $("#fit-time").val();
+                    $("#title-price").text(price * time);
+                }
+            </script>
+        </div>
+    </form>
+
+    <div class="pop-content">
         <div class="pop-foot">
-            <a style="left: 0;">总计：10000元</a>
             <div class="content">
                 <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支付宝支付</a></p>
 
@@ -388,19 +416,14 @@
                     <div class="shang_payimg">
                         <img src="images/aliPay/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
                     </div>
-                    <div class="pay_explain">扫码打赏，你说多少就多少</div>
-                    <div class="shang_payselect">
+                    <div class="shang_payselect" style="padding-left: 70px;">
                         <div class="pay_item checked" data-id="alipay">
                             <span class="radiobox"></span>
                             <span class="pay_logo"><img src="images/aliPay/alipay.jpg" alt="支付宝" /></span>
                         </div>
-                        <div class="pay_item" data-id="weipay">
-                            <span class="radiobox"></span>
-                            <span class="pay_logo"><img src="images/aliPay/wechat.jpg" alt="微信" /></span>
-                        </div>
                     </div>
                     <div class="shang_info">
-                        <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                        <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码哦</p>
                     </div>
                 </div>
             </div>
