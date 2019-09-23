@@ -8,6 +8,7 @@ import com.nicebody.util.PageCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,8 +67,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public int modifyViewAndLikeCount(Blog userBlogCondition) {
-        return userBlogMapper.updateViewAndLikeCount(userBlogCondition);
+    public int modifyViewAndLikeCount(Blog userBlogCondition, Date updateTime) {
+        return userBlogMapper.updateViewAndLikeCount(userBlogCondition, updateTime);
     }
 
     @Override

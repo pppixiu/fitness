@@ -151,11 +151,13 @@
             <if test="userBlogCondition.viewCount != null
                 and userBlogCondition.likeCount == null">
                 view_count = view_count + 1;
+
             </if>
             <if test="userBlogCondition.viewCount == null
                 and userBlogCondition.likeCount != null">
                 like_count = like_count + 1;
             </if>
+            update_time = #{updateTime}
         </set>
         where blog_id = #{blogId}
     </update>
