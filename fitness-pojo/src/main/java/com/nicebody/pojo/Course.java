@@ -27,11 +27,11 @@ public class Course {
     /** 原价 */
     private BigDecimal coursePrePrice;
     /** 课程等级 0初级 1中级 2高级 */
-    private int courseLevel;
+    private Integer courseLevel;
     /** 课程时间 */
-    String courseTime;
+    private String courseTime;
     /** 课程提示 */
-    String courseNote;
+    private String courseNote;
     /** 学习人数 */
     private Long studyCount;
     /** 创建时间 */
@@ -107,11 +107,11 @@ public class Course {
         this.coursePrePrice = coursePrePrice;
     }
 
-    public int getCourseLevel() {
+    public Integer getCourseLevel() {
         return courseLevel;
     }
 
-    public void setCourseLevel(int courseLevel) {
+    public void setCourseLevel(Integer courseLevel) {
         this.courseLevel = courseLevel;
     }
 

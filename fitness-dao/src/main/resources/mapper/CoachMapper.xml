@@ -29,7 +29,7 @@
             i.coach_id = #{coachId}
         </if>
         <if test="userId != 0
-        and coachId == 0">3
+        and coachId == 0">
             c.user_id = #{userId}
             and c.coach_id = i.coach_id
         </if>
