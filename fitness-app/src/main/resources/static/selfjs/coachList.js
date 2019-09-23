@@ -128,7 +128,7 @@ function getcoachlist() {
                             + '<div class="card-image">'
                             + '<a href="coachPage.html?coachId='
                             + item.id
-                            +'"> <img class="img" src="images/coachList/blog04.jpeg"> </a></div>'
+                            +'"> <img class="img" src="/images/coachList/blog04.jpeg"> </a></div>'
                             + '<div class="table">'
                             + '<h6 class="category text-rose">'
                             + item.count
@@ -192,7 +192,7 @@ $(window).scroll(function () {
                                 + '<div class="card-image">'
                                 + '<a href="coachPage.html?coachId='
                                 + item.id
-                                +'"> <img class="img" src="images/coachList/blog04.jpeg"> </a></div>'
+                                +'"> <img class="img" src="/images/coachList/blog04.jpeg"> </a></div>'
                                 + '<div class="table">'
                                 + '<h6 class="category text-rose">'
                                 + item.count
