@@ -117,7 +117,9 @@ function coachInfo(e) {
         });
 }
 
-/**点赞、关注加收藏*/
+/**
+ * 点赞、关注加收藏
+ * */
 var liketimes=1;
 function likefuncation() {
     var coachLikeCountUrl = '/coach/coachLikeCount?coachId=' + coachId + '&likeJudge=' + liketimes;
@@ -139,4 +141,16 @@ function likefuncation() {
                 $('#coach-count').text(info.count);
             }
         });
+}
+
+/**
+ * 支付宝支付
+ */
+function alipayOnline(action) {
+    document.getElementById("form").action = action;
+    $('#outTradeNo').val(generateTimeReqestNumber());
+    $('#subject').val($('#exampleInputName').text() + "在线教练课程");
+    $('#totalAmount').val(online());
+    $('#body').val("NICEBODY在线教练课程");
+    document.getElementById("form").submit();
 }
