@@ -1,5 +1,5 @@
 var blogUrl = '';
-var courseUrl = '/course/listcourses?tagId=0&pageIndex=1&pageSize=8&courseTitle=&orderByCondition=0&courseLevel=0';
+var courseUrl = '/course/listcourses?tagId=&pageIndex=1&pageSize=8&courseTitle=&orderByCondition=&courseLevel=';
 var coachUrl = '/coach/coachList?rowIndex=0&pageSize=8';
 
 function getCourseList() {
@@ -33,7 +33,7 @@ function getCourseList() {
                                 '                                </div>\n' +
                                 '                            </a>\n' +
                                 '                                <div class="shizhan-intro-box"><a href="courseInfo.html">\n' +
-                                '                                    <a href="courseInfo.html" style="text-decoration:none;"><p class="shizan-name"\n' +
+                                '                                    <a href="courseInfo.html" style="text-decoration:none;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
                                 '                                                                                               title="' + item.title + '">\n' +
                                 '                                        ' + item.title + '</p></a>\n' +
                                 '                                    <div class="evaluation-box">\n' +

@@ -6,7 +6,10 @@ package com.nicebody.util;
  * @Date 2019/9/18 15:19
  **/
 public class OrderByUtil {
-    public static  String convert2String(int code){
+    public static  String convert2String(Integer code){
+        if(code == null){
+            return null;
+        }
         if(code == 0){
             return "create_time";
         }else if(code == 1){
@@ -14,7 +17,7 @@ public class OrderByUtil {
         }else if(code == 2){
             return "course_now_price";
         }
-        return "";
+        return null;
     }
 
     public static String coachConvent2String(int code){

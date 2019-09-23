@@ -35,7 +35,7 @@
     </resultMap>
 
     <select id="queryCourseList" resultMap="courseMap">
-        SELECT course_id,course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,course_time,course_note,user_name,u.user_image_url,c.course_level
+        SELECT course_id,course_title, course_desc,image_url,course_now_price,course_pre_price,study_count,course_time,c.create_time,course_note,user_name,u.user_image_url,c.course_level
         FROM tb_coach_course c,tb_user_profile u,tb_coach_info i,tb_tag t
         <where>
             c.coach_id = i.coach_id
@@ -44,7 +44,7 @@
             and
             t.tag_id = c.tag_id
             <if test="courseCondition != null
-            and courseCondition.tagId != 0">
+            and courseCondition.tagId != null">
                 and t.tag_id = #{courseCondition.tagId}
             </if>
             <if test="courseCondition != null
@@ -57,7 +57,7 @@
             </if>
         </where>
         <if test="orderByCondition != null">
-            ORDER BY #{orderByCondition} DESC
+            ORDER BY ${orderByCondition} DESC
         </if>
         LIMIT #{rowIndex}, #{pageSize}
     </select>
@@ -75,7 +75,7 @@
         <result column="course_note" property="courseNote"/>
         <association property="userProfile" column="user_id"
                      javaType="userProfile">
-            <id column="user_id" property="userId"/>
+            <id column="coach_id" property="userId"/>
             <result column="user_name" property="userName"/>
             <result column="user_image_url" property="userImageUrl"/>
         </association>
@@ -93,6 +93,7 @@
         l.lesson_desc,
         l.lesson_url,
         c.course_title,
+        c.course_level,
         c.course_desc,
         c.image_url,
         c.course_now_price,
@@ -100,6 +101,7 @@
         c.study_count,
         c.course_note,
         c.course_time,
+        c.coach_id,
         u.user_name,
         u.user_image_url
         FROM tb_course_lesson l,tb_coach_course c,tb_user_profile u,tb_coach_info i

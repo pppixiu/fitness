@@ -141,6 +141,7 @@
 <h3 class="bars" style="margin-left: 100px;margin-top: 50px;">COACHLIST</h3>
 
 <!--分类导航-->
+
 <div class="demo" style="min-height:100px;">
 	<div class="container">
 		<div class="row">
@@ -259,9 +260,8 @@
 
 <!--未找到教练-->
 <a id="not-find" style="position: absolute; left: 10%; top: 30%;font-size: 60px;color: #999999;"></a>
-
 <!--coachList-->
-<div class="box" style="width: 100%; min-height: 800px; text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;" href="coachPage.html?coachId=1">
+<div id="div1" class="box nui-scroll" style="width: 100%; min-height: 800px; text-align: center; display: inline-block; position: absolute;top: 0px; padding: 200px 100px 100px 100px;" href="coachPage.html?coachId=1">
 	<div id="coach-list" href="coachPage.html?coachId=1">
 			<div style="width: 300px;height:auto;">
 				<div class="card card-product">
@@ -277,11 +277,11 @@
 							elit...
 						</div>
 						<div class="ftr">
-							<div class="price">
+							<div class="price" style="margin-top: 20px;margin-right: 130px;">
 								<h4>$1,230</h4></div>
 							<div class="stats">
-								<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"
-										data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>
+								<button type="button" rel="tooltip" title="" class="btn btn-just-icon "
+										data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>
 							</div>
 						</div>
 					</div>
@@ -682,30 +682,27 @@
 		</div>
 	</div>
 </div>
-<!--<div>
-	<button class="corner-button" style="position: fixed;bottom: 100px;right: 0px;" onclick="pagefunction()" >
-		<span>GO</span>
-	</button>
-</div>-->
+
 
 <!-- smooth scrolling -->
 <script type="text/javascript">
 		$(document).ready(function() {
-		/*
+/*
 			var defaults = {
 			containerID: 'toTop', // fading element id
 			containerHoverID: 'toTopHover', // fading element hover id
 			scrollSpeed: 1200,
 			easingType: 'linear' 
 			};
-		*/								
+*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 		});
-	</script>
+</script>
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 <!-- for bootstrap working -->
 <script src="js/bootstrap.js"></script>
 <script type="text/javascript" src="/selfjs/coachList.js" charset="UTF-8"></script>
+</div>
 </body>
 </html>

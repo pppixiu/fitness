@@ -9,6 +9,7 @@ import com.nicebody.util.OrderByUtil;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.CoachInfoVO;
 import com.nicebody.vo.CoachVO;
+import com.nicebody.vo.CourseVO;
 import com.nicebody.vo.ResultVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,6 @@ public class CoachController {
     private CoachService coachService;
 
     @Autowired
-    private BlogService BlogService;
-
-    @Autowired
     private CourseService courseService;
 
     /**
@@ -49,8 +47,6 @@ public class CoachController {
                                   @RequestParam(name = "rowIndex", defaultValue = "0") Integer rowIndex,
                                   @RequestParam(name = "sortId", defaultValue = "0") Integer sortId,
                                   @RequestParam(name = "coachName", defaultValue = "empty") String coachName) {
-        rowIndex += 8;
-
         //存储查找教练信息
         CoachInfo coachCondition = new CoachInfo();
         coachCondition.setTagId(tagId);
@@ -61,11 +57,11 @@ public class CoachController {
 
         //判断是否加载全部
         List<CoachInfo> coachSize = coachService.getCoachList(0,9999,coachCondition,sortValue);
-        if(rowIndex > coachSize.size() + 8){
+         if(rowIndex > coachSize.size() + 8){
             return null;
         }
 
-        List<CoachInfo> coachInfoList = coachService.getCoachList(0, rowIndex, coachCondition, sortValue);
+        List<CoachInfo> coachInfoList = coachService.getCoachList(rowIndex, 8, coachCondition, sortValue);
         List<CoachVO> coachVOList = new ArrayList<>();
         //填值
         for (CoachInfo coachInfo : coachInfoList) {
@@ -86,7 +82,7 @@ public class CoachController {
      * @param userId
      * @return
      */
-    @GetMapping(value = "/coachInfo")
+    @GetMapping(value = "/coachShow")
     public ResultVO getCoachInfo(@RequestParam(name = "rowIndex", defaultValue = "0") Integer rowIndex,
                                  @RequestParam(name = "pageSize", defaultValue = "2") Integer pageSize,
                                  @RequestParam(name = "coachId", defaultValue = "1") Integer coachId,
@@ -96,20 +92,13 @@ public class CoachController {
 
         //查找该id的教练\图片\课程\博文信息
         List<CoachInfo> coachInfoList = coachService.getCoachInfo(rowIndex, pageSize, 0, coachId);
-        List<CoachImage> coachImageList = coachService.getImageList(rowIndex, pageSize, coachId);
-        List<Blog> userBlogList = BlogService.getUserBlogByUserIdOrContentLike(rowIndex, pageSize, userCondition);
-        List<Course> courseList = courseService.getCourseByCoachId(coachId, 0, 3);
         List<CoachInfoVO> coachInfoVOList = new ArrayList<>();
-        //填值
+
         for (CoachInfo coachInfo : coachInfoList) {
             CoachInfoVO coachInfoVO = new CoachInfoVO();
             BeanUtils.copyProperties(coachInfo, coachInfoVO);
-            coachInfoVO.setBlogs(userBlogList);
-            coachInfoVO.setCoachImages(coachImageList);
-            coachInfoVO.setCourses(courseList);
             coachInfoVOList.add(coachInfoVO);
         }
-
         //公共方法返回
         return ResultVOUtil.success(coachInfoVOList);
     }
@@ -122,5 +111,40 @@ public class CoachController {
     public ResultVO getCoachTag() {
         List<Tag> tagList = coachService.getTag();
         return ResultVOUtil.success(tagList);
+    }
+
+    /**
+     * 查询教练课程
+     * @param coachId
+     * @return
+     */
+    @GetMapping(value = "/coachCourse")
+    public ResultVO getCoachSourse(@RequestParam(name = "coachId", defaultValue = "1") Integer coachId){
+        List<Course> courseList = courseService.getCourseByCoachId(coachId,0,3);
+        List<CourseVO> courseInfoVOList = new ArrayList<>();
+
+        for (Course course : courseList) {
+            CourseVO courseVO = new CourseVO();
+            BeanUtils.copyProperties(course, courseVO);
+            courseInfoVOList.add(courseVO);
+        }
+        //公共方法返回
+        return ResultVOUtil.success(courseInfoVOList);
+    }
+
+    /**
+     * 查询教练展示图片
+     * @param coachId
+     * @return
+     */
+    @GetMapping(value = "/coachImage")
+    public ResultVO  getCoachImage(@RequestParam(name = "coachId", defaultValue = "1") Integer coachId){
+       List<CoachImage> coachImageList = coachService.getImageList(0,3,coachId);
+       ResultVO resultVO = new ResultVO();
+
+       resultVO.setData(coachImageList);
+       resultVO.setCode(0);
+       resultVO.setMsg("成功");
+       return resultVO;
     }
 }
