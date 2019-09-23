@@ -35,7 +35,8 @@ $(function () {
                     $('#blog-image').attr("src",blogContent.userBlogImage.imageUrl);
                     $('#view-count').text(blogContent.viewCount);
                     $('#like-count').text(blogContent.likeCount);
-                    $('#blog-content').text(blogContent.blogContent);
+                    //$('#blog-content').text(blogContent.blogContent);
+                    $('#blog-content').html(blogContent.blogContent)
                 }
             });
     }
