@@ -40,10 +40,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
 
-    @Override
-    public int selectCount() {
-        return 0;
-    }
+
 
     @Override
     public List<Course> getCourseByCoachId(int coachId, int rowIndex, int pageSize) {
