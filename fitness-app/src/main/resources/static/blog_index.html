@@ -95,38 +95,35 @@
 </head>
 <body>
 <!--头部-->
-<div class="page-head" style="position: fixed;z-index: 9999;top: 0; width: 100%;">
-    <div class="container">
-        <div class="navigation">
-            <div class="logo">
-                <h1>
-                    <a class="navbar-brand link link--yaku" href="index.html"><span>N</span><span>I</span><span>C</span><span>E</span><span>B</span><span>O</span><span>D</span><span>Y</span></a>
-                </h1>
-            </div>
-            <div class="top-nav" style="position: relative; float: right;">
-                <span class="menu"><img src="images/menu.png" alt=" " /></span>
-                <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
-                    <li><a href="index.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">主页 </a></li>
-                    <li><a href="coachList.html" class="active" >寻找教练</a></li>
-                    <li><a href="programs.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">动作库</a></li>
-                    <li><a href="shortcodes.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">教练审核</a></li>
-                    <li><a href="contact.html" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">我的课程</a></li>
-                    <li><a href="register.html"> 登  录 / 注  册 </a></li>
-                </ul>
-                <!-- script-for-menu -->
-                <script>
-                    $( "span.menu" ).click(function() {
-                        $( "ul.nav1" ).slideToggle( 300, function() {
-                            // Animation complete.
+    <div class="page-head col-lg-12" style="position: fixed;top: 0px;z-index: 9999;">
+        <div class="container">
+            <div class="navigation">
+                <div class="logo">
+                    <h1>
+                        <a class="navbar-brand link link--yaku" href="/index"><span>N</span><span>I</span><span>C</span><span>E</span><span>B</span><span>O</span><span>D</span><span>Y</span></a>
+                    </h1>
+                </div>
+                <div class="top-nav" style="position: relative; float: right;">
+                    <ul class="nav1 nav nav-wil cl-effect-11" id="cl-effect-11">
+                        <li><a href="/coach" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">找教练</a></li>
+                        <li><a href="/course/course"  onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'" class="active">健身课程</a></li>
+                        <li><a href="/blog/blogindex" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">动态</a></li>
+                        <li><a href="register.html"> 登  录 / 注  册 </a></li>
+                    </ul>
+                    <!-- script-for-menu -->
+                    <script>
+                        $( "span.menu" ).click(function() {
+                            $( "ul.nav1" ).slideToggle( 300, function() {
+                                // Animation complete.
+                            });
                         });
-                    });
-                </script>
-                <!-- /script-for-menu -->
+                    </script>
+                    <!-- /script-for-menu -->
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="clearfix"></div>
         </div>
     </div>
-</div>
 
     <!--搜索栏-->
     <div style="right: 200px;margin-top: 50px;z-index: 9998;position: absolute;">

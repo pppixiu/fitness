@@ -4,6 +4,7 @@ import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.BlogImage;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -70,7 +71,8 @@ public interface BlogService {
      * @param
      * @return
      */
-    public int modifyViewAndLikeCount(@Param("userBlogCondition") Blog userBlogCondition);
+    public int modifyViewAndLikeCount(@Param("userBlogCondition") Blog userBlogCondition,
+                                      @Param("updateTime") Date updateTime);
 
     /**
      *  按照博客ID和用户ID删除博客
