@@ -1,6 +1,7 @@
 package com.nicebody.mapper;
 
 import com.nicebody.pojo.Blog;
+import com.nicebody.pojo.BlogImage;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -65,6 +66,20 @@ public interface BlogMapper {
      */
     int insertUserBlog(Blog userBlog);
 
+    /**
+     *  添加博客图片信息
+     * @param blogImage
+     * @return
+     */
+    int insertUserBlogImage(BlogImage blogImage);
+
+    /**
+     *  按照博客Id更新浏览数
+     *  和点赞数
+     * @param
+     * @return
+     */
+    int updateViewAndLikeCount(@Param("userBlogCondition") Blog userBlogCondition);
     /**
      * 按照博客ID和用户ID删除博客
      *

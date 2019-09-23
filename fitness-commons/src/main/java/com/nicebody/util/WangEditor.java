@@ -1,10 +1,11 @@
 package com.nicebody.util;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class WangEditor {
+public class WangEditor implements Serializable {
 
-    private Integer error; // 错误代码， 0表示没有错误。
+    private Integer errno; // 错误代码， 0表示没有错误。
     private String[] data; //已上传的图片路径
 
     public WangEditor(){
@@ -13,16 +14,16 @@ public class WangEditor {
 
     public WangEditor(String[] data){
         super();
-        this.error = 0;
+        this.errno = 0;
         this.data = data;
     }
 
     public Integer getError() {
-        return error;
+        return errno;
     }
 
     public void setError(Integer error) {
-        this.error = error;
+        this.errno = error;
     }
 
     public String[] getData() {
@@ -36,8 +37,25 @@ public class WangEditor {
     @Override
     public String toString() {
         return "WangEditor{" +
-                "error=" + error +
+                "errno=" + errno +
                 ", data=" + Arrays.toString(data) +
                 '}';
     }
+
+    // wangEditor图片上传返回数据
+    public static class ResultUtil{
+        // 上传成功
+        public static WangEditor success(String[] object) {
+            WangEditor result = new WangEditor();
+            result.setError(0);
+            result.setData(object);
+            return result;
+        }
+
+        // 上传失败
+        public static WangEditor success(){
+            return null;
+        }
+    }
+
 }

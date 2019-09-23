@@ -1,12 +1,10 @@
 package com.nicebody.service.impl;
 
-import com.nicebody.dto.UserBlogExecution;
-import com.nicebody.enums.UserCenterInfoEnum;
 import com.nicebody.mapper.BlogMapper;
 import com.nicebody.pojo.Blog;
+import com.nicebody.pojo.BlogImage;
 import com.nicebody.service.BlogService;
 import com.nicebody.util.PageCalculator;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +58,16 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public int addUserBlog(Blog userBlog) {
         return userBlogMapper.insertUserBlog(userBlog);
+    }
+
+    @Override
+    public int addUserBlogImage(BlogImage blogImage) {
+        return userBlogMapper.insertUserBlogImage(blogImage);
+    }
+
+    @Override
+    public int modifyViewAndLikeCount(Blog userBlogCondition) {
+        return userBlogMapper.updateViewAndLikeCount(userBlogCondition);
     }
 
     @Override
