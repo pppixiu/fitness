@@ -1,6 +1,7 @@
 package com.nicebody.dao;
 import com.nicebody.mapper.BlogMapper;
 import com.nicebody.pojo.Blog;
+import com.nicebody.pojo.BlogImage;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,6 +43,18 @@ public class UserBlogMapperTest {
         //userBlogCondition.setBlogContent("添");
         List<Blog> userBlogList = userBlogMapper.queryUserBlogByUserIdOrContentLike(0,10,userBlogCondition);
         System.out.println(userBlogList.size());
+    }
+
+    @Test
+    @Ignore
+    public void testinsertUserBlogImage(){
+        BlogImage blogImage = new BlogImage();
+        blogImage.setBlogId(19);
+        blogImage.setImageUrl("https://img3.mukewang.com/szimg/5d1032ab08719e0906000338.jpg");
+        blogImage.setCreateTime(new Date());
+        blogImage.setUpdateTime(new Date());
+        int count = userBlogMapper.insertUserBlogImage(blogImage);
+        System.out.println(count);
     }
 
 //    @Test
