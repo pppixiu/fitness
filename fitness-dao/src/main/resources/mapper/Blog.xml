@@ -131,11 +131,34 @@
     <!--添加用户博客-->
     <insert id="insertUserBlog" useGeneratedKeys="true" keyColumn="blog_id" keyProperty="blogId">
        INSERT INTO
-       tb_user_blog(user_id,blog_content,view_count,like_count,create_time,update_time)
+       tb_user_blog(user_id,blog_content,create_time,update_time)
        VALUES
-       (#{userId},#{blogContent},#{viewCount},#{likeCount},
-       #{createTime},#{updateTime})
+       (#{userId},#{blogContent},#{createTime},#{updateTime})
     </insert>
+
+    <!--添加博客图片-->
+    <insert id="insertUserBlogImage" useGeneratedKeys="true" keyColumn="image_id" keyProperty="imageId">
+       INSERT INTO
+       tb_user_blog_image(blog_id,image_url,create_time,update_time)
+       VALUES
+       (#{blogId},#{imageUrl},#{createTime},#{updateTime})
+    </insert>
+
+    <!--更新浏览数和点赞数-->
+    <update id="updateViewAndLikeCount" parameterType="userBlog">
+        update tb_user_blog
+        <set>
+            <if test="userBlogCondition.viewCount != null
+                and userBlogCondition.likeCount == null">
+                view_count = view_count + 1;
+            </if>
+            <if test="userBlogCondition.viewCount == null
+                and userBlogCondition.likeCount != null">
+                like_count = like_count + 1;
+            </if>
+        </set>
+        where blog_id = #{blogId}
+    </update>
 
     <!--按用户ID和博客ID删除博客-->
     <delete id="deleteUserBlogByBlogIdAndUserId">

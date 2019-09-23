@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.nicebody.dto.QiNiuPutRet;
 import com.nicebody.enums.UserCenterInfoEnum;
 import com.nicebody.pojo.Blog;
+import com.nicebody.pojo.BlogImage;
 import com.nicebody.service.BlogService;
 import com.nicebody.service.QiNiuService;
 import com.nicebody.service.impl.QiNiuServiceImpl;
@@ -24,14 +25,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author 曹钲
@@ -144,47 +141,51 @@ public class BlogController {
 
     /**
      *  添加博客信息
-     *  图片上传
-     * @param userBlog
+     * @param
      * @return
      */
     @RequestMapping("/adduserblog")
     @ResponseBody
-    public Map<String,Object> addUserBlog(Blog userBlog){
-        Map<String,Object> map = new HashMap<>();
-        int count = userBlogService.addUserBlog(userBlog);
-        map.put("success",true);
-        map.put("count",count);
-        return map;
+    public int addUserBlog(HttpServletRequest request){
+        Blog blog = new Blog();
+        BlogImage blogImage = new BlogImage();
+        String content = request.getParameter("blogContent");
+
+        // blog.setUserId(request);
+        blog.setUserBlogImage(blogImage);
+        System.out.println(content);
+        int count = userBlogService.addUserBlog(blog);
+
+        return 0;
     }
 
-    @RequestMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/upload")
     @ResponseBody
-    public ResultVO uploadPhoto(@RequestParam("file")MultipartFile file,
+    public WangEditor uploadPhoto(@RequestParam("file")MultipartFile file,
                                 HttpServletRequest request){
-        String fileName = file.getOriginalFilename();
+        Blog blog = new Blog();
+        BlogImage blogImage = new BlogImage();
 
-        try {
-            InputStream inputStream = file.getInputStream();
-            Response response = qiNiuService.uploadFile(inputStream);
-            if (response.isOK()) {
-                QiNiuPutRet ret = gson.fromJson(response.bodyString(), QiNiuPutRet.class);
-                return ResultVOUtil.success(ret);
-            } else {
-                return ResultVOUtil.error(response.statusCode, response.getInfo());
-            }
-        } catch (QiniuException e) {
-            Response response = e.response;
-            try {
-                return  ResultVOUtil.error(response.statusCode, response.bodyString());
-            } catch (QiniuException e1) {
-                e1.printStackTrace();
-                return ResultVOUtil.none(UserCenterInfoEnum.ERROR);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResultVOUtil.none(UserCenterInfoEnum.ERROR);
+
+        blog.setBlogContent(request.getParameter("blogContent"));
+        System.out.println(blog.getBlogContent());
+
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
+
+        if(file.isEmpty()) {
+            return null;
         }
+        try {
+            String fileUrl = qiNiuService.uploadMulFile(file);
+            blogImage.setImageUrl(fileUrl);
+            String[] str = {fileUrl};
+            WangEditor we = new WangEditor(str);
+            return we;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

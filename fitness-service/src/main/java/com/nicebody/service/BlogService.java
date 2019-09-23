@@ -1,6 +1,7 @@
 package com.nicebody.service;
 
 import com.nicebody.pojo.Blog;
+import com.nicebody.pojo.BlogImage;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -55,6 +56,21 @@ public interface BlogService {
      * @return
      */
     public int addUserBlog(Blog userBlog);
+
+    /**
+     *  添加博客图片信息
+     * @param blogImage
+     * @return
+     */
+    int addUserBlogImage(BlogImage blogImage);
+
+    /**
+     *  按照博客Id更新浏览数
+     *  和点赞数
+     * @param
+     * @return
+     */
+    public int modifyViewAndLikeCount(@Param("userBlogCondition") Blog userBlogCondition);
 
     /**
      *  按照博客ID和用户ID删除博客

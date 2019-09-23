@@ -2,6 +2,7 @@ package com.nicebody.service;
 
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.InputStream;
@@ -36,4 +37,11 @@ public interface QiNiuService {
      * @throws QiniuException
      */
     Response delete(String key) throws QiniuException;
+
+    /**
+     *  后台上传文件
+     * @param multipartFile
+     * @return
+     */
+    public String uploadMulFile(MultipartFile multipartFile);
 }
