@@ -143,18 +143,21 @@ function getcoachlist() {
                             + item.desc
                             + '</div>'
                             + '<div class="ftr">'
-                            + '<div class="price">'
+                            + '<div class="price" style="margin-top: 20px;margin-right: 130px;">'
                             + '<h4>$'
                             + item.price
                             + '</h4></div>'
                             + '<div class="stats">'
-                            + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning"'
-                            + 'data-original-title="Saved to Wishlist"><i class="fa fa-shopping-cart"></i></button>'
+                            + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
+                            + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
                             + '</div>'
                             + '</div>'
                             + '</div>'
                             + '</div>'
                             + '</div>'
+                            + '<div id="add-info-'
+                            + item.id
+                            + '"></div>'
                     });
                 $('#coach-list').html(html);
             }
@@ -167,6 +170,63 @@ function getcoachlist() {
 $(window).scroll(function () {
     var srollPos = $(window).scrollTop()+0.5;    //滚动条距顶部距离(页面超出窗口的高度)
     if (srollPos>=($(document).height()-$(window).height())) {
-        pagefunction();
+        goCount += 1;
+        rowIndex = goCount * 8;
+        var addCoachListUrl = '/coach/coachList?tagId='+tagId+'&rowIndex='+rowIndex+'&sortId='+sortId+'&coachName='+coachName;
+
+        $.getJSON(
+            addCoachListUrl,
+            function (data) {
+                if (data.code == "0") {
+                    var addCoachList = data.data;
+                    if(addCoachList == ""){
+                        alert("已经加载全部教练！")
+                    }
+                    var html = '';
+                    addCoachList
+                        .map(function (item, index) {
+                            html += '<div class="coach-card" style="width: 300px;height:auto;" href="coachPage.html?coachId='
+                                + item.id
+                                + '">'
+                                + '<div class="card card-product">'
+                                + '<div class="card-image">'
+                                + '<a href="coachPage.html?coachId='
+                                + item.id
+                                +'"> <img class="img" src="images/coachList/blog04.jpeg"> </a></div>'
+                                + '<div class="table">'
+                                + '<h6 class="category text-rose">'
+                                + item.count
+                                + '</h6>'
+                                + '<h4 class="card-caption">'
+                                + '<a href="coachPage.html?coachId='
+                                + item.id
+                                + '">'
+                                + item.name
+                                + '</a></h4>'
+                                + '<div class="card-description">'
+                                + item.desc
+                                + '</div>'
+                                + '<div class="ftr">'
+                                + '<div class="price" style="margin-top: 20px;margin-right: 130px;">'
+                                + '<h4>$'
+                                + item.price
+                                + '</h4></div>'
+                                + '<div class="stats"href="coachPage.html?coachId='
+                                + item.id
+                                + '">'
+                                + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
+                                + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
+                                + '</div>'
+                                + '</div>'
+                                + '</div>'
+                                + '</div>'
+                                + '</div>'
+                                + '<div id="add-info-'
+                                + item.id
+                                + '"></div>'
+                        });
+                    $('#add-info-'+rowIndex+'').html(html);
+                }
+            });
     }
 });
