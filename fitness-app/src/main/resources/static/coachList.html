@@ -98,9 +98,21 @@
 	<link href="css/coachList/cards-style.css" rel='stylesheet' type='text/css' />
 	<link href="css/coachList/button.css" rel='stylesheet' type='text/css'/>
 
+	<!--链表样式-->
 	<link href="css/coachList/bootsnav.css" rel='stylesheet' type='text/css' />
 	<script type="text/javascript" src="js/coach/coachlist/bootsnav.js"></script>
 
+	<!--搜素框-->
+	<script src="js/coach/coachlist/search.js"></script>
+	<link href="css/coachList/search.css" rel='stylesheet' type='text/css' />
+	<script>
+		function EnterPress(e) { //传入 event
+			var e = e || window.event;
+			if (e.keyCode == 13) {
+				document.getElementById("dim-name").click();
+			}
+		}
+	</script>
 </head>
 <body>
 <!--头部-->
@@ -247,10 +259,10 @@
 							<li class="active"><a href="#" data-hover="Home" onclick="pricefunction(2)">价格排序 <span data-hover="Home"></span></a></li>
 							<li><a href="#" data-hover="About" onclick="countfunction(1)">人气排序 <span data-hover="About"></span></a></li>
 						</ul>
-						<span class="input-group-addon btn btn-primary pull-right"
-							  style="display: inline-block;width: 50px;margin-top: 25px;margin-left: 20px; background-color: #999999;border-radius: 5px;" onclick="namefunction()">搜索</span>
-						<input id="dim-name" type="text" class="form-control input-lg  pull-right"
-							   style="width: 200px;margin-top: 17px;display: inline-block;" placeholder="请输入教练姓名">
+
+						<div class="search-box pull-right" style="margin-top: 20px;">
+							<input id="dim-name" type="text" placeholder=" " onclick="namefunction()" onkeypress="EnterPress(event)"/><span></span>
+						</div>
 					</div>
 				</nav>
 			</div>

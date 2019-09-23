@@ -67,4 +67,9 @@ public class CoachServiceImpl implements CoachService {
     public List<Tag> getTag() {
         return tagMapper.queryTag();
     }
+
+    @Override
+    public int modifyCoachLikeCount(int coachId, int likeJudge) {
+        return coachMapper.updateCoachLikeCount(coachId,likeJudge);
+    }
 }

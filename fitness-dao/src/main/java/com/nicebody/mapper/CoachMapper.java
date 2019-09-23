@@ -51,4 +51,12 @@ public interface CoachMapper {
                                      @Param("pageSize") int pageSize,
                                      @Param("coachId") int coachId);
 
+    /**
+     * 根据coachId修改教练信息
+     * @param coachId
+     * @param likeJudge
+     * @return
+     */
+    int updateCoachLikeCount(@Param("coachId") int coachId,
+                        @Param("likeJudge") int likeJudge);
 }
