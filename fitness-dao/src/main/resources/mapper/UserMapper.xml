@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nicebody.mapper.UserMapper">
+
+    <insert id="insertUser" useGeneratedKeys="true" parameterType="userProfile"
+            keyProperty="userId" keyColumn="user_id">
+        INSERT INTO tb_user_profile(user_name)VALUES(#{userName})
+    </insert>
+
+</mapper>

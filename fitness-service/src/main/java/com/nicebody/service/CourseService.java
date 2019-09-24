@@ -29,7 +29,6 @@ public interface CourseService {
      * */
     List<Course> getCourseByUserId(int userId);
     //查询用户记录总数
-    public int selectCount();
 
     /**
      * 根据coachId查询所有课程信息
@@ -39,6 +38,9 @@ public interface CourseService {
      * @return
      */
     List<Course> getCourseByCoachId(int coachId,int rowIndex,int pageSize);
+
+
+
 
 
 
