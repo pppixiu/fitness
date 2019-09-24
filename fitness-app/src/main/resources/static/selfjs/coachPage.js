@@ -154,3 +154,63 @@ function alipayOnline(action) {
     $('#body').val("NICEBODY在线教练课程");
     document.getElementById("form").submit();
 }
+
+
+/**
+ * 判断时间
+ * @param beginTime
+ * @param endTime
+ * @param nowTime
+ * @returns {boolean}
+ */
+function time_range(hour, startTime) {
+    var strb = hour.split ("点");
+    if (strb.length != 1) {
+        return false;
+    }
+
+    var stre = startTime.split (":");
+    if (stre.length != 2) {
+        return false;
+    }
+
+    var b = new Date ();
+    var e = new Date ();
+    var n = new Date ();
+
+    b.setHours (strb[0]);
+    b.setMinutes ("00");
+    b.setSeconds("00");
+    alert(b);
+    e.setHours (stre[0]);
+    e.setMinutes (stre[1]);
+    e.setSeconds("00");
+    alert(c);
+    alert(n);
+
+    if(b.getHours() - n.getHours() < 0){
+
+    }
+    if(e.getTime() - n.getTime() < 0){
+        alert ("当前时间是：" + n.getHours () + ":" + n.getMinutes () + ":"+n.getSeconds()+"，不在该时间范围内！");
+        return false;
+    }
+}
+
+/**
+ * 隐藏小时时间选择框
+ *
+ */
+var hour = document.getElementsByName("hour");
+var count = 0;
+var time = new Date();
+alert(time.getHours());
+function hiddenhour() {
+    for(var i =0;i<hour.length;i++){
+        var str = hour[i].innerText.split("点");
+        var stb = str[0]*1;
+        if(stb < time.getHours()){
+            hour[i].style.display = "none";
+        }
+    }
+}

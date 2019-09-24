@@ -25,6 +25,8 @@
     <!--webfont-->
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="/js/move-top.js"></script>
     <script type="text/javascript" src="/js/easing.js"></script>
@@ -42,7 +44,9 @@
             background-color: #e0e0e0;
         }
     </style>
-
+    <!--时间选择-->
+    <link rel="stylesheet" href="/css/coach/time.css" media="screen" type="text/css" />
+    <script src="/js/coach/time.js"></script>
 
     <!--评论-->
     <script src="/js/coach/jquery.min.js"></script>
@@ -54,11 +58,6 @@
 
     <!--弹出框-->
     <link href="/css/coach/buyCoach.css" rel='stylesheet' type='text/css' />
-    <link href="/css/coach/treeBox.css" rel="stylesheet" type="text/css"/>
-
-    <!--时分选择插件-->
-    <script src="/js/coach/data.js"></script> <!--jobs 在这里引入了data -->
-    <script src="/js/coach/treeBox.js"></script>
 
     <!--aliPay-->
     <link href="/css/coach/aliPay.css" rel="stylesheet" type="text/css">
@@ -89,7 +88,7 @@
 
         <h1 class="t-button col-lg-7" >
             <a href="#" href="javascript:void(0)" class="click_pop" style="display: inline-block;text-decoration: none;" >
-                <span class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light';">购买在线课程</span></a>
+                <span onclick="hiddenhour();" class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light';">购买在线课程</span></a>
         </h1>
 
         <div class="count col-lg-5" style="padding-top: 35px; padding-right: 50px;">
@@ -242,7 +241,7 @@
 </div>
 
 <!--添加评论-->
-<div style="position: fixed; right: 10px; top: 70px; ">
+<div style="position: fixed; right: 10px; top: 90px; margin-top: 50px;">
     <a href="#modal-opened" class="link-1" id="modal-closed" style="text-decoration: none;">添加评论</a>
     <div class="modal-container" id="modal-opened">
     <div class="modal-comment">
@@ -315,10 +314,10 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-4">上课时间：</label>
-            <div class="col-md-6">
+            <label class="col-md-3">上课时间：</label>
+            <div class="col-md-7">
                 <!--日期-->
-                <label id="times"></label>
+                <label id="times" style="font-size: 14px; color: #555; font-family: inherit;"></label>
                 <script type="text/javascript">
                     function  getD1(){
                         var date=new Date();
@@ -330,38 +329,175 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="height: 34px;">
             <label class="col-md-3">选择课程时间：</label>
-            <div class="col-md-7" id="treeBox" style="text-align:center;">
-                <input type="text" class="focusEl" id="cityChoice" placeholder="点击选择课程时间" readonly>
-                <input class="jobType" type="hidden" name="jobType[]" value="">
-                <input class="jobType" type="hidden" name="jobType[]" value="">
-                <input class="jobType" type="hidden" name="jobType[]" value="">
+            <div class="col-md-7">
+                <nav>
+                    <menu>
+                        <menuitem>
+                            <a id="start-time">选择时间</a>
+                            <menu>
+                                <menuitem>
+                                    <a>AM</a>
+                                    <menu>
+                                        <menuitem><a>可申请时间段</a></menuitem>
+                                        <menuitem><a id="hour-0" name="hour">00点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('00:00')">00:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('00:30')">00:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-1" name="hour">01点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('01:00')">01:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('01:30')">01:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-2" name="hour">02点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('02:00')">02:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('02:30')">02:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-3" name="hour">03点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('03:00')">03:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('03:30')">03:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-4" name="hour">04点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('04:00')">04:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('04:30')">04:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-5" name="hour">05点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('05:00')">05:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('05:30')">05:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-6" name="hour">06点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('06:00')">06:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('06:30')">06:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-7" name="hour">07点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('07:00')">07:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('07:30')">07:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-8" name="hour">08点</a>
+                                            <menu>
+                                                <menuitem onclick="$('#start-time').text('08:00')"><a>08:00</a></menuitem>
+                                                <menuitem onclick="$('#start-time').text('08:30')"><a>08:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-9" name="hour">09点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('09:00')">09:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('09:30')">09:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-10"  name="hour">10点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('10:00')">10:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('10:30')">10:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-11"  name="hour">11点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('11:00')">11:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('11:30')">11:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-12"  name="hour">12点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('12:00')">12:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('12:30')">12:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                    </menu>
+                                </menuitem>
+                                <menuitem>
+                                    <a>PM</a>
+                                    <menu>
+                                        <menuitem><a>可申请时间段</a></menuitem>
+                                        <menuitem><a class="hour"  name="hour">13点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('13:00')">13:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('13:30')">13:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a class="hour"  name="hour">14点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('14:00')">14:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('14:30')">14:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">15点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('15:00')">15:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('15:30')">15:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">16点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('16:00')">16:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('16:30')">16:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">17点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('17:00')">17:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('17:30')">17:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">18点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('18:00')">18:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('18:30')">18:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">19点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('19:00')">19:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('19:30')">19:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">20点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('20:00')">20:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('20:30')">20:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">21点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('21:00')">21:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('21:30')">21:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">22点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('22:00')">22:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('22:30')">22:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">23点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('23:00')">23:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('23:30')">23:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                    </menu>
+                                </menuitem>
+                            </menu>
+                        </menuitem>
+                    </menu>
+                </nav>
             </div>
-
-            <script>
-                treeBox({
-                    el:'$(".focusEl")', //焦点事件DOM 必传
-                    // width:{ // 各级列表宽度 可选 不传默认值就为 160，160，160，200
-                    //     lv1:160,
-                    //     lv2:160,
-                    //     lv3:160,
-                    //     selected:200
-                    // },
-                    // selectedNum:3,// 设置可以选择多少个复选框 可选 不传默认3
-                    // height:280, //高度 不传默认值 280
-
-                    selectedNum:5,
-                    data:jobs.info, //数据 必传
-                    topData:hotJobs.data,// 常用数据 可选
-                    confirm:function (res) { //回调函数 必传 会以json的格式返回所选中的数据
-                        for(var k in res) {
-                            $(".jobType").eq(k).val(res[k].value);
-                            $(".jobType").eq(k).attr('name','jobType['+ res[k].uid +']');
-                        }
-                    }
-                });
-            </script>
         </div>
 
         <div class="form-group">
@@ -381,6 +517,7 @@
                 <input type="text" class="form-control" id="exampleInputContact" placeholder="请输入您的联系方式">
             </div>
         </div>
+
         <div class="form-group">
             <label class="col-lg-3" for="exampleInputMessage">留言</label>
             <div class="col-lg-7">
@@ -426,7 +563,6 @@
 
 <!--点赞按钮-->
 <script src="/js/coach/count.js"></script>
-
 
 <!--copy right-->
 </div>
