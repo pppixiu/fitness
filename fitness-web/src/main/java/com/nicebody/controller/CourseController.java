@@ -112,7 +112,6 @@ public class CourseController {
 
 
     @GetMapping("/listcoursebyid")
-    @LoginRequired
     public ResultVO listCourseById(@RequestParam(value = "courseId",required = false) Integer courseId){
         ResultVO resultVO = new ResultVO();
         //查询所有的course信息
