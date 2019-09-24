@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nicebody.mapper.CommentMapper">
+
+    <resultMap id="commentVOMap" type="com.nicebody.vo.CommentVO">
+        <result property="commentId" column="comment_id"/>
+        <result property="commentContent" column="comment_content"/>
+        <result property="likeCount" column="like_count"/>
+        <result property="createTime" column="create_time"/>
+        <association property="userProfileVO" column="user_id"
+                     javaType="com.nicebody.vo.UserProfileVO">
+            <result property="userImageUrl" column="user_image_url"/>
+            <result property="userName" column="user_name"/>
+        </association>
+        <collection property="child" column="comment_id"
+                    javaType="java.util.List"
+                    ofType="com.nicebody.vo.CommentVO"
+                    select="com.nicebody.mapper.CommentMapper.queryCommentChildList"></collection>
+    </resultMap>
+
+    <resultMap id="child" type="com.nicebody.vo.CommentVO">
+        <result property="commentId" column="comment_id"/>
+        <result property="commentContent" column="comment_content"/>
+        <result property="likeCount" column="like_count"/>
+        <result property="createTime" column="create_time"/>
+        <association property="userProfileVO" column="user_id"
+                     javaType="com.nicebody.vo.UserProfileVO">
+            <result property="userImageUrl" column="user_image_url"/>
+            <result property="userName" column="user_name"/>
+        </association>
+        <collection property="child" column="comment_id"
+                    javaType="java.util.List"
+                    ofType="com.nicebody.vo.CommentVO"
+                    select="com.nicebody.mapper.CommentMapper.queryCommentChildList"></collection>
+    </resultMap>
+
+    <select id="queryCommentList" resultMap="commentVOMap">
+        SELECT
+        c.comment_id,
+        c.comment_content,
+        c.like_count,
+        c.create_time,
+        u.user_name,
+        u.user_image_url
+        FROM tb_comment c, tb_user_profile u
+        <where>
+            c.user_id = u.user_id
+            AND is_delete = 0
+            <if test="typeCode != null">
+                AND type_code = #{typeCode}
+            </if>
+            <if test="refId != null">
+                AND ref_id = #{refId}
+            </if>
+            <if test="parentId != null">
+                AND parent_id = #{parentId}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="queryCommentChildList" resultMap="child">
+        SELECT
+        c.comment_id,
+        c.comment_content,
+        c.like_count,
+        c.create_time,
+        u.user_name,
+        u.user_image_url
+        FROM tb_comment c, tb_user_profile u
+        <where>
+            c.user_id = u.user_id
+            AND is_delete = 0
+            AND parent_id = #{parentId}
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+    <insert id="insertComment" parameterType="comment" keyColumn="comment_id"
+            keyProperty="commentId" useGeneratedKeys="true">
+        INSERT INTO
+        tb_comment(ref_id, user_id, type_code, comment_content, create_time, update_time
+        <if test="comment.parentId != null">
+            , parent_id
+        </if>)
+        VALUES
+        (#{comment.refId},#{comment.userProfile.userId},#{comment.typeCode},
+         #{comment.commentContent},#{comment.createTime},#{comment.updateTime}
+         <if test="comment.parentId != null">
+            ,#{comment.parentId}
+         </if>)
+    </insert>
+
+    <select id="queryCommentById" resultMap="commentVOMap">
+        SELECT
+        c.comment_id,
+        c.comment_content,
+        c.like_count,
+        c.create_time,
+        u.user_name,
+        u.user_image_url
+        FROM tb_comment c, tb_user_profile u
+        <where>
+            c.user_id = u.user_id
+            AND is_delete = 0
+            AND comment_id = #{commentId}
+        </where>
+        ORDER BY create_time DESC
+    </select>
+</mapper>

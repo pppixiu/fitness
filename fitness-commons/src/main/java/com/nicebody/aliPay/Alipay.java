@@ -1,11 +1,10 @@
-package com.nicebody.mapper;
+package com.nicebody.aliPay;
 
 import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
-import com.nicebody.AlipayProperties;
 import com.nicebody.alipay.AlipayBean;
 import org.springframework.stereotype.Component;
 

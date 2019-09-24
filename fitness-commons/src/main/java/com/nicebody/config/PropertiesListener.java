@@ -1,6 +1,6 @@
 package com.nicebody.config;
 
-import com.nicebody.AlipayProperties;
+import com.nicebody.aliPay.AlipayProperties;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
