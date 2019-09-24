@@ -204,13 +204,32 @@ function time_range(hour, startTime) {
  */
 var time = new Date();
 function hiddenhour() {
+    //var onlineCourseUrl = '';
     var hour = document.getElementsByName("frame");
+   /* $.getJSON(
+        onlineCourseUrl,
+        function (data) {
+            if (data.code == "0") {
+                var val = data.data;
+                for (var i = 0;i<val.length;i++) {
+                    for (var j = 0; j < hour.length; j++) {
+                        var stb = hour[j].value;
+                        if (stb == val[i].create_time) {
+                            hour[i].disabled = "disabled";
+                        }
+                        if (stb < time.getHours()){
+                            hour[i].disabled = "disabled";
+                        }
+                    }
+                }
+            }
+        });*/
+
     for(var i =0;i<hour.length;i++){
         var stb = hour[i].value;
         if(stb < time.getHours()) {
+            hour[i].checked = "";
             hour[i].disabled = "disabled";
-        }else {
-            hour[i].checked = "checked";
         }
     }
 }
