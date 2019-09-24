@@ -1,6 +1,5 @@
 package com.nicebody.mapper;
 
-import com.nicebody.dto.CommentDTO;
 import com.nicebody.pojo.Comment;
 import com.nicebody.vo.CommentVO;
 import org.apache.ibatis.annotations.Param;
