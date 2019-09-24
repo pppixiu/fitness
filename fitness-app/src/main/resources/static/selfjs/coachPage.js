@@ -1,4 +1,5 @@
 var coachId;
+var price = 0;
 $(function () {
     var result = getQueryVariable("coachId");
     coachId = result;
@@ -150,7 +151,7 @@ function alipayOnline(action) {
     document.getElementById("form").action = action;
     $('#outTradeNo').val(generateTimeReqestNumber());
     $('#subject').val($('#exampleInputName').text() + "在线教练课程");
-    $('#totalAmount').val(online());
+    $('#totalAmount').val(online(price));
     $('#body').val("NICEBODY在线教练课程");
     document.getElementById("form").submit();
 }
@@ -198,19 +199,37 @@ function time_range(hour, startTime) {
 }
 
 /**
- * 隐藏小时时间选择框
+ * 隐藏时间选择框
  *
  */
-var hour = document.getElementsByName("hour");
-var count = 0;
 var time = new Date();
-alert(time.getHours());
 function hiddenhour() {
+    var hour = document.getElementsByName("frame");
     for(var i =0;i<hour.length;i++){
-        var str = hour[i].innerText.split("点");
-        var stb = str[0]*1;
-        if(stb < time.getHours()){
-            hour[i].style.display = "none";
+        var stb = hour[i].value;
+        if(stb < time.getHours()) {
+            hour[i].disabled = "disabled";
+        }else {
+            hour[i].checked = "checked";
         }
     }
+}
+
+/**
+ * 判断选择的时间框，并返回初始时间数据
+ * @type {number}
+ */
+
+function selectPcs() {
+    var pcs = 0;
+    var input = document.getElementsByName("frame");
+    for(var i =0;i<input.length;i++){
+      if (input[i].checked == true){
+          pcs += 1;
+      }
+    }
+    price = pcs;
+    $('#exampleInputTime').val('您共选择'+pcs+'小时课程');
+    $('#closemodel').click();
+    online(pcs);
 }
