@@ -151,7 +151,6 @@
             <if test="userBlogCondition.viewCount != null
                 and userBlogCondition.likeCount == null">
                 view_count = view_count + 1;
-
             </if>
             <if test="userBlogCondition.viewCount == null
                 and userBlogCondition.likeCount != null">

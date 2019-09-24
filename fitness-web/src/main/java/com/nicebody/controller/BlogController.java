@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -49,6 +51,10 @@ public class BlogController {
     // 实例化Gson
     Gson gson = new Gson();
 
+    // 文件url
+    String fileUrl;
+
+    BlogImage blogImage = new BlogImage();
     /**
      *  按博客ID查询博客信息
      * @param blogId
@@ -146,38 +152,35 @@ public class BlogController {
      */
     @RequestMapping("/adduserblog")
     @ResponseBody
-    public int addUserBlog(HttpServletRequest request){
-        Blog blog = new Blog();
-        BlogImage blogImage = new BlogImage();
-        String content = request.getParameter("blogContent");
+    public int addUserBlog(Blog blog, HttpSession session){
+        String content = blog.getBlogContent();
+        blog.setUserId(10);
+        blog.setBlogContent(content);
+        blog.setViewCount(0);
+        blog.setLikeCount(0);
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
+        System.out.println(blog.getBlogId());
+        int blogCount = userBlogService.addUserBlog(blog);
 
-        // blog.setUserId(request);
-        blog.setUserBlogImage(blogImage);
-        System.out.println(content);
-        int count = userBlogService.addUserBlog(blog);
-
-        return 0;
+        // 通过BlogId添加Blog图片信息
+        blogImage.setBlogId(blog.getBlogId());
+        System.out.println(blog.getBlogId());
+        blogImage.setCreateTime(new Date());
+        blogImage.setUpdateTime(new Date());
+        int blogImageCount = userBlogService.addUserBlogImage(blogImage);
+        return blogCount;
     }
 
     @RequestMapping(value = "/upload")
     @ResponseBody
     public WangEditor uploadPhoto(@RequestParam("file")MultipartFile file,
                                 HttpServletRequest request){
-        Blog blog = new Blog();
-        BlogImage blogImage = new BlogImage();
-
-
-        blog.setBlogContent(request.getParameter("blogContent"));
-        System.out.println(blog.getBlogContent());
-
-        blog.setCreateTime(new Date());
-        blog.setUpdateTime(new Date());
-
         if(file.isEmpty()) {
             return null;
         }
         try {
-            String fileUrl = qiNiuService.uploadMulFile(file);
+            fileUrl = qiNiuService.uploadMulFile(file);
             blogImage.setImageUrl(fileUrl);
             String[] str = {fileUrl};
             WangEditor we = new WangEditor(str);
@@ -187,5 +190,4 @@ public class BlogController {
         }
         return null;
     }
-
 }

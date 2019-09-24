@@ -9,25 +9,27 @@
     <meta name="keywords" content="" />
 
     <!--公共js头和尾-->
-    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="js/common/common.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/js/common/common.js"></script>
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
-    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <!-- Custom Theme files -->
-    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="/css/style.css" rel='stylesheet' type='text/css' />
     <!-- js -->
-    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <!-- //js -->
     <!-- Custom Theme files -->
     <!--webfont-->
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript" src="/js/move-top.js"></script>
+    <script type="text/javascript" src="/js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -41,55 +43,35 @@
         body{
             background-color: #e0e0e0;
         }
-        .photo {
-            position: relative;
-        }
-        .title{
-            position: absolute;
-            bottom:20px;
-            left:0px;
-            text-align: center;
-            right:0px;
-            font-size:24px;
-            font-weight: bold;
-            color:#979797;
-        }
-        .photos {
-            margin:auto;
-            font-size:0px;
-        }
     </style>
-
+    <!--时间选择-->
+    <link rel="stylesheet" href="/css/coach/time.css" media="screen" type="text/css" />
+    <script src="/js/coach/time.js"></script>
 
     <!--评论-->
-    <script src="js/coach/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/coach/comment.css">
+    <script src="/js/coach/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/coach/comment.css">
 
     <!--博文-->
-    <script src="js/coach/scrollbar.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="css/coach/roll.css">
+    <script src="/js/coach/scrollbar.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/css/coach/roll.css">
 
     <!--弹出框-->
-    <link href="css/coach/buyCoach.css" rel='stylesheet' type='text/css' />
-
-    <!--时分选择插件-->
-    <script src="js/coach/hzw-city-picker.min.js"></script>
-    <script src="js/coach/city-data.js"></script>
-    <link href="css/coach/time.css" rel='stylesheet' type='text/css' />
+    <link href="/css/coach/buyCoach.css" rel='stylesheet' type='text/css' />
 
     <!--aliPay-->
-    <link href="css/coach/aliPay.css" rel="stylesheet" type="text/css">
-    <link href="css/coachList/font-awesome.min.css" rel='stylesheet' type='text/css' />
+    <link href="/css/coach/aliPay.css" rel="stylesheet" type="text/css">
+    <link href="/css/coachList/font-awesome.min.css" rel='stylesheet' type='text/css' />
 
     <!--布局-->
-    <link href="css/coachList/page-style.css" rel='stylesheet' type='text/css' />
-    <link href="css/coachList/cards-style.css" rel='stylesheet' type='text/css' />
+    <link href="/css/coachList/page-style.css" rel='stylesheet' type='text/css' />
+    <link href="/css/coachList/cards-style.css" rel='stylesheet' type='text/css' />
 
     <!--点赞-->
-    <link href="css/coach/count.css" rel='stylesheet' type='text/css' />
+    <link href="/css/coach/count.css" rel='stylesheet' type='text/css' />
 
     <!--数据-->
-    <script src="selfjs/coachPage.js"></script>
+    <script src="/selfjs/coachPage.js"></script>
     <script>
        coachInfo("coachId");
     </script>
@@ -106,10 +88,7 @@
 
         <h1 class="t-button col-lg-7" >
             <a href="#" href="javascript:void(0)" class="click_pop" style="display: inline-block;text-decoration: none;" >
-                <span class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light';
-
-
-">购买在线课程</span></a>
+                <span onclick="hiddenhour();" class="label label-default" style="background-color: #4D7E8A;font-family: '等线 Light';">购买在线课程</span></a>
         </h1>
 
         <div class="count col-lg-5" style="padding-top: 35px; padding-right: 50px;">
@@ -121,7 +100,7 @@
     </div>
 
     <div class="col-lg-7" style="padding: 0;margin-top: 50px;">
-    <img src="images/caoch.jpg" style="width: 100%;height: auto; overflow: hidden;">
+    <img src="/images/caoch.jpg" style="width: 100%;height: auto; overflow: hidden;">
     </div>
 </div>
 
@@ -136,7 +115,7 @@
                 </div>
                 <div id="blog-show" class="col-lg-12">
                     <div class="col-md-4" style="overflow: hidden;">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="card card-background" style="background-image: url('/images/blog07.jpg')">
                         <div class="table" style="height: 300px;overflow: hidden;">
                             <h3 class="card-caption">BLOG</h3>
                             <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. Vivamus odio antement, feugiat eget amet, scelerisque velit antement.</p>
@@ -145,7 +124,7 @@
                     </div>
                     </div>
                     <div class="col-md-4" style="overflow: hidden;">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="card card-background" style="background-image: url('/images/blog07.jpg')">
                             <div class="table" style="height: 300px;overflow: hidden;">
                                 <h3 class="card-caption">BLOG</h3>
                                 <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. Vivamus odio antement, feugiat eget amet, scelerisque velit antement.</p>
@@ -154,7 +133,7 @@
                         </div>
                     </div>
                     <div class="col-md-4" style="overflow: hidden;">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="card card-background" style="background-image: url('/images/blog07.jpg')">
                             <div class="table" style="height: 300px;overflow: hidden;">
                                 <h3 class="card-caption">BLOG</h3>
                                 <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla. Vivamus odio antement, feugiat eget amet, scelerisque velit antement.</p>
@@ -170,19 +149,19 @@
                 </div>
                 <div id="image-show" class="col-lg-12">
                     <div class="col-md-4">
-                         <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                         <div class="card card-background" style="background-image: url('/images/blog07.jpg')">
                         <div class="table" style="height: 300px; overflow: hidden;">
                         </div>
                     </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="card card-background" style="background-image: url('/images/blog07.jpg')">
                             <div class="table" style="height: 300px; overflow: hidden;">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="card card-background" style="background-image: url('/images/blog07.jpg')">
                             <div class="table" style="height: 300px; overflow: hidden;">
                             </div>
                         </div>
@@ -194,9 +173,9 @@
                     </h1>
                 </div>
                 <div id="course-show" class="col-lg-12">
-                    <div class="col-md-4" style="overflow: hidden;">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
-                        <div class="table" style="overflow: hidden; height: 300px;">
+                    <div class="col-md-4" style="overflow: hidden; ">
+                        <div class="card card-background" style="background-image: url('/images/blog07.jpg');">
+                        <div class="table" style="overflow: hidden; height: 230px; max-width: 230px; border-radius: 15px;">
                             <h6 class="category text-info">COURSE</h6>
                             <h3 class="card-caption">Quisque id elit maximus, pretium mollis elit</h3>
                             <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Read Article </a>
@@ -204,8 +183,8 @@
                     </div>
                     </div>
                     <div class="col-md-4" style="overflow: hidden;">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
-                            <div class="table" style="overflow: hidden; height: 300px;">
+                        <div class="card card-background" style="background-image: url('/images/blog07.jpg')">
+                            <div class="table" style="overflow: hidden; min-height: 230px;">
                                 <h6 class="category text-info">COURSE</h6>
                                 <h3 class="card-caption">Quisque id elit maximus, pretium mollis elit</h3>
                                 <a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Read Article </a>
@@ -213,7 +192,7 @@
                         </div>
                     </div>
                     <div class="col-md-4" style="overflow: hidden;">
-                        <div class="card card-background" style="background-image: url('images/blog07.jpg')">
+                        <div class="card card-background" style="background-image: url('/images/blog07.jpg')">
                             <div class="table" style="overflow: hidden; height: 300px;">
                                 <h6 class="category text-info">COURSE</h6>
                                 <h3 class="card-caption">Quisque id elit maximus, pretium mollis elit</h3>
@@ -227,7 +206,7 @@
                         <small>COMMENT</small>
                     </h1>
                 </div>
-                <div id="comment-show">
+                <div id="comment-show" style="margin-bottom: 50px;" class="col-md-12">
                     <div class="col-md-12" style="height: 50px; margin-top: 10px; border-bottom:2px solid #d9dde1;">
                         <h4 style="display: inline-block; width: 1000px; overflow: hidden;  max-height: 30px; color: #1e88e5">@.王佳帅 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <a style="width: 800px; overflow: hidden; color: black;">
@@ -262,7 +241,7 @@
 </div>
 
 <!--添加评论-->
-<div style="position: fixed; right: 10px; top: 70px; ">
+<div style="position: fixed; right: 10px; top: 90px; margin-top: 50px;">
     <a href="#modal-opened" class="link-1" id="modal-closed" style="text-decoration: none;">添加评论</a>
     <div class="modal-container" id="modal-opened">
     <div class="modal-comment">
@@ -291,7 +270,7 @@
         $(".pay_item").click(function(){
             $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
             var dataid=$(this).attr('data-id');
-            $(".shang_payimg img").attr("src","img/"+dataid+"img.jpg");
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
             $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
         });
     });
@@ -299,6 +278,14 @@
         $(".hide_box").fadeToggle();
         $(".shang_box").fadeToggle();
     }
+
+    function pad2(n) { return n < 10 ? '0' + n : n }
+    function generateTimeReqestNumber() {
+        var date = new Date();
+        return date.getFullYear().toString() + pad2(date.getMonth() + 1) + pad2(date.getDate()) + pad2(date.getHours()) + pad2(date.getMinutes()) ;
+    }
+    var rand = Math.floor(Math.random() * 900) + 100;
+    var order_id = generateTimeReqestNumber() + rand;
 </script>
 
 <!--遮罩层-->
@@ -307,102 +294,258 @@
 <!--弹出框-->
 <div class="pop">
     <div class="pop-top">
-        <h2>下单信息</h2>
-        <span class="pop-close">×</span>
+        <h2 style="margin: 0px; font-family: 等线 Light;">下单信息</h2>
+        <span class="pop-close" style="font-size: 20px; ">×</span>
     </div>
-    <div class="pop-content">
-        <div class="pop-content-left">
-            <img src=3"" alt="" class="teathumb">【
-        </div>
-        <div class="pop-content-right">
-            <p style="display: inline-block;">教练信息：<b class="lname"></b></p>
-            <img src="images/pic1.png" style="border-radius: 50px;"><a style="font-weight: bolder">王佳帅</a>
-            <p style="display: inline; margin-left: 40px;">服务内容：<b class="price"></b></p>
-            <img src="images/pic3.png" style="border-radius: 50px;"><a style="font-weight: bolder;">腹部肌肉在线训练</a>
-            <p style="display: inline-block;">上课时间：<b class="ltime"></b></p>
-            <!--日期-->
-            <a id="times" style="font-weight: bold;"></a>
-            <script type="text/javascript">
-                function  getD1(){
-                    var date=new Date();
-                    var d1=date.toLocaleDateString();
-                    var div1=document.getElementById("times");
-                    div1.innerHTML =d1;  }
-                setInterval("getD1();",1000);
-            </script>
-            <!--时间-->
-            <a>时间：</a>
-            <input type="text" id="cityChoice" style="border-radius: 5px;">
-            <script>
-                var cityPicker = new HzwCityPicker({
-                    data: data,
-                    target: 'cityChoice',
-                    valType: 'k-v',
-                    hideCityInput: {
-                        name: 'city',
-                        id: 'city'
-                    },
-                    hideProvinceInput: {
-                        name: 'province',
-                        id: 'province'
-                    },
-                    callback: function(){
-                        alert('OK');
-                    }
-                });
-                cityPicker.init();
-            </script>
-            <!--时长-->
-            <a>时长：</a>
-            <div style="display: inline-block;">
-                <select class="form-control" >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <!--联系方式-->
-            <div style="margin: 15px 0px;">
-                <p style="display: inline-block;">联系方式：<b class="teacher"></b></p>
-                <input type="text" style="width: 80% ; border-radius:5px; background-color: #999999; border-width: 0;">
-            </div>
-            <!--教练留言-->
-            <div style="margin: 15px 0px;">
-                <p>教练留言：<b class="teasynopsis"></b></p>
-                <input type="text" style="width: 96% ; border-radius:5px; background-color: #999999; border-width: 0; height: 80px;">
-            </div>
-        </div>
-        <div class="pop-foot">
-            <a style="left: 0;">总计：10000元</a>
-            <div class="content">
-                <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">支付宝支付</a></p>
 
-                <!--aliPay-->
-                <div class="shang_box">
-                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="images/aliPay/close.jpg" alt="取消" /></a>
-                    <div class="shang_tit">
-                        <p>感谢您的支持，我会继续努力的!</p>
-                    </div>
-                    <div class="shang_payimg">
-                        <img src="images/aliPay/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
-                    </div>
-                    <div class="pay_explain">扫码打赏，你说多少就多少</div>
-                    <div class="shang_payselect">
-                        <div class="pay_item checked" data-id="alipay">
-                            <span class="radiobox"></span>
-                            <span class="pay_logo"><img src="images/aliPay/alipay.jpg" alt="支付宝" /></span>
-                        </div>
-                        <div class="pay_item" data-id="weipay">
-                            <span class="radiobox"></span>
-                            <span class="pay_logo"><img src="images/aliPay/wechat.jpg" alt="微信" /></span>
-                        </div>
-                    </div>
-                    <div class="shang_info">
-                        <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
-                    </div>
-                </div>
+    <form id="form" action="/order/alipay" method="post" class="form-horizontal" style="margin-top: 10px;">
+        <div class="form-group ">
+            <label class="col-md-3" for="exampleInputName">教练：</label>
+            <div class="col-md-7">
+                <input type="text" name="" class="form-control" id="exampleInputName" placeholder="没有获取到教练姓名" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3" for="exampleInputPrice">教练价格(/h)：</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" id="exampleInputPrice" placeholder="没有获取到教练价格" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3">上课时间：</label>
+            <div class="col-md-7">
+                <!--日期-->
+                <label id="times" style="font-size: 14px; color: #555; font-family: inherit;"></label>
+                <script type="text/javascript">
+                    function  getD1(){
+                        var date=new Date();
+                        var d1=date.toLocaleDateString();
+                        var div1=document.getElementById("times");
+                        div1.innerHTML =d1;  }
+                    setInterval("getD1();",1000);
+                </script>
+            </div>
+        </div>
+
+        <div class="form-group" style="height: 34px;">
+            <label class="col-md-3">选择课程时间：</label>
+            <div class="col-md-7">
+                <nav>
+                    <menu>
+                        <menuitem>
+                            <a id="start-time">选择时间</a>
+                            <menu>
+                                <menuitem>
+                                    <a>AM</a>
+                                    <menu>
+                                        <menuitem><a>可申请时间段</a></menuitem>
+                                        <menuitem><a id="hour-0" name="hour">00点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('00:00')">00:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('00:30')">00:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-1" name="hour">01点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('01:00')">01:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('01:30')">01:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-2" name="hour">02点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('02:00')">02:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('02:30')">02:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-3" name="hour">03点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('03:00')">03:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('03:30')">03:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-4" name="hour">04点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('04:00')">04:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('04:30')">04:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-5" name="hour">05点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('05:00')">05:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('05:30')">05:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-6" name="hour">06点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('06:00')">06:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('06:30')">06:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-7" name="hour">07点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('07:00')">07:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('07:30')">07:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-8" name="hour">08点</a>
+                                            <menu>
+                                                <menuitem onclick="$('#start-time').text('08:00')"><a>08:00</a></menuitem>
+                                                <menuitem onclick="$('#start-time').text('08:30')"><a>08:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-9" name="hour">09点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('09:00')">09:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('09:30')">09:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-10"  name="hour">10点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('10:00')">10:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('10:30')">10:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-11"  name="hour">11点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('11:00')">11:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('11:30')">11:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a id="hour-12"  name="hour">12点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('12:00')">12:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('12:30')">12:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                    </menu>
+                                </menuitem>
+                                <menuitem>
+                                    <a>PM</a>
+                                    <menu>
+                                        <menuitem><a>可申请时间段</a></menuitem>
+                                        <menuitem><a class="hour"  name="hour">13点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('13:00')">13:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('13:30')">13:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a class="hour"  name="hour">14点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('14:00')">14:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('14:30')">14:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">15点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('15:00')">15:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('15:30')">15:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">16点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('16:00')">16:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('16:30')">16:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">17点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('17:00')">17:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('17:30')">17:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">18点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('18:00')">18:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('18:30')">18:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">19点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('19:00')">19:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('19:30')">19:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">20点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('20:00')">20:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('20:30')">20:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">21点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('21:00')">21:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('21:30')">21:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">22点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('22:00')">22:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('22:30')">22:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                        <menuitem><a  name="hour">23点</a>
+                                            <menu>
+                                                <menuitem><a onclick="$('#start-time').text('23:00')">23:00</a></menuitem>
+                                                <menuitem><a onclick="$('#start-time').text('23:30')">23:30</a></menuitem>
+                                            </menu>
+                                        </menuitem>
+                                    </menu>
+                                </menuitem>
+                            </menu>
+                        </menuitem>
+                    </menu>
+                </nav>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3">选择课程时长：</label>
+            <select id="fit-time" class="col-lg-7 form-control" style="width: 308.33px; margin-left: 15px;" onclick="online();">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3" for="exampleInputContact">联系方式：</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" id="exampleInputContact" placeholder="请输入您的联系方式">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-3" for="exampleInputMessage">留言</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" id="exampleInputMessage" placeholder="请输入您的锻炼方向">
+            </div>
+        </div>
+        <input type="hidden" name="outTradeNo" id="outTradeNo">
+        <input type="hidden" name="totalAmount" id="totalAmount">
+        <input type="hidden" name="body" id="body">
+        <input type="hidden" name="subject" id="subject">
+
+        <div class="pull-left col-md-3" style="margin-top: 10px;">
+            <label>总计：<a id="title-price" style="color: black">0元</a></label>
+            <script>
+                function online() {
+                    var price = $("#exampleInputPrice").val();
+                    var time = $("#fit-time").val();
+                    $("#title-price").text(price * time);
+                    return price * time;
+                }
+            </script>
+        </div>
+    </form>
+
+    <div class="pop-content">
+        <div class="pop-foot">
+            <div class="content">
+                <p><a href="javascript:void(0)" onclick="alipayOnline('/order/alipay')" class="dashang" title="打赏，支持一下">支付宝支付</a></p>
             </div>
         </div>
     </div>
@@ -419,7 +562,7 @@
 </script>
 
 <!--点赞按钮-->
-<script src="js/coach/count.js"></script>
+<script src="/js/coach/count.js"></script>
 
 <!--copy right-->
 </div>

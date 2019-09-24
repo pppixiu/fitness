@@ -1,129 +1,116 @@
-.hzw-city-picker{
-    position: absolute;
-    border: 2px solid #c9cbce;
-    width: 402px;
-    background: #ffffff;
-    z-index: 999999;
-    font-size: 0;
-}
-.hzw-city-picker:before, .hzw-city-picker:after{
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    border-width: 10px;
-    border-style: solid;
-    position: absolute;
-    left: 20px;
-    z-index: 999999;
-}
-.hzw-city-picker:before{
-    border-color: transparent transparent #ffffff;
-    top: -17px;
-    z-index: 9999999;
-}
-.hzw-city-picker:after{
-    border-color: transparent transparent #c9cbce;
-    top: -20px;
-}
-.hzw-city-picker *{
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 0;
-    color: #666666;
-    font-family: "Microsoft YaHei";
-    font-size: 14px;
-}
-.hzw-city-picker ul{
-    list-style: none;
-}
-.hzw-city-picker ul li{
-    display: inline-block;
-    position: relative;
-    margin: 4px;
-    cursor: pointer;
-}
-.hzw-city-picker p{
-    font-weight: bold;
-    padding: 0 4px;
-    margin-top: 4px;
-    margin-bottom: 10px;
-}
-.hzw-city-picker .line{
-    width: 372px;
-    margin: 0 auto;
-    margin-top: 8px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #d8d8d8;
+/* HTML Nav Styles */
+/* HTML Nav Styles */
+/* HTML Nav Styles */
+nav menuitem {
+   position:relative;
+   display:block;
+   opacity:0;
+   cursor:pointer;
+   z-index: 999;
 }
 
-/*热门城市*/
-.hzw-city-picker .hzw-hot-wrap{
-    width: 100%;
-    background: #ffffff;
-    padding: 9px;
+nav menuitem > menu {
+   position: absolute;
+   pointer-events:none;
 }
-.hzw-city-picker .hzw-hot-wrap ul li{
-    width: 68px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    color: #666666;
-    background-color: #f5f5f5;
+nav > menu { display:-webkit-box; display:-ms-flexbox; display:flex; }
+
+nav > menu > menuitem { pointer-events: all; opacity:1; }
+menu menuitem a { white-space:nowrap; display:block; }
+   
+menuitem:hover > menu {
+   pointer-events:initial;
 }
-.hzw-city-picker .hzw-hot-wrap ul li:hover{
-    color: #ff00ff;
+menuitem:hover > menu > menuitem,
+menu:hover > menuitem{
+   opacity:1;
+}
+nav > menu > menuitem menuitem menu {
+   -webkit-transform:translateX(100%);
+           transform:translateX(100%);
+   top:0; right:0;
+}
+/* User Styles Below Not Required */
+/* User Styles Below Not Required */
+/* User Styles Below Not Required */
+
+nav a {
+   background-color: white;
+   color:black;
+   min-width:190px;
+   -webkit-transition: background 0.5s, color 0.5s, -webkit-transform 0.5s;
+   transition: background 0.5s, color 0.5s, -webkit-transform 0.5s;
+   transition: background 0.5s, color 0.5s, transform 0.5s;
+   transition: background 0.5s, color 0.5s, transform 0.5s, -webkit-transform 0.5s;
+   margin:0px 6px 6px 0px;
+   padding:7px 40px;
+   -webkit-box-sizing:border-box;
+           box-sizing:border-box;
+   border-radius:3px;
+   -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+   position:relative;
+   height: 34px;
 }
 
-/*选择省份*/
-.hzw-city-picker .hzw-wrap{
-    position: relative;
-    width: 100%;
-    background: #ffffff;
-    padding: 9px;
-}
-.hzw-city-picker .hzw-province-name{
-    display: inline-block;
-    width: 68px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    position: relative;
-    background-color: #f5f5f5;
-}
-.hzw-city-picker .hzw-province-name:hover{
-    color: #ff00ff;
+nav a:hover:before {
+   content: '';
+   top:0;left:0;
+   position:absolute;
+   background:rgba(0, 0, 0, 0.2);
+   width:100%;
+   height:100%;
 }
 
-.hzw-city-picker .hzw-province.active{
-    z-index: 999999999;
+nav > menu > menuitem > a + menu:after{
+   content: '';
+   position:absolute;
+   border:10px solid transparent;
+   border-top: 10px solid white;
+   left:12px;
+   top: -40px;  
 }
-.hzw-city-picker .hzw-province-name.active{
-    border: 1px solid #D8D8D8;
-    border-bottom-color: #ffffff;
-    color: #ff00ff;
-    background-color: #ffffff;
+nav menuitem > menu > menuitem > a + menu:after{ 
+   content: '';
+   position:absolute;
+   border:10px solid transparent;
+   border-left: 10px solid white;
+   top: 7px;
+   left:-180px;
+   -webkit-transition: opacity 0.6, -webkit-transform 0s;
+   transition: opacity 0.6, -webkit-transform 0s;
+   transition: opacity 0.6, transform 0s;
+   transition: opacity 0.6, transform 0s, -webkit-transform 0s;
 }
-.hzw-city-picker .hzw-city-wrap{
-    display: none;
-    border: 1px solid #D8D8D8;
-    background: #ffffff;
-    position: absolute;
-    top: 39px;
-    width: 328px;
-    padding: 10px;
+
+nav > menu > menuitem > menu > menuitem{
+   -webkit-transition: opacity 0.6s, -webkit-transform 0.6s;
+   transition: opacity 0.6s, -webkit-transform 0.6s;
+   transition: transform 0.6s, opacity 0.6s;
+   transition: transform 0.6s, opacity 0.6s, -webkit-transform 0.6s;
+   -webkit-transform:translateY(150%);
+           transform:translateY(150%);
+   opacity:0;
 }
-.hzw-city-picker .hzw-city{
-    width: 68px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    color: #999999;
-    background-color: #f5f5f5;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+nav > menu > menuitem:hover > menu > menuitem,
+nav > menu > menuitem.hover > menu > menuitem{
+   -webkit-transform:translateY(0%);
+           transform:translateY(0%);
+   opacity: 1;
 }
-.hzw-city-picker .hzw-city:hover{
-    color: #ff00ff;
+
+menuitem > menu > menuitem > menu > menuitem{
+   -webkit-transition: opacity 0.6s, -webkit-transform 0.6s;
+   transition: opacity 0.6s, -webkit-transform 0.6s;
+   transition: transform 0.6s, opacity 0.6s;
+   transition: transform 0.6s, opacity 0.6s, -webkit-transform 0.6s;
+   -webkit-transform:translateX(195px) translateY(0%);
+           transform:translateX(195px) translateY(0%);
+   opacity: 0;
+} 
+menuitem > menu > menuitem:hover > menu > menuitem,  
+menuitem > menu > menuitem.hover > menu > menuitem{  
+   -webkit-transform:translateX(0) translateY(0%);  
+           transform:translateX(0) translateY(0%);
+   opacity: 1;
 }

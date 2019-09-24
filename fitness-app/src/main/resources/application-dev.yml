@@ -1,8 +1,8 @@
 spring:
   servlet:
     multipart:
-      max-file-size: 10MB
-      max-request-size: 100MB
+      max-file-size: 2048MB
+      max-request-size: 10240MB
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://106.14.115.219:8085/nicenoreference?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false

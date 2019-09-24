@@ -121,20 +121,27 @@ function getcoachlist() {
                 var html = '';
                 coachList
                     .map(function (item, index) {
-                        html += '<div class="coach-card" style="width: 300px;height:auto;" href="coachPage.html?coachId='
+                        html += '<div class="coach-card" style="width: 300px;height:auto;" href="coachPage?coachId='
                             + item.id
                             + '">'
-                            + '<div class="card card-product">'
-                            + '<div class="card-image">'
-                            + '<a href="coachPage.html?coachId='
+                            + '<div class="card card-product" href="coachPage?coachId='
                             + item.id
-                            +'"> <img class="img" src="images/coachList/blog04.jpeg"> </a></div>'
-                            + '<div class="table">'
+                            + '">'
+                            + '<div class="card-image" href="coachPage?coachId='
+                            + item.id
+                            + '"><a href="coachPage?coachId='
+                            + item.id
+                            + '"><img class="img" src="/images/coachList/blog04.jpeg" href="coachPage?coachId='
+                            + item.id
+                            + '"></a></div>'
+                            + '<div class="table" href="coachPage?coachId='
+                            + item.id
+                            + '">'
                             + '<h6 class="category text-rose">'
                             + item.count
                             + '</h6>'
                             + '<h4 class="card-caption">'
-                            + '<a href="coachPage.html?coachId='
+                            + '<a href="coachPage?coachId='
                             + item.id
                             + '">'
                             + item.name
@@ -147,9 +154,15 @@ function getcoachlist() {
                             + '<h4>$'
                             + item.price
                             + '</h4></div>'
-                            + '<div class="stats">'
+                            + '<div class="stats" href="coachPage?coachId='
+                            + item.id
+                            + '">'
                             + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
-                            + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
+                            + 'data-original-title="Saved to Wishlist"  href="coachPage?coachId='
+                            +  item.id
+                            + '"><i class="glyphicon glyphicon-search"  href="coachPage?coachId='
+                            + item.id
+                            + '"></i></button>'
                             + '</div>'
                             + '</div>'
                             + '</div>'
@@ -185,20 +198,27 @@ $(window).scroll(function () {
                     var html = '';
                     addCoachList
                         .map(function (item, index) {
-                            html += '<div class="coach-card" style="width: 300px;height:auto;" href="coachPage.html?coachId='
+                            html += '<div class="coach-card" style="width: 300px;height:auto;" href="coachPage?coachId='
                                 + item.id
                                 + '">'
-                                + '<div class="card card-product">'
-                                + '<div class="card-image">'
-                                + '<a href="coachPage.html?coachId='
+                                + '<div class="card card-product" href="coachPage?coachId='
                                 + item.id
-                                +'"> <img class="img" src="images/coachList/blog04.jpeg"> </a></div>'
-                                + '<div class="table">'
+                                + '">'
+                                + '<div class="card-image" href="coachPage?coachId='
+                                + item.id
+                                + '"><a href="coachPage?coachId='
+                                + item.id
+                                + '"><img class="img" src="/images/coachList/blog04.jpeg" href="coachPage?coachId='
+                                + item.id
+                                + '"></a></div>'
+                                + '<div class="table" href="coachPage?coachId='
+                                + item.id
+                                + '">'
                                 + '<h6 class="category text-rose">'
                                 + item.count
                                 + '</h6>'
                                 + '<h4 class="card-caption">'
-                                + '<a href="coachPage.html?coachId='
+                                + '<a href="coachPage?coachId='
                                 + item.id
                                 + '">'
                                 + item.name
@@ -211,11 +231,15 @@ $(window).scroll(function () {
                                 + '<h4>$'
                                 + item.price
                                 + '</h4></div>'
-                                + '<div class="stats"href="coachPage.html?coachId='
+                                + '<div class="stats" href="coachPage?coachId='
                                 + item.id
                                 + '">'
                                 + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
-                                + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
+                                + 'data-original-title="Saved to Wishlist"  href="coachPage?coachId='
+                                +  item.id
+                                + '"><i class="glyphicon glyphicon-search"  href="coachPage?coachId='
+                                + item.id
+                                + '"></i></button>'
                                 + '</div>'
                                 + '</div>'
                                 + '</div>'

@@ -49,13 +49,21 @@
             width: 80%;
             /*实现盒子水平居中*/
             margin: 0 auto;
-        }
 
+        }
         .box img {
             border-radius: 5px;
             /*盒子阴影*/
             box-shadow: 0px 0px 5px gray;
             width: 100%;
+        }
+
+        .bloglist{
+            overflow: hidden;
+        }
+
+        .bloglist:hover{
+            transform: scale(1.05);
         }
     </style>
 
@@ -145,13 +153,11 @@
                     <h4 class="modal-title" id="myModalLabel">添加博客</h4>
                 </div>
                 <div class="modal-body">
-                    <div style="background-color: #f5ffdb; width: 100%; height: 100%">
-                        <!--<div id="tool-bar" class="toolbar">-->
-                        <!--</div>-->
-                        <!--<div style="padding: 5px 0; color: #ccc"></div>-->
-                        <!--<input name="editor-content" id="editor-content" autocomplete="off" type="hidden">-->
-                        <div id="editor" name="blogContent">
-
+                    <div style="background-color: #f5ffdb; width: 100%; min-height: 200px">
+                        <div id="tool-bar" class="toolbar">
+                        </div>
+                        <div style="margin: 10px 0; color: #ccc"></div>
+                        <div id="editor" class="text" name="blogContent">
                         </div>
                     </div>
                 </div>
@@ -162,78 +168,81 @@
             </div>
         </div>
     </div>
-
+<!--未找到博客信息-->
+<span id="not-find" style="position: absolute; left: 10%; top: 30%;font-size: 60px;color: #999999;"></span>
     <!--博客列表-->
-    <div id="bloglist" class="box"
-         style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 150px 200px;">
-        <div style="width: 300px;height:auto;padding-right: 5em;" href="blog_comment.html?blogId=1">
-            <div class="card card-product" style="margin-bottom: 0px">
-                <div class="card-image" style="margin-top: 0px">
-                    <a href="#"> <img class="img" src="images/Blog_pic1.jpg"> </a>
-                </div>
-                <div class="table">
-                    <h6 class="category text-rose"></h6>
-                    <h4 class="card-caption">
-                    </h4>
-                    <div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam
-                        lacinia elit...
-                    </div>
-                    <div class="ftr">
-                    </div>
-                </div>
-            </div>
+    <div id="div1" class="box"
+         style="width: 100%;text-align: center; display: inline-block; position: absolute;top: 0px; padding: 150px 200px;min-height: 100%">
+        <div id="bloglist" >
+            <!--<div style="width: 300px;height:auto;padding-right: 5em;" href="blog_comment.html?blogId=1">-->
+                <!--<div class="card card-product" style="margin-bottom: 0px">-->
+                    <!--<div class="card-image" style="margin-top: 0px">-->
+                        <!--<a href="#"> <img class="img" src="images/Blog_pic1.jpg"> </a>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<h6 class="category text-rose"></h6>-->
+                        <!--<h4 class="card-caption">-->
+                        <!--</h4>-->
+                        <!--<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam-->
+                            <!--lacinia elit...-->
+                        <!--</div>-->
+                        <!--<div class="ftr">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-        </div>
-        <div style="width: 300px;height:auto;padding-right: 5em">
-            <div class="card card-product" style="margin-bottom: 0px">
-                <div class="card-image" style="margin-top: 0px">
-                    <a href="#"> <img class="img" src="images/blog_add.jpeg"> </a>
-                </div>
-                <div class="table">
-                    <h6 class="category text-rose"></h6>
-                    <h4 class="card-caption">
-                    </h4>
-                    <div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam
-                        lacinia elit...
-                    </div>
-                    <div class="ftr">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="width: 300px;height:auto;padding-right: 5em">
-            <div class="card card-product" style="margin-bottom: 0px">
-                <div class="card-image" style="margin-top: 0px">
-                    <a href="#"> <img class="img" src="images/g4.jpg"> </a>
-                </div>
-                <div class="table">
-                    <h6 class="category text-rose"></h6>
-                    <h4 class="card-caption">
-                    </h4>
-                    <div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam
-                        lacinia elit...
-                    </div>
-                    <div class="ftr">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="width: 300px;height:auto;padding-right: 5em">
-            <div class="card card-product" style="margin-bottom: 0px">
-                <div class="card-image" style="margin-top: 0px">
-                    <a href="#"> </a>
-                </div>
-                <div class="table">
-                    <h6 class="category text-rose"></h6>
-                    <h4 class="card-caption">
-                    </h4>
-                    <div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam
-                        lacinia elit...
-                    </div>
-                    <div class="ftr">
-                    </div>
-                </div>
-            </div>
+            <!--</div>-->
+            <!--<div style="width: 300px;height:auto;padding-right: 5em">-->
+                <!--<div class="card card-product" style="margin-bottom: 0px">-->
+                    <!--<div class="card-image" style="margin-top: 0px">-->
+                        <!--<a href="#"> <img class="img" src="images/blog_add.jpeg"> </a>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<h6 class="category text-rose"></h6>-->
+                        <!--<h4 class="card-caption">-->
+                        <!--</h4>-->
+                        <!--<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam-->
+                            <!--lacinia elit...-->
+                        <!--</div>-->
+                        <!--<div class="ftr">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div style="width: 300px;height:auto;padding-right: 5em">-->
+                <!--<div class="card card-product" style="margin-bottom: 0px">-->
+                    <!--<div class="card-image" style="margin-top: 0px">-->
+                        <!--<a href="#"> <img class="img" src="images/g4.jpg"> </a>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<h6 class="category text-rose"></h6>-->
+                        <!--<h4 class="card-caption">-->
+                        <!--</h4>-->
+                        <!--<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam-->
+                            <!--lacinia elit...-->
+                        <!--</div>-->
+                        <!--<div class="ftr">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div style="width: 300px;height:auto;padding-right: 5em">-->
+                <!--<div class="card card-product" style="margin-bottom: 0px">-->
+                    <!--<div class="card-image" style="margin-top: 0px">-->
+                        <!--<a href="#"> </a>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<h6 class="category text-rose"></h6>-->
+                        <!--<h4 class="card-caption">-->
+                        <!--</h4>-->
+                        <!--<div class="card-description"> Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam-->
+                            <!--lacinia elit...-->
+                        <!--</div>-->
+                        <!--<div class="ftr">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <!--copy right-->
         <div class="copyright" style="position: absolute;bottom: 0; left: 0;right: 0;">

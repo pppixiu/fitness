@@ -54,4 +54,6 @@ public interface CoachService {
      * @return
      */
     List<Tag> getTag();
+
+    int  modifyCoachLikeCount(@Param("coachId") int coachId, @Param("likeJudge") int likeJudge);
 }
