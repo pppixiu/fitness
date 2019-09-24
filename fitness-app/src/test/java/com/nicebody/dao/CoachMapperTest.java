@@ -52,4 +52,10 @@ public class CoachMapperTest {
         List<CoachImage> coachImageList = coachMapper.queryImageList(0,1,1);
         Assert.assertEquals(2,coachImageList.size());
     }
+
+    /**测试修改教练点赞信息*/
+    @Test
+    public void updateLikeCountTest(){
+        coachMapper.updateCoachLikeCount(1,-1);
+    }
 }

@@ -43,4 +43,18 @@
         where coach_id = #{coachId}
         LIMIT #{rowIndex}, #{pageSize}
     </select>
+
+    <update id="updateCoachLikeCount" parameterType="coachInfo">
+        UPDATE tb_coach_info
+        <set>
+            <if test="likeJudge == 1">
+                like_count = like_count + 1
+
+            </if>
+            <if test="likeJudge == -1">
+                like_count = like_count - 1
+            </if>
+        </set>
+        where coach_id = ${coachId}
+    </update>
 </mapper>

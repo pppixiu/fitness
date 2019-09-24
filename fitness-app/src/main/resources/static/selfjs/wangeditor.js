@@ -1,5 +1,5 @@
 var E = window.wangEditor;
-var editor = new E('#editor');
+var editor = new E('#tool-bar','#editor');
 
 // 自定义菜单配置
 editor.customConfig.menus = [
@@ -46,25 +46,23 @@ $('#editor').attr('style','heigth:auto');
 // 向后台传入wangeditor内容
 function submit() {
 
-    // var blogContent = $("#editor").html();
-    var blogContent = {blogContent : document.getElementById("editor").innerHTML}
+    var params = {}
+    var blogContent = document.getElementById("editor").innerHTML
+    params.blogContent = blogContent;
 
-    var blogContentUrl = '/blog/adduserblog' //?'
-     //  +'blogContent='+ blogContent;
     $.ajax({
         url: "/blog/adduserblog",
-        type: "post",
+        type: "get",
         contentType:'application/json',
         dataType : 'json',
-        data : JSON.stringify(blogContent),
+        data : params,
         success : function (data) {
             if (data.success){
                 alert("成功")
             }
         }
-
     })
 
-    // alert(blogContent)
+
 }
 
