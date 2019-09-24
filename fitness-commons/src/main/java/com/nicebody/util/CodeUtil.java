@@ -19,13 +19,16 @@ import java.util.Map;
 
 public class CodeUtil {
     //查账户信息的http地址
-    public static String APIKEY = "42d2d647efbaf85b91614b61bec48c03";
+    public static String APIKEY = "7146eb13e298f80030fb6b01fc1352c6";
 
     public static String SIGN = "【云片网】";
 
     public static String TEMPLATE_CODE = "template_code";
 
     public static String TEMPLATE = "您的验证码是";
+
+    public static  String T_CODE="【王佳帅】";
+    public static  String T_LASTCODE ="happybirthday";
 
     //查账户信息的http地址
     private static String URI_GET_USER_INFO = "https://sms.yunpian.com/v2/user/get.json";

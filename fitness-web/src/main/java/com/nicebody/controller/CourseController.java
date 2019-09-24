@@ -1,6 +1,7 @@
 package com.nicebody.controller;
 
 import com.nicebody.enums.OrderByEnum;
+import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.CourseLesson;
 import com.nicebody.pojo.Tag;
@@ -111,6 +112,7 @@ public class CourseController {
 
 
     @GetMapping("/listcoursebyid")
+    @LoginRequired
     public ResultVO listCourseById(@RequestParam(value = "courseId",required = false) Integer courseId){
         ResultVO resultVO = new ResultVO();
         //查询所有的course信息

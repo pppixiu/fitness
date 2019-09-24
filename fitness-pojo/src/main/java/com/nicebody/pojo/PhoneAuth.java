@@ -10,7 +10,7 @@ public class PhoneAuth {
     /** 手机号 */
     private String phoneNumber;
     /** 验证码*/
-    private String auth_number;
+    private String authNumber;
     /** 创建时间 */
     private Date createTime;
     /** 升级时间 */
@@ -40,12 +40,12 @@ public class PhoneAuth {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAuth_number() {
-        return auth_number;
+    public String getAuthNumber() {
+        return authNumber;
     }
 
-    public void setAuth_number(String auth_number) {
-        this.auth_number = auth_number;
+    public void setAuthNumber(String authNumber) {
+        this.authNumber = authNumber;
     }
 
     public Date getCreateTime() {
@@ -62,5 +62,17 @@ public class PhoneAuth {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneAuth{" +
+                "phoneAuthId=" + phoneAuthId +
+                ", userId=" + userId +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", authNumber='" + authNumber + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

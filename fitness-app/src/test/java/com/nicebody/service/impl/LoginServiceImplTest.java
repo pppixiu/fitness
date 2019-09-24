@@ -1,7 +1,7 @@
-package com.nicebody.dao;
+package com.nicebody.service.impl;
 
-import com.nicebody.mapper.LoginMapper;
 import com.nicebody.pojo.PhoneAuth;
+import com.nicebody.service.LoginService;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,19 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PhoneDaoTest {
+public class LoginServiceImplTest {
     @Autowired
-    LoginMapper loginMapper;
+    private LoginService loginService;
 
     @Test
     @Ignore
-    public void queryAuthNumberTest(){
+    public void getAuthNumberTest(){
         String phone = "123456789";
-        PhoneAuth phoneAuth = loginMapper.queryAuthNumber(phone);
+        PhoneAuth phoneAuth = loginService.getAuthNumber(phone);
         System.out.println(phoneAuth.getAuthNumber());
-
 
     }
 
@@ -29,22 +30,21 @@ public class PhoneDaoTest {
     public void updateAuthNumberTest(){
         PhoneAuth phoneAuth = new PhoneAuth();
         phoneAuth.setPhoneNumber("123456789");
-        phoneAuth.setAuthNumber("5678");
-        int effect = loginMapper.updatePhoneAuth(phoneAuth);
+        phoneAuth.setAuthNumber("1234");
+        int effect = loginService.updatePhoneAuth(phoneAuth);
         System.out.println(effect);
 
     }
     @Test
     public void insertAuthNumberTest(){
         PhoneAuth phoneAuth = new PhoneAuth();
-        phoneAuth.setPhoneNumber("000000000");
-        phoneAuth.setAuthNumber("7890");
-        int effect = loginMapper.insertPhoneAuth(phoneAuth);
+        phoneAuth.setPhoneNumber("15776506691");
+        phoneAuth.setAuthNumber("2222");
+        phoneAuth.setCreateTime(new Date());
+        phoneAuth.setUpdateTime(new Date());
+        int effect = loginService.insertPhoneAuth(phoneAuth);
         System.out.println(effect);
     }
-
-
-
 
 
 }
