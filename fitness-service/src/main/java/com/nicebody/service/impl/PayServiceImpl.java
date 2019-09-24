@@ -2,7 +2,7 @@ package com.nicebody.service.impl;
 
 import com.alipay.api.AlipayApiException;
 import com.nicebody.alipay.AlipayBean;
-import com.nicebody.mapper.Alipay;
+import com.nicebody.aliPay.Alipay;
 import com.nicebody.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

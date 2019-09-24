@@ -1,4 +1,4 @@
-package com.nicebody;
+package com.nicebody.aliPay;
 
 /**
  * @ClassName AlipayProperties
