@@ -40,7 +40,7 @@ function coachInfo(e) {
     var coachBlogUrl = '/blog/getuserblogbyuserid?pageIndex=0&pageSize=3&userId='+id;
     var coachCourseUrl = '/coach/coachCourse?coachId='+id;
     var coachImageUrl = '/coach/coachImage?coachId='+id;
-    //var coachCommentUrl = ''+id;
+    var coachCommentUrl = '/comment/coachcommentlist?refId='+id;
 
     /*加载基本信息*/
     $.getJSON(
@@ -70,7 +70,7 @@ function coachInfo(e) {
                             + '<div class="card card-background" style="background-image:  url('
                             +  item.imageUrl
                             + ')">'
-                            + '<div class="table" style=" min-height: 230px; max-height: 230px; max-width: 230px; overflow: hidden;">'
+                            + '<div class="table" style=" min-height: 230px; max-height: 230px; width: 230px; overflow: hidden;">'
                             + '<h3 class="card-caption">BLOG</h3>'
                             + '<p class="card-description">'
                             + item.blogContent
@@ -97,7 +97,7 @@ function coachInfo(e) {
                     .map(function (item, index) {
                         imagehtml += '<div class="col-md-4">'
                             + '<div class="card card-background" style="background-image: url("images/blog07.jpg")">'
-                            + '<div class="table" style=" min-height: 230px; max-height: 230px; max-width: 230px;  overflow: hidden;">'
+                            + '<div class="table" style=" min-height: 230px; max-height: 230px; width: 230px;  overflow: hidden;">'
                             + '</div> </div> </div>'
                     });
                 $('#image-show').html(imagehtml);
@@ -118,7 +118,7 @@ function coachInfo(e) {
                             + '<div class="card card-background" style="background-image: url('
                             + item.url
                             + ')">'
-                            + '<div class="table" style="overflow: hidden;  max-height: 230px; min-height: 230px; max-width: 230px; ">'
+                            + '<div class="table" style="overflow: hidden;  max-height: 230px; min-height: 230px; width: 230px; ">'
                             + '<h6 class="category text-info">COURSE</h6>'
                             + '<h3 class="card-caption">'
                             + item.title
@@ -133,7 +133,7 @@ function coachInfo(e) {
         });
 
     /*加载评论*/
-    /* $.getJSON(
+     $.getJSON(
         coachCommentUrl,
         function (data) {
             if (data.code == "0") {
@@ -144,10 +144,10 @@ function coachInfo(e) {
                         commenthtml += '<div class="col-md-12" style="height: 50px; margin-top: 10px; border-bottom:2px solid #d9dde1;">'
                                     + '<h4 style="display: inline-block; width: 1000px; overflow: hidden;   text-overflow:ellipsis;'
                                     + 'word-break:keep-all;  white-space:nowrap; max-height: 30px; color: #1e88e5">@.'
-                                    + 'item.????'
+                                    + item.user.username
                                     + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
                                     + '<a style="width: 800px;color: black;">'
-                                    + 'item.????'
+                                    + item.content
                                     + '</a></h4>'
                                     + '<button type="button" class="pull-right btn btn-primary btn-lg"'
                                     + 'style="display: inline-block; margin-bottom: 25px; color: #999999;">'
@@ -157,7 +157,7 @@ function coachInfo(e) {
                     });
                 $('#comment-show').html(commenthtml);
             }
-        });*/
+        });
 }
 
 /**

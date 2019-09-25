@@ -11,6 +11,7 @@ var lastCoachId = 0;    //保存当前最后一个输出教练Id
  * 初始化
  */
 $(function () {
+    header();
     getcoachlist();
     gettaglist();
 });
@@ -231,3 +232,29 @@ $(window).scroll(function () {
             });
     }
 });
+
+/**
+ * 加载当前用户登录信息
+ */
+function header() {
+    var headerUrl ='/header/sessionInfo';
+    $.getJSON(
+        headerUrl,
+        function (data) {
+            var imghtml='';
+            var info = data;
+            if(info==''){
+                alert('没有获取到登录信息');
+            }else {
+                imghtml += '<img style="border-radius: 50px;width: 40px;height: 40px;position: absolute;top: -30px; margin-left: 10px;" src="'
+                    + info.userImageUrl
+                    + '" onclick="window.open('
+                    + "'"
+                    + '/user/selfcourse?userId='
+                    + info.userId
+                    + "'"
+                    + ')">';
+                $('#user-img').html(imghtml);
+            }
+        });
+}

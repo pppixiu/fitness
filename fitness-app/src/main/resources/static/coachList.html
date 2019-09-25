@@ -92,6 +92,11 @@
 			width: 100%;
 		}
 
+		.img{
+			-webkit-filter: grayscale(50%); /* Chrome, Safari, Opera */
+			filter: grayscale(50%);
+		}
+
 	</style>
 	<link href="/css/coachList/font-awesome.min.css" rel='stylesheet' type='text/css' />
 	<link href="/css/coachList/page-style.css" rel='stylesheet' type='text/css' />
@@ -130,7 +135,7 @@
 					<li><a href="/coach/coachSol" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">找教练</a></li>
 					<li><a href="/course/course"  onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'" class="active">健身课程</a></li>
 					<li><a href="/blog/blogindex" onmouseover="this.style.color='#b8d8ba'" onmouseout="this.style.color='#ffffff'">动态</a></li>
-					<li><a href="register.html"> 登  录 </a></li>
+					<li><div id="user-img"><a href="/login/login"> 登  录 </a></div></li>
 				</ul>
 				<!-- script-for-menu -->
 				<script>

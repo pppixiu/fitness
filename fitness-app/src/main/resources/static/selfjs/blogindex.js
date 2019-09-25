@@ -7,6 +7,7 @@ var pageSize = 8;
 
 $(function () {
     getBlogList();
+    header();
 });
 
 /**
@@ -144,3 +145,29 @@ $(window).scroll(function () {
             });
     }
 });
+
+/**
+ * 加载当前用户登录信息
+ */
+function header() {
+    var headerUrl ='/header/sessionInfo';
+    $.getJSON(
+        headerUrl,
+        function (data) {
+            var imghtml='';
+            var info = data;
+            if(info==''){
+                alert('没有获取到登录信息');
+            }else {
+                imghtml += '<img style="border-radius: 50px;width: 40px;height: 40px;position: absolute;top: -30px; margin-left: 10px;" src="'
+                    + info.userImageUrl
+                    + '" onclick="window.open('
+                    + "'"
+                    + '/user/selfcourse?userId='
+                    + info.userId
+                    + "'"
+                    + ')">';
+                $('#user-img').html(imghtml);
+            }
+        });
+}

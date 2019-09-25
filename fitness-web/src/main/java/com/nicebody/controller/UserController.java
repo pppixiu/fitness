@@ -18,6 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -61,9 +62,8 @@ public class UserController {
     }
 
     @GetMapping("/courselist")
-    public ResultVO getCourseList() {
+    public ResultVO getCourseList(@RequestParam("userId") int userId) {
         //TODO 权限管理
-        int userId = 1;
         List<CourseVO> courseVOList = new ArrayList<>();
 
         UserCourseExecution userCourseExecution = userCenterService.getCourseList(userId);
