@@ -12,4 +12,6 @@ public interface UserMapper {
      */
     int insertUser(UserProfile userProfile);
 
+    UserProfile queryUserById(Integer userId);
+
 }

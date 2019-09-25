@@ -1,10 +1,12 @@
 package com.nicebody.interceptor;
+import com.nicebody.pojo.UserProfile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
 @Component
@@ -25,11 +27,19 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
         if (methodAnnotation != null) {
             // 这写你拦截需要干的事儿，比如取缓存，SESSION，权限判断等
             HttpSession session = request.getSession();
-            if (session != null && session.getAttribute("userId") != null) {
+            if (session != null && session.getAttribute("userProfile") != null) {
+                UserProfile userProfile = (UserProfile) session.getAttribute("userProfile");
                 System.out.println("放行");
                 return true;
             }else {
                 System.out.println("拦截了");
+                PrintWriter out = response.getWriter();
+                out.println("<html>");
+                out.println("<script>");
+                out.println("window.open ('" + request.getContextPath()
+                        + "/login.html','_self')");
+                out.println("</script>");
+                out.println("<ml>");
                 return false;
             }
         }else {

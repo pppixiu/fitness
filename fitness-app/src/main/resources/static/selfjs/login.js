@@ -33,11 +33,10 @@ function buttonfunction() {
         dataType: "json",
         success: function(data){
             //data就是返回的数据
-            if(!data.isExist){
-                console.log(data)
-                window.location.href = "/login";
+            if(data.code=="0"){
+                window.location.replace("http://localhost:8080/index");
             }else {
-                window.location.href = "/index";
+                window.location.href = "http://localhost:8080/login";
             }
         }
     });

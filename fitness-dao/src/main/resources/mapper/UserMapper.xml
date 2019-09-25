@@ -9,4 +9,23 @@
         INSERT INTO tb_user_profile(user_name)VALUES(#{userName})
     </insert>
 
+    <select id="queryUserById" resultType="userProfile">
+        SELECT
+        user_id,
+        user_name,
+        user_gender,
+        is_coach,
+        is_active,
+        user_integral,
+        user_height,
+        user_weight,
+        user_birthday,
+        user_image_url
+        FROM
+        tb_user_profile
+        <where>
+            user_id = #{userId}
+        </where>
+    </select>
+
 </mapper>

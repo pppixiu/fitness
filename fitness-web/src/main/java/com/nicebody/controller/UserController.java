@@ -4,6 +4,7 @@ import com.nicebody.dto.UserBlogExecution;
 import com.nicebody.dto.UserCoachExecution;
 import com.nicebody.dto.UserCourseExecution;
 import com.nicebody.enums.UserCenterInfoEnum;
+import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.CoachInfo;
 import com.nicebody.pojo.Course;
@@ -34,6 +35,7 @@ public class UserController {
     private UserCenterService userCenterService;
 
     @GetMapping("/bloglist")
+    @LoginRequired
     public ResultVO getBlogList(int pageIndex, int pageSize) {
         //权限管理改为session
         //TODO 权限管理

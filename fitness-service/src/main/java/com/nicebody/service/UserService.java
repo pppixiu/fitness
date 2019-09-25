@@ -10,4 +10,11 @@ public interface UserService {
      */
     int insertUser(UserProfile userProfile);
 
+    /**
+     * 通过userId查询user信息
+     * @param userId
+     * @return
+     */
+    UserProfile getUserById(int userId);
+
 }

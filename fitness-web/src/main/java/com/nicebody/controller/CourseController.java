@@ -1,6 +1,5 @@
 package com.nicebody.controller;
 
-import com.nicebody.enums.OrderByEnum;
 import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.CourseLesson;
@@ -143,7 +142,6 @@ public class CourseController {
         }
         courseVO.setCourseLessonVOList(courseLessonVOList);
         courseVO.setUserProfileVO(userProfileVO);
-
         return ResultVOUtil.success(courseVO);
     }
 
@@ -155,11 +153,9 @@ public class CourseController {
     public ResultVO listCourseById(){
         ResultVO resultVO = new ResultVO();
         List<Tag> tagList = tagService.getTagList();
-
         resultVO.setData(tagList);
         resultVO.setCode(0);
         resultVO.setMsg("成功");
-
         return resultVO;
 
 
