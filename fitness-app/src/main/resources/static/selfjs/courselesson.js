@@ -1,5 +1,37 @@
+/**
+ * 通用字段
+ * @type {*|string}
+ */
 var courseId = getQueryString('courseId');
 var courseUrl = '/course/listcourses?tagId=&pageIndex=1&pageSize=2&courseTitle=&orderByCondition=&courseLevel=';
+var cTitle;
+var cNowPrice;
+
+/**
+ * 显示弹出框
+ */
+function buyCourse (){
+    $('#outTradeNo').val(generateTimeReqestNumber());
+    $('#totalAmount').val(cNowPrice);
+    $('#subject').val(cTitle);
+    $("#gui_kai").show();
+}
+
+/**
+ * 支付宝支付
+ */
+function alipayOnline(action) {
+    document.getElementById("form").action = action;
+    document.getElementById("form").submit();
+}
+function generateTimeReqestNumber() {
+    var date = new Date();
+    return date.getFullYear().toString() + pad2(date.getMonth() + 1) + pad2(date.getDate()) + pad2(date.getHours()) + pad2(date.getMinutes());
+}
+function pad2(n) {
+    return n < 10 ? '0' + n : n
+}
+
 $(function () {
     var courseLessonUrl = '/course/listcoursebyid?courseId=' + courseId;
 
@@ -12,15 +44,17 @@ $(function () {
                 function (data) {
                     if (data.code == "0") {
                         var courseLesson = data.data;
+                        cTitle = courseLesson.title;
+                        cNowPrice = courseLesson.nowprice;
                         var html = '';
                         $('#course-title').text(courseLesson.title);
-                        $('#user-img').attr("src", courseLesson.user.imgurl);
+                        $('#userimg').attr("src", courseLesson.user.imgurl);
                         $('#user-name').text(courseLesson.user.username);
                         $('#course-level').text(courseLesson.level);
                         $('#course-time').text(courseLesson.coursetime);
                         $('#study-count').text(courseLesson.count);
                         $('#course-desc').text(courseLesson.desc);
-                        $('#lesson-note').text(courseLesson.coursenote)
+                        $('#lesson-note').text(courseLesson.coursenote);
 
                         courseLesson.courselesson
                             .map(function (item, index) {
@@ -70,7 +104,7 @@ $(function () {
                                     '                                </div>\n' +
                                     '                            </a>\n' +
                                     '                                <div class="shizhan-intro-box"><a href="courseInfo.html">\n' +
-                                    '                                    <a href="courseInfo.html" style="text-decoration:none;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
+                                    '                                    <a href="courseInfo.html" style="text-decoration:none;margin-top: 10px;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
                                     '                                                                                               title="' + item.title + '">\n' +
                                     '                                        ' + item.title + '</p></a>\n' +
                                     '                                    <div class="evaluation-box">\n' +
