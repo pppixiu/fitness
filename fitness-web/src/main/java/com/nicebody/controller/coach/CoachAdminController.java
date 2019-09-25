@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/coach")
 public class CoachAdminController {
 
-    @GetMapping("/coachSol")
+    @GetMapping("coachSol")
     public String coachPage(){
         return "coachList";
     }
 
-    @GetMapping("/coachPage")
+    @GetMapping("coachPage")
     public String coachInfo(){
         return "coachPage";
     }

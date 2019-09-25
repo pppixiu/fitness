@@ -1,11 +1,12 @@
-/**值的初始化*/
-var tagId = 0;
-var rowIndex = 0;
-var sortId = 0;
-var coachName = 'empty';
+/**通用值的初始化*/
+var tagId = 0;  //初始类别
+var rowIndex = 0;  //初始分页输出教练位置
+var sortId = 0;    //初始输出顺序
+var coachName = 'empty'; //初始模糊查询值
 var tagList;
-var goCount = 0;
-var lastCoachId = 0;
+var goCount = 0;        //记录前端申请后台加载数据的次数
+var lastCoachId = 0;    //保存当前最后一个输出教练Id
+
 /**
  * 初始化
  */
@@ -125,29 +126,19 @@ function getcoachlist() {
                 coachList
                     .map(function (item, index) {
                         lastCoachId = item.id;
-                        html += '<div id="first-list"><div class="coach-card" style="width: 300px;height:auto;" href="coachPage?coachId='
+                        html += '<div class="coach-card" style="width: 300px;height:auto;" onclick="window.open('
+                            + "'"
+                            + '/coach/coachPage?coachId='
                             + item.id
-                            + '">'
-                            + '<div class="card card-product" href="coachPage?coachId='
-                            + item.id
-                            + '">'
-                            + '<div class="card-image" href="coachPage?coachId='
-                            + item.id
-                            + '"><a href="coachPage?coachId='
-                            + item.id
-                            + '"><img class="img" src="/images/coachList/blog04.jpeg" href="coachPage?coachId='
-                            + item.id
-                            + '"></a></div>'
-                            + '<div class="table" href="coachPage?coachId='
-                            + item.id
-                            + '">'
+                            + "'"
+                            + ')"><div class="card card-product">'
+                            + '<div class="card-image"><a><img class="img" src="/images/coachList/blog04.jpeg"></a></div>'
+                            + '<div class="table">'
                             + '<h6 class="category text-rose">'
                             + item.count
                             + '</h6>'
                             + '<h4 class="card-caption">'
-                            + '<a href="coachPage?coachId='
-                            + item.id
-                            + '">'
+                            + '<a>'
                             + item.name
                             + '</a></h4>'
                             + '<div class="card-description">'
@@ -158,25 +149,18 @@ function getcoachlist() {
                             + '<h4>$'
                             + item.price
                             + '</h4></div>'
-                            + '<div class="stats" href="coachPage?coachId='
-                            + item.id
-                            + '">'
+                            + '<div class="stats">'
                             + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
-                            + 'data-original-title="Saved to Wishlist"  href="coachPage?coachId='
-                            +  item.id
-                            + '"><i class="glyphicon glyphicon-search"  href="coachPage?coachId='
-                            + item.id
-                            + '"></i></button>'
+                            + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
                             + '</div>'
                             + '</div>'
                             + '</div>'
                             + '</div>'
-                            + '</div></div>'
+                            + '</div>'
                             + '<div id="add-info-'
                             + item.id
                             + '"></div>'
                     });
-
                 $('#coach-list').html(html);
             }
         });
@@ -205,29 +189,19 @@ $(window).scroll(function () {
                         addCoachList
                             .map(function (item, index) {
                                 addCoachLast = item.id;
-                                html += '<div class="coach-card" style="width: 300px;height:auto;" href="coachPage?coachId='
+                                html += '<div class="coach-card" style="width: 300px;height:auto;" onclick="window.open('
+                                    + "'"
+                                    + '/coach/coachPage?coachId='
                                     + item.id
-                                    + '">'
-                                    + '<div class="card card-product" href="coachPage?coachId='
-                                    + item.id
-                                    + '">'
-                                    + '<div class="card-image" href="coachPage?coachId='
-                                    + item.id
-                                    + '"><a href="coachPage?coachId='
-                                    + item.id
-                                    + '"><img class="img" src="/images/coachList/blog04.jpeg" href="coachPage?coachId='
-                                    + item.id
-                                    + '"></a></div>'
-                                    + '<div class="table" href="coachPage?coachId='
-                                    + item.id
-                                    + '">'
+                                    + "'"
+                                    + ')"><div class="card card-product">'
+                                    + '<div class="card-image"><a><img class="img" src="/images/coachList/blog04.jpeg"></a></div>'
+                                    + '<div class="table">'
                                     + '<h6 class="category text-rose">'
                                     + item.count
                                     + '</h6>'
                                     + '<h4 class="card-caption">'
-                                    + '<a href="coachPage?coachId='
-                                    + item.id
-                                    + '">'
+                                    + '<a>'
                                     + item.name
                                     + '</a></h4>'
                                     + '<div class="card-description">'
@@ -238,15 +212,9 @@ $(window).scroll(function () {
                                     + '<h4>$'
                                     + item.price
                                     + '</h4></div>'
-                                    + '<div class="stats" href="coachPage?coachId='
-                                    + item.id
-                                    + '">'
+                                    + '<div class="stats">'
                                     + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
-                                    + 'data-original-title="Saved to Wishlist"  href="coachPage?coachId='
-                                    + item.id
-                                    + '"><i class="glyphicon glyphicon-search"  href="coachPage?coachId='
-                                    + item.id
-                                    + '"></i></button>'
+                                    + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
                                     + '</div>'
                                     + '</div>'
                                     + '</div>'
@@ -254,7 +222,7 @@ $(window).scroll(function () {
                                     + '</div>'
                                     + '<div id="add-info-'
                                     + item.id
-                                    + '"></div>';
+                                    + '"></div>'
                             });
                         $('#add-info-' + lastCoachId + '').html(html);
                         lastCoachId = addCoachLast;

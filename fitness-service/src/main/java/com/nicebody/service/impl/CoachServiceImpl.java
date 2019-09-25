@@ -68,6 +68,13 @@ public class CoachServiceImpl implements CoachService {
         return tagMapper.queryTag();
     }
 
+
+    /**
+     * 点赞+1 或 -1
+     * @param coachId
+     * @param likeJudge
+     * @return
+     */
     @Override
     public int modifyCoachLikeCount(int coachId, int likeJudge) {
         return coachMapper.updateCoachLikeCount(coachId,likeJudge);

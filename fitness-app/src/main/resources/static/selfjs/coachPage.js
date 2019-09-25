@@ -1,5 +1,13 @@
-var coachId;
-var price = 0;
+/**
+ * 全局通用数据
+ */
+var coachId;     //通用教练Id
+var price = 0;   //通用选择时段个数
+var onlineTime;  //存储当前在线课程选课时段
+
+/**
+ * 初始化加载
+ */
 $(function () {
     var result = getQueryVariable("coachId");
     coachId = result;
@@ -7,7 +15,7 @@ $(function () {
 });
 
 /**
- * 获取传参
+ * 获取传参coachId
  * @param variable
  * @returns {*}
  */
@@ -23,7 +31,7 @@ function getQueryVariable(variable)
 }
 
 /**
- * 获取参数
+ * 获取教练基本参数
  * @param e
  */
 function coachInfo(e) {
@@ -32,6 +40,7 @@ function coachInfo(e) {
     var coachBlogUrl = '/blog/getuserblogbyuserid?pageIndex=0&pageSize=3&userId='+id;
     var coachCourseUrl = '/coach/coachCourse?coachId='+id;
     var coachImageUrl = '/coach/coachImage?coachId='+id;
+    //var coachCommentUrl = ''+id;
 
     /*加载基本信息*/
     $.getJSON(
@@ -61,12 +70,16 @@ function coachInfo(e) {
                             + '<div class="card card-background" style="background-image:  url('
                             +  item.imageUrl
                             + ')">'
-                            + '<div class="table" style=" min-height: 230px; max-width: 230px; overflow: hidden;">'
+                            + '<div class="table" style=" min-height: 230px; max-height: 230px; max-width: 230px; overflow: hidden;">'
                             + '<h3 class="card-caption">BLOG</h3>'
                             + '<p class="card-description">'
                             + item.blogContent
                             + '</p>'
-                            + '<a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> 查看详情 </a>'
+                            + '<a href="/blog/blogcomment?blogId='
+                            + item.blogId
+                            + '&userId='
+                            + id
+                            +'" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> 查看详情 </a>'
                             + '</div> </div> </div>';
                     });
                 $('#blog-show').html(bloghtml);
@@ -84,7 +97,7 @@ function coachInfo(e) {
                     .map(function (item, index) {
                         imagehtml += '<div class="col-md-4">'
                             + '<div class="card card-background" style="background-image: url("images/blog07.jpg")">'
-                            + '<div class="table" style=" min-height: 230px; max-width: 230px;  overflow: hidden;">'
+                            + '<div class="table" style=" min-height: 230px; max-height: 230px; max-width: 230px;  overflow: hidden;">'
                             + '</div> </div> </div>'
                     });
                 $('#image-show').html(imagehtml);
@@ -105,22 +118,51 @@ function coachInfo(e) {
                             + '<div class="card card-background" style="background-image: url('
                             + item.url
                             + ')">'
-                            + '<div class="table" style="overflow: hidden;  min-height: 230px; max-width: 230px; ">'
+                            + '<div class="table" style="overflow: hidden;  max-height: 230px; min-height: 230px; max-width: 230px; ">'
                             + '<h6 class="category text-info">COURSE</h6>'
                             + '<h3 class="card-caption">'
                             + item.title
                             + '</h3>'
-                            + '<a href="#" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> 查看详情 </a>'
+                            + '<a href="/course/courseInfo?courseId='
+                            + item.id
+                            + '" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> 查看详情 </a>'
                             + '</div> </div> </div>'
                     });
                 $('#course-show').html(coursehtml);
             }
         });
+
+    /*加载评论*/
+    /* $.getJSON(
+        coachCommentUrl,
+        function (data) {
+            if (data.code == "0") {
+                var commentList = data.data;
+                var commenthtml = '';
+                commentList
+                    .map(function (item, index) {
+                        commenthtml += '<div class="col-md-12" style="height: 50px; margin-top: 10px; border-bottom:2px solid #d9dde1;">'
+                                    + '<h4 style="display: inline-block; width: 1000px; overflow: hidden;   text-overflow:ellipsis;'
+                                    + 'word-break:keep-all;  white-space:nowrap; max-height: 30px; color: #1e88e5">@.'
+                                    + 'item.????'
+                                    + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                                    + '<a style="width: 800px;color: black;">'
+                                    + 'item.????'
+                                    + '</a></h4>'
+                                    + '<button type="button" class="pull-right btn btn-primary btn-lg"'
+                                    + 'style="display: inline-block; margin-bottom: 25px; color: #999999;">'
+                                    + '<span class="glyphicon glyphicon-heart-empty"></span>'
+                                    + '9866'
+                                    + '</button></div>'
+                    });
+                $('#comment-show').html(commenthtml);
+            }
+        });*/
 }
 
 /**
  * 点赞、关注加收藏
- * */
+ */
 var liketimes=1;
 function likefuncation() {
     var coachLikeCountUrl = '/coach/coachLikeCount?coachId=' + coachId + '&likeJudge=' + liketimes;
@@ -156,9 +198,8 @@ function alipayOnline(action) {
     document.getElementById("form").submit();
 }
 
-
 /**
- * 判断时间
+ * 判断时间(暂做参考，不调用)
  * @param beginTime
  * @param endTime
  * @param nowTime
@@ -199,8 +240,7 @@ function time_range(hour, startTime) {
 }
 
 /**
- * 隐藏时间选择框
- *
+ * 判断时间选择框是否在当前时间段内
  */
 var time = new Date();
 function hiddenhour() {
@@ -238,17 +278,30 @@ function hiddenhour() {
  * 判断选择的时间框，并返回初始时间数据
  * @type {number}
  */
-
 function selectPcs() {
+    var onlineCoachTime = new Array();
     var pcs = 0;
     var input = document.getElementsByName("frame");
     for(var i =0;i<input.length;i++){
       if (input[i].checked == true){
+          onlineCoachTime[pcs] = input[i].value;
           pcs += 1;
+
       }
     }
+    onlineTime = onlineCoachTime;
     price = pcs;
     $('#exampleInputTime').val('您共选择'+pcs+'小时课程');
     $('#closemodel').click();
     online(pcs);
+}
+
+/**
+ * 添加评论（待定）
+ */
+function addComment() {
+//url:回传一个userid
+//先获得一个userId，if判断是否有评论资格（只有买了该教练的课才可评论），否则alert（没有购买该教练课程，无法评论）;
+//url:回传userId，coachId和添加的文本字符
+//刷新评论区与内容
 }
