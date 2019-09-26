@@ -151,20 +151,45 @@ public class CoachController {
     /**
      * 教练点赞
      * @param coachId
-     * @param likeJudge
      * @return
      */
     @GetMapping(value = "/coachLikeCount")
     public ResultVO modifyCoachLikeCount(@RequestParam(name = "coachId") Integer coachId,
-                                         @RequestParam(name = "likeJudge") Integer likeJudge){
-        int judge = coachService.modifyCoachLikeCount(coachId,likeJudge);
+                                         @RequestParam(name = "userId") Integer userId){
+        //判断值
+        int judge = 0;
+        int likeJudge = 0;
 
+        //先查询关联表里有没有该用户信息，有返回值为coachId,没有为null
+        String coachLikeJudge = coachService.getCoachLikeCount(coachId, userId);
+        if(coachLikeJudge == null){
+            likeJudge = 1;
+            //没有该关联，咋向表中添加信息
+            int addLikeInfo = coachService.insCoachLikeCount(coachId, userId);
+            if(addLikeInfo == 1){
+                //如果修改成功，则修改点赞数，并返回
+                judge = coachService.modifyCoachLikeCount(coachId,1);
+            }
+        }else {
+            likeJudge = 0;
+            //如果表中有该关联，则删除该表关联，点赞数-1
+            int delLikeInfo = coachService.delCoachLikeCount(coachId, userId);
+            if(delLikeInfo == 1){
+                judge = coachService.modifyCoachLikeCount(coachId, -1);
+            }
+        }
+
+        //判断是否修改成功
         if(judge == 1) {
+            CoachInfo coachInfo = new CoachInfo();
+            CoachInfoVO coachInfoVO = new CoachInfoVO();
             List<CoachInfo> coachInfoList = coachService.getCoachInfo(0, 1, 0, coachId);
-            return ResultVOUtil.success(coachInfoList);
+            coachInfo = coachInfoList.get(0);
+            BeanUtils.copyProperties(coachInfo, coachInfoVO);
+            coachInfoVO.setLikeJudge(likeJudge);
+            return ResultVOUtil.success(coachInfoVO);
         }else {
             return null;
         }
-
     }
 }

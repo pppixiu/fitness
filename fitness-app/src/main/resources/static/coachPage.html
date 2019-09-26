@@ -79,9 +79,6 @@
     <link href="/css/coachList/page-style.css" rel='stylesheet' type='text/css'/>
     <link href="/css/coachList/cards-style.css" rel='stylesheet' type='text/css'/>
 
-    <!--点赞-->
-    <link href="/css/coach/count.css" rel='stylesheet' type='text/css'/>
-
     <!--数据-->
     <script src="/selfjs/coachPage.js"></script>
     <script>
@@ -93,7 +90,7 @@
 <div class="page-content">
 
     <!--头部-->
-    <div style="width: 100%;height: 820px;overflow: hidden; border-bottom: black;border-bottom-width: 2px;">
+     <div style="width: 100%;height: 820px;overflow: hidden; border-bottom: black;border-bottom-width: 2px;">
         <div class="col-lg-5 " style="text-align: center; padding: 140px;">
             <span style="margin-bottom:100px;"><a id="coach-name" style="color: #666; font-size: 7rem; letter-spacing: -0.3rem; line-height: 5rem;font-weight: bolder;"></a></span><br><br><br><br>
             <span style="margin-top: 100px;"><a id="coach-desc" style="font-size: 2rem; color: #999999;font-family: '等线 Light';"></a></span><br><br>
@@ -105,9 +102,12 @@
                           style="background-color: #4D7E8A;font-family: '等线 Light';">购买在线课程</span></a>
             </h1>
 
-            <div class="count col-lg-5" style="padding-top: 35px; padding-right: 50px;">
-                <div class="three" onclick="likefuncation()"></div>
-                <a id="coach-count"></a>
+            <div class="count col-lg-5" style="padding-top: 45px; padding-right: 50px;">
+                <a href="#" id="control-color" onclick="likefuncation()" >
+                    <span class="glyphicon glyphicon-heart" ></span>
+                    <a id="coach-count"></a>
+                </a>
+
             </div>
 
             <hr style="width:80%;margin:0 auto;border: 0;height: 0;border-top: 2px solid rgba(0, 0, 0, 0.1);border-bottom: 1px solid rgba(255, 255, 255, 0.3);">
