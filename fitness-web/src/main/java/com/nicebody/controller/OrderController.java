@@ -3,14 +3,18 @@ package com.nicebody.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.nicebody.alipay.AlipayBean;
+import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.OnlineOrder;
+import com.nicebody.pojo.UserProfile;
 import com.nicebody.service.OnlineOrderService;
 import com.nicebody.service.PayService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -20,7 +24,7 @@ import javax.servlet.http.HttpSession;
  * @Author Hassan
  * %@Date 2019/9/23 16:50
  */
-@RestController()
+@Controller
 @RequestMapping("/order")
 public class OrderController {
     @Autowired
@@ -46,9 +50,12 @@ public class OrderController {
     }
 
     @PostMapping("/createonlineorder")
-    public ResultVO createOnlineOrder(OnlineOrder onlineOrder) throws AlipayApiException {
+    @LoginRequired
+    @ResponseBody
+    public ResultVO createOnlineOrder(OnlineOrder onlineOrder, HttpServletRequest request) throws AlipayApiException {
         if (onlineOrder != null) {
-            int userId = 1;
+            UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userprofile");
+            int userId = userProfile.getUserId();
             onlineOrder.setUserId(userId);
             String result = null;
             onlineOrderService.createOnlineOrder(onlineOrder);
@@ -64,4 +71,6 @@ public class OrderController {
             return ResultVOUtil.error(10, "添加失败");
         }
     }
+
+
 }
