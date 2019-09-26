@@ -1,20 +1,21 @@
 package com.nicebody.controller;
 
+import com.nicebody.enums.CommentTypeEnum;
 import com.nicebody.enums.OrderByEnum;
 import com.nicebody.pojo.*;
 import com.nicebody.service.CoachService;
+import com.nicebody.service.CommentService;
 import com.nicebody.service.CourseService;
 import com.nicebody.service.BlogService;
 import com.nicebody.util.OrderByUtil;
 import com.nicebody.util.ResultVOUtil;
-import com.nicebody.vo.CoachInfoVO;
-import com.nicebody.vo.CoachVO;
-import com.nicebody.vo.CourseVO;
-import com.nicebody.vo.ResultVO;
+import com.nicebody.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,9 @@ public class CoachController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private CommentService commentService;
 
     /**
      * 多条件查询教练信息
@@ -191,5 +195,45 @@ public class CoachController {
         }else {
             return null;
         }
+    }
+
+    /**
+     * 添加教练评价
+     * @param content
+     * @param coachId
+     * @param request
+     * @return
+     */
+    @GetMapping(value = "/addCoachComment")
+    @ResponseBody
+    public ResultVO addCoachComment(@RequestParam(name = "content") String content,
+                                    @RequestParam(name = "coachId") Integer coachId,
+                                    HttpServletRequest request ){
+        HttpSession session = request.getSession();
+        UserProfile userProfile = new UserProfile();
+        userProfile = (UserProfile) session.getAttribute("userProfile");
+
+        //先查询关联表里有没有该用户信息，有返回值为coachId,没有为null
+        String coachLikeJudge = coachService.getCoachLikeCount(coachId, userProfile.getUserId());
+        if(coachLikeJudge == null){
+            return ResultVOUtil.success(null);
+        }
+
+        CommentVO commentVO;
+        if (content != null && content != "" && coachId != null) {
+
+            Comment comment = new Comment();
+            comment.setCommentContent(content);
+            comment.setRefId(coachId);
+            comment.setUserProfile(userProfile);
+            comment.setTypeCode(CommentTypeEnum.COACH.getCode());
+            commentVO = commentService.addComment(comment);
+            if (commentVO == null) {
+                return ResultVOUtil.error(4, "添加失败");
+            }
+        }else {
+            return ResultVOUtil.error(4, "添加失败");
+        }
+        return ResultVOUtil.success(commentVO);
     }
 }

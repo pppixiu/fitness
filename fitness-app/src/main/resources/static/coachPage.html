@@ -272,7 +272,7 @@
     </div>
 
     <!--添加评论-->
-    <div style="position: fixed; right: 10px; top: 90px; margin-top: 50px;">
+    <div id="addcontentmodel" style="position: fixed; right: 10px; top: 90px; margin-top: 50px;">
         <a href="#modal-opened" class="link-1" id="modal-closed" style="text-decoration: none;">添加评论</a>
         <div class="modal-container" id="modal-opened">
             <div class="modal-comment">
@@ -283,12 +283,11 @@
 
                 <div class="input-group">
                     <a class="input-group-addong lyphicon glyphicon-pencil" style="color:#1B242F;"></a>
-                    <input style="margin-top: 5px;border-radius: 5px; width: 550px;" type="text" class="form-control"
+                    <input id="coach-content" style="margin-top: 5px;border-radius: 5px; width: 550px;" type="text" class="form-control"
                            placeholder="点击输入">
-
                 </div>
 
-                <button class="modal__btn">点击添加 &rarr;</button>
+                <button class="modal__btn" onclick="addComment()">点击添加 &rarr;</button>
 
                 <a href="#modal-closed" class="link-2"></a>
 
