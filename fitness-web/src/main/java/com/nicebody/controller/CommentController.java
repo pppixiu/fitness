@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -49,12 +51,12 @@ public class CommentController {
 
     @PostMapping("addblogcomment")
     @ResponseBody
-    public ResultVO addBlogComment(String content, Integer refId, Integer parentId) {
+    public ResultVO addBlogComment(String content, Integer refId, Integer parentId, HttpServletRequest request) {
         CommentVO commentVO;
         if (content != null && content != "" && refId != null) {
-            //TODO session中获取userprofile
+            HttpSession session = request.getSession();
             UserProfile userProfile = new UserProfile();
-            userProfile.setUserId(1);
+            userProfile = (UserProfile) session.getAttribute("userProfile");
 
             Comment comment = new Comment();
             comment.setCommentContent(content);

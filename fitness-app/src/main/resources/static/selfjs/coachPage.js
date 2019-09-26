@@ -62,7 +62,6 @@ function coachInfo(e) {
     var coachBlogUrl = '/blog/getuserblogbyuserid?pageIndex=0&pageSize=3&userId='+id;
     var coachCourseUrl = '/coach/coachCourse?coachId='+id;
     var coachImageUrl = '/coach/coachImage?coachId='+id;
-    var coachCommentUrl = '/comment/coachcommentlist?refId='+id;
     var coachCountUrl = '/coach/coachLikeCount?coachId=' + id + '&userId=' + userId;
 
     /*加载基本信息*/
@@ -170,10 +169,18 @@ function coachInfo(e) {
                 $('#course-show').html(coursehtml);
             }
         });
+    loadComment(id);
+}
 
+/**
+ * 加载评论，由于用户可评论的特殊性，单独调用
+ */
+function loadComment(id) {
+    var coachCommentUrl = '/comment/coachcommentlist?refId='+id;
     /*加载评论*/
-     $.getJSON(
+    $.getJSON(
         coachCommentUrl,
+        cache = false,
         function (data) {
             if (data.code == "0") {
                 var commentList = data.data;
@@ -181,18 +188,18 @@ function coachInfo(e) {
                 commentList
                     .map(function (item, index) {
                         commenthtml += '<div class="col-md-12" style="height: 50px; margin-top: 10px; border-bottom:2px solid #d9dde1;">'
-                                    + '<h4 style="display: inline-block; width: 1000px; overflow: hidden;   text-overflow:ellipsis;'
-                                    + 'word-break:keep-all;  white-space:nowrap; max-height: 30px; color: #1e88e5">@.'
-                                    + item.user.username
-                                    + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-                                    + '<a style="width: 800px;color: black;">'
-                                    + item.content
-                                    + '</a></h4>'
-                                    + '<button type="button" class="pull-right btn btn-primary btn-lg"'
-                                    + 'style="display: inline-block; margin-bottom: 25px; color: #999999;">'
-                                    + '<span class="glyphicon glyphicon-heart-empty"></span>'
-                                    + '9866'
-                                    + '</button></div>'
+                            + '<h4 style="display: inline-block; width: 1000px; overflow: hidden;   text-overflow:ellipsis;'
+                            + 'word-break:keep-all;  white-space:nowrap; max-height: 30px; color: #1e88e5">@.'
+                            + item.user.username
+                            + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                            + '<a style="width: 800px;color: black;">'
+                            + item.content
+                            + '</a></h4>'
+                            + '<button type="button" class="pull-right btn btn-primary btn-lg"'
+                            + 'style="display: inline-block; margin-bottom: 25px; color: #999999;">'
+                            + '<span class="glyphicon glyphicon-heart-empty"></span>'
+                            + '9866'
+                            + '</button></div>'
                     });
                 $('#comment-show').html(commenthtml);
             }
@@ -336,11 +343,23 @@ function selectPcs() {
 }
 
 /**
- * 添加评论（待定）
+ * 添加评论
  */
 function addComment() {
-//url:回传一个userid
-//先获得一个userId，if判断是否有评论资格（只有买了该教练的课才可评论），否则alert（没有购买该教练课程，无法评论）;
-//url:回传userId，coachId和添加的文本字符
-//刷新评论区与内容
+    var content = $('#coach-content').val();
+    var addContentUrl = '/coach/addCoachComment?content=' + content + '&coachId=' + coachId;
+
+    $.getJSON(
+        addContentUrl,
+        function (data) {
+            if (data.code == "0") {
+                if(data.data == null){
+                    alert("评论失败，请关注教练！");
+                }else {
+                    var info = data.data;
+                    alert("添加成功！");
+                    loadComment(coachId);
+                }
+            }
+        });
 }
