@@ -34,6 +34,12 @@ public class AlipayBean {
      * 产品编号
      */
     private String product_code = "FAST_INSTANT_TRADE_PAY";
+    /**
+     * 内嵌二维码
+     */
+    private String qr_pay_mode  = "4";
+
+    private String qrcode_width = "300px";
 
     public String getOut_trade_no() {
         return out_trade_no;
@@ -83,4 +89,19 @@ public class AlipayBean {
         this.product_code = product_code;
     }
 
+    public String getQr_pay_mode() {
+        return qr_pay_mode;
+    }
+
+    public void setQr_pay_mode(String qr_pay_mode) {
+        this.qr_pay_mode = qr_pay_mode;
+    }
+
+    public String getQrcode_width() {
+        return qrcode_width;
+    }
+
+    public void setQrcode_width(String qrcode_width) {
+        this.qrcode_width = qrcode_width;
+    }
 }
