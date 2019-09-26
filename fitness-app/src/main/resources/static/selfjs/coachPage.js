@@ -134,7 +134,9 @@ function coachInfo(e) {
                 imageList
                     .map(function (item, index) {
                         imagehtml += '<div class="col-md-4">'
-                            + '<div class="card card-background" style="background-image: url("images/blog07.jpg")">'
+                            + '<div class="card card-background" style="background-image: url('
+                            + item.imageUrl
+                            + ')">'
                             + '<div class="table" style=" min-height: 230px; max-height: 230px; width: 230px;  overflow: hidden;">'
                             + '</div> </div> </div>'
                     });
