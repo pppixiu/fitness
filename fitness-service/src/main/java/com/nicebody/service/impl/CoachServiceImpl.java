@@ -79,4 +79,37 @@ public class CoachServiceImpl implements CoachService {
     public int modifyCoachLikeCount(int coachId, int likeJudge) {
         return coachMapper.updateCoachLikeCount(coachId,likeJudge);
     }
+
+    /**
+     * 删除关联信息
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    @Override
+    public int delCoachLikeCount(int coachId, int userId) {
+        return coachMapper.deleteCoachLikeCount(coachId, userId);
+    }
+
+    /**
+     * 添加关联信息
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    @Override
+    public int insCoachLikeCount(int coachId, int userId) {
+        return coachMapper.addCoachLikeCount(coachId, userId);
+    }
+
+    /**
+     * 查询关联信息
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    @Override
+    public String getCoachLikeCount(int coachId, int userId) {
+        return coachMapper.queryCoachLikeCount(coachId, userId);
+    }
 }

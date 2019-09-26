@@ -53,9 +53,30 @@ public class CoachMapperTest {
         Assert.assertEquals(2,coachImageList.size());
     }
 
-    /**测试修改教练点赞信息*/
+    /** 测试修改教练点赞信息*/
     @Test
     public void updateLikeCountTest(){
-        coachMapper.updateCoachLikeCount(1,-1);
+        System.out.println(coachMapper.updateCoachLikeCount(1,-1));
+        System.out.println(coachMapper.updateCoachLikeCount(1,1));
+    }
+
+    /** 测试添加用户点赞教练关联信息*/
+    @Test
+    public void addUserLikeCoachTest(){
+        System.out.println(coachMapper.addCoachLikeCount(8,3));
+    }
+
+    /** 测试删除用户点赞教练关联信息*/
+    @Test
+    public void deleteUserLikeCountTest(){
+        System.out.println(coachMapper.deleteCoachLikeCount(7,3));
+        System.out.println(coachMapper.deleteCoachLikeCount(7,3));
+    }
+
+    /** 测试查询用户点赞教练关联信息*/
+    @Test
+    public void queryUserLikeCountTest(){
+        System.out.println(coachMapper.queryCoachLikeCount(8,3));
+        System.out.println(coachMapper.queryCoachLikeCount(7,3) == null);
     }
 }

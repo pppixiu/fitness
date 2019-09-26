@@ -62,5 +62,29 @@ public interface CoachService {
      * @param likeJudge
      * @return
      */
-    int  modifyCoachLikeCount(@Param("coachId") int coachId, @Param("likeJudge") int likeJudge);
+    int modifyCoachLikeCount(@Param("coachId") int coachId, @Param("likeJudge") int likeJudge);
+
+    /**
+     * 删除用户关注教练关联信息
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    int delCoachLikeCount(@Param("coachId") int coachId, @Param("userId") int userId);
+
+    /**
+     * 添加用户关注教练关联信息
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    int insCoachLikeCount(@Param("coachId") int coachId, @Param("userId") int userId);
+
+    /**
+     * 查询用户关联教练信息
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    String getCoachLikeCount(@Param("coachId") int coachId, @Param("userId") int userId);
 }

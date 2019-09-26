@@ -59,4 +59,31 @@ public interface CoachMapper {
      */
     int updateCoachLikeCount(@Param("coachId") int coachId,
                         @Param("likeJudge") int likeJudge);
+
+    /**
+     * 向用户关注教练表中添加数据
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    int addCoachLikeCount(@Param("coachId") int coachId,
+                          @Param("userId") int userId);
+
+    /**
+     * 向用户关注教练表中删除数据
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    int deleteCoachLikeCount(@Param("coachId") int coachId,
+                             @Param("userId") int userId);
+
+    /**
+     * 向用户关注教练表中查询数据
+     * @param coachId
+     * @param userId
+     * @return
+     */
+    String queryCoachLikeCount(@Param("coachId") int coachId,
+                            @Param("userId") int userId);
 }

@@ -4,6 +4,7 @@
 var coachId;     //通用教练Id
 var price = 0;   //通用选择时段个数
 var onlineTime;  //存储当前在线课程选课时段
+var userId;      //通用userId
 
 /**
  * 初始化加载
@@ -12,7 +13,29 @@ $(function () {
     var result = getQueryVariable("coachId");
     coachId = result;
     coachInfo(result);
+    getUserId();
+    likefuncation();
 });
+
+/**
+ * 获取登录用户的id
+ */
+function getUserId() {
+    var headerUrl ='/header/sessionInfo';
+    $.getJSON(
+        headerUrl,
+        function (data) {
+            var imghtml='';
+            var info = data;
+            if(info==''){
+                alert('没有获取到登录信息');
+            }else {
+                userId = info.userId;
+                alert(userId);
+                alert(coachId);
+            }
+        });
+}
 
 /**
  * 获取传参coachId
@@ -163,16 +186,9 @@ function coachInfo(e) {
 /**
  * 点赞、关注加收藏
  */
-var liketimes=1;
 function likefuncation() {
-    var coachLikeCountUrl = '/coach/coachLikeCount?coachId=' + coachId + '&likeJudge=' + liketimes;
-    if(liketimes == 1){
-        liketimes = -1;
-        $('#coach-count').text($('#coach-count').text()*1+1);
-    }else{
-        liketimes = 1;
-        $('#coach-count').text($('#coach-count').text()*1-1);
-    }
+    var liketimes;
+    var coachLikeCountUrl = '/coach/coachLikeCount?coachId=' + coachId + '&userId=' + userId;
 
     /*加载基本信息*/
     $.getJSON(
@@ -181,9 +197,17 @@ function likefuncation() {
             if (data.code == "0") {
                 var info = data.data;
                 likecount = info.count;
-                $('#coach-count').text(info.count);
+                liketimes = info.judge;
+                alert(liketimes);
+                if(liketimes == 1){
+                    $('#coach-count').text($('#coach-count').text()*1+1);
+                    $('#control-color').css("color","Red")
+                }else if(liketimes == 0){
+                    $('#coach-count').text($('#coach-count').text()*1-1);
+                    $('#control-color').css("color","black")
+                }
             }
-        });
+    });
 }
 
 /**

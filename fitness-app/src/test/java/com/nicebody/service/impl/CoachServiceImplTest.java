@@ -54,10 +54,30 @@ public class CoachServiceImplTest {
         Assert.assertEquals(2,coachImages.size());
     }
 
-    /**测试教练点赞修改*/
+    /** 测试教练点赞修改*/
     @Test
     public void modifyCoachLikeCountTest(){
         int i = coachService.modifyCoachLikeCount(1,-1);
         System.out.println(i);
+    }
+
+    /** 查询关联信息*/
+    @Test
+    public void getCoachLikeCountTest(){
+        System.out.println(coachService.getCoachLikeCount(3,2));
+        System.out.println(coachService.getCoachLikeCount(9,10));
+    }
+
+    /** 添加关联信息*/
+    @Test
+    public void insCoachLikeCountTest(){
+        System.out.println(coachService.insCoachLikeCount(9,10));
+    }
+
+    /** 删除关联信息*/
+    @Test
+    public void delCoachLikeCountTest(){
+        System.out.println(coachService.delCoachLikeCount(9,10));
+        System.out.println(coachService.delCoachLikeCount(9,10));
     }
 }

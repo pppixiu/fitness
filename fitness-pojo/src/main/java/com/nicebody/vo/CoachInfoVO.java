@@ -32,6 +32,17 @@ public class CoachInfoVO {
     @JsonProperty("count")
     private Integer likeCount;
 
+    @JsonProperty("judge")
+    private Integer likeJudge;
+
+    public Integer getLikeJudge() {
+        return likeJudge;
+    }
+
+    public void setLikeJudge(Integer likeJudge) {
+        this.likeJudge = likeJudge;
+    }
+
     public Integer getUserId() {
         return userId;
     }

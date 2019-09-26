@@ -57,4 +57,20 @@
         </set>
         where coach_id = ${coachId}
     </update>
+    
+    <insert id="addCoachLikeCount">
+        insert tb_user_coach (coach_id,user_id)
+        values (#{coachId},#{userId})
+    </insert>
+
+    <delete id="deleteCoachLikeCount">
+        delete from tb_user_coach
+        where coach_id = #{coachId} and user_id = #{userId}
+    </delete>
+
+    <select id="queryCoachLikeCount" resultType="String">
+        select coach_id, user_id
+        from tb_user_coach
+        where coach_id = #{coachId} and user_id = #{userId}
+    </select>
 </mapper>
