@@ -8,15 +8,23 @@ import java.util.Date;
  * @Date 2019/9/23 9:46
  **/
 public class Comment {
+    /** 评论id */
     private Integer commentId;
+    /** 评论正文 */
     private String commentContent;
+    /** 父评论id */
     private Integer parentId;
+    /** 类别 1教练2博客 */
     private Integer typeCode;
+    /** 评论主体id */
     private Integer refId;
+    /** 点赞数量 */
     private Integer likeCount;
+    /** 创建时间 */
     private Date createTime;
+    /** 更新时间 */
     private Date updateTime;
-
+    /** 发评论的用户信息 */
     private UserProfile userProfile;
 
     public Integer getCommentId() {

@@ -1,5 +1,6 @@
 package com.nicebody.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
@@ -13,18 +14,23 @@ import java.math.BigDecimal;
 public class CoachVO {
 
     @JsonProperty("id")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer coachId;
 
     @JsonProperty("name")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String coachName;
 
     @JsonProperty("count")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer likeCount;
 
     @JsonProperty("desc")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String coachDesc;
 
     @JsonProperty("price")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private BigDecimal coachPrice;
 
     @JsonProperty("imageurl")

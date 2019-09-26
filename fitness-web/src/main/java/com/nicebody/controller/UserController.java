@@ -8,12 +8,10 @@ import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.CoachInfo;
 import com.nicebody.pojo.Course;
+import com.nicebody.service.OnlineOrderService;
 import com.nicebody.service.UserCenterService;
 import com.nicebody.util.ResultVOUtil;
-import com.nicebody.vo.CoachVO;
-import com.nicebody.vo.CourseVO;
-import com.nicebody.vo.ResultVO;
-import com.nicebody.vo.UserBlogVO;
+import com.nicebody.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +32,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserCenterService userCenterService;
+    @Autowired
+    private OnlineOrderService onlineOrderService;
 
     @GetMapping("/bloglist")
     @LoginRequired
@@ -98,5 +98,16 @@ public class UserController {
             return ResultVOUtil.none(UserCenterInfoEnum.NO_INFO);
         }
         return ResultVOUtil.none(UserCenterInfoEnum.ERROR);
+    }
+
+    @GetMapping("/onlineorderlist")
+    public ResultVO getOrderList(){
+        //TODO session取到用户信息
+        int userId = 10;
+        List<OnlineOrderVO> onlineOrderVOList = onlineOrderService.getOnlineOrderList(userId);
+        if (onlineOrderVOList == null || onlineOrderVOList.size() == 0){
+            return ResultVOUtil.none(UserCenterInfoEnum.NO_INFO);
+        }
+        return ResultVOUtil.success(onlineOrderVOList);
     }
 }
