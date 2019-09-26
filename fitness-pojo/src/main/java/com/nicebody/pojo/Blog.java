@@ -28,6 +28,8 @@ public class Blog {
     private BlogImage userBlogImage;
     /** 用户信息 */
     private UserProfile userProfile;
+    /** 判断用户对博客点赞状态*/
+    private BlogLike blogLike;
     /** 博客用户ID */
     private Integer userId;
 
@@ -79,14 +81,6 @@ public class Blog {
         this.updateTime = updateTime;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public BlogImage getUserBlogImage() {
         return userBlogImage;
     }
@@ -101,5 +95,21 @@ public class Blog {
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
+    }
+
+    public BlogLike getBlogLike() {
+        return blogLike;
+    }
+
+    public void setBlogLike(BlogLike blogLike) {
+        this.blogLike = blogLike;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

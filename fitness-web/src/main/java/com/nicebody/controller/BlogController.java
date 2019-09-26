@@ -1,25 +1,18 @@
 package com.nicebody.controller;
 
-import com.google.gson.Gson;
-import com.nicebody.dto.QiNiuPutRet;
-import com.nicebody.enums.UserCenterInfoEnum;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.BlogImage;
+import com.nicebody.pojo.BlogLike;
 import com.nicebody.service.BlogService;
 import com.nicebody.service.QiNiuService;
-import com.nicebody.service.impl.QiNiuServiceImpl;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.util.WangEditor;
 import com.nicebody.vo.ResultVO;
 import com.nicebody.vo.UserBlogVO;
-import com.qiniu.common.QiniuException;
-import com.qiniu.http.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,8 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -50,8 +41,6 @@ public class BlogController {
 
     @Autowired
     private QiNiuService qiNiuService;
-    // 实例化Gson
-    Gson gson = new Gson();
 
     // 文件url
     String fileUrl;
@@ -67,6 +56,24 @@ public class BlogController {
         //取出blog
         Blog blog = userBlogService.getUserBlogByBlogId(blogId);
         return ResultVOUtil.success(blog);
+    }
+
+    /**
+     *  按博客ID和用户ID
+     *  判断博客点赞状态
+     * @return
+     */
+    @RequestMapping("/getlikeactive")
+    public ResultVO getLikeActive(int blogId,HttpSession session){
+        // session用来取登录的用户id
+        int userId = 5;
+        BlogLike blogLike = userBlogService.getLikeActive(blogId,userId);
+        if (blogLike == null){
+            return ResultVOUtil.success(0);
+        } else {
+            return ResultVOUtil.success(1);
+        }
+
     }
 
     /**
@@ -154,7 +161,7 @@ public class BlogController {
      */
     @RequestMapping("/adduserblog")
     @ResponseBody
-    public int addUserBlog(Blog blog, HttpSession session){
+    public ResultVO addUserBlog(Blog blog, HttpSession session){
         String content = blog.getBlogContent();
         // 筛选多余img标签
         Pattern pattern = Pattern.compile("\\<+img.*?\\>");
@@ -176,9 +183,22 @@ public class BlogController {
         blogImage.setCreateTime(new Date());
         blogImage.setUpdateTime(new Date());
         int blogImageCount = userBlogService.addUserBlogImage(blogImage);
-        return blogCount;
+        return ResultVOUtil.success(blogCount);
     }
 
+    @RequestMapping("/adduserblogactive")
+    @ResponseBody
+    public int addUserBlogActive(@Param("blogLike") BlogLike blogLike){
+        int count = userBlogService.addUserBlogActive(blogLike);
+        return count;
+    }
+
+    /**
+     *  上传文件到七牛云
+     * @param file
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/upload")
     @ResponseBody
     public WangEditor uploadPhoto(@RequestParam("file")MultipartFile file,
@@ -187,9 +207,11 @@ public class BlogController {
             return null;
         }
         try {
+            // 获取上传到七牛云的文件url
             fileUrl = qiNiuService.uploadMulFile(file);
             blogImage.setImageUrl(fileUrl);
             String[] str = {fileUrl};
+            // 将文件的url放入WangEditor中保存
             WangEditor we = new WangEditor(str);
             return we;
         } catch (Exception e) {
@@ -197,4 +219,73 @@ public class BlogController {
         }
         return null;
     }
+
+    /**
+     *  修改博客浏览量
+     * @param blog
+     * @return
+     */
+    @RequestMapping(value = "/modifyviewcount")
+    @ResponseBody
+    public ResultVO modifyViewCount(Blog blog){
+        int blogId = blog.getBlogId();
+        int viewCount = blog.getViewCount();
+        // 将获取到的数据放入blog对象中
+        Blog userBlogCondition = new Blog();
+        userBlogCondition.setBlogId(blogId);
+        userBlogCondition.setViewCount(viewCount);
+        userBlogCondition.setUpdateTime(new Date());
+        // 根据条件进行更新浏览量操作
+        int count = userBlogService.modifyViewCount(userBlogCondition);
+        return ResultVOUtil.success(count);
+    }
+
+    /**
+     *  修改博客点赞量
+     * @param blog
+     * @param session
+     * @return
+     */
+    @RequestMapping("/modifylikecount")
+    @ResponseBody
+    public ResultVO modifyLikeCount(Blog blog,HttpSession session) {
+        BlogLike blogLike = new BlogLike();
+        Blog userBlogCondition = new Blog();
+        int countAdd = 0;
+        int countUpdate = 0;
+        int countDelete = 0;
+        int blogId = blog.getBlogId();
+
+        // 将获取到的数据放入blog对象中
+        int likeCount = blog.getLikeCount();
+        userBlogCondition.setBlogId(blogId);
+        userBlogCondition.setLikeCount(likeCount);
+        userBlogCondition.setUpdateTime(new Date());
+        // session用来取UserId
+        int userId = 5;
+        // 先取出博客点赞状态，如果为0，说明该用户没点赞该博客，进行添加操作
+        // 如果值为1，则进行博客点赞状态表的删除操作
+        blogLike = userBlogService.getLikeActive(blogId,userId);
+
+        // 如果在数据库中没有找到对应的状态
+        // 向数据库中添加状态
+        if (blogLike == null){
+            System.out.println(blogLike+"*********");
+            blogLike = new BlogLike();
+            blogLike.setBlogId(blogId);
+            blogLike.setUserId(userId);
+        //    countUpdate = userBlogService.modifyLikeCount(blogLike,userBlogCondition);
+            countAdd = userBlogService.addUserBlogActive(blogLike);
+
+        } else {
+        //    countUpdate = userBlogService.modifyLikeCount(blogLike,userBlogCondition);
+            System.out.println(blogLike.getBlogId()+"&&&&&&&&&");
+            countDelete = userBlogService.deleteBlogLike(blogId);
+        }
+        // 根据条件进行更新点赞数操作
+
+        countUpdate = userBlogService.modifyLikeCount(blogLike,userBlogCondition);
+        return ResultVOUtil.success(countUpdate);
+    }
+
 }

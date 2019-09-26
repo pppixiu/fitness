@@ -2,6 +2,7 @@ package com.nicebody.dao;
 import com.nicebody.mapper.BlogMapper;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.BlogImage;
+import com.nicebody.pojo.BlogLike;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,6 +58,18 @@ public class UserBlogMapperTest {
         System.out.println(count);
     }
 
+    @Test
+    @Ignore
+    public void testupdateViewAndLikeCount(){
+        Blog blogCondition = new Blog();
+        blogCondition.setBlogId(8);
+        //blogCondition.setViewCount(0);
+        blogCondition.setLikeCount(0);
+        blogCondition.setUpdateTime(new Date());
+        int count = userBlogMapper.updateViewCount(blogCondition);
+        System.out.println(count);
+    }
+
 //    @Test
 //    public void testupdateViewAndLikeCount(){
 //        Blog blog = new Blog();
@@ -76,12 +89,20 @@ public class UserBlogMapperTest {
 //    /**
 //     *  测试查询所有博客
 //     */
-//    @Test
-//    @Ignore
-//    public void testqueryUserBlog(){
-//        List<UserBlog> userBlogList = userBlogMapper.queryUserBlog();
-//        System.out.println(userBlogList.size());
-//    }
+    @Test
+    @Ignore
+    public void testqueryUserBlog(){
+        List<Blog> userBlogList = userBlogMapper.queryUserBlogByUserIdOrContentLike(1,2,null);
+    }
+
+    @Test
+    @Ignore
+    public void testqueryLikeActiveByUserIdAndBlogId(){
+        BlogLike blogLike = new BlogLike();
+        blogLike.setBlogId(6);
+        blogLike.setUserId(5);
+        BlogLike isActive = userBlogMapper.queryLikeActive(7,5);
+    }
 //
 //    /**
 //     *  测试按博客id查询该博客信息

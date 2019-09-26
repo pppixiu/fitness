@@ -2,6 +2,7 @@ package com.nicebody.mapper;
 
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.BlogImage;
+import com.nicebody.pojo.BlogLike;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +26,15 @@ public interface BlogMapper {
      * @return
      */
     Blog queryUserBlogByBlogId(int blogId);
+
+    /**
+     *  通过博客ID和用户ID
+     *  查询博客点赞状态
+     * @param blogId
+     * @param userId
+     * @return
+     */
+    BlogLike queryLikeActive(@Param("blogId") int blogId,@Param("userId") int userId);
 
     /**
      *  按用户Id查新用户博客
@@ -59,6 +69,8 @@ public interface BlogMapper {
     List<Blog> queryUserBlogByUserIdOrContentLike(@Param("rowIndex") int rowIndex,
                                                   @Param("pageSize") int pageSize,
                                                   @Param("userBlogCondition") Blog userBlogCondition);
+
+
     /**
      * 用户添加博客
      *
@@ -75,13 +87,25 @@ public interface BlogMapper {
     int insertUserBlogImage(BlogImage blogImage);
 
     /**
+     *  添加用户点赞状态
+     * @return
+     */
+    int insertUserBlogActive(@Param("blogLike")BlogLike blogLike);
+
+    /**
      *  按照博客Id更新浏览数
-     *  和点赞数
      * @param
      * @return
      */
-    int updateViewAndLikeCount(@Param("userBlogCondition") Blog userBlogCondition,
-                               @Param("updateTime") Date updateTime);
+    int updateViewCount(@Param("userBlogCondition") Blog userBlogCondition);
+
+    /**
+     *  根据用户博客点赞状态
+     *  更新点赞数
+     * @return
+     */
+    int updateLikeCount(@Param("blogLike")BlogLike blogLike,@Param("userBlogCondition") Blog userBlogCondition);
+
     /**
      * 按照博客ID和用户ID删除博客
      *
@@ -97,4 +121,12 @@ public interface BlogMapper {
      * @return
      */
     int deleteUserBlogImgByBlogId(int blogId);
+
+    /**
+     *  按照博客Id删除博客点赞
+     * @param blogId
+     * @return
+     */
+    int deleteBlogLike(int blogId);
+
 }
