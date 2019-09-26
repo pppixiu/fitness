@@ -19,6 +19,6 @@ public class PayServiceImpl implements PayService {
 
     @Override
     public String aliPay(AlipayBean alipayBean) throws AlipayApiException {
-        return alipay.pay(alipayBean);
+            return alipay.pay(alipayBean);
     }
 }

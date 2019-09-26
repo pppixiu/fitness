@@ -4,6 +4,7 @@ import com.nicebody.dto.UserBlogExecution;
 import com.nicebody.dto.UserCoachExecution;
 import com.nicebody.dto.UserCourseExecution;
 import com.nicebody.enums.UserCenterInfoEnum;
+import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.CoachInfo;
 import com.nicebody.pojo.Course;
@@ -17,6 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class UserController {
     private UserCenterService userCenterService;
 
     @GetMapping("/bloglist")
+    @LoginRequired
     public ResultVO getBlogList(int pageIndex, int pageSize) {
         //权限管理改为session
         //TODO 权限管理
@@ -59,9 +62,8 @@ public class UserController {
     }
 
     @GetMapping("/courselist")
-    public ResultVO getCourseList() {
+    public ResultVO getCourseList(@RequestParam("userId") int userId) {
         //TODO 权限管理
-        int userId = 1;
         List<CourseVO> courseVOList = new ArrayList<>();
 
         UserCourseExecution userCourseExecution = userCenterService.getCourseList(userId);

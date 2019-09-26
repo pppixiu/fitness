@@ -40,7 +40,6 @@ public class CourseDaoTest {
 
     @Test
     @Ignore
-
     public void queryByCourseId(){
         int courseId = 438;
         Course course = courseMapper.queryCourseByCourseId(courseId);
@@ -48,6 +47,7 @@ public class CourseDaoTest {
         System.out.println(course.getCourseLessonList().size());
 
     }
+
     @Test
     public void queryByUserId(){
         int userId = 1;

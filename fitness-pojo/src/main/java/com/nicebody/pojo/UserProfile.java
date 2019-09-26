@@ -33,6 +33,7 @@ public class UserProfile {
     /** 修改时间 */
     private Date updateTime;
 
+
     public Integer getUserGender() {
         return userGender;
     }

@@ -3,8 +3,8 @@ var pageSize = 8;
 var pageNum = 1;
 
 //初始化blog数据
-function getuserblog() {
-    var url = listCoachUrl + '?pageIndex=' + pageNum + '&pageSize=' + pageSize;
+function getuserblog(e) {
+    var url = listCoachUrl + '?userId=' + e + '&pageIndex=' + pageNum + '&pageSize=' + pageSize;
     var html = '';
     $
         .getJSON(
@@ -85,5 +85,22 @@ function nextPage() {
 }
 
 $(function () {
-    getuserblog();
+    var result = getQueryVariable("userId");
+    getuserblog(result);
 });
+
+/**
+ * 获取传参userId
+ * @param variable
+ * @returns {*}
+ */
+function getQueryVariable(variable)
+{
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+}
