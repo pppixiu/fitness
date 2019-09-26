@@ -11,9 +11,9 @@ var userId;      //通用userId
  */
 $(function () {
     var result = getQueryVariable("coachId");
+    getUserId();
     coachId = result;
     coachInfo(result);
-    getUserId();
     likefuncation();
 });
 
@@ -31,8 +31,7 @@ function getUserId() {
                 alert('没有获取到登录信息');
             }else {
                 userId = info.userId;
-                alert(userId);
-                alert(coachId);
+                return info.userId;
             }
         });
 }
@@ -64,6 +63,7 @@ function coachInfo(e) {
     var coachCourseUrl = '/coach/coachCourse?coachId='+id;
     var coachImageUrl = '/coach/coachImage?coachId='+id;
     var coachCommentUrl = '/comment/coachcommentlist?refId='+id;
+    var coachCountUrl = '/coach/coachLikeCount?coachId=' + id + '&userId=' + userId;
 
     /*加载基本信息*/
     $.getJSON(
@@ -77,6 +77,22 @@ function coachInfo(e) {
                 $('#coach-count').text(info[0].count);
                 $('#exampleInputName').val(info[0].coachname);
                 $('#exampleInputPrice').val(info[0].price);
+            }
+        });
+
+    /*判断颜色*/
+    var colorJudge;
+    $.getJSON(
+        coachCountUrl,
+        function (data) {
+            if (data.code == "0") {
+                var info = data.data;
+                colorJudge = info.judge;
+                if(colorJudge == 1){
+                    $('#control-color').css("color","Red")
+                }else if(colorJudge == 0){
+                    $('#control-color').css("color","black")
+                }
             }
         });
 
@@ -198,7 +214,6 @@ function likefuncation() {
                 var info = data.data;
                 likecount = info.count;
                 liketimes = info.judge;
-                alert(liketimes);
                 if(liketimes == 1){
                     $('#coach-count').text($('#coach-count').text()*1+1);
                     $('#control-color').css("color","Red")
