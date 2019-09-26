@@ -46,12 +46,20 @@ public class OrderController {
     }
 
     @PostMapping("/createonlineorder")
-    public ResultVO createOnlineOrder(OnlineOrder onlineOrder) {
+    public ResultVO createOnlineOrder(OnlineOrder onlineOrder) throws AlipayApiException {
         if (onlineOrder != null) {
             int userId = 1;
             onlineOrder.setUserId(userId);
+            String result = null;
             onlineOrderService.createOnlineOrder(onlineOrder);
-             return ResultVOUtil.success(onlineOrder);
+            if(onlineOrder.getOrderId() != null && onlineOrder.getOrderCode() != null){
+                AlipayBean alipayBean = new AlipayBean();
+                alipayBean.setOut_trade_no(onlineOrder.getOrderCode());
+                alipayBean.setSubject("nicebody");
+                alipayBean.setTotal_amount(onlineOrder.getTotalMoney().toString());
+                result = payService.aliPay(alipayBean);
+            }
+             return ResultVOUtil.success(result);
         } else {
             return ResultVOUtil.error(10, "添加失败");
         }
