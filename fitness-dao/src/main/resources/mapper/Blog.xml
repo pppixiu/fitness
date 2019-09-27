@@ -135,7 +135,7 @@
     </select>
 
     <!--根据博客Id和用户Id查询博客点赞状态-->
-    <select id="queryLikeActive" resultType="blogLike">
+    <select id="queryLikeActive" resultType="String">
         SELECT
         ubl.blog_id,
         ubl.user_id
@@ -164,11 +164,11 @@
     </insert>
 
     <!--添加用户点赞状态-->
-    <insert id="insertUserBlogActive" keyColumn="blog_id" keyProperty="blogId">
+    <insert id="insertUserBlogActive">
         INSERT INTO
         tb_user_blog_like(blog_id,user_id)
         VALUES
-        (#{blogLike.blogId},#{blogLike.userId})
+        (#{blogId},#{userId})
     </insert>
 
     <!--更新浏览数-->
@@ -187,15 +187,14 @@
     <update id="updateLikeCount" parameterType="blog">
         update tb_user_blog
         <set>
-            <if test="blogLike == null">
-                like_count = #{userBlogCondition.likeCount} + 1,
+            <if test="likeJudge == 1">
+                like_count = like_count + 1,
             </if>
-            <if test="blogLike != null">
-                like_count = #{userBlogCondition.likeCount} - 1,
+            <if test="likeJudge == -1">
+                like_count = like_count - 1,
             </if>
-            update_time = #{userBlogCondition.updateTime}
         </set>
-        where blog_id = #{userBlogCondition.blogId}
+        where blog_id = ${blogId}
     </update>
 
 
@@ -221,6 +220,6 @@
         DELETE FROM
         tb_user_blog_like
         WHERE
-        blog_id = #{blogId}
+        blog_id = #{blogId} and user_id = #{userId}
     </delete>
 </mapper>

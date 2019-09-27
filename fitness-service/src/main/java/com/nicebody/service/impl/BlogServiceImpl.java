@@ -33,9 +33,10 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public BlogLike getLikeActive(int blogId, int userId) {
-        return userBlogMapper.queryLikeActive(blogId, userId);
+    public String getLikeActive(int blogId, int userId) {
+        return userBlogMapper.queryLikeActive(blogId,userId);
     }
+
 
     @Override
     public List<Blog> getUserBlogByUserId(int pageIndex, int pageSize, Blog userBlogCondition) {
@@ -75,10 +76,10 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    @Transactional
-    public int addUserBlogActive(BlogLike blogLike) {
-        return userBlogMapper.insertUserBlogActive(blogLike);
+    public int addUserBlogActive(int blogId, int userId) {
+        return userBlogMapper.insertUserBlogActive(blogId,userId);
     }
+
 
     @Override
     @Transactional
@@ -87,10 +88,10 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    @Transactional
-    public int modifyLikeCount(BlogLike blogLike, Blog userBlogCondition) {
-        return userBlogMapper.updateLikeCount(blogLike ,userBlogCondition);
+    public int modifyLikeCount(int blogId, int likeJudge) {
+        return userBlogMapper.updateLikeCount(blogId,likeJudge);
     }
+
 
     @Override
     public int deleteUserBlogByBlogIdAndUserId(int userId, int blogId) {
@@ -103,7 +104,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public int deleteBlogLike(int blogId) {
-        return userBlogMapper.deleteBlogLike(blogId);
+    public int deleteBlogLike(int blogId, int userId) {
+        return userBlogMapper.deleteBlogLike(blogId,userId);
     }
+
 }

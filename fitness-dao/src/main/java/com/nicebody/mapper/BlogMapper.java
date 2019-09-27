@@ -34,7 +34,7 @@ public interface BlogMapper {
      * @param userId
      * @return
      */
-    BlogLike queryLikeActive(@Param("blogId") int blogId,@Param("userId") int userId);
+    String queryLikeActive(@Param("blogId") int blogId,@Param("userId") int userId);
 
     /**
      *  按用户Id查新用户博客
@@ -90,7 +90,7 @@ public interface BlogMapper {
      *  添加用户点赞状态
      * @return
      */
-    int insertUserBlogActive(@Param("blogLike")BlogLike blogLike);
+    int insertUserBlogActive(@Param("blogId") int blogId, @Param("userId") int userId);
 
     /**
      *  按照博客Id更新浏览数
@@ -104,7 +104,7 @@ public interface BlogMapper {
      *  更新点赞数
      * @return
      */
-    int updateLikeCount(@Param("blogLike")BlogLike blogLike,@Param("userBlogCondition") Blog userBlogCondition);
+    int updateLikeCount(@Param("blogId") int blogId,@Param("likeJudge") int likeJudge);
 
     /**
      * 按照博客ID和用户ID删除博客
@@ -127,6 +127,6 @@ public interface BlogMapper {
      * @param blogId
      * @return
      */
-    int deleteBlogLike(int blogId);
+    int deleteBlogLike(@Param("blogId") int blogId, @Param("userId") int userId);
 
 }

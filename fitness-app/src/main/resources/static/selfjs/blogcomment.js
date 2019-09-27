@@ -6,6 +6,10 @@ var like_count = 0;
 var blog_id = 0;
 // 对该博客点赞
 var like_times = 1;
+// 通用blogId
+var blogid;
+// 通用userId
+var userId;
 
 // 限制字数
 function keyUP(t) {
@@ -205,31 +209,31 @@ $(function () {
         var blogContentUrl = '/blog/getuserblogbyblogid?blogId=' + blogId;
         var url = blogContentUrl;
         // 判断博客点赞状态
-        var blogLikeActiveUrl = '/blog/getlikeactive?blogId=' + blogId;
+      //  var blogLikeActiveUrl = '/blog/getlikeactive?blogId=' + blogId;
 
-        $.getJSON(
-            blogLikeActiveUrl,
-            function (data) {
-                var htmlOne='';
-                alert(data.data);
-                if (data.data == 1) {
-                    htmlOne += '<a id="like-count"'
-                        + 'style="color: #FF2D2D"'
-                        + 'onclick="blogLike()"'
-                        + 'href="#"'
-                        + 'type="button" class="glyphicon glyphicon-thumbs-up"'
-                        + '></a>'
-                }else {
-                    htmlOne = '';
-                    htmlOne += '<a id="like-count" '
-                        + 'onclick="blogLike()"'
-                        + 'href="#"'
-                        + 'type="button" class="glyphicon glyphicon-thumbs-up"'
-                        + '></a>'
-                }
-                $('#like-count-div').html(htmlOne);
-                like_times = data.data
-            });
+        // $.getJSON(
+        //     blogLikeActiveUrl,
+        //     function (data) {
+        //         var htmlOne='';
+        //         alert(data.data);
+        //         if (data.data == 1) {
+        //             htmlOne += '<a id="like-count"'
+        //                 + 'style="color: #FF2D2D"'
+        //                 + 'onclick="blogLike()"'
+        //                 + 'href="#"'
+        //                 + 'type="button" class="glyphicon glyphicon-thumbs-up"'
+        //                 + '></a>'
+        //         }else {
+        //             htmlOne = '';
+        //             htmlOne += '<a id="like-count" '
+        //                 + 'onclick="blogLike()"'
+        //                 + 'href="#"'
+        //                 + 'type="button" class="glyphicon glyphicon-thumbs-up"'
+        //                 + '></a>'
+        //         }
+        //         $('#like-count-div').html(htmlOne);
+        //         like_times = data.data
+        //     });
         sleep(50);
 
         // 博客详情
@@ -249,6 +253,7 @@ $(function () {
                 blog_id = blogId;
             });
     }
+
 
     // 更新博客浏览量
     function viewCount(blogId, viewCount) {
@@ -270,6 +275,7 @@ $(function () {
             })
         }
     }
+
 
     var resultUserBlog = query("userId");
     getUserBlog(resultUserBlog);
@@ -316,6 +322,8 @@ $(function () {
                 }
             });
     }
+
+
 
     var resultViewCount = query("userId");
     getViewCount(resultViewCount);
@@ -423,36 +431,55 @@ $(function () {
         });
         return html;
     }
+
+    // 初始化用户Id
+    getUserId();
+
+    // 初始化博客点赞
+    blogLike();
+
 });
+
+
+/**
+ * 获取登录用户的id
+ */
+function getUserId() {
+    var headerUrl ='/header/sessionInfo';
+    $.getJSON(
+        headerUrl,
+        function (data) {
+            var imghtml='';
+            var info = data;
+            if(info==''){
+                alert('没有获取到登录信息');
+            }else {
+                userId = info.userId;
+            }
+        });
+}
 
 // 对该博客点赞
 function blogLike() {
-    var params = {};
-    params.likeCount = like_count;
-    params.blogId = blog_id;
-    like_times;
-    if(like_times == 1){
-        like_times = 0;
-        $('#like-count').text($('#like-count').text()*1 - 1);
-        $("#like-count").css("color","#999999");
-    }else{
-        like_times = 1;
-        $('#like-count').text($('#like-count').text()*1 + 1);
-        $("#like-count").css("color","red");
-    }
 
-    if (params.likeCount != ""){
-        $.ajax({
-            url:'/blog/modifylikecount',
-            type: "get",
-            contentType:'application/json',
-            dataType: 'json',
-            data : params,
-            success : function (data) {
-                if (data.success){
-                    alert("成功")
+    var liketimes;
+    var blogLikeCountUrl = '/blog/modifylikecount?blogId=' + blogId;
+
+    /*加载基本信息*/
+    $.getJSON(
+        blogLikeCountUrl,
+        function (data) {
+            if (data.code == "0") {
+                var info = data.data;
+                likecount = info.likecount;
+                liketimes = info.judge;
+                if(liketimes == 1){
+                    $('#like-count').text($('#like-count').text()*1+1);
+                    $('#like-count').css("color","Red")
+                }else if(liketimes == 0){
+                    $('#like-count').text($('#like-count').text()*1-1);
+                    $('#like-count').css("color","black")
                 }
             }
         });
-    }
 }

@@ -3,10 +3,12 @@ package com.nicebody.controller;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.BlogImage;
 import com.nicebody.pojo.BlogLike;
+import com.nicebody.pojo.UserProfile;
 import com.nicebody.service.BlogService;
 import com.nicebody.service.QiNiuService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.util.WangEditor;
+import com.nicebody.vo.BlogVo;
 import com.nicebody.vo.ResultVO;
 import com.nicebody.vo.UserBlogVO;
 import org.apache.ibatis.annotations.Param;
@@ -63,18 +65,18 @@ public class BlogController {
      *  判断博客点赞状态
      * @return
      */
-    @RequestMapping("/getlikeactive")
-    public ResultVO getLikeActive(int blogId,HttpSession session){
-        // session用来取登录的用户id
-        int userId = 5;
-        BlogLike blogLike = userBlogService.getLikeActive(blogId,userId);
-        if (blogLike == null){
-            return ResultVOUtil.success(0);
-        } else {
-            return ResultVOUtil.success(1);
-        }
-
-    }
+//    @RequestMapping("/getlikeactive")
+//    public ResultVO getLikeActive(int blogId,HttpSession session){
+//        // session用来取登录的用户id
+//        int userId = 5;
+//        BlogLike blogLike = userBlogService.getLikeActive(blogId,userId);
+//        if (blogLike == null){
+//            return ResultVOUtil.success(0);
+//        } else {
+//            return ResultVOUtil.success(1);
+//        }
+//
+//    }
 
     /**
      *  按用户ID查询博客信息
@@ -186,12 +188,12 @@ public class BlogController {
         return ResultVOUtil.success(blogCount);
     }
 
-    @RequestMapping("/adduserblogactive")
-    @ResponseBody
-    public int addUserBlogActive(@Param("blogLike") BlogLike blogLike){
-        int count = userBlogService.addUserBlogActive(blogLike);
-        return count;
-    }
+//    @RequestMapping("/adduserblogactive")
+//    @ResponseBody
+//    public int addUserBlogActive(@Param("blogLike") BlogLike blogLike){
+//        int count = userBlogService.addUserBlogActive(blogLike);
+//        return count;
+//    }
 
     /**
      *  上传文件到七牛云
@@ -242,50 +244,54 @@ public class BlogController {
 
     /**
      *  修改博客点赞量
-     * @param blog
-     * @param session
      * @return
      */
     @RequestMapping("/modifylikecount")
     @ResponseBody
-    public ResultVO modifyLikeCount(Blog blog,HttpSession session) {
-        BlogLike blogLike = new BlogLike();
-        Blog userBlogCondition = new Blog();
-        int countAdd = 0;
-        int countUpdate = 0;
-        int countDelete = 0;
-        int blogId = blog.getBlogId();
+    public ResultVO modifyLikeCount(@RequestParam(name = "blogId") Integer blogId,
+                                    HttpServletRequest request) {
+       // 判断值
+        int judge = 0;
+        int likeJudge = 0;
 
-        // 将获取到的数据放入blog对象中
-        int likeCount = blog.getLikeCount();
-        userBlogCondition.setBlogId(blogId);
-        userBlogCondition.setLikeCount(likeCount);
-        userBlogCondition.setUpdateTime(new Date());
-        // session用来取UserId
-        int userId = 5;
-        // 先取出博客点赞状态，如果为0，说明该用户没点赞该博客，进行添加操作
-        // 如果值为1，则进行博客点赞状态表的删除操作
-        blogLike = userBlogService.getLikeActive(blogId,userId);
+        UserProfile userProfile = new UserProfile();
+        HttpSession session = request.getSession();
+        userProfile = (UserProfile) session.getAttribute("userProfile");
+        int userId = userProfile.getUserId();
+        //先查询关联表里有没有该用户信息，有返回值为blogId,没有为null
+        String blogLikeJudge = userBlogService.getLikeActive(blogId,userId);
+       if(blogLikeJudge == null) {
+           likeJudge = 1;
+           // 没有该关联，向表中添加信息
+           int addLikeInfo = userBlogService.addUserBlogActive(blogId,userId);
+           if(addLikeInfo == 1) {
+               //如果修改成功，则修改点赞数，并返回
+               judge = userBlogService.modifyLikeCount(blogId,1);
+           }
+       } else {
+           likeJudge = 0;
+           //如果表中有该关联，则删除该表关联，点赞数-1
+           int delLikeInfo = userBlogService.deleteBlogLike(blogId,userId);
+           if(delLikeInfo == 1) {
+               judge = userBlogService.modifyLikeCount(blogId,-1);
+           }
+       }
 
-        // 如果在数据库中没有找到对应的状态
-        // 向数据库中添加状态
-        if (blogLike == null){
-            System.out.println(blogLike+"*********");
-            blogLike = new BlogLike();
-            blogLike.setBlogId(blogId);
-            blogLike.setUserId(userId);
-        //    countUpdate = userBlogService.modifyLikeCount(blogLike,userBlogCondition);
-            countAdd = userBlogService.addUserBlogActive(blogLike);
-
-        } else {
-        //    countUpdate = userBlogService.modifyLikeCount(blogLike,userBlogCondition);
-            System.out.println(blogLike.getBlogId()+"&&&&&&&&&");
-            countDelete = userBlogService.deleteBlogLike(blogId);
+       // 判断是否修改成功
+        if(judge == 1) {
+            Blog blog = new Blog();
+            BlogVo blogVo = new BlogVo();
+            Blog blogCondition = new Blog();
+            blogCondition.setUserId(userId);
+            blogCondition.setBlogId(blogId);
+            List<Blog> blogList = userBlogService.getUserBlogByUserIdOrContentLike(0,1,blogCondition);
+            blog = blogList.get(0);
+            BeanUtils.copyProperties(blog,blogVo);
+            blogVo.setLikeJudge(likeJudge);
+            return ResultVOUtil.success(blogVo);
+        }else {
+            return null;
         }
-        // 根据条件进行更新点赞数操作
-
-        countUpdate = userBlogService.modifyLikeCount(blogLike,userBlogCondition);
-        return ResultVOUtil.success(countUpdate);
     }
 
 }

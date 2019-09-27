@@ -29,7 +29,7 @@ public interface BlogService {
      * @param userId
      * @return
      */
-    public BlogLike getLikeActive(@Param("blogId") int blogId,@Param("userId") int userId);
+    public String getLikeActive(@Param("blogId") int blogId,@Param("userId") int userId);
 
     /**
      *  按用户ID查询用户博客
@@ -79,7 +79,7 @@ public interface BlogService {
      *  添加用户点赞状态
      * @return
      */
-    public int addUserBlogActive(@Param("blogLike") BlogLike blogLike);
+    public int addUserBlogActive(@Param("blogId") int blogId, @Param("userId") int userId);
 
     /**
      *  按照博客Id更新浏览数
@@ -91,11 +91,9 @@ public interface BlogService {
     /**
      *  根据用户博客点赞状态
      *  更新点赞数
-     * @param userBlogCondition
      * @return
      */
-    public int modifyLikeCount(@Param("blogLike")BlogLike blogLike,
-                               @Param("userBlogCondition") Blog userBlogCondition);
+    public int modifyLikeCount(@Param("blogId") int blogId,@Param("likeJudge") int likeJudge);
 
 
     /**
@@ -117,5 +115,5 @@ public interface BlogService {
      * @param blogId
      * @return
      */
-    public int deleteBlogLike(int blogId);
+    public int deleteBlogLike(@Param("blogId") int blogId, @Param("userId") int userId);
 }

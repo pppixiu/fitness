@@ -97,12 +97,31 @@ public class UserBlogMapperTest {
 
     @Test
     @Ignore
-    public void testqueryLikeActiveByUserIdAndBlogId(){
-        BlogLike blogLike = new BlogLike();
-        blogLike.setBlogId(6);
-        blogLike.setUserId(5);
-        BlogLike isActive = userBlogMapper.queryLikeActive(7,5);
+    public void testInsertUserBlogActive(){
+        int count = userBlogMapper.insertUserBlogActive(91,6);
+        System.out.println(count);
     }
+    @Test
+    @Ignore
+    public void testDeleteBlogLike(){
+        int count = userBlogMapper.deleteBlogLike(91,5);
+        System.out.println(count);
+    }
+
+    @Test
+    public void testUpdateLikeCount(){
+        int count = userBlogMapper.updateLikeCount(91,1);
+        System.out.println(count);
+    }
+
+//    @Test
+//    @Ignore
+//    public void testqueryLikeActiveByUserIdAndBlogId(){
+//        BlogLike blogLike = new BlogLike();
+//        blogLike.setBlogId(6);
+//        blogLike.setUserId(5);
+//        BlogLike isActive = userBlogMapper.queryLikeActive(7,5);
+//    }
 //
 //    /**
 //     *  测试按博客id查询该博客信息
