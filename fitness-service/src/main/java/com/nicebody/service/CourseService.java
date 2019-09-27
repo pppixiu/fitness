@@ -40,6 +40,15 @@ public interface CourseService {
     List<Course> getCourseByCoachId(int coachId,int rowIndex,int pageSize);
 
 
+    /**
+     * 根据userId,courseId 查询信息
+     * @param userId
+     * @param courseId
+     * @return
+     */
+    int getUserCourseCount(int userId,int courseId);
+
+
 
 
 

@@ -8,6 +8,15 @@ public class ResultVO <T>{
     private String msg;
     /** 返回的具体内容*/
     private T data;
+    private String isNo;
+
+    public String getIsNo() {
+        return isNo;
+    }
+
+    public void setIsNo(String isNo) {
+        this.isNo = isNo;
+    }
 
     public Integer getCode() {
         return code;

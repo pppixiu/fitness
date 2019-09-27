@@ -204,14 +204,14 @@ function addItems(pageSize, pageIndex) {
                             + '<a style="text-decoration:none;"><p class="shizan-desc" title="专为实际开发经验1年以上的前端工程师职场进阶设计，更高层面架构前端。">'
                             + item.desc
                             + '</p></a>'
-                            + '</a><div class="shizhan-info-bottom"><a href="//class.imooc.com/sale/webfullstack"></a>'
-                            + '<div class="clearfix"><a href="//class.imooc.com/sale/webfullstack">'
+                            + '</a><div class="shizhan-info-bottom"><a href=""></a>'
+                            + '<div class="clearfix"><a href="">'
                             + '<span class="discount-price" style="margin-right: 5px;">￥'
                             + item.nowprice
                             + '</span> <del><span class="cost-price"><del>￥'
                             + item.preprice
                             + '</del></span></del>'
-                            + '</a><div class="r clearfix"><a href="//class.imooc.com/sale/webfullstack"></a>'
+                            + '</a><div class="r clearfix"><a href=""></a>'
                             + '<a href="courseInfo/?courseId='
                             + item.id
                             + '" style="color:#B7BBBF;line-height: 24px;font-size: 12px;text-decoration:none;">了解详情</a>'

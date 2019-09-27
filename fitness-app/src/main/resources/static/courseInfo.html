@@ -179,7 +179,7 @@
 
 
 
-                        <a onclick="buyCourse()" href="#" class="moco-btn moco-btn-red moco-btn-lg J-learn-course" style="background-color: #f20d0d;color:#f2f2f2;  border-color: #f20d0d;padding: 11px 32px;font-size: 16px;line-height: 24px;border-radius: 24px;display: block;text-decoration: none;">购买课程</a>
+                        <a onclick="buyCourse()" id = "isNo" href="#" class="moco-btn moco-btn-red moco-btn-lg J-learn-course" style="background-color: #f20d0d;color:#f2f2f2;  border-color: #f20d0d;padding: 11px 32px;font-size: 16px;line-height: 24px;border-radius: 24px;display: block;text-decoration: none;">购买课程</a>
                     </div>
 
 
@@ -312,9 +312,13 @@
                 <span>订单号：</span><input type="text" name="outTradeNo" id="outTradeNo"><br><br>
                 <span>价&nbsp;&nbsp;&nbsp;钱：</span><input type="text" name="totalAmount" id="totalAmount"><br><br>
                 <span>课程名：</span><input type="text" name="subject" id="subject"><br><br>
-                <div id="g_close" class="btn" onclick="alipayOnline('/order/alipay')" style="text-align: center;height: 40px; line-height: 26px;">
+                <div  class="btn" onclick="alipayOnline('/order/alipay')" style="text-align: center;height: 40px; line-height: 26px;">
                 <a style="margin-bottom: 5px;text-decoration: none;">立即支付</a>
                 </div>
+                <div  class="btn" id="g_close" style="text-align: center;height: 40px; line-height: 26px;">
+                    <a style="margin-bottom: 5px;text-decoration: none;">关闭</a>
+                </div>
+
             </form>
         </div>
 </div>

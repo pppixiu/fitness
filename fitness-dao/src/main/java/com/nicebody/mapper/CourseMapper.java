@@ -70,7 +70,15 @@ public interface CourseMapper {
      * @param pageSize
      * @return
      */
-    List<Course> queryCourseByCoachId(@Param("coachId") int coachId, @Param("rowIndex") int rowIndex, @Param("pageSize") int pageSize);
+    List<Course> queryCourseByCoachId(int coachId,int rowIndex,int pageSize);
+
+    /**
+     * 根据userId,courseId 查询信息
+     * @param userId
+     * @param courseId
+     * @return
+     */
+    int queryUserCourseCount(int userId,int courseId);
 
 
 }

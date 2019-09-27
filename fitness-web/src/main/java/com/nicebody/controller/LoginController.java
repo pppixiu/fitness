@@ -97,11 +97,9 @@ public class LoginController {
             UserProfile userProfile = new UserProfile();
             if(myphone.equals(phone) && phoneAuth.getUserId()==null){
                 String userName = "nicebody"+RandomStringUtils.randomAlphanumeric(6).toLowerCase();
-                System.out.println(userName);
                 userProfile.setUserName(userName);
                 userService.insertUser(userProfile);
                 int userId = userProfile.getUserId();
-                System.out.println(userId);
                 //把userId加到对象里去
                 phoneAuth.setUserId(userId);
             }
@@ -110,7 +108,6 @@ public class LoginController {
             userProfile = userService.getUserById(userId);
             HttpSession session = request.getSession();
             session.setAttribute("userProfile",userProfile);
-            System.out.println(session.getAttribute("userProfile"));
             loginService.updatePhoneAuth(phoneAuth);
             resultVO.setCode(0);
             resultVO.setMsg("验证码正确");

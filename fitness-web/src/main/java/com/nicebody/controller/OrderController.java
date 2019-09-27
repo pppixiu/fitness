@@ -3,6 +3,7 @@ package com.nicebody.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.nicebody.alipay.AlipayBean;
+import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.OnlineOrder;
 import com.nicebody.service.OnlineOrderService;
 import com.nicebody.service.PayService;
@@ -34,6 +35,7 @@ public class OrderController {
      * @return
      * @throws AlipayApiException
      */
+    @LoginRequired
     @PostMapping(value = "alipay")
     public String alipay(String outTradeNo, String subject, String totalAmount, String body) throws AlipayApiException {
         System.out.println(outTradeNo + "  " + subject + "  " + totalAmount + "  " + body);

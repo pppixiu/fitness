@@ -42,6 +42,16 @@ $(function () {
             .getJSON(
                 url,
                 function (data) {
+                    if(data.isNo == "0"){
+                        $('#isNo').text("购买课程");
+                    }else if(data.isNo == "1"){
+                        $('#isNo').text("已购买");
+                        $("#isNo").attr("onclick",null);
+                        $('#isNo').css("background-color","#999999");
+                        $('#isNo').css("border-color","#999999");
+
+                    }
+
                     if (data.code == "0") {
                         var courseLesson = data.data;
                         cTitle = courseLesson.title;
@@ -104,7 +114,7 @@ $(function () {
                                     '                                </div>\n' +
                                     '                            </a>\n' +
                                     '                                <div class="shizhan-intro-box"><a href="courseInfo.html">\n' +
-                                    '                                    <a href="courseInfo.html" style="text-decoration:none;margin-top: 10px;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
+                                    '                                    <a href="courseInfo/?courseId=" style="text-decoration:none;margin-top: 10px;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
                                     '                                                                                               title="' + item.title + '">\n' +
                                     '                                        ' + item.title + '</p></a>\n' +
                                     '                                    <div class="evaluation-box">\n' +

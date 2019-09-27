@@ -46,4 +46,9 @@ public class CourseServiceImpl implements CourseService {
     public List<Course> getCourseByCoachId(int coachId, int rowIndex, int pageSize) {
         return courseMapper.queryCourseByCoachId(coachId,rowIndex,pageSize);
     }
+
+    @Override
+    public int getUserCourseCount(int userId, int courseId) {
+        return courseMapper.queryUserCourseCount(userId,courseId);
+    }
 }

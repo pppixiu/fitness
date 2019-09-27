@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**
@@ -111,7 +112,7 @@ public class CourseController {
 
 
     @GetMapping("/listcoursebyid")
-    public ResultVO listCourseById(@RequestParam(value = "courseId",required = false) Integer courseId){
+    public ResultVO listCourseById(@RequestParam(value = "courseId",required = false) Integer courseId,HttpServletRequest request){
         ResultVO resultVO = new ResultVO();
         //查询所有的course信息
         Course course = courseService.getCourseByCourseId(courseId);
@@ -126,6 +127,7 @@ public class CourseController {
         }else{
             courseVO.setCourseLevel("高级");
         }
+        courseVO.setCourseId(course.getCourseId());
         courseVO.setCourseTitle(course.getCourseTitle());
         courseVO.setCourseDesc(course.getCourseDesc());
         courseVO.setCourseNowPrice(course.getCourseNowPrice());
@@ -142,7 +144,27 @@ public class CourseController {
         }
         courseVO.setCourseLessonVOList(courseLessonVOList);
         courseVO.setUserProfileVO(userProfileVO);
-        return ResultVOUtil.success(courseVO);
+        //获取session中的值
+        HttpSession session = request.getSession();
+        UserProfile user = (UserProfile) session.getAttribute("userProfile");
+        String isNo = null;
+        if (session != null && user != null) {
+            int userId = user.getUserId();
+            int count = courseService.getUserCourseCount(userId,courseId);
+            if(count>0){
+                isNo = "1";
+            }
+            else {
+                isNo = "0";
+
+            }
+        }
+
+        resultVO =  ResultVOUtil.success(courseVO);
+        resultVO.setIsNo(isNo);
+        return resultVO;
+
+
     }
 
     /**
@@ -158,5 +180,16 @@ public class CourseController {
         resultVO.setMsg("成功");
         return resultVO;
     }
+
+
+
+
+
+
+
+
+
+
+
 
 }

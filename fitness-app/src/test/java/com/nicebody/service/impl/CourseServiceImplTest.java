@@ -27,6 +27,7 @@ public class CourseServiceImplTest {
     private CourseService courseService;
 
     @Test
+    @Ignore
     public void getCourseListTest(){
         Course courseCondition = new Course();
         courseCondition.setTagId(9);
@@ -41,6 +42,7 @@ public class CourseServiceImplTest {
 
     }
     @Test
+    @Ignore
     public void getByCourseIdTest(){
         int courseId = 438;
         Course course = courseService.getCourseByCourseId(courseId);
@@ -50,6 +52,7 @@ public class CourseServiceImplTest {
 
     }
     @Test
+    @Ignore
     public void getByUserIdTest(){
         int userId = 1;
         List<Course> courseList = courseService.getCourseByUserId(userId);
@@ -58,12 +61,21 @@ public class CourseServiceImplTest {
     }
 
     @Test
+    @Ignore
     public void getCourseByCoachIdTest(){
         int coachId = 1;
         List<Course> courseList = courseService.getCourseByCoachId(coachId,1,5);
         System.out.println(courseList.size());
 
 
+    }
+
+    @Test
+    public void getUserCourseCountTest(){
+        int courseId = 438;
+        int userId = 1;
+        int count = courseService.getUserCourseCount(userId,courseId);
+        System.out.println(count);
     }
 
 

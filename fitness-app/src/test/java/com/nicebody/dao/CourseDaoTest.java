@@ -49,6 +49,7 @@ public class CourseDaoTest {
     }
 
     @Test
+    @Ignore
     public void queryByUserId(){
         int userId = 1;
         List<Course> courseList = courseMapper.queryCourseByUserId(userId);
@@ -56,11 +57,19 @@ public class CourseDaoTest {
 
     }
     @Test
+    @Ignore
     public void queryByCoachIdTest(){
         int coachId = 1;
        List<Course> courseList = courseMapper.queryCourseByCoachId(1,1,5);
         System.out.println(courseList.size());
 
+    }
+    @Test
+    public void queryUserCourseCountTest(){
+        int courseId = 438;
+        int userId = 1;
+        int count = courseMapper.queryUserCourseCount(userId,courseId);
+        System.out.println(count);
     }
 
 
