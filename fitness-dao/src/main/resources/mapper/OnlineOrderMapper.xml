@@ -61,4 +61,13 @@
         #{onlineCourse.coachId}, #{onlineCourse.orderId}, #{onlineCourse.createTime}
         )
     </insert>
+
+    <update id="updateOnlineOrderStatus">
+        UPDATE
+        tb_order
+        SET
+        order_status = #{orderStatus}
+        WHERE
+        order_code = #{orderCode}
+    </update>
 </mapper>

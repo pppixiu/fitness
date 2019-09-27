@@ -104,7 +104,7 @@ function getCoachList() {
                             html += ' <div class="col-xs-3" style="margin-bottom: 10px;\n">' +
                                 ' <div class="col-xs-12 radis shadow"\n' +
                                 '                                 style="margin: 0 5px; padding: 0;background-color: white; padding-bottom: 20px;">\n' +
-                                '                                <img src="' + item.imageurl + '" alt="" style="width: 100%; margin-bottom: 15px;">\n' +
+                                '                                <img src="' + item.imageurl + '" alt="" style="width: 100%; margin-bottom: 15px; min-height: 170px; max-height: 170px; overflow: hidden;">\n' +
                                 '                                <div class="col-xs-12" style="text-align: left; font-size: 16px; font-weight: 700;"><span>' + item.name + '</span>\n' +
                                 '                                </div>\n' +
                                 '                                <div class="col-xs-4" style="text-align: left; font-size: 12px; margin-top: 10px"><span>收藏:' + item.count + '</span>\n' +

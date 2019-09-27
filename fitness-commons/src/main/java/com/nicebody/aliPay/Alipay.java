@@ -4,9 +4,15 @@ import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.alipay.api.response.AlipayTradePagePayResponse;
 import com.nicebody.alipay.AlipayBean;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 支付宝支付接口
@@ -43,8 +49,39 @@ public class Alipay {
         // 封装参数
         alipayRequest.setBizContent(JSON.toJSONString(alipayBean));
         // 3、请求支付宝进行付款，并获取支付结果
+
+        AlipayTradePagePayResponse response = alipayClient.pageExecute(alipayRequest);
         String result = alipayClient.pageExecute(alipayRequest).getBody();
         // 返回付款信息
         return result;
     }
+
+    /**
+     * 支付宝的验签方法
+     * @param req
+     * @return
+     */
+    public static boolean checkSign(HttpServletRequest req) {
+        Map<String, String[]> requestMap = req.getParameterMap();
+        Map<String, String> paramsMap = new HashMap<>();
+        requestMap.forEach((key, values) -> {
+            String strs = "";
+            for(String value : values) {
+                strs = strs + value;
+            }
+            System.out.println(("key值为"+key+"value为："+strs));
+            paramsMap.put(key, strs);
+        });
+
+        //调用SDK验证签名
+        try {
+            return  AlipaySignature.rsaCheckV1(paramsMap, AlipayProperties.getPublicKey(), AlipayProperties.getCharset(), AlipayProperties.getSignType());
+        } catch (AlipayApiException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.out.println("*********************验签失败********************");
+            return false;
+        }
+    }
+
 }

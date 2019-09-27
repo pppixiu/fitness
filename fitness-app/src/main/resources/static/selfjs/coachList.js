@@ -186,7 +186,7 @@ $(window).scroll(function () {
                 if (data.code == "0") {
                     var addCoachList = data.data;
                     if (addCoachList == "") {
-                        alert("已经加载全部教练！")
+                        $('#addAllCoach').text("已经加载全部教练");
                     } else {
                         var html = '';
                         addCoachList
