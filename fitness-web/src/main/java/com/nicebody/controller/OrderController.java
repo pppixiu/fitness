@@ -111,7 +111,7 @@ public class OrderController {
         if (returnPay == null) {
             return "redirect:index";
         }
-        writeCookie(response, "paysuc", "succwss");
+        writeCookie(response, "paysuc", "success");
         onlineOrderService.updateOnlineOrder(returnPay.getOut_trade_no(), 1);
         return "redirect:/index";
     }
