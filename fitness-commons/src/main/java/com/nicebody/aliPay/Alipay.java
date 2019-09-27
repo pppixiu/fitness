@@ -6,6 +6,7 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.alipay.api.response.AlipayTradePagePayResponse;
 import com.nicebody.alipay.AlipayBean;
 import org.springframework.stereotype.Component;
 
@@ -48,6 +49,8 @@ public class Alipay {
         // 封装参数
         alipayRequest.setBizContent(JSON.toJSONString(alipayBean));
         // 3、请求支付宝进行付款，并获取支付结果
+
+        AlipayTradePagePayResponse response = alipayClient.pageExecute(alipayRequest);
         String result = alipayClient.pageExecute(alipayRequest).getBody();
         // 返回付款信息
         return result;

@@ -62,4 +62,10 @@ public class OnlineOrderMapperTest {
         onlineOrderMapper.insertOnlineCourse(onlineCourse);
         Assert.assertEquals(3, (long)onlineCourse.getOnlineId());
     }
+
+    @Test
+    public void updateOnlineOrderStatus(){
+        int i = onlineOrderMapper.updateOnlineOrderStatus("1569502865994", 1);
+        Assert.assertEquals(1, i);
+    }
 }

@@ -60,6 +60,11 @@ public class OnlineOrderServiceImpl implements OnlineOrderService {
 
     }
 
+    @Override
+    public int updateOnlineOrder(String orderCode, Integer orderStatus) {
+        return 0;
+    }
+
     private boolean verifyOnlineOrder(OnlineOrder onlineOrder) {
         if (onlineOrder.getTimeBucket() == null || "".equals(onlineOrder.getTimeBucket())) {
             return false;

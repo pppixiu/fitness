@@ -15,6 +15,7 @@ public interface OnlineOrderService {
 
     /**
      * 根据用户id查询用户的所有订单
+     *
      * @param userId
      * @return
      */
@@ -22,8 +23,18 @@ public interface OnlineOrderService {
 
     /**
      * 创建新订单
+     *
      * @param onlineOrder
      * @return
      */
     OnlineOrder createOnlineOrder(OnlineOrder onlineOrder);
+
+    /**
+     * 更改订单状态
+     *
+     * @param orderCode
+     * @param orderStatus
+     * @return
+     */
+    int updateOnlineOrder(String orderCode, Integer orderStatus);
 }
