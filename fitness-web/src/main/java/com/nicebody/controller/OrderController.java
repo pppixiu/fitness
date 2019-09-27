@@ -12,10 +12,12 @@ import com.nicebody.service.OnlineOrderService;
 import com.nicebody.service.PayService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.ResultVO;
+import com.sun.net.httpserver.Authenticator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -103,21 +105,22 @@ public class OrderController {
     @RequestMapping(value = "/alipayreturnget", method = {RequestMethod.GET})
     public String returnPayGet(HttpServletResponse response, AliReturnDTO returnPay, HttpServletRequest request)
             throws IOException {
-//        response.setContentType("type=text/html;charset=UTF-8");
         if (!alipay.checkSign(request)) {
-//            response.getWriter().write("failture");
-//            return;
+            return "redirect:index";
         }
         if (returnPay == null) {
-//            response.getWriter().write("success");
-//            return;
-            return "index";
+            return "redirect:index";
         }
-//        if (returnPay.getTrade_status().equals("TRADE_SUCCESS")) {
-//            tbPaymentRecordsService.aliPaySuccess(returnPay);
-//        }
-//        response.getWriter().write("success");
-        return "index";
+        writeCookie(response, "paysuc", "succwss");
+        onlineOrderService.updateOnlineOrder(returnPay.getOut_trade_no(), 1);
+        return "redirect:/index";
+    }
+
+    public static void writeCookie(HttpServletResponse response, String cookieName,String value){
+        Cookie cookie = new Cookie(cookieName,value);
+        cookie.setPath("/");
+        cookie.setMaxAge(3600);
+        response.addCookie(cookie);
     }
 
 }
