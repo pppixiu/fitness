@@ -35,6 +35,7 @@ public class OrderController {
      * @throws AlipayApiException
      */
     @PostMapping(value = "alipay")
+    @ResponseBody
     public String alipay(String outTradeNo, String subject, String totalAmount, String body) throws AlipayApiException {
         System.out.println(outTradeNo + "  " + subject + "  " + totalAmount + "  " + body);
         AlipayBean alipayBean = new AlipayBean();
