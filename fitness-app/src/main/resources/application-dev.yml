@@ -5,7 +5,7 @@ spring:
       max-request-size: 10240MB
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://106.14.115.219:8085/nicenoreference?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://106.14.115.219:8085/nicenoreference?characterEncoding=utf-8&serverTimezone=CTT&useSSL=false
     username: root
     password: nicebody
     driverClassName: com.mysql.cj.jdbc.Driver

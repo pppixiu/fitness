@@ -133,7 +133,9 @@ function getcoachlist() {
                             + item.id
                             + "'"
                             + ')"><div class="card card-product">'
-                            + '<div class="card-image"><a><img class="img" src="/images/coachList/blog04.jpeg"></a></div>'
+                            + '<div class="card-image"><a><img class="img" src="'
+                            + item.imageurl
+                            + '"></a></div>'
                             + '<div class="table">'
                             + '<h6 class="category text-rose">'
                             + item.count
@@ -184,7 +186,7 @@ $(window).scroll(function () {
                 if (data.code == "0") {
                     var addCoachList = data.data;
                     if (addCoachList == "") {
-                        alert("已经加载全部教练！")
+                        $('#addAllCoach').text("已经加载全部教练");
                     } else {
                         var html = '';
                         addCoachList
@@ -196,7 +198,9 @@ $(window).scroll(function () {
                                     + item.id
                                     + "'"
                                     + ')"><div class="card card-product">'
-                                    + '<div class="card-image"><a><img class="img" src="/images/coachList/blog04.jpeg"></a></div>'
+                                    + '<div class="card-image"><a><img class="img" src="'
+                                    + item.imageurl
+                                    + '"></a></div>'
                                     + '<div class="table">'
                                     + '<h6 class="category text-rose">'
                                     + item.count

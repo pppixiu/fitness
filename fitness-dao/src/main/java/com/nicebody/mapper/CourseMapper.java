@@ -25,13 +25,14 @@ public interface CourseMapper {
      * @return
      */
     List<Course> queryCourseList(@Param("rowIndex") int rowIndex,
-                                     @Param("pageSize") int pageSize,
-                                     @Param("courseCondition") Course courseCondition,
-                                     @Param("orderByCondition") String orderByCondition);
+                                 @Param("pageSize") int pageSize,
+                                 @Param("courseCondition") Course courseCondition,
+                                 @Param("orderByCondition") String orderByCondition);
 
 
     /**
      * 查询总数
+     *
      * @param rowIndex
      * @param pageSize
      * @param courseCondition
@@ -39,13 +40,14 @@ public interface CourseMapper {
      * @return
      */
     int selectCount(@Param("rowIndex") int rowIndex,
-                                     @Param("pageSize") int pageSize,
-                                     @Param("courseCondition") Course courseCondition,
-                                     @Param("orderByCondition") String orderByCondition);
+                    @Param("pageSize") int pageSize,
+                    @Param("courseCondition") Course courseCondition,
+                    @Param("orderByCondition") String orderByCondition);
 
 
     /**
      * 通过CourseId查询course
+     *
      * @param courseId
      * @return
      */
@@ -53,6 +55,7 @@ public interface CourseMapper {
 
     /**
      * 通过userId查询course信息
+     *
      * @param userId
      * @return
      */
@@ -61,16 +64,13 @@ public interface CourseMapper {
 
     /**
      * 根据coachId查询所有课程信息
+     *
      * @param coachId
      * @param rowIndex
      * @param pageSize
      * @return
      */
-    List<Course> queryCourseByCoachId(int coachId,int rowIndex,int pageSize);
-
-
-
-
+    List<Course> queryCourseByCoachId(@Param("coachId") int coachId, @Param("rowIndex") int rowIndex, @Param("pageSize") int pageSize);
 
 
 }

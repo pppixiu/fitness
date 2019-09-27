@@ -19,9 +19,6 @@ Date.prototype.Format = function(fmt) {
     return fmt;
 }
 
-function changeVerifyCode(img) {
-    img.src = "ptcha?" + Math.floor(Math.random() * 100);
-}
 
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

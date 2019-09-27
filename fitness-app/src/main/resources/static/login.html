@@ -37,7 +37,19 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	});
 </script>
 <!-- start-smoth-scrolling -->
+<style>
+	input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+		-webkit-box-shadow: 0 0 0px 1000px black inset
+	}
+	input{
+		text-fill-color: #999999;
+		-webkit-text-fill-color: #999999;
+	}
+	::-webkit-input-placeholder {
+		color:#999999;
+	}
 
+</style>
 </head>
 <body>
 
@@ -55,8 +67,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<div class="col-lg-4 pull-right container" style="background:black;height: 300px; border-radius: 10px;text-align: center;">
 		<form style="padding-top: 15px;">
 			<span style="font-family: '微软雅黑 Light';font-size: x-large;color:#000000;"><a style="color:#DDDDDD;font-weight: 800;">登录</a></span><br>
-			<input id="phone" type="text" style="margin-top: 30px; background-color: black;color: white;width: 300px; height: 50px; border-style: none" placeholder="请输入手机号：" 、>
-			<input id="smsCode" type="text" style="margin-top: 30px; background-color: black;color: white;width: 225px; height: 50px; border-style: none" placeholder="请输入验证码：" 、>
+			<input id="phone" type="text" style="margin-top: 30px; background-color: black;color: white;width: 300px; height: 50px; border-style: none" placeholder="请输入手机号：" >
+			<input id="smsCode" type="text" style="margin-top: 30px; background-color: black;color: white;width: 225px; height: 50px; border-style: none" placeholder="请输入验证码：" >
 			<a  style="color:#DDDDDD; margin-top: 50px;border:white;" onclick="phonefunction()">获取验证码</a><br>
 			<input type="button" onclick="buttonfunction()" onmouseover="this.style.backgroundColor='#Ff3366 '" onmouseout="this.style.backgroundColor='white'" style="border: white;background-color: white;width: 70%;border-radius: 5px;margin-top: 50px;padding: 5px 0px;"value="登录">
 		</form>
