@@ -13,6 +13,7 @@
     <!--公共js头和尾-->
     <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="js/common/common.js"></script>
+    <script type="text/javascript" src="/js/jquery.cookie.js"></script>
 
     <!--瀑布流-->
     <link href="/css/blog_index/cards-style.css" rel='stylesheet' type='text/css'/>
@@ -56,6 +57,19 @@
 
     </style>
 
+    <script>
+        var arr = document.cookie;
+        var arrCookie = arr.split(";");
+        for (var i = 0; i < arrCookie.length; i++) {
+            var arrs = arrCookie[i].split("=");
+            if(arrs[1] == 'success'){
+                alert("支付成功！");
+                var date=new Date();
+                date.setTime(date.getTime()-10000);
+                document.cookie="paysuc=v; expires="+date.toGMTString();
+            }
+        }
+    </script>
 </head>
 <body>
 <!--头-->

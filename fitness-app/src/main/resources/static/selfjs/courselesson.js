@@ -125,7 +125,9 @@ $(function () {
                                     '                                </div>\n' +
                                     '                            </a>\n' +
                                     '                                <div class="shizhan-intro-box"><a href="courseInfo.html">\n' +
-                                    '                                    <a href="courseInfo/?courseId=" style="text-decoration:none;margin-top: 10px;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
+                                    '                                    <a href="?courseId=' +
+                                                                          item.id +
+                                                                          '" style="text-decoration:none;margin-top: 10px;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
                                     '                                                                                               title="' + item.title + '">\n' +
                                     '                                        ' + item.title + '</p></a>\n' +
                                     '                                    <div class="evaluation-box">\n' +

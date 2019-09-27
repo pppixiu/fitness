@@ -119,6 +119,7 @@ function getCoachList() {
             });
 }
 
+
 $(function () {
     getCourseList();
     getCoachList();

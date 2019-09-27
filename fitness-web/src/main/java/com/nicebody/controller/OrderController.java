@@ -48,6 +48,7 @@ public class OrderController {
      */
     @PostMapping(value = "alipay")
     @ResponseBody
+    @LoginRequired
     public String alipay(String outTradeNo, String subject, String totalAmount, String body) throws AlipayApiException {
         System.out.println(outTradeNo + "  " + subject + "  " + totalAmount + "  " + body);
         AlipayBean alipayBean = new AlipayBean();
@@ -119,7 +120,7 @@ public class OrderController {
     public static void writeCookie(HttpServletResponse response, String cookieName,String value){
         Cookie cookie = new Cookie(cookieName,value);
         cookie.setPath("/");
-        cookie.setMaxAge(500);
+        cookie.setMaxAge(200);
         response.addCookie(cookie);
     }
 

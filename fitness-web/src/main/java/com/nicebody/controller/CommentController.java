@@ -2,6 +2,7 @@ package com.nicebody.controller;
 
 import com.nicebody.enums.CommentTypeEnum;
 import com.nicebody.enums.UserCenterInfoEnum;
+import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.Comment;
 import com.nicebody.pojo.UserProfile;
 import com.nicebody.service.CommentService;
@@ -51,6 +52,7 @@ public class CommentController {
 
     @PostMapping("addblogcomment")
     @ResponseBody
+    @LoginRequired
     public ResultVO addBlogComment(String content, Integer refId, Integer parentId, HttpServletRequest request) {
         CommentVO commentVO;
         if (content != null && content != "" && refId != null) {

@@ -65,6 +65,7 @@ public class UserController {
     }
 
     @GetMapping("/courselist")
+    @LoginRequired
     public ResultVO getCourseList(HttpServletRequest request) {
         //TODO 权限管理
         List<CourseVO> courseVOList = new ArrayList<>();
@@ -87,6 +88,7 @@ public class UserController {
     }
 
     @GetMapping("/coachlist")
+    @LoginRequired
     public ResultVO getCoachList(int pageIndex, int pageSize, HttpServletRequest request) {
         //TODO 权限管理
         UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userProfile");

@@ -239,10 +239,10 @@ function likefuncation() {
  */
 function alipayOnline(action) {
     document.getElementById("form").action = action;
-    $('#outTradeNo').val(generateTimeReqestNumber());
-    $('#subject').val($('#exampleInputName').text() + "在线教练课程");
-    $('#totalAmount').val(online(price));
-    $('#body').val("NICEBODY在线教练课程");
+    $('#coachId').val(coachId);
+    $('#timeBucket').val(onlineTime);
+    $('#totalMoney').val(online(price));
+    $('#persistTime').val(price);
     document.getElementById("form").submit();
 }
 
@@ -327,12 +327,12 @@ function hiddenhour() {
  * @type {number}
  */
 function selectPcs() {
-    var onlineCoachTime = new Array();
+    var onlineCoachTime = '';
     var pcs = 0;
     var input = document.getElementsByName("frame");
     for(var i =0;i<input.length;i++){
       if (input[i].checked == true){
-          onlineCoachTime[pcs] = input[i].value;
+          onlineCoachTime += input[i].value+'|';
           pcs += 1;
 
       }

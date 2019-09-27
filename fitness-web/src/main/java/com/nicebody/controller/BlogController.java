@@ -1,5 +1,6 @@
 package com.nicebody.controller;
 
+import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.BlogImage;
 import com.nicebody.pojo.BlogLike;
@@ -162,15 +163,20 @@ public class BlogController {
      * @return
      */
     @RequestMapping("/adduserblog")
+    @LoginRequired
     @ResponseBody
-    public ResultVO addUserBlog(Blog blog, HttpSession session){
+    public ResultVO addUserBlog(Blog blog, HttpServletRequest request){
         String content = blog.getBlogContent();
         // 筛选多余img标签
         Pattern pattern = Pattern.compile("\\<+img.*?\\>");
         Matcher matcher = pattern.matcher(content);
         String blogContent = matcher.replaceAll(" ");
 
-        blog.setUserId(10);
+        UserProfile userProfile = new UserProfile();
+        HttpSession session = request.getSession();
+        userProfile = (UserProfile) session.getAttribute("userProfile");
+
+        blog.setUserId(userProfile.getUserId());
         blog.setBlogContent(blogContent);
         blog.setViewCount(0);
         blog.setLikeCount(0);
@@ -203,6 +209,7 @@ public class BlogController {
      */
     @RequestMapping(value = "/upload")
     @ResponseBody
+    @LoginRequired
     public WangEditor uploadPhoto(@RequestParam("file")MultipartFile file,
                                 HttpServletRequest request){
         if(file.isEmpty()) {
@@ -248,6 +255,7 @@ public class BlogController {
      */
     @RequestMapping("/modifylikecount")
     @ResponseBody
+    @LoginRequired
     public ResultVO modifyLikeCount(@RequestParam(name = "blogId") Integer blogId,
                                     HttpServletRequest request) {
        // 判断值

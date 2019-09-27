@@ -334,7 +334,7 @@
             <span class="pop-close" style="font-size: 20px; ">×</span>
         </div>
 
-        <form id="form" action="/order/alipay" method="post" class="form-horizontal"
+        <form id="form" action="/order/createonlineorder" method="post" class="form-horizontal"
               style="margin-top: 30px;margin-bottom: 30px;">
             <div class="form-group ">
                 <label class="col-md-3" for="exampleInputName">教练：</label>
@@ -390,10 +390,10 @@
                     <input type="text" class="form-control" id="exampleInputMessage" placeholder="请输入您的锻炼方向">
                 </div>
             </div>
-            <input type="hidden" name="outTradeNo" id="outTradeNo">
-            <input type="hidden" name="totalAmount" id="totalAmount">
-            <input type="hidden" name="body" id="body">
-            <input type="hidden" name="subject" id="subject">
+            <input type="hidden" name="coachId" id="coachId">
+            <input type="hidden" name="timeBucket" id="timeBucket">
+            <input type="hidden" name="totalMoney" id="totalMoney">
+            <input type="hidden" name="persistTime" id="persistTime">
 
             <div class="pull-left col-md-3" style="margin-top: 20px;">
                 <label>总计：<a id="title-price" style="color: black">0</a>元</label>
@@ -411,7 +411,7 @@
         <div class="pop-content">
             <div class="pop-foot">
                 <div class="content">
-                    <p><a href="javascript:void(0)" onclick="alipayOnline('/order/alipay')" class="dashang"
+                    <p><a href="javascript:void(0)" onclick="alipayOnline('/order/createonlineorder')" class="dashang"
                           title="打赏，支持一下">支付宝支付</a></p>
                 </div>
             </div>
