@@ -63,7 +63,7 @@ public class OrderController {
     @ResponseBody
     public String createOnlineOrder(OnlineOrder onlineOrder, HttpServletRequest request) throws AlipayApiException {
         if (onlineOrder != null) {
-            UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userprofile");
+            UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userProfile");
             int userId = userProfile.getUserId();
             onlineOrder.setUserId(userId);
             String result = null;

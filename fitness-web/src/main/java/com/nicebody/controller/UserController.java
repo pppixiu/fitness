@@ -8,10 +8,12 @@ import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.CoachInfo;
 import com.nicebody.pojo.Course;
+import com.nicebody.pojo.UserProfile;
 import com.nicebody.service.OnlineOrderService;
 import com.nicebody.service.UserCenterService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.*;
+import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +40,11 @@ public class UserController {
 
     @GetMapping("/bloglist")
     @LoginRequired
-    public ResultVO getBlogList(int pageIndex, int pageSize) {
+    public ResultVO getBlogList(int pageIndex, int pageSize,  HttpServletRequest request) {
         //权限管理改为session
-        //TODO 权限管理
         Blog userBlogCondition = new Blog();
-        userBlogCondition.setUserId(6);
+        UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userProfile");
+        userBlogCondition.setUserId(userProfile.getUserId());
         List<UserBlogVO> blogVOList = new ArrayList<>();
         //取出blog集合
         UserBlogExecution userBlogExecution = userCenterService.getUserBlogByUserIdOrContentLike(pageIndex, pageSize, userBlogCondition);
@@ -62,9 +65,11 @@ public class UserController {
     }
 
     @GetMapping("/courselist")
-    public ResultVO getCourseList(@RequestParam("userId") int userId) {
+    public ResultVO getCourseList(HttpServletRequest request) {
         //TODO 权限管理
         List<CourseVO> courseVOList = new ArrayList<>();
+        UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userProfile");
+        int userId = userProfile.getUserId();
 
         UserCourseExecution userCourseExecution = userCenterService.getCourseList(userId);
         if (userCourseExecution.getCode() == UserCenterInfoEnum.SUCCESS.getState()) {
@@ -82,9 +87,10 @@ public class UserController {
     }
 
     @GetMapping("/coachlist")
-    public ResultVO getCoachList(int pageIndex, int pageSize) {
+    public ResultVO getCoachList(int pageIndex, int pageSize, HttpServletRequest request) {
         //TODO 权限管理
-        int userId = 1;
+        UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userProfile");
+        int userId = userProfile.getUserId();
         List<CoachVO> coachVOList = new ArrayList<>();
         UserCoachExecution userCoachExecution = userCenterService.getCoachList(pageIndex, pageSize, userId);
         if (userCoachExecution.getCode() == UserCenterInfoEnum.SUCCESS.getState()) {
@@ -101,9 +107,11 @@ public class UserController {
     }
 
     @GetMapping("/onlineorderlist")
-    public ResultVO getOrderList(){
+    @LoginRequired
+    public ResultVO getOrderList(HttpServletRequest request){
         //TODO session取到用户信息
-        int userId = 10;
+        UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userProfile");
+        int userId = userProfile.getUserId();
         List<OnlineOrderVO> onlineOrderVOList = onlineOrderService.getOnlineOrderList(userId);
         if (onlineOrderVOList == null || onlineOrderVOList.size() == 0){
             return ResultVOUtil.none(UserCenterInfoEnum.NO_INFO);
