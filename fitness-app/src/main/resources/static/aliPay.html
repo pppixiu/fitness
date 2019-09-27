@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="GBK">
     <title>Title</title>
+    <script src="/js/coach/jquery.min.js"></script>
 </head>
 <body>
-<H1>æ”¯ä»˜æµ‹è¯•</H1>
+<H1>Ö§¸¶²âÊÔ</H1>
 <hr>
 <div class="form-container">
     <form id="form" action="order/alipay" method="post">
-        *å•†æˆ·è®¢å• :
-        <input type="text" name="outTradeNo" value="dzcp100010001"><br>
-        *è®¢å•åç§° :
-        <input type="text" name="subject" value="çº¢é­”æ‰‹æœº"><br>
-        *ä»˜æ¬¾é‡‘é¢ :
-        <input type="text" name="totalAmount" value="0.1" ><br>
-        *å•†å“æè¿° :
-        <input type="text" name="body" value="çº¢é­”æ‰‹æœº åŠªæ¯”äºšå‡ºå“æ¸¸æˆæ‰‹æœº"><br>
-        <input type="button" value="æ”¯ä»˜å®æ”¯ä»˜" onclick="submitForm('order/alipay')">
-        <input type="button" value=" å¾®ä¿¡æ”¯ä»˜  " onclick="submitForm('order/wexpay')">
+        *ÉÌ»§¶©µ¥ :
+        <input id="ddh" type="text" name="outTradeNo" value="dzcp1000100012355131"><br>
+        *¶©µ¥Ãû³Æ :
+        <input id="subject1" type="text" name="subject" value="ºìÄ§ÊÖ»ú"><br>
+        *¸¶¿î½ğ¶î :
+        <input id="price" type="text" name="totalAmount" value="0.1" ><br>
+        *ÉÌÆ·ÃèÊö :
+        <input id="body" type="text" name="body" value="ºìÄ§ÊÖ»ú Å¬±ÈÑÇ³öÆ·ÓÎÏ·ÊÖ»ú"><br>
+        <input type="button" value="Ö§¸¶±¦Ö§¸¶" onclick="submit()">
+        <input type="button" value=" Î¢ĞÅÖ§¸¶  " onclick="submitForm('order/wexpay')">
     </form>
 </div>
+
+
+<div id="zfbcode">
+
+</div>
+
+
 </body>
 
-<script language="javascript">
-    function submitForm(action) {
-        document.getElementById("form").action = action
-        document.getElementById("form").submit()
-    }
+<script>
+    $(function() {
+        var subject = $('#subject1').val();
+        var ddh = $('#ddh').val();
+        var price = $('#price').val();
+        var body = $('#body').val();
+
+        $.ajax({
+            url:'order/alipay',
+            type:'post',
+            data:"outTradeNo="+ddh+'&subject='+subject+'&tatalAmount='+price+'&body='+body,
+            success:function (data) {
+                var res = data;
+                alert(res);
+                res = res.replace("<script>document.forms[0].submit();","<iframe name='myFrame' width='300px' height='300px;'  ></iframe>");
+                res = res.replace('name="punchout_form"','name="punchout_form" target="myFrame" ');
+                $('#zfbcode').html(res);
+                setTimeout(function (){document.getElementById('zfbcode').getElementsByTagName('form')[0].submit();},300);
+            }
+        });
+
+    });
 </script>
 
 <style>

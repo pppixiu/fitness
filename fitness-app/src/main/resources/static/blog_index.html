@@ -65,6 +65,10 @@
         .bloglist:hover{
             transform: scale(1.05);
         }
+        .img{
+            -webkit-filter: grayscale(10%) ; /* Chrome, Safari, Opera */
+            filter: grayscale(10%) ;
+        }
     </style>
 
     <script type="application/x-javascript"> addEventListener("load", function () {
@@ -164,7 +168,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button id="submit" onclick="submit()" type="button" class="btn btn-primary">保存</button>
+                    <button id="submit" onclick="submit()" class="btn btn-default" data-dismiss="modal">保存</button>
                 </div>
             </div>
         </div>
@@ -272,8 +276,8 @@
 <!--置顶和添加-->
 <div class="padded fixed right-bottom">
     <div>
-        <a href="blog_add.html" data-toggle="modal" data-target="#myModal"><span
-                class="glyphicon glyphicon-plus i-size i-color"></span></a>
+        <i data-toggle="modal" data-target="#myModal"><span
+                class="glyphicon glyphicon-plus i-size i-color"></span></i>
         <div>
             <i id="toTop-button" class="glyphicon glyphicon-chevron-up i-size i-color"></i>
         </div>

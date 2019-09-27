@@ -3,6 +3,7 @@ package com.nicebody.service.impl;
 import com.nicebody.mapper.BlogMapper;
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.BlogImage;
+import com.nicebody.pojo.BlogLike;
 import com.nicebody.service.BlogService;
 import com.nicebody.util.PageCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,14 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getUserBlogByBlogId(int blogId) {
         Blog blog = userBlogMapper.queryUserBlogByBlogId(blogId);
-
         return blog;
     }
+
+    @Override
+    public String getLikeActive(int blogId, int userId) {
+        return userBlogMapper.queryLikeActive(blogId,userId);
+    }
+
 
     @Override
     public List<Blog> getUserBlogByUserId(int pageIndex, int pageSize, Blog userBlogCondition) {
@@ -70,10 +76,22 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    @Transactional
-    public int modifyViewAndLikeCount(Blog userBlogCondition, Date updateTime) {
-        return userBlogMapper.updateViewAndLikeCount(userBlogCondition, updateTime);
+    public int addUserBlogActive(int blogId, int userId) {
+        return userBlogMapper.insertUserBlogActive(blogId,userId);
     }
+
+
+    @Override
+    @Transactional
+    public int modifyViewCount(Blog userBlogCondition) {
+        return userBlogMapper.updateViewCount(userBlogCondition);
+    }
+
+    @Override
+    public int modifyLikeCount(int blogId, int likeJudge) {
+        return userBlogMapper.updateLikeCount(blogId,likeJudge);
+    }
+
 
     @Override
     public int deleteUserBlogByBlogIdAndUserId(int userId, int blogId) {
@@ -84,4 +102,10 @@ public class BlogServiceImpl implements BlogService {
     public int deleteUserBlogImgByBlogId(int blogId) {
         return userBlogMapper.deleteUserBlogImgByBlogId(blogId);
     }
+
+    @Override
+    public int deleteBlogLike(int blogId, int userId) {
+        return userBlogMapper.deleteBlogLike(blogId,userId);
+    }
+
 }

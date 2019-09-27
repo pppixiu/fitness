@@ -1,37 +1,26 @@
-package com.nicebody.pojo;
+package com.nicebody.vo;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-/**
- * @author 曹钲
- * @since 2019/09/16 20:20
- */
-
-/**
- *  用户博客
- */
-public class Blog {
-    /** 博客ID */
+public class BlogVo {
+    @JsonProperty("blogid")
     private Integer blogId;
-    /** 博客内容 */
+    @JsonProperty("blogcontent")
     private String blogContent;
-    /** 博客浏览量 */
+    @JsonProperty("viewcount")
     private Integer viewCount;
-    /** 博客点赞量 */
+    @JsonProperty("likecount")
     private Integer likeCount;
-    /** 博客创造时间 */
+    @JsonProperty("createtime")
     private Date createTime;
-    /** 博客修改时间 */
+    @JsonProperty("updatetime")
     private Date updateTime;
-    /** 博客标题图 */
-    //TODO
-    private BlogImage userBlogImage;
-    /** 用户信息 */
-    private UserProfile userProfile;
-    /** 判断用户对博客点赞状态*/
-    private BlogLike blogLike;
-    /** 博客用户ID */
+    @JsonProperty("userid")
     private Integer userId;
+    @JsonProperty("judge")
+    private Integer likeJudge;
 
     public Integer getBlogId() {
         return blogId;
@@ -81,35 +70,19 @@ public class Blog {
         this.updateTime = updateTime;
     }
 
-    public BlogImage getUserBlogImage() {
-        return userBlogImage;
-    }
-
-    public void setUserBlogImage(BlogImage userBlogImage) {
-        this.userBlogImage = userBlogImage;
-    }
-
-    public UserProfile getUserProfile() {
-        return userProfile;
-    }
-
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
-    }
-
-    public BlogLike getBlogLike() {
-        return blogLike;
-    }
-
-    public void setBlogLike(BlogLike blogLike) {
-        this.blogLike = blogLike;
-    }
-
     public Integer getUserId() {
         return userId;
     }
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getLikeJudge() {
+        return likeJudge;
+    }
+
+    public void setLikeJudge(Integer likeJudge) {
+        this.likeJudge = likeJudge;
     }
 }

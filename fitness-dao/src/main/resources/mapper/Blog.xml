@@ -37,6 +37,12 @@
                 <result column="user_image_url" property="userImageUrl"/>
             </association>
 
+            <association property="blogLike" column="blog_id"
+                         javaType="blogLike">
+                <id column="blog_id" property="blogId"/>
+                <result column="user_id" property="userId"/>
+                <result column="is_like_active" property="isLikeActive"/>
+            </association>
         </resultMap>
 
     <!--通过用户Id查找用户博客-->
@@ -128,6 +134,19 @@
         ub.blog_id = ubi.blog_id
     </select>
 
+    <!--根据博客Id和用户Id查询博客点赞状态-->
+    <select id="queryLikeActive" resultType="String">
+        SELECT
+        ubl.blog_id,
+        ubl.user_id
+        FROM
+        tb_user_blog_like ubl
+        WHERE
+        ubl.blog_id = #{blogId}
+        AND
+        ubl.user_id = #{userId}
+    </select>
+
     <!--添加用户博客-->
     <insert id="insertUserBlog" useGeneratedKeys="true" keyColumn="blog_id" keyProperty="blogId">
        INSERT INTO
@@ -144,22 +163,40 @@
        (#{blogId},#{imageUrl},#{createTime},#{updateTime})
     </insert>
 
-    <!--更新浏览数和点赞数-->
-    <update id="updateViewAndLikeCount" parameterType="blog">
+    <!--添加用户点赞状态-->
+    <insert id="insertUserBlogActive">
+        INSERT INTO
+        tb_user_blog_like(blog_id,user_id)
+        VALUES
+        (#{blogId},#{userId})
+    </insert>
+
+    <!--更新浏览数-->
+    <update id="updateViewCount" parameterType="blog">
         update tb_user_blog
         <set>
-            <if test="userBlogCondition.viewCount != null
-                and userBlogCondition.likeCount == null">
-                view_count = view_count + 1;
+            <if test="userBlogCondition.viewCount != null">
+                view_count = #{userBlogCondition.viewCount} + 1,
             </if>
-            <if test="userBlogCondition.viewCount == null
-                and userBlogCondition.likeCount != null">
-                like_count = like_count + 1;
-            </if>
-            update_time = #{updateTime}
+            update_time = #{userBlogCondition.updateTime}
         </set>
-        where blog_id = #{blogId}
+        where blog_id = #{userBlogCondition.blogId}
     </update>
+
+    <!--更新点赞数数-->
+    <update id="updateLikeCount" parameterType="blog">
+        update tb_user_blog
+        <set>
+            <if test="likeJudge == 1">
+                like_count = like_count + 1,
+            </if>
+            <if test="likeJudge == -1">
+                like_count = like_count - 1,
+            </if>
+        </set>
+        where blog_id = ${blogId}
+    </update>
+
 
     <!--按用户ID和博客ID删除博客-->
     <delete id="deleteUserBlogByBlogIdAndUserId">
@@ -177,5 +214,12 @@
         tb_user_blog_image
         WHERE
         blog_id = #{blogId}
+    </delete>
+
+    <delete id="deleteBlogLike">
+        DELETE FROM
+        tb_user_blog_like
+        WHERE
+        blog_id = #{blogId} and user_id = #{userId}
     </delete>
 </mapper>

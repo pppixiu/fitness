@@ -2,6 +2,7 @@ package com.nicebody.service;
 
 import com.nicebody.pojo.Blog;
 import com.nicebody.pojo.BlogImage;
+import com.nicebody.pojo.BlogLike;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -20,6 +21,15 @@ public interface BlogService {
      * @return
      */
     public Blog getUserBlogByBlogId(int blogId);
+
+    /**
+     *  根据博客ID和用户ID
+     *  判断bloke
+     * @param blogId
+     * @param userId
+     * @return
+     */
+    public String getLikeActive(@Param("blogId") int blogId,@Param("userId") int userId);
 
     /**
      *  按用户ID查询用户博客
@@ -63,16 +73,28 @@ public interface BlogService {
      * @param blogImage
      * @return
      */
-    int addUserBlogImage(BlogImage blogImage);
+    public int addUserBlogImage(BlogImage blogImage);
+
+    /**
+     *  添加用户点赞状态
+     * @return
+     */
+    public int addUserBlogActive(@Param("blogId") int blogId, @Param("userId") int userId);
 
     /**
      *  按照博客Id更新浏览数
-     *  和点赞数
      * @param
      * @return
      */
-    public int modifyViewAndLikeCount(@Param("userBlogCondition") Blog userBlogCondition,
-                                      @Param("updateTime") Date updateTime);
+    public int modifyViewCount(@Param("userBlogCondition") Blog userBlogCondition);
+
+    /**
+     *  根据用户博客点赞状态
+     *  更新点赞数
+     * @return
+     */
+    public int modifyLikeCount(@Param("blogId") int blogId,@Param("likeJudge") int likeJudge);
+
 
     /**
      *  按照博客ID和用户ID删除博客
@@ -87,4 +109,11 @@ public interface BlogService {
      * @return
      */
     public int deleteUserBlogImgByBlogId(int blogId);
+
+    /**
+     *  按照博客Id删除博客点赞
+     * @param blogId
+     * @return
+     */
+    public int deleteBlogLike(@Param("blogId") int blogId, @Param("userId") int userId);
 }
