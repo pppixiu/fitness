@@ -6,6 +6,7 @@ var courseId = getQueryString('courseId');
 var courseUrl = '/course/listcourses?tagId=&pageIndex=1&pageSize=2&courseTitle=&orderByCondition=&courseLevel=';
 var cTitle;
 var cNowPrice;
+var judgeBuy = 0;
 
 /**
  * 显示弹出框
@@ -49,7 +50,7 @@ $(function () {
                         $("#isNo").attr("onclick",null);
                         $('#isNo').css("background-color","#999999");
                         $('#isNo').css("border-color","#999999");
-
+                        judgeBuy = 1;
                     }
 
                     if (data.code == "0") {
@@ -68,13 +69,23 @@ $(function () {
 
                         courseLesson.courselesson
                             .map(function (item, index) {
-                                html += ' <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;font">'
-                                    + '<h3> <a style="text-decoration: none;">'
-                                    + item.lessontitle
-                                    + '</a></h3>'
-                                    + '<div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">'
-                                    + item.lessondesc
-                                    + '</div></div>'
+                                if(judgeBuy == 1) {
+                                    html += ' <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;font">'
+                                        + '<h3> <a style="text-decoration: none; color: black" href="'+ item.lessonurl +'">'
+                                        + item.lessontitle
+                                        + '</a></h3>'
+                                        + '<div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">'
+                                        + item.lessondesc
+                                        + '</div></div>'
+                                }else {
+                                    html += ' <div class="chapter course-wrap " style=" margin-bottom: 8px;padding: 24px 32px 32px;background: #fff;box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);border-radius: 12px;font">'
+                                        + '<h3> <a style="text-decoration: none;">'
+                                        + item.lessontitle
+                                        + '</a></h3>'
+                                        + '<div class="chapter-description" style="margin-top: 2px;font-size: 12px;color: #545c63;line-height: 18px;">'
+                                        + item.lessondesc
+                                        + '</div></div>'
+                                }
                             })
 
                         $('#course-lesson').html(html);
@@ -96,7 +107,7 @@ $(function () {
                                 html += '<div class="shizhan-course-wrap l  ">\n' +
                                     '                        <a href="courseInfo.html">\n' +
                                     '                        </a>\n' +
-                                    '                        <div class="shizhan-course-box"><a href="//class.imooc.com/sale/webfullstack">\n' +
+                                    '                        <div class="shizhan-course-box"><a href="">\n' +
                                     '                            <!-- 学习进度 -->\n' +
                                     '\n' +
                                     '                        </a>\n' +

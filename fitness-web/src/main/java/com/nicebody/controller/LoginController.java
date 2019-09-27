@@ -90,8 +90,6 @@ public class LoginController {
         String myphone = phoneAuth.getPhoneNumber();
         //int userId = phoneAuth.getUserId();
         //System.out.println(userId);
-        System.out.println(myphone);
-        System.out.println(authNumber);
         //验证码的校验
         if(smsCode.equals(authNumber)){
             UserProfile userProfile = new UserProfile();
