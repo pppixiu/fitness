@@ -79,7 +79,7 @@ function getBlogList() {
                 })
                 if (blogList.length == 0) {
                     // alert("抱歉，没有该博客信息")
-                    $('#not-find').text("\抱歉！没有找到相关博客信息")
+                    $('#not-find').text("抱歉！没有找到相关博客信息")
                 }
                     $('#bloglist').html(html);
             }
@@ -155,11 +155,12 @@ function header() {
         headerUrl,
         function (data) {
             var imghtml='';
+            var offhtml='';
             var info = data;
             if(info==''){
                 alert('没有获取到登录信息');
             }else {
-                imghtml += '<img style="border-radius: 50px;width: 40px;height: 40px;position: absolute;top: -30px; margin-left: 10px;" src="'
+                imghtml += '<img style="border-radius: 50px;width: 40px;height: 40px;position: absolute;top: -30px; margin-left: 10px; margin-right: " src="'
                     + info.userImageUrl
                     + '" onclick="window.open('
                     + "'"
@@ -167,7 +168,26 @@ function header() {
                     + info.userId
                     + "'"
                     + ')">';
+                offhtml += '<a onclick="quitUser();" style="margin-left: 20px;" id="write-off" href="#" onmouseover="this.style.color='
+                    + "'"
+                    + '#b8d8ba'
+                    + "'"
+                    + ' "onmouseout="this.style.color='
+                    + "'"
+                    + '#ffffff'
+                    + "'"
+                    + '">注销</a>';
                 $('#user-img').html(imghtml);
+                $('#write-off').html(offhtml);
             }
         });
+}
+
+function quitUser() {
+    var quitUrl='/header/quitUser';
+
+    if(confirm("是否要注销用户?")==true){
+        $.getJSON(quitUrl);
+        window.location.href="/index";
+    }
 }

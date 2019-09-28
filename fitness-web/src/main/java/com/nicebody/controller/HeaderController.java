@@ -32,4 +32,10 @@ public class HeaderController {
 
         return userProfile;
     }
+
+    @RequestMapping("/quitUser")
+    public void quitUser(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.removeAttribute("userProfile");
+    }
 }
