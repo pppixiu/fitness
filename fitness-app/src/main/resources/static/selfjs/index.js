@@ -12,14 +12,21 @@ function getCourseList() {
                     var blogList = data.data;
                     blogList
                         .map(function (item, index) {
-                            html += '<div class="shizhan-course-wrap l  ">\n' +
-                                '                        <a href="courseInfo.html">\n' +
+                            html += '<div class="shizhan-course-wrap l onclick="window.open('
+                                + "'"
+                                + '/course/courseInfo/?courseId='
+                                + item.id
+                                + "'"
+                                + ')">\n'
+                                + '<a href="courseInfo.html">\n' +
                                 '                        </a>\n' +
                                 '                        <div class="shizhan-course-box"><a href="//class.imooc.com/sale/webfullstack">\n' +
                                 '                            <!-- 学习进度 -->\n' +
                                 '\n' +
                                 '                        </a>\n' +
-                                '                            <div class="box"><a href="courseInfo.html">\n' +
+                                '                            <div class="box"><a href="/course/courseInfo/?courseId='
+                                 + item.id +
+                                '">\n' +
                                 '                                <div class="img-box">\n' +
                                 '                                    <div class="shizhan-course-gradient"></div>\n' +
                                 '                                    <img class="shizhan-course-img" alt="' + item.title + '" src="' + item.url + '">\n' +
@@ -32,7 +39,9 @@ function getCourseList() {
                                 '                                    </div>\n' +
                                 '                                </div>\n' +
                                 '                            </a>\n' +
-                                '                                <div class="shizhan-intro-box"><a href="courseInfo.html">\n' +
+                                '                                <div class="shizhan-intro-box"><a href="/course/courseInfo/?courseId=\'' +
+                                item.id +
+                                '">\n' +
                                 '                                    <a href="courseInfo.html" style="text-decoration:none;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
                                 '                                                                                               title="' + item.title + '">\n' +
                                 '                                        ' + item.title + '</p></a>\n' +
@@ -101,10 +110,15 @@ function getCoachList() {
                     var blogList = data.data;
                     blogList
                         .map(function (item, index) {
-                            html += ' <div class="col-xs-3" style="margin-bottom: 10px;\n">' +
+                            html += ' <div class="col-xs-3" style="margin-bottom: 10px;\n"onclick="window.open('
+                                + "'"
+                                + '/coach/coachPage?coachId='
+                                + item.id
+                                + "'"
+                                + ')">' +
                                 ' <div class="col-xs-12 radis shadow"\n' +
                                 '                                 style="margin: 0 5px; padding: 0;background-color: white; padding-bottom: 20px;">\n' +
-                                '                                <img src="' + item.imageurl + '" alt="" style="width: 100%; margin-bottom: 15px; min-height: 170px; max-height: 170px; overflow: hidden;">\n' +
+                                '                                <img src="' + item.imageurl + '" alt="" style="width: 100%; border-radius: 10px; margin-bottom: 15px; min-height: 170px; max-height: 170px; overflow: hidden;">\n' +
                                 '                                <div class="col-xs-12" style="text-align: left; font-size: 16px; font-weight: 700;"><span>' + item.name + '</span>\n' +
                                 '                                </div>\n' +
                                 '                                <div class="col-xs-4" style="text-align: left; font-size: 12px; margin-top: 10px"><span>收藏:' + item.count + '</span>\n' +
