@@ -3,6 +3,7 @@ package com.nicebody.mapper;
 
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.CourseLesson;
+import com.nicebody.pojo.UserCourse;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -70,15 +71,23 @@ public interface CourseMapper {
      * @param pageSize
      * @return
      */
-    List<Course> queryCourseByCoachId(int coachId,int rowIndex,int pageSize);
+    List<Course> queryCourseByCoachId(int coachId, int rowIndex, int pageSize);
 
     /**
      * 根据userId,courseId 查询信息
+     *
      * @param userId
      * @param courseId
      * @return
      */
-    int queryUserCourseCount(int userId,int courseId);
+    int queryUserCourseCount(int userId, int courseId);
 
+    /**
+     * 插入用户购买课程信息
+     *
+     * @param userCourse
+     * @return
+     */
+    int insertUserCourse(@Param("userCourse") UserCourse userCourse);
 
 }

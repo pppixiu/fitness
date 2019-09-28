@@ -1,5 +1,6 @@
 package com.nicebody.service;
 
+import com.nicebody.dto.CourseOrderDTO;
 import com.nicebody.dto.OnlineOrderDTO;
 import com.nicebody.pojo.OnlineOrder;
 import com.nicebody.vo.OnlineOrderVO;
@@ -45,4 +46,12 @@ public interface OnlineOrderService {
      * @return
      */
     OnlineOrder createCourseOrder(OnlineOrder onlineOrder);
+
+    /**
+     * 根据订单号查询出订单中的courseId 跟 userId
+     *
+     * @param orderCode
+     * @return
+     */
+    CourseOrderDTO getCourseOrderId(String orderCode);
 }

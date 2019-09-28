@@ -1,5 +1,6 @@
 package com.nicebody.service.impl;
 
+import com.nicebody.dto.CourseOrderDTO;
 import com.nicebody.enums.OnlineOrderEnum;
 import com.nicebody.enums.OrderStatusEnum;
 import com.nicebody.exception.OnlineOrderException;
@@ -82,6 +83,11 @@ public class OnlineOrderServiceImpl implements OnlineOrderService {
             throw new OnlineOrderException(OnlineOrderEnum.CREATE_FAILED);
         }
         return courseOrder;
+    }
+
+    @Override
+    public CourseOrderDTO getCourseOrderId(String orderCode) {
+        return onlineOrderMapper.queryOrderByCode(orderCode);
     }
 
     /**

@@ -5,6 +5,7 @@ import com.nicebody.mapper.CourseMapper;
 import com.nicebody.pojo.Course;
 import com.nicebody.pojo.CourseLesson;
 import com.nicebody.pojo.Tag;
+import com.nicebody.pojo.UserCourse;
 import com.nicebody.util.OrderByUtil;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.locks.Condition;
 
@@ -72,7 +74,16 @@ public class CourseDaoTest {
         System.out.println(count);
     }
 
-
+    @Test
+    public void insertUserCourse(){
+        UserCourse userCourse = new UserCourse();
+        userCourse.setCourseId(438);
+        userCourse.setUserId(1);
+        userCourse.setCreateTime(new Date());
+        userCourse.setUpdateTime(new Date());
+        int i = courseMapper.insertUserCourse(userCourse);
+        Assert.assertEquals(1, i);
+    }
 
 
 

@@ -5,15 +5,20 @@ import com.nicebody.aliPay.Alipay;
 import com.alipay.api.AlipayApiException;
 import com.nicebody.alipay.AlipayBean;
 import com.nicebody.dto.AliReturnDTO;
+import com.nicebody.dto.CourseOrderDTO;
 import com.nicebody.enums.OrderStatusEnum;
 import com.nicebody.interceptor.LoginRequired;
+import com.nicebody.mapper.CourseMapper;
 import com.nicebody.pojo.OnlineOrder;
+import com.nicebody.pojo.UserCourse;
 import com.nicebody.pojo.UserProfile;
+import com.nicebody.service.CourseService;
 import com.nicebody.service.OnlineOrderService;
 import com.nicebody.service.PayService;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.ResultVO;
 import com.sun.net.httpserver.Authenticator;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 订单接口
@@ -40,6 +46,8 @@ public class OrderController {
     private OnlineOrderService onlineOrderService;
     @Autowired
     private Alipay alipay;
+    @Autowired
+    private CourseService courseService;
 
     /**
      * 阿里支付
@@ -145,12 +153,25 @@ public class OrderController {
         if (!alipay.checkSign(request)) {
             return "redirect:/index";
         }
+        //是否得到实体信息
         if (returnPay == null) {
             return "redirect:/index";
         }
-        writeCookie(response, "paysuc", "success");
-        //修改订单状态
-        onlineOrderService.updateOnlineOrder(returnPay.getOut_trade_no(), OrderStatusEnum.PAYING_SUCCESS.getCode());
+        CourseOrderDTO courseOrderDTO = onlineOrderService.getCourseOrderId(returnPay.getOut_trade_no());
+        if(courseOrderDTO.getCourseId() != null){
+            //修改订单状态
+            onlineOrderService.updateOnlineOrder(returnPay.getOut_trade_no(), OrderStatusEnum.PAYING_SUCCESS.getCode());
+            UserCourse userCourse = new UserCourse();
+            BeanUtils.copyProperties(courseOrderDTO, userCourse);
+            userCourse.setCreateTime(new Date());
+            userCourse.setUpdateTime(new Date());
+            int i = courseService.createUserCourse(userCourse);
+            writeCookie(response, "paysuc", "success");
+        }else {
+            //修改订单状态
+            onlineOrderService.updateOnlineOrder(returnPay.getOut_trade_no(), OrderStatusEnum.PAYING_SUCCESS.getCode());
+            writeCookie(response, "paysuc", "success");
+        }
         return "redirect:/index";
     }
 

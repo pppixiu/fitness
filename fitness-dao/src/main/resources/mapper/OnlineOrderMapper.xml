@@ -81,4 +81,14 @@
          #{courseOrder.updateTime}
         )
     </insert>
+
+    <select id="queryOrderByCode" resultType="com.nicebody.dto.CourseOrderDTO">
+        SELECT
+        course_id,
+        user_id
+        FROM
+        tb_order
+        WHERE
+        order_code = #{orderCode}
+    </select>
 </mapper>

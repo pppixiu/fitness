@@ -1,5 +1,6 @@
 package com.nicebody.dao;
 
+import com.nicebody.dto.CourseOrderDTO;
 import com.nicebody.mapper.OnlineOrderMapper;
 import com.nicebody.pojo.OnlineCourse;
 import com.nicebody.pojo.OnlineOrder;
@@ -82,5 +83,11 @@ public class OnlineOrderMapperTest {
 
         int i = onlineOrderMapper.insertCourseOrder(onlineOrder);
         Assert.assertEquals(1, i);
+    }
+
+    @Test
+    public void queryOrderByCode(){
+        CourseOrderDTO courseOrderDTO = onlineOrderMapper.queryOrderByCode("1569560667977");
+        System.out.println(courseOrderDTO.getCourseId());
     }
 }

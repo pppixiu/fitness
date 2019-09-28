@@ -181,4 +181,12 @@
 
     </select>
 
+    <insert id="insertUserCourse" parameterType="userCourse">
+        INSERT INTO
+        tb_user_course(user_id, course_id, create_time, update_time)
+        VALUES (
+        #{userCourse.userId}, #{userCourse.courseId}, #{userCourse.createTime}, #{userCourse.updateTime}
+        )
+    </insert>
+
 </mapper>
