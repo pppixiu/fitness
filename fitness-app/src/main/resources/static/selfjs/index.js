@@ -42,7 +42,7 @@ function getCourseList() {
                                 '                                <div class="shizhan-intro-box"><a href="/course/courseInfo/?courseId=\'' +
                                 item.id +
                                 '">\n' +
-                                '                                    <a href="courseInfo.html" style="text-decoration:none;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
+                                '                                    <a href="/course/courseInfo/?courseId='+item.id+ '"'+ 'style="text-decoration:none;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
                                 '                                                                                               title="' + item.title + '">\n' +
                                 '                                        ' + item.title + '</p></a>\n' +
                                 '                                    <div class="evaluation-box">\n' +
@@ -79,7 +79,7 @@ function getCourseList() {
                                 '\n' +
                                 '                                        </a>\n' +
                                 '                                            <div class="r clearfix"><a href="//class.imooc.com/sale/webfullstack"></a>\n' +
-                                '                                                <a href="courseInfo.html"\n' +
+                                '                                                <a  href="/course/courseInfo/?courseId='+item.id+ '"'+
                                 '                                                   style="color:#B7BBBF;line-height: 24px;font-size: 12px;text-decoration:none;">了解详情</a>\n' +
                                 '                                            </div>\n' +
                                 '                                        </div>\n' +
