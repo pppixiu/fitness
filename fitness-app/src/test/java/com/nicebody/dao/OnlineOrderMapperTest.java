@@ -3,6 +3,7 @@ package com.nicebody.dao;
 import com.nicebody.mapper.OnlineOrderMapper;
 import com.nicebody.pojo.OnlineCourse;
 import com.nicebody.pojo.OnlineOrder;
+import com.nicebody.util.OrderUtil;
 import com.nicebody.vo.OnlineOrderVO;
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,7 +40,7 @@ public class OnlineOrderMapperTest {
         onlineOrder.setUserId(10);
         onlineOrder.setTimeBucket("16|17|18");
         onlineOrder.setCreateTime(new Date());
-        onlineOrder.setUpdateTimme(new Date());
+        onlineOrder.setUpdateTime(new Date());
         onlineOrder.setStartTime(new Date());
         onlineOrder.setEndTime(new Date());
         onlineOrder.setPersistTime(0);
@@ -66,6 +67,20 @@ public class OnlineOrderMapperTest {
     @Test
     public void updateOnlineOrderStatus(){
         int i = onlineOrderMapper.updateOnlineOrderStatus("1569502865994", 1);
+        Assert.assertEquals(1, i);
+    }
+
+    @Test
+    public void insertCourseOrder(){
+        OnlineOrder onlineOrder = new OnlineOrder();
+        onlineOrder.setUpdateTime(new Date());
+        onlineOrder.setCreateTime(new Date());
+        onlineOrder.setOrderCode(OrderUtil.getUniqueKey());
+        onlineOrder.setTotalMoney(new BigDecimal(350));
+        onlineOrder.setUserId(1);
+        onlineOrder.setCourseId(438);
+
+        int i = onlineOrderMapper.insertCourseOrder(onlineOrder);
         Assert.assertEquals(1, i);
     }
 }

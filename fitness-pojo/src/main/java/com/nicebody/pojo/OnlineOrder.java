@@ -15,6 +15,8 @@ public class OnlineOrder {
     private Integer userId;
     /** 教练id */
     private Integer coachId;
+    /** 课程Id */
+    private Integer courseId;
     /** 订单号 */
     private String orderCode;
     /** 持续时间 */
@@ -32,7 +34,7 @@ public class OnlineOrder {
     /** 创建时间 */
     private Date createTime;
     /** 修改时间 */
-    private Date updateTimme;
+    private Date updateTime;
 
     public Integer getOrderId() {
         return orderId;
@@ -56,6 +58,14 @@ public class OnlineOrder {
 
     public void setCoachId(Integer coachId) {
         this.coachId = coachId;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
     }
 
     public String getOrderCode() {
@@ -122,11 +132,12 @@ public class OnlineOrder {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTimme() {
-        return updateTimme;
+
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdateTimme(Date updateTimme) {
-        this.updateTimme = updateTimme;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

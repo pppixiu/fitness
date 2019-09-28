@@ -48,7 +48,7 @@
         #{onlineOrder.userId}, #{onlineOrder.coachId}, #{onlineOrder.orderCode},
         #{onlineOrder.persistTime}, #{onlineOrder.orderStatus}, #{onlineOrder.timeBucket},
         #{onlineOrder.startTime},#{onlineOrder.totalMoney}, #{onlineOrder.endTime},
-        #{onlineOrder.createTime}, #{onlineOrder.updateTimme}
+        #{onlineOrder.createTime}, #{onlineOrder.updateTime}
         )
 
     </insert>
@@ -70,4 +70,15 @@
         WHERE
         order_code = #{orderCode}
     </update>
+
+    <insert id="insertCourseOrder" parameterType="onlineOrder">
+         INSERT INTO
+        tb_order(user_id, course_id, order_code, order_status,
+        total_money, create_time, update_time)
+        VALUES(
+        #{courseOrder.userId}, #{courseOrder.courseId}, #{courseOrder.orderCode},
+         #{courseOrder.orderStatus}, #{courseOrder.totalMoney}, #{courseOrder.createTime},
+         #{courseOrder.updateTime}
+        )
+    </insert>
 </mapper>

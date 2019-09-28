@@ -22,7 +22,7 @@ public interface OnlineOrderService {
     List<OnlineOrderVO> getOnlineOrderList(Integer userId);
 
     /**
-     * 创建新订单
+     * 创建新在线订单
      *
      * @param onlineOrder
      * @return
@@ -37,4 +37,12 @@ public interface OnlineOrderService {
      * @return
      */
     int updateOnlineOrder(String orderCode, Integer orderStatus);
+
+    /**
+     * 创建新的课程订单
+     *
+     * @param onlineOrder
+     * @return
+     */
+    OnlineOrder createCourseOrder(OnlineOrder onlineOrder);
 }

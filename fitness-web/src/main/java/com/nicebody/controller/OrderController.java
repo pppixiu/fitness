@@ -5,6 +5,7 @@ import com.nicebody.aliPay.Alipay;
 import com.alipay.api.AlipayApiException;
 import com.nicebody.alipay.AlipayBean;
 import com.nicebody.dto.AliReturnDTO;
+import com.nicebody.enums.OrderStatusEnum;
 import com.nicebody.interceptor.LoginRequired;
 import com.nicebody.pojo.OnlineOrder;
 import com.nicebody.pojo.UserProfile;
@@ -82,6 +83,40 @@ public class OrderController {
         }
     }
 
+    @PostMapping("createcourseorder")
+    @LoginRequired
+    @ResponseBody
+    /**
+     * 需提供courseId courseName totalMoney
+     */
+    public String createCourseOrder(OnlineOrder courseOrder,String courseTitle, HttpServletRequest request) throws AlipayApiException{
+        if(courseOrder != null){
+            UserProfile userProfile = (UserProfile) request.getSession().getAttribute("userProfile");
+            int userId = userProfile.getUserId();
+            courseOrder.setUserId(userId);
+            String result = null;
+            onlineOrderService.createCourseOrder(courseOrder);
+            if(courseOrder.getOrderId() != null){
+                AlipayBean alipayBean = new AlipayBean();
+                alipayBean.setOut_trade_no(courseOrder.getOrderCode());
+                alipayBean.setSubject(courseTitle);
+                alipayBean.setTotal_amount(courseOrder.getTotalMoney().toString());
+                result = payService.aliPay(alipayBean);
+            }
+            return result;
+        }else{
+            return "index";
+        }
+    }
+
+    /**
+     * 上云联调
+     * @param response
+     * @param returnPay
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @RequestMapping(value = "/alipayreturnpost")
     @ResponseBody
     public String returnPay(HttpServletResponse response, AliReturnDTO returnPay, HttpServletRequest request)
@@ -106,14 +141,16 @@ public class OrderController {
     @RequestMapping(value = "/alipayreturnget", method = {RequestMethod.GET})
     public String returnPayGet(HttpServletResponse response, AliReturnDTO returnPay, HttpServletRequest request)
             throws IOException {
+        //验签
         if (!alipay.checkSign(request)) {
-            return "redirect:index";
+            return "redirect:/index";
         }
         if (returnPay == null) {
-            return "redirect:index";
+            return "redirect:/index";
         }
         writeCookie(response, "paysuc", "success");
-        onlineOrderService.updateOnlineOrder(returnPay.getOut_trade_no(), 1);
+        //修改订单状态
+        onlineOrderService.updateOnlineOrder(returnPay.getOut_trade_no(), OrderStatusEnum.PAYING_SUCCESS.getCode());
         return "redirect:/index";
     }
 

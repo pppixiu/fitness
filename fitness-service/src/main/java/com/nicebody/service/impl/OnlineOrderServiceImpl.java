@@ -38,7 +38,7 @@ public class OnlineOrderServiceImpl implements OnlineOrderService {
     public OnlineOrder createOnlineOrder(OnlineOrder onlineOrder) {
         if (verifyOnlineOrder(onlineOrder)) {
             onlineOrder.setCreateTime(new Date());
-            onlineOrder.setUpdateTimme(new Date());
+            onlineOrder.setUpdateTime(new Date());
             onlineOrder.setStartTime(new Date());
             onlineOrder.setEndTime(new Date());
             onlineOrder.setOrderCode(OrderUtil.getUniqueKey());
@@ -62,9 +62,34 @@ public class OnlineOrderServiceImpl implements OnlineOrderService {
 
     @Override
     public int updateOnlineOrder(String orderCode, Integer orderStatus) {
-        return 0;
+        return onlineOrderMapper.updateOnlineOrderStatus(orderCode, orderStatus);
     }
 
+    @Override
+    public OnlineOrder createCourseOrder(OnlineOrder courseOrder) {
+        if (verifyCourseOrder(courseOrder)) {
+            courseOrder.setCreateTime(new Date());
+            courseOrder.setUpdateTime(new Date());
+            courseOrder.setOrderCode(OrderUtil.getUniqueKey());
+            courseOrder.setOrderStatus(OrderStatusEnum.WAITING_PAYING.getCode());
+            try {
+                onlineOrderMapper.insertCourseOrder(courseOrder);
+            } catch (Exception e) {
+                throw new OnlineOrderException(OnlineOrderEnum.CREATE_FAILED);
+            }
+
+        } else {
+            throw new OnlineOrderException(OnlineOrderEnum.CREATE_FAILED);
+        }
+        return courseOrder;
+    }
+
+    /**
+     * 验证在线订单
+     *
+     * @param onlineOrder
+     * @return
+     */
     private boolean verifyOnlineOrder(OnlineOrder onlineOrder) {
         if (onlineOrder.getTimeBucket() == null || "".equals(onlineOrder.getTimeBucket())) {
             return false;
@@ -80,6 +105,25 @@ public class OnlineOrderServiceImpl implements OnlineOrderService {
             return false;
         }
         if (onlineOrder.getPersistTime() == null) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 验证课程订单
+     *
+     * @param courseOrder
+     * @return
+     */
+    private boolean verifyCourseOrder(OnlineOrder courseOrder) {
+        if (courseOrder.getTotalMoney() == null) {
+            return false;
+        }
+        if (courseOrder.getUserId() == null) {
+            return false;
+        }
+        if (courseOrder.getCourseId() == null) {
             return false;
         }
         return true;

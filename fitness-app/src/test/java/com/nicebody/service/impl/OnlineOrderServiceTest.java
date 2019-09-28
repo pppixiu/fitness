@@ -35,4 +35,15 @@ public class OnlineOrderServiceTest {
         onlineOrderService.createOnlineOrder(onlineOrder);
         Assert.assertEquals(7, (long)onlineOrder.getOrderId());
     }
+
+    @Test
+    public void createCourseOrder(){
+        OnlineOrder courseOrder = new OnlineOrder();
+        courseOrder.setUserId(1);
+        courseOrder.setCourseId(438);
+        courseOrder.setTotalMoney(new BigDecimal(300));
+        onlineOrderService.createCourseOrder(courseOrder);
+
+        Assert.assertEquals(39, (long)courseOrder.getOrderId());
+    }
 }

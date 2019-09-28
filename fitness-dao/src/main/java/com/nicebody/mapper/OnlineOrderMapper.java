@@ -41,10 +41,19 @@ public interface OnlineOrderMapper {
 
     /**
      * 根据订单号更改订单信息
+     *
      * @param orderCode
      * @param orderStatus
      * @return
      */
     int updateOnlineOrderStatus(@Param("orderCode") String orderCode,
                                 @Param("orderStatus") Integer orderStatus);
+
+    /**
+     * 插入课程订单
+     *
+     * @param courseOrder
+     * @return
+     */
+    int insertCourseOrder(@Param("courseOrder") OnlineOrder courseOrder);
 }
