@@ -71,7 +71,8 @@
         order_code = #{orderCode}
     </update>
 
-    <insert id="insertCourseOrder" parameterType="onlineOrder">
+    <insert id="insertCourseOrder" useGeneratedKeys="true" parameterType="onlineOrder"
+            keyProperty="orderId" keyColumn="order_id">
          INSERT INTO
         tb_order(user_id, course_id, order_code, order_status,
         total_money, create_time, update_time)
@@ -82,7 +83,7 @@
         )
     </insert>
 
-    <select id="queryOrderByCode" resultType="com.nicebody.dto.CourseOrderDTO">
+    <select id="queryOrderByCode" resultType="com.nicebody.dto.CourseOrderDTO" >
         SELECT
         course_id,
         user_id

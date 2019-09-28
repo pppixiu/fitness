@@ -12,17 +12,20 @@ var judgeBuy = 0;
  * 显示弹出框
  */
 function buyCourse (){
-    $('#outTradeNo').val(generateTimeReqestNumber());
-    $('#totalAmount').val(cNowPrice);
-    $('#subject').val(cTitle);
+    $('#courseId').val(courseId);
+    $('#courseTitle').val(cTitle);
+    $('#totalMoney').val(cNowPrice);
     $("#gui_kai").show();
 }
 
-/**
+/**8
  * 支付宝支付
  */
 function alipayOnline(action) {
     document.getElementById("form").action = action;
+    $('#courseId').val(courseId);
+    $('#courseTitle').val(cTitle);
+    $('#totalMoney').val(cNowPrice);
     document.getElementById("form").submit();
 }
 function generateTimeReqestNumber() {
