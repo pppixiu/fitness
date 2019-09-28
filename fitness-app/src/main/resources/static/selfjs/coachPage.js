@@ -10,6 +10,7 @@ var userId;      //通用userId
  * 初始化加载
  */
 $(function () {
+    header();
     var result = getQueryVariable("coachId");
     getUserId();
     coachId = result;
@@ -364,4 +365,53 @@ function addComment() {
                 }
             }
         });
+}
+
+/**
+ * 加载当前用户登录信息
+ */
+function header() {
+    var headerUrl = '/header/sessionInfo';
+    $.getJSON(
+        headerUrl,
+        function (data) {
+            var imghtml = '';
+            var offhtml = '';
+            var info = data;
+            if (info == '') {
+                alert('没有获取到登录信息');
+            } else {
+                imghtml += '<img style="border-radius: 50px;width: 40px;height: 40px;position: absolute;top: -30px; margin-left: 10px; margin-right: " src="'
+                    + info.userImageUrl
+                    + '" onclick="window.open('
+                    + "'"
+                    + '/user/selfcourse?userId='
+                    + info.userId
+                    + "'"
+                    + ')">';
+                offhtml += '<a onclick="quitUser();" style="margin-left: 20px;" id="write-off" href="#" onmouseover="this.style.color='
+                    + "'"
+                    + '#b8d8ba'
+                    + "'"
+                    + ' "onmouseout="this.style.color='
+                    + "'"
+                    + '#ffffff'
+                    + "'"
+                    + '">注销</a>';
+                $('#user-img').html(imghtml);
+                $('#write-off').html(offhtml);
+            }
+        });
+}
+
+/**
+ * 注销用户
+ */
+function quitUser() {
+    var quitUrl='/header/quitUser';
+
+    if(confirm("是否要注销用户?")==true){
+        $.getJSON(quitUrl);
+        window.location.href="/index";
+    }
 }

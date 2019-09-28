@@ -9,7 +9,7 @@ var like_times = 1;
 // 通用blogId
 var blogid;
 // 通用userId
-var userId;
+var userId = 0;
 
 // 限制字数
 function keyUP(t) {
@@ -482,4 +482,13 @@ function blogLike() {
                 }
             }
         });
+}
+
+/** 判断用户评论*/
+function judgeUser() {
+    if(userId == 0){
+        if(confirm("评论需要登录用户，是否前往登录页面?")==true){
+            window.location.href="/login/login";
+        }
+    }
 }
