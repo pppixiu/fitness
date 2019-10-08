@@ -58,7 +58,7 @@ function countfunction(e) {
  * 获得模糊查询值
  */
 function namefunction() {
-    var coachOutCount = $(".coach-card").length;
+   var coachOutCount = $(".coach-card").length;
     if(coachOutCount > 0){
         goCount = 0;
         rowIndex = 0;
@@ -67,7 +67,61 @@ function namefunction() {
     if(coachName == ""){
         coachName = "empty";
     }
-    getcoachlist();
+/*    getcoachlist();*/
+
+    var coachNameUrl = '/coach/coachName?coachName='+coachName;
+    $.getJSON(
+        coachNameUrl,
+        function (data) {
+                var coachList = data;
+                if(coachList == 0){
+                    $("#not-find").text("抱歉！没有找到相关教练");
+                }else {
+                    $("#not-find").text("");
+                }
+                var html = '';
+                coachList
+                    .map(function (item, index) {
+                        lastCoachId = item.id;
+                        html += '<div class="coach-card" style="width: 300px;height:auto;" onclick="window.open('
+                            + "'"
+                            + '/coach/coachPage?coachId='
+                            + item.id
+                            + "'"
+                            + ')"><div class="card card-product">'
+                            + '<div class="card-image"><a><img class="img" src="'
+                            + item.url
+                            + '"></a></div>'
+                            + '<div class="table">'
+                            + '<h6 class="category text-rose">'
+                            + item.count
+                            + '</h6>'
+                            + '<h4 class="card-caption">'
+                            + '<a>'
+                            + item.name
+                            + '</a></h4>'
+                            + '<div class="card-description">'
+                            + item.desc
+                            + '</div>'
+                            + '<div class="ftr">'
+                            + '<div class="price" style="margin-top: 20px;margin-right: 130px;">'
+                            + '<h4>$'
+                            + item.price
+                            + '</h4></div>'
+                            + '<div class="stats">'
+                            + '<button type="button" rel="tooltip" title="" class="btn btn-just-icon"'
+                            + 'data-original-title="Saved to Wishlist"><i class="glyphicon glyphicon-search"></i></button>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '<div id="add-info-'
+                            + item.id
+                            + '"></div>'
+                    });
+                $('#coach-list').html(html);
+        });
 }
 
 /**

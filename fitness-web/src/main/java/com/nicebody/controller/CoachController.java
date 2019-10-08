@@ -3,15 +3,15 @@ package com.nicebody.controller;
 import com.nicebody.enums.CommentTypeEnum;
 import com.nicebody.enums.OrderByEnum;
 import com.nicebody.pojo.*;
-import com.nicebody.service.CoachService;
-import com.nicebody.service.CommentService;
-import com.nicebody.service.CourseService;
-import com.nicebody.service.BlogService;
+import com.nicebody.service.*;
 import com.nicebody.util.OrderByUtil;
 import com.nicebody.util.ResultVOUtil;
 import com.nicebody.vo.*;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +36,9 @@ public class CoachController {
 
     @Autowired
     private CommentService commentService;
+
+    @Autowired
+    private CoachSearchRepository coachSearchRepository;
 
     /**
      * 多条件查询教练信息
@@ -235,5 +238,31 @@ public class CoachController {
             return ResultVOUtil.error(4, "添加失败");
         }
         return ResultVOUtil.success(commentVO);
+    }
+
+    /**
+     * 教练姓名模糊查询
+     * @param coachName
+     * @return
+     */
+    @GetMapping(value = "/coachName")
+    public List<CoachSearch> coachNameSearch(@RequestParam(name = "coachName", defaultValue = "0") String coachName) {
+        // 构建查询条件
+        NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
+        // 添加基本分词查询
+        queryBuilder.withQuery(QueryBuilders.matchQuery("name", coachName));
+        // 搜索，获取结果
+        Page<CoachSearch> coachs = this.coachSearchRepository.search(queryBuilder.build());
+        // 总条数
+        long coachname = coachs.getTotalElements();
+        System.out.println("name = " + coachname);
+
+        List<CoachSearch> coachInfoList = new ArrayList<>();
+
+        for (CoachSearch coachSearch : coachs) {
+            coachInfoList.add(coachSearch);
+        }
+        //公共方法返回
+        return coachInfoList;
     }
 }

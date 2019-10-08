@@ -1,3 +1,7 @@
 spring:
   profiles:
     active: dev
+  data:
+    elasticsearch:
+      cluster-name: my-application
+      cluster-nodes: 127.0.0.1:9300
