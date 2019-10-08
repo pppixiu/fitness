@@ -1,4 +1,5 @@
 package com.nicebody.controller;
+import com.alibaba.fastjson.JSONObject;
 import com.nicebody.pojo.PhoneAuth;
 import com.nicebody.pojo.UserProfile;
 import com.nicebody.service.CodeService;
@@ -37,14 +38,14 @@ public class LoginController {
     @ResponseBody
     public ResultVO produceAuthNumber(@RequestParam("phone") String phone){
         ResultVO  resultVO = new ResultVO();
-      /*  JSONObject jsonObject = codeService.Code(phone);*/
-       /* System.out.println(jsonObject);
+        JSONObject jsonObject = codeService.Code(phone);
+        System.out.println(jsonObject);
         //获取验证码的值
         String smsCode = jsonObject.get("smsCode").toString();
         //获取状态码
-        String code = jsonObject.get("code").toString();*/
-        String smsCode = "2234";
-        String code = "0";
+//        String code = jsonObject.get("code").toString();*/
+//        rSting smsCode = "2234";
+          String code = "0";
 
         String myphone=null;
         if(code.equals("0")){
