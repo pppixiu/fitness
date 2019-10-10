@@ -33,7 +33,7 @@ public class CodeServiceImpl implements CodeService {
 
 //将发送结果转为json对象
 //        try {
-//           jsonObject = JSONObject.parseObject(CodeUtil.sendSms(CodeUtil.APIKEY,CodeUtil.T_CODE+smsCode+CodeUtil.T_LASTCODE,phone));
+//           jsonObject = JSONObject.parseObject(CodeUtil.sendSms(CodeUtil.APIKEY,CodeUtil.TEMPLATE+smsCode+CodeUtil.T_LASTCODE,phone));
 //
 //        } catch (IOException e) {
 //            e.printStackTrace();

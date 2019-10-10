@@ -15,7 +15,7 @@ $(function () {
     getUserId();
     coachId = result;
     coachInfo(result);
-    likefuncation();
+    likefuncation(0);
 });
 
 /**
@@ -212,27 +212,47 @@ function loadComment(id) {
 /**
  * 点赞、关注加收藏
  */
-function likefuncation() {
-    var liketimes;
-    var coachLikeCountUrl = '/coach/coachLikeCount?coachId=' + coachId + '&userId=' + userId;
-
-    /*加载基本信息*/
+function likefuncation(judgeid) {
+    var headerUrl ='/header/sessionInfo';
     $.getJSON(
-        coachLikeCountUrl,
+        headerUrl,
         function (data) {
-            if (data.code == "0") {
-                var info = data.data;
-                likecount = info.count;
-                liketimes = info.judge;
-                if(liketimes == 1){
-                    $('#coach-count').text($('#coach-count').text()*1+1);
-                    $('#control-color').css("color","Red")
-                }else if(liketimes == 0){
-                    $('#coach-count').text($('#coach-count').text()*1-1);
-                    $('#control-color').css("color","black")
-                }
+            var info = data;
+            if(info==''){
+                alert('没有获取到登录信息');
+            }else {
+                likeid = info.userId;
+
+                var liketimes;
+                var coachLikeCountUrl = '/coach/coachLikeCount?coachId=' + coachId + '&userId=' + info.userId + '&judgeid=' + judgeid;
+
+                /*加载基本信息*/
+                $.getJSON(
+                    coachLikeCountUrl,
+                    function (data) {
+                        if (data.code == "0") {
+                            var info1 = data.data;
+                            likecount = info1.count;
+                            liketimes = info1.judge;
+                            if(liketimes == 1 && judgeid == 1){
+                                $('#coach-count').text($('#coach-count').text()*1+1);
+                                $('#control-color').css("color","Red")
+                            }else if(liketimes == 0 && judgeid == 1){
+                                $('#coach-count').text($('#coach-count').text()*1-1);
+                                $('#control-color').css("color","black")
+                            }else if(liketimes == 1 && judgeid == 0){
+                                $('#coach-count').text($('#coach-count').text());
+                                $('#control-color').css("color","Red")
+                            }else if(liketimes == 0 && judgeid == 0){
+                                $('#coach-count').text($('#coach-count').text());
+                                $('#control-color').css("color","black")
+                            }
+                        }
+                    });
             }
-    });
+        });
+
+
 }
 
 /**
