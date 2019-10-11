@@ -22,7 +22,7 @@ function getuserblog() {
                                 '\t\t\t\t\t\t\t\t\t<li style="float: left; width: 100%">\n' +
                                 '\t\t\t\t\t\t\t\t\t\t<a href="course-detail.html" style=""><h2 style="font-size: 25px; text-align: left;margin-top: 10px; margin-bottom: 10px;float: left; width: 50%; margin-right: 0;">'+ item.name +'</h2></a>\n' +
                                 '\t\t\t\t\t\t\t\t\t\t<h4 class="t-button" style="margin-top: 5px;float: right;">\n' +
-                                '\t\t\t\t\t\t\t\t\t\t\t<a href="#"><span class="label label-default">取消收藏</span></a>\n' +
+                                '\t\t\t\t\t\t\t\t\t\t\t<a href="#" onclick="delCoach('+ item.id +')"><span class="label label-default">取消收藏</span></a>\n' +
                                 '\t\t\t\t\t\t\t\t\t\t</h4>\n' +
                                 '\t\t\t\t\t\t\t\t\t</li>\n' +
                                 '\t\t\t\t\t\t\t\t\t<li>\n' +
@@ -67,7 +67,7 @@ function addItems(pageSize, pageIndex) {
                                 '\t\t\t\t\t\t\t\t\t<li style="float: left; width: 100%">\n' +
                                 '\t\t\t\t\t\t\t\t\t\t<a href="course-detail.html" style=""><h2 style="font-size: 25px; text-align: left;margin-top: 10px; margin-bottom: 10px;float: left; width: 50%; margin-right: 0;">'+ item.name +'</h2></a>\n' +
                                 '\t\t\t\t\t\t\t\t\t\t<h4 class="t-button" style="margin-top: 5px;float: right;">\n' +
-                                '\t\t\t\t\t\t\t\t\t\t\t<a href="#"><span class="label label-default">取消收藏</span></a>\n' +
+                                '\t\t\t\t\t\t\t\t\t\t\t<a href="#" onclick="delCoach('+ item.id +')"><span class="label label-default">取消收藏</span></a>\n' +
                                 '\t\t\t\t\t\t\t\t\t\t</h4>\n' +
                                 '\t\t\t\t\t\t\t\t\t</li>\n' +
                                 '\t\t\t\t\t\t\t\t\t<li>\n' +
@@ -97,3 +97,24 @@ function nextPage() {
 $(function () {
     getuserblog();
 });
+
+
+function delCoach(coachId) {
+    var headerUrl ='/header/sessionInfo';
+    $.getJSON(
+        headerUrl,
+        function (data) {
+            var imghtml='';
+            var info = data;
+            if(info==''){
+                alert('没有获取到登录信息');
+            }else {
+                var delCoachUrl =  '/coach/coachLikeCount?coachId=' + coachId + '&userId=' + info.userId + '&judgeid=1';
+                if(confirm("是否不再关注该教练?")==true){
+                    /*加载基本信息*/
+                    $.getJSON(delCoachUrl);
+                    window.location.reload();
+                }
+            }
+        });
+}

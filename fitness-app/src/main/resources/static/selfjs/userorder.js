@@ -22,7 +22,7 @@ function getuserorder() {
                                 '\t\t\t\t\t</div>\n' +
                                 '\t\t\t\t\t<div class="col-md-4" style="margin-top: 60px">\n' +
                                 '\t\t\t\t\t\t<span>金额 ：'+ item.total +'元<br>'+ item.status +'</span>\n' +
-                                '\t\t\t\t\t\t<button type="button" style="margin-top: 40px;float: right;" class="btn btn-success " onclick=levelfunction(2)>再次购买</button>>\n' +
+                                '\t\t\t\t\t\t<button onclick="jump('+item.coach.id+')" type="button" style="margin-top: 40px;float: right;" class="btn btn-success ">再次购买</button>>\n' +
                                 '\t\t\t\t\t</div>\n' +
                                 '\t\t\t\t</div>'
                         });
@@ -36,3 +36,7 @@ function getuserorder() {
 $(function () {
     getuserorder();
 });
+
+function jump(coachid){
+    window.location.href="/coach/coachPage?coachId="+coachid;
+}

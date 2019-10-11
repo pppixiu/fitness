@@ -19,11 +19,11 @@ function getuserblog(e) {
                                 '\t\t\t\t\t\t\t<img src="'+ item.url +'" alt="" width="200px" height="150px">\n' +
                                 '\t\t\t\t\t\t</div>\n' +
                                 '\t\t\t\t\t\t<div class="col-md-9"  style="padding-top: 20px;">\n' +
-                                '\t\t\t\t\t\t\t<a href="course-detail.html"><h2 style="font-size: 25px; text-align: left;margin-bottom: 10px;  width: 50%; margin-right: 0;">'+ item.title +'</h2></a>\n' +
+                                '\t\t\t\t\t\t\t<a href="/course/courseInfo/?courseId='+item.id+'"><h2 style="font-size: 25px; text-align: left;margin-bottom: 10px;  width: 50%; margin-right: 0;">'+ item.title +'</h2></a>\n' +
                                 '\t\t\t\t\t\t\t<p>'+ item.desc +'</p>\n' +
                                 '\t\t\t\t\t\t\t<span style="margin-top: 2%;float: left;">'+ item.count +' 人已购买&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>\n' +
                                 '\t\t\t\t\t\t\t<h3 class="t-button" style="float: right; margin-top: 0%">\n' +
-                                '\t\t\t\t\t\t\t\t<a href="#"><span class="label label-success">继续学习</span></a>\n' +
+                                '\t\t\t\t\t\t\t\t<a href="/course/courseInfo/?courseId='+item.id+'"><span class="label label-success">继续学习</span></a>\n' +
                                 '\t\t\t\t\t\t\t</h3>\n' +
                                 '\t\t\t\t\t\t</div>\n' +
                                 '\t\t\t\t\t</div>'
@@ -59,11 +59,11 @@ function addItems(pageSize, pageIndex) {
                                 '\t\t\t\t\t\t\t<img src="'+ item.url +'" alt="" width="200px" height="150px">\n' +
                                 '\t\t\t\t\t\t</div>\n' +
                                 '\t\t\t\t\t\t<div class="col-md-9"  style="padding-top: 20px;">\n' +
-                                '\t\t\t\t\t\t\t<a href="course-detail.html"><h2 style="font-size: 25px; text-align: left;margin-bottom: 10px;  width: 50%; margin-right: 0;">'+ item.title +'</h2></a>\n' +
+                                '\t\t\t\t\t\t\t<a href="/course/courseInfo/?courseId='+item.id+'"><h2 style="font-size: 25px; text-align: left;margin-bottom: 10px;  width: 50%; margin-right: 0;">'+ item.title +'</h2></a>\n' +
                                 '\t\t\t\t\t\t\t<p>'+ item.desc +'</p>\n' +
                                 '\t\t\t\t\t\t\t<span style="margin-top: 2%;float: left;">'+ item.count +' 人已购买&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>\n' +
                                 '\t\t\t\t\t\t\t<h3 class="t-button" style="float: right; margin-top: 0%">\n' +
-                                '\t\t\t\t\t\t\t\t<a href="#"><span class="label label-success">继续学习</span></a>\n' +
+                                '\t\t\t\t\t\t\t\t<a href="/course/courseInfo/?courseId='+item.id+'"><span class="label label-success">继续学习</span></a>\n' +
                                 '\t\t\t\t\t\t\t</h3>\n' +
                                 '\t\t\t\t\t\t</div>\n' +
                                 '\t\t\t\t\t</div>'
