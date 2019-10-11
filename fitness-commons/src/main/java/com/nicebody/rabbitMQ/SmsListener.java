@@ -26,9 +26,9 @@ public class SmsListener {
         }
         //获取状态码
         String code = jsonObject.get("code").toString();
-        if (code != "0") {
+      /*  if (code != "0") {
             System.out.println("发送失败");
         }
-
+*/
     }
 }
