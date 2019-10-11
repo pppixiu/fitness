@@ -20,7 +20,7 @@ public class SmsListener {
 
         JSONObject jsonObject=null;
         try {
-            jsonObject = JSONObject.parseObject(CodeUtil.sendSms(CodeUtil.APIKEY,/*CodeUtil.SIGN +*/ CodeUtil.TEMPLATE + map.get("smsCode"),map.get("phone")));
+            jsonObject = JSONObject.parseObject(CodeUtil.sendSms(CodeUtil.APIKEY,CodeUtil.SIGN + CodeUtil.TEMPLATE + map.get("smsCode"),map.get("phone")));
         } catch (IOException e) {
             e.printStackTrace();
         }

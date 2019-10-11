@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class CodeUtil {
     //查账户信息的http地址
-    public static String APIKEY = "99c7955388022e8b51f2c0f60d839ac2";
+    public static String APIKEY = "f4741d94334c7db82a4fcd72de73f2bd";
 
     public static String SIGN = "【云片网】";
 
