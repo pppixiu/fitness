@@ -108,13 +108,11 @@ $(function () {
                         blogList
                             .map(function (item, index) {
                                 html += '<div class="shizhan-course-wrap l  ">\n' +
-                                    '                        <a href="courseInfo.html">\n' +
-                                    '                        </a>\n' +
-                                    '                        <div class="shizhan-course-box"><a href="">\n' +
+                                    '                        <div class="shizhan-course-box"><a>\n' +
                                     '                            <!-- 学习进度 -->\n' +
                                     '\n' +
                                     '                        </a>\n' +
-                                    '                            <div class="box"><a href="courseInfo.html">\n' +
+                                    '                            <div class="box"><a href="?courseId=' + item.id + '">\n' +
                                     '                                <div class="img-box">\n' +
                                     '                                    <div class="shizhan-course-gradient"></div>\n' +
                                     '                                    <img class="shizhan-course-img" alt="' + item.title + '" src="' + item.url + '">\n' +
@@ -127,10 +125,8 @@ $(function () {
                                     '                                    </div>\n' +
                                     '                                </div>\n' +
                                     '                            </a>\n' +
-                                    '                                <div class="shizhan-intro-box"><a href="courseInfo.html">\n' +
-                                    '                                    <a href="?courseId=' +
-                                                                          item.id +
-                                                                          '" style="text-decoration:none;margin-top: 10px;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
+                                    '                                <div class="shizhan-intro-box"><a>\n' +
+                                    '                                    <a href="?courseId=' + item.id + '" style="text-decoration:none;margin-top: 10px;"><p class="shizan-name" style="height: 24px;overflow: hidden;"\n' +
                                     '                                                                                               title="' + item.title + '">\n' +
                                     '                                        ' + item.title + '</p></a>\n' +
                                     '                                    <div class="evaluation-box">\n' +
@@ -157,17 +153,16 @@ $(function () {
                                     '                                    </div>\n' +
                                     '\n' +
                                     '                                </a>\n' +
-                                    '                                    <div class="shizhan-info-bottom"><a href="//class.imooc.com/sale/webfullstack">\n' +
-                                    '                                    </a>\n' +
-                                    '                                        <div class="clearfix"><a href="//class.imooc.com/sale/webfullstack">\n' +
+                                    '                                    <div class="shizhan-info-bottom">\n' +
+                                    '                                        <div class="clearfix"><a>\n' +
                                     '\n' +
                                     '                                            <span class="discount-price" style="margin-right: 5px;">￥' + item.nowprice + '</span>\n' +
                                     '                                            <del><span class="cost-price"><del>￥' + item.preprice + '</del></span></del>\n' +
                                     '\n' +
                                     '\n' +
                                     '                                        </a>\n' +
-                                    '                                            <div class="r clearfix"><a href="//class.imooc.com/sale/webfullstack"></a>\n' +
-                                    '                                                <a href="courseInfo.html"\n' +
+                                    '                                            <div class="r clearfix">\n' +
+                                    '                                                <a\n' +
                                     '                                                   style="color:#B7BBBF;line-height: 24px;font-size: 12px;text-decoration:none;">了解详情</a>\n' +
                                     '                                            </div>\n' +
                                     '                                        </div>\n' +
